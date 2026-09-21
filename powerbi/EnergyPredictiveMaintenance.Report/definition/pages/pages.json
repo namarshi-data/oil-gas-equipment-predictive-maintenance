@@ -1,0 +1,15 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pagesMetadata/1.0.0/schema.json",
+  "pageOrder": [
+    "executive_roi",
+    "policy_comparison",
+    "fleet_risk",
+    "model_performance",
+    "service_audit",
+    "methodology",
+    "asset_detail",
+    "context_tooltip",
+    "ai_analysis"
+  ],
+  "activePageName": "executive_roi"
+}

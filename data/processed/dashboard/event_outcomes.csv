@@ -1,0 +1,133 @@
+event_id,asset_id,asset_type,site,event_date,policy,caught,alert_date,service_date,warning_days,service_lead_days,repair_cost_cad,downtime_hours
+E-AB-001-03,AB-001,pumpjack,Peace River,2025-05-18,reactive,0,,,0,0,19988.64,47.3
+E-AB-004-03,AB-004,pumpjack,Lloydminster,2025-05-28,reactive,0,,,0,0,18379.84,60.1
+E-AB-007-03,AB-007,pumpjack,Red Deer,2025-04-14,reactive,0,,,0,0,15000.52,49.1
+E-AB-008-03,AB-008,compressor,Lloydminster,2025-04-11,reactive,0,,,0,0,43260.47,133.1
+E-AB-010-03,AB-010,pumpjack,Grande Prairie,2025-06-06,reactive,0,,,0,0,17052.35,44.1
+E-AB-011-03,AB-011,compressor,Red Deer,2025-06-23,reactive,0,,,0,0,60131.41,125.2
+E-AB-012-04,AB-012,pipeline_pump,Lloydminster,2025-05-19,reactive,0,,,0,0,39541.71,68.2
+E-AB-013-03,AB-013,pumpjack,Peace River,2025-04-24,reactive,0,,,0,0,23103.34,87.5
+E-AB-014-03,AB-014,compressor,Grande Prairie,2025-05-28,reactive,0,,,0,0,45792.98,88.4
+E-AB-016-03,AB-016,pumpjack,Lloydminster,2025-05-22,reactive,0,,,0,0,16803.4,50.6
+E-AB-021-04,AB-021,pipeline_pump,Peace River,2025-05-15,reactive,0,,,0,0,41019.23,118.8
+E-AB-023-03,AB-023,compressor,Red Deer,2025-04-29,reactive,0,,,0,0,37409.16,116.6
+E-AB-027-03,AB-027,pipeline_pump,Red Deer,2025-04-05,reactive,0,,,0,0,29211.22,107.4
+E-AB-028-03,AB-028,pumpjack,Lloydminster,2025-06-21,reactive,0,,,0,0,21826.38,47.1
+E-AB-029-03,AB-029,compressor,Peace River,2025-06-15,reactive,0,,,0,0,61334.12,59.9
+E-AB-032-03,AB-032,compressor,Lloydminster,2025-04-30,reactive,0,,,0,0,44145.34,66.0
+E-AB-033-04,AB-033,pipeline_pump,Peace River,2025-06-18,reactive,0,,,0,0,29886.28,103.3
+E-AB-035-03,AB-035,compressor,Red Deer,2025-06-29,reactive,0,,,0,0,65194.92,94.5
+E-AB-036-03,AB-036,pipeline_pump,Lloydminster,2025-04-14,reactive,0,,,0,0,37168.65,86.5
+E-AB-039-03,AB-039,pipeline_pump,Red Deer,2025-04-05,reactive,0,,,0,0,35374.72,68.7
+E-AB-040-03,AB-040,pumpjack,Lloydminster,2025-06-14,reactive,0,,,0,0,14219.03,50.7
+E-AB-043-03,AB-043,pumpjack,Red Deer,2025-04-27,reactive,0,,,0,0,21172.22,77.6
+E-AB-044-04,AB-044,compressor,Lloydminster,2025-04-28,reactive,0,,,0,0,37071.55,132.4
+E-AB-048-03,AB-048,pipeline_pump,Lloydminster,2025-04-20,reactive,0,,,0,0,34223.19,62.1
+E-AB-049-03,AB-049,pumpjack,Peace River,2025-05-05,reactive,0,,,0,0,19757.04,68.2
+E-AB-050-03,AB-050,compressor,Grande Prairie,2025-06-12,reactive,0,,,0,0,38628.37,127.0
+E-AB-051-03,AB-051,pipeline_pump,Red Deer,2025-06-29,reactive,0,,,0,0,25393.84,65.7
+E-AB-052-03,AB-052,pumpjack,Lloydminster,2025-05-12,reactive,0,,,0,0,22044.91,99.5
+E-AB-056-03,AB-056,compressor,Lloydminster,2025-06-14,reactive,0,,,0,0,50981.94,126.6
+E-AB-058-04,AB-058,pumpjack,Grande Prairie,2025-06-25,reactive,0,,,0,0,17726.39,77.2
+E-AB-059-03,AB-059,compressor,Red Deer,2025-05-10,reactive,0,,,0,0,60609.49,121.6
+E-AB-060-03,AB-060,pipeline_pump,Lloydminster,2025-04-12,reactive,0,,,0,0,39963.18,118.4
+E-AB-061-03,AB-061,pumpjack,Peace River,2025-04-23,reactive,0,,,0,0,13547.26,64.7
+E-AB-065-04,AB-065,compressor,Peace River,2025-05-25,reactive,0,,,0,0,65672.48,63.0
+E-AB-066-03,AB-066,pipeline_pump,Grande Prairie,2025-04-22,reactive,0,,,0,0,37498.75,95.6
+E-AB-067-03,AB-067,pumpjack,Red Deer,2025-06-08,reactive,0,,,0,0,23068.59,90.3
+E-AB-069-03,AB-069,pipeline_pump,Peace River,2025-04-13,reactive,0,,,0,0,33313.18,79.2
+E-AB-071-03,AB-071,compressor,Red Deer,2025-05-19,reactive,0,,,0,0,37125.69,107.0
+E-AB-072-03,AB-072,pipeline_pump,Lloydminster,2025-06-20,reactive,0,,,0,0,41479.2,92.7
+E-AB-075-03,AB-075,pipeline_pump,Red Deer,2025-05-30,reactive,0,,,0,0,34289.74,97.6
+E-AB-076-04,AB-076,pumpjack,Lloydminster,2025-06-27,reactive,0,,,0,0,25040.09,93.1
+E-AB-077-03,AB-077,compressor,Peace River,2025-06-26,reactive,0,,,0,0,55312.72,113.2
+E-AB-078-03,AB-078,pipeline_pump,Grande Prairie,2025-04-25,reactive,0,,,0,0,24030.85,125.7
+E-AB-079-03,AB-079,pumpjack,Red Deer,2025-05-26,reactive,0,,,0,0,19178.71,105.5
+E-AB-001-03,AB-001,pumpjack,Peace River,2025-05-18,fixed_90_day,0,,,0,0,19988.64,47.3
+E-AB-004-03,AB-004,pumpjack,Lloydminster,2025-05-28,fixed_90_day,0,,,0,0,18379.84,60.1
+E-AB-007-03,AB-007,pumpjack,Red Deer,2025-04-14,fixed_90_day,0,,,0,0,15000.52,49.1
+E-AB-008-03,AB-008,compressor,Lloydminster,2025-04-11,fixed_90_day,0,,,0,0,43260.47,133.1
+E-AB-010-03,AB-010,pumpjack,Grande Prairie,2025-06-06,fixed_90_day,0,,,0,0,17052.35,44.1
+E-AB-011-03,AB-011,compressor,Red Deer,2025-06-23,fixed_90_day,1,2025-06-13,2025-06-13,10,10,0.0,0.0
+E-AB-012-04,AB-012,pipeline_pump,Lloydminster,2025-05-19,fixed_90_day,0,,,0,0,39541.71,68.2
+E-AB-013-03,AB-013,pumpjack,Peace River,2025-04-24,fixed_90_day,1,2025-04-08,2025-04-08,16,16,0.0,0.0
+E-AB-014-03,AB-014,compressor,Grande Prairie,2025-05-28,fixed_90_day,0,,,0,0,45792.98,88.4
+E-AB-016-03,AB-016,pumpjack,Lloydminster,2025-05-22,fixed_90_day,0,,,0,0,16803.4,50.6
+E-AB-021-04,AB-021,pipeline_pump,Peace River,2025-05-15,fixed_90_day,1,2025-05-02,2025-05-02,13,13,0.0,0.0
+E-AB-023-03,AB-023,compressor,Red Deer,2025-04-29,fixed_90_day,1,2025-04-15,2025-04-15,14,14,0.0,0.0
+E-AB-027-03,AB-027,pipeline_pump,Red Deer,2025-04-05,fixed_90_day,0,,,0,0,29211.22,107.4
+E-AB-028-03,AB-028,pumpjack,Lloydminster,2025-06-21,fixed_90_day,0,,,0,0,21826.38,47.1
+E-AB-029-03,AB-029,compressor,Peace River,2025-06-15,fixed_90_day,0,,,0,0,61334.12,59.9
+E-AB-032-03,AB-032,compressor,Lloydminster,2025-04-30,fixed_90_day,0,,,0,0,44145.34,66.0
+E-AB-033-04,AB-033,pipeline_pump,Peace River,2025-06-18,fixed_90_day,1,2025-06-10,2025-06-10,8,8,0.0,0.0
+E-AB-035-03,AB-035,compressor,Red Deer,2025-06-29,fixed_90_day,0,,,0,0,65194.92,94.5
+E-AB-036-03,AB-036,pipeline_pump,Lloydminster,2025-04-14,fixed_90_day,0,,,0,0,37168.65,86.5
+E-AB-039-03,AB-039,pipeline_pump,Red Deer,2025-04-05,fixed_90_day,1,2025-03-09,2025-03-09,27,27,0.0,0.0
+E-AB-040-03,AB-040,pumpjack,Lloydminster,2025-06-14,fixed_90_day,1,2025-06-13,2025-06-13,1,1,0.0,0.0
+E-AB-043-03,AB-043,pumpjack,Red Deer,2025-04-27,fixed_90_day,0,,,0,0,21172.22,77.6
+E-AB-044-04,AB-044,compressor,Lloydminster,2025-04-28,fixed_90_day,0,,,0,0,37071.55,132.4
+E-AB-048-03,AB-048,pipeline_pump,Lloydminster,2025-04-20,fixed_90_day,0,,,0,0,34223.19,62.1
+E-AB-049-03,AB-049,pumpjack,Peace River,2025-05-05,fixed_90_day,1,2025-05-03,2025-05-03,2,2,0.0,0.0
+E-AB-050-03,AB-050,compressor,Grande Prairie,2025-06-12,fixed_90_day,0,,,0,0,38628.37,127.0
+E-AB-051-03,AB-051,pipeline_pump,Red Deer,2025-06-29,fixed_90_day,0,,,0,0,25393.84,65.7
+E-AB-052-03,AB-052,pumpjack,Lloydminster,2025-05-12,fixed_90_day,0,,,0,0,22044.91,99.5
+E-AB-056-03,AB-056,compressor,Lloydminster,2025-06-14,fixed_90_day,1,2025-06-08,2025-06-08,6,6,0.0,0.0
+E-AB-058-04,AB-058,pumpjack,Grande Prairie,2025-06-25,fixed_90_day,0,,,0,0,17726.39,77.2
+E-AB-059-03,AB-059,compressor,Red Deer,2025-05-10,fixed_90_day,0,,,0,0,60609.49,121.6
+E-AB-060-03,AB-060,pipeline_pump,Lloydminster,2025-04-12,fixed_90_day,0,,,0,0,39963.18,118.4
+E-AB-061-03,AB-061,pumpjack,Peace River,2025-04-23,fixed_90_day,0,,,0,0,13547.26,64.7
+E-AB-065-04,AB-065,compressor,Peace River,2025-05-25,fixed_90_day,0,,,0,0,65672.48,63.0
+E-AB-066-03,AB-066,pipeline_pump,Grande Prairie,2025-04-22,fixed_90_day,1,2025-04-21,2025-04-21,1,1,0.0,0.0
+E-AB-067-03,AB-067,pumpjack,Red Deer,2025-06-08,fixed_90_day,1,2025-05-10,2025-05-10,29,29,0.0,0.0
+E-AB-069-03,AB-069,pipeline_pump,Peace River,2025-04-13,fixed_90_day,0,,,0,0,33313.18,79.2
+E-AB-071-03,AB-071,compressor,Red Deer,2025-05-19,fixed_90_day,0,,,0,0,37125.69,107.0
+E-AB-072-03,AB-072,pipeline_pump,Lloydminster,2025-06-20,fixed_90_day,1,2025-06-06,2025-06-06,14,14,0.0,0.0
+E-AB-075-03,AB-075,pipeline_pump,Red Deer,2025-05-30,fixed_90_day,0,,,0,0,34289.74,97.6
+E-AB-076-04,AB-076,pumpjack,Lloydminster,2025-06-27,fixed_90_day,0,,,0,0,25040.09,93.1
+E-AB-077-03,AB-077,compressor,Peace River,2025-06-26,fixed_90_day,0,,,0,0,55312.72,113.2
+E-AB-078-03,AB-078,pipeline_pump,Grande Prairie,2025-04-25,fixed_90_day,1,2025-04-24,2025-04-24,1,1,0.0,0.0
+E-AB-079-03,AB-079,pumpjack,Red Deer,2025-05-26,fixed_90_day,0,,,0,0,19178.71,105.5
+E-AB-001-03,AB-001,pumpjack,Peace River,2025-05-18,predictive,1,2025-04-23,2025-04-25,25,23,0.0,0.0
+E-AB-004-03,AB-004,pumpjack,Lloydminster,2025-05-28,predictive,1,2025-04-28,2025-04-30,30,28,0.0,0.0
+E-AB-007-03,AB-007,pumpjack,Red Deer,2025-04-14,predictive,1,2025-04-05,2025-04-07,9,7,0.0,0.0
+E-AB-008-03,AB-008,compressor,Lloydminster,2025-04-11,predictive,1,2025-04-01,2025-04-03,10,8,0.0,0.0
+E-AB-010-03,AB-010,pumpjack,Grande Prairie,2025-06-06,predictive,0,,,0,0,17052.35,44.1
+E-AB-011-03,AB-011,compressor,Red Deer,2025-06-23,predictive,1,2025-05-24,2025-05-26,30,28,0.0,0.0
+E-AB-012-04,AB-012,pipeline_pump,Lloydminster,2025-05-19,predictive,0,,,0,0,39541.71,68.2
+E-AB-013-03,AB-013,pumpjack,Peace River,2025-04-24,predictive,1,2025-04-08,2025-04-10,16,14,0.0,0.0
+E-AB-014-03,AB-014,compressor,Grande Prairie,2025-05-28,predictive,1,2025-05-03,2025-05-05,25,23,0.0,0.0
+E-AB-016-03,AB-016,pumpjack,Lloydminster,2025-05-22,predictive,1,2025-05-04,2025-05-06,18,16,0.0,0.0
+E-AB-021-04,AB-021,pipeline_pump,Peace River,2025-05-15,predictive,1,2025-05-01,2025-05-03,14,12,0.0,0.0
+E-AB-023-03,AB-023,compressor,Red Deer,2025-04-29,predictive,1,2025-04-01,2025-04-03,28,26,0.0,0.0
+E-AB-027-03,AB-027,pipeline_pump,Red Deer,2025-04-05,predictive,1,2025-04-01,2025-04-03,4,2,0.0,0.0
+E-AB-028-03,AB-028,pumpjack,Lloydminster,2025-06-21,predictive,0,,,0,0,21826.38,47.1
+E-AB-029-03,AB-029,compressor,Peace River,2025-06-15,predictive,0,,,0,0,61334.12,59.9
+E-AB-032-03,AB-032,compressor,Lloydminster,2025-04-30,predictive,1,2025-04-03,2025-04-05,27,25,0.0,0.0
+E-AB-033-04,AB-033,pipeline_pump,Peace River,2025-06-18,predictive,1,2025-05-19,2025-05-21,30,28,0.0,0.0
+E-AB-035-03,AB-035,compressor,Red Deer,2025-06-29,predictive,0,,,0,0,65194.92,94.5
+E-AB-036-03,AB-036,pipeline_pump,Lloydminster,2025-04-14,predictive,1,2025-04-01,2025-04-03,13,11,0.0,0.0
+E-AB-039-03,AB-039,pipeline_pump,Red Deer,2025-04-05,predictive,1,2025-04-01,2025-04-03,4,2,0.0,0.0
+E-AB-040-03,AB-040,pumpjack,Lloydminster,2025-06-14,predictive,1,2025-05-26,2025-05-28,19,17,0.0,0.0
+E-AB-043-03,AB-043,pumpjack,Red Deer,2025-04-27,predictive,1,2025-04-09,2025-04-11,18,16,0.0,0.0
+E-AB-044-04,AB-044,compressor,Lloydminster,2025-04-28,predictive,1,2025-04-07,2025-04-09,21,19,0.0,0.0
+E-AB-048-03,AB-048,pipeline_pump,Lloydminster,2025-04-20,predictive,0,,,0,0,34223.19,62.1
+E-AB-049-03,AB-049,pumpjack,Peace River,2025-05-05,predictive,1,2025-04-13,2025-04-15,22,20,0.0,0.0
+E-AB-050-03,AB-050,compressor,Grande Prairie,2025-06-12,predictive,1,2025-05-19,2025-05-21,24,22,0.0,0.0
+E-AB-051-03,AB-051,pipeline_pump,Red Deer,2025-06-29,predictive,1,2025-05-29,2025-05-31,31,29,0.0,0.0
+E-AB-052-03,AB-052,pumpjack,Lloydminster,2025-05-12,predictive,1,2025-05-01,2025-05-03,11,9,0.0,0.0
+E-AB-056-03,AB-056,compressor,Lloydminster,2025-06-14,predictive,1,2025-05-14,2025-05-16,31,29,0.0,0.0
+E-AB-058-04,AB-058,pumpjack,Grande Prairie,2025-06-25,predictive,1,2025-06-10,2025-06-12,15,13,0.0,0.0
+E-AB-059-03,AB-059,compressor,Red Deer,2025-05-10,predictive,1,2025-04-18,2025-04-20,22,20,0.0,0.0
+E-AB-060-03,AB-060,pipeline_pump,Lloydminster,2025-04-12,predictive,1,2025-04-01,2025-04-03,11,9,0.0,0.0
+E-AB-061-03,AB-061,pumpjack,Peace River,2025-04-23,predictive,1,2025-04-04,2025-04-06,19,17,0.0,0.0
+E-AB-065-04,AB-065,compressor,Peace River,2025-05-25,predictive,1,2025-05-01,2025-05-03,24,22,0.0,0.0
+E-AB-066-03,AB-066,pipeline_pump,Grande Prairie,2025-04-22,predictive,1,2025-04-01,2025-04-03,21,19,0.0,0.0
+E-AB-067-03,AB-067,pumpjack,Red Deer,2025-06-08,predictive,1,2025-05-09,2025-05-11,30,28,0.0,0.0
+E-AB-069-03,AB-069,pipeline_pump,Peace River,2025-04-13,predictive,1,2025-04-01,2025-04-03,12,10,0.0,0.0
+E-AB-071-03,AB-071,compressor,Red Deer,2025-05-19,predictive,1,2025-05-02,2025-05-04,17,15,0.0,0.0
+E-AB-072-03,AB-072,pipeline_pump,Lloydminster,2025-06-20,predictive,1,2025-05-20,2025-05-22,31,29,0.0,0.0
+E-AB-075-03,AB-075,pipeline_pump,Red Deer,2025-05-30,predictive,1,2025-05-03,2025-05-05,27,25,0.0,0.0
+E-AB-076-04,AB-076,pumpjack,Lloydminster,2025-06-27,predictive,0,,,0,0,25040.09,93.1
+E-AB-077-03,AB-077,compressor,Peace River,2025-06-26,predictive,1,2025-06-07,2025-06-09,19,17,0.0,0.0
+E-AB-078-03,AB-078,pipeline_pump,Grande Prairie,2025-04-25,predictive,1,2025-04-07,2025-04-09,18,16,0.0,0.0
+E-AB-079-03,AB-079,pumpjack,Red Deer,2025-05-26,predictive,1,2025-05-08,2025-05-10,18,16,0.0,0.0

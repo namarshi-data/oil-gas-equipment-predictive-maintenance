@@ -1,0 +1,18 @@
+/// What-if downtime cost in CAD/hour, 0 to 2500 by 50. Default selected value 1000; effective only in uniform override mode.
+table Param_DowntimeCost
+	lineageTag: e265320b-ceeb-43db-b796-a2cddda18e58
+
+	/// Downtime Cost Per Hour.
+	column 'Downtime Cost Per Hour'
+		dataType: int64
+		formatString: "C$"#,0
+		lineageTag: f14d1753-823b-4906-bc60-1de06972a34d
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		annotation PBI_ParameterMetadata = {"version":0}
+
+	partition Param_DowntimeCost = calculated
+		mode: import
+		source = GENERATESERIES(0, 2500, 50)
+

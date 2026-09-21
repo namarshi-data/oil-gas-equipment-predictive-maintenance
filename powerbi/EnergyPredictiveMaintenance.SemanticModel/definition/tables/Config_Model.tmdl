@@ -1,0 +1,45 @@
+/// Disconnected evaluation bounds and validation-selected alert threshold. Not an outcome summary.
+table Config_Model
+	isHidden
+	lineageTag: a7485f8d-fa73-4ac5-86a3-c787b79475b7
+
+	/// evaluation start.
+	column evaluation_start
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 67e485ee-a639-4307-8727-cc96dba16125
+		summarizeBy: none
+		sourceColumn: evaluation_start
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	/// evaluation end.
+	column evaluation_end
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 255dc351-436c-469f-b727-dae5621cda3d
+		summarizeBy: none
+		sourceColumn: evaluation_end
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	/// alert threshold.
+	column alert_threshold
+		dataType: double
+		lineageTag: dd9f06f5-335a-4a82-9db0-fd5faf5c4d11
+		summarizeBy: none
+		sourceColumn: alert_threshold
+
+	partition Config_Model = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "/model_settings.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    BlankToNull = Table.ReplaceValue(Headers, "", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),
+				    Typed = Table.TransformColumnTypes(BlankToNull, {{"evaluation_start", type date}, {"evaluation_end", type date}, {"alert_threshold", type number}}, "en-CA")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

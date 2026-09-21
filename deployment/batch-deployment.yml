@@ -1,0 +1,24 @@
+$schema: https://azuremlschemas.azureedge.net/latest/modelBatchDeployment.schema.json
+name: candidate-name-set-by-deploy-script
+endpoint_name: energy-failure-batch
+type: model
+# deploy.ps1 must replace this with the content-derived artifact version.
+model: azureml:energy-failure-30d:REPLACE_FROM_PROVENANCE
+environment: azureml:energy-failure-ml:3
+code_configuration:
+  code: ..
+  scoring_script: deployment/score.py
+compute: azureml:energy-cpu
+resources:
+  instance_count: 1
+settings:
+  max_concurrency_per_instance: 1
+  mini_batch_size: 1
+  output_action: append_row
+  output_file_name: predictions.csv
+  retry_settings:
+    max_retries: 2
+    timeout: 300
+  # Fail the job on any malformed file rather than silently omitting records.
+  error_threshold: 0
+  logging_level: info

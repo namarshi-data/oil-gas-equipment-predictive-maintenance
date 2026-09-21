@@ -1,0 +1,18 @@
+/// Dynamic allow-list security. Unknown UPNs receive zero sites/assets/facts; dimension labels and the mapping are secured too.
+role 'Site Manager'
+	modelPermission: read
+
+	tablePermission Dim_UserSite = LOWER(TRIM(Dim_UserSite[user_principal_name])) = LOWER(TRIM(USERPRINCIPALNAME()))
+
+	tablePermission Dim_Site =
+			VAR CurrentUPN = LOWER(TRIM(USERPRINCIPALNAME()))
+			VAR CurrentSite = Dim_Site[site]
+			RETURN COUNTROWS(FILTER(Dim_UserSite, LOWER(TRIM(Dim_UserSite[user_principal_name])) = CurrentUPN && Dim_UserSite[site] = CurrentSite)) > 0
+
+	tablePermission Dim_Asset =
+			VAR CurrentUPN = LOWER(TRIM(USERPRINCIPALNAME()))
+			VAR CurrentSite = Dim_Asset[site]
+			RETURN COUNTROWS(FILTER(Dim_UserSite, LOWER(TRIM(Dim_UserSite[user_principal_name])) = CurrentUPN && Dim_UserSite[site] = CurrentSite)) > 0
+
+	annotation PBI_Id = ff9eb67b0b354256a1d10b8dbdd8831f
+

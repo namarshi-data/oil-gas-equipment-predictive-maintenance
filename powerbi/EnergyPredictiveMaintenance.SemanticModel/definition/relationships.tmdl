@@ -1,0 +1,44 @@
+relationship Fact_Readings_Dim_Asset
+	fromColumn: Fact_Readings.asset_id
+	toColumn: Dim_Asset.asset_id
+
+relationship Fact_Readings_Dim_Site
+	fromColumn: Fact_Readings.site
+	toColumn: Dim_Site.site
+
+relationship Fact_Readings_Dim_Date
+	fromColumn: Fact_Readings.date
+	toColumn: Dim_Date.Date
+
+relationship Fact_Events_Dim_Asset
+	fromColumn: Fact_Events.asset_id
+	toColumn: Dim_Asset.asset_id
+
+relationship Fact_Events_Dim_Site
+	fromColumn: Fact_Events.site
+	toColumn: Dim_Site.site
+
+relationship Fact_Events_Dim_Date
+	fromColumn: Fact_Events.event_date
+	toColumn: Dim_Date.Date
+
+relationship Fact_Events_Dim_Policy
+	fromColumn: Fact_Events.policy
+	toColumn: Dim_Policy.policy
+
+relationship Fact_ServiceVisits_Dim_Asset
+	fromColumn: Fact_ServiceVisits.asset_id
+	toColumn: Dim_Asset.asset_id
+
+relationship Fact_ServiceVisits_Dim_Site
+	fromColumn: Fact_ServiceVisits.site
+	toColumn: Dim_Site.site
+
+relationship Fact_ServiceVisits_Dim_Date
+	fromColumn: Fact_ServiceVisits.service_date
+	toColumn: Dim_Date.Date
+
+relationship Fact_ServiceVisits_Dim_Policy
+	fromColumn: Fact_ServiceVisits.policy
+	toColumn: Dim_Policy.policy
+

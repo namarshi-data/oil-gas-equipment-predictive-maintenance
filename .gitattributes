@@ -1,0 +1,4 @@
+# Preserve exact bytes used by model and delivery hashes.
+* -text
+# Windows CRLF is intentional; keep normal whitespace-error checks enabled.
+* whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

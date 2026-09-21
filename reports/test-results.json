@@ -1,0 +1,13 @@
+{
+  "executed_at_utc": "2026-09-21T02:53:21.987731+00:00",
+  "command": "python -m pytest -q -p no:cacheprovider --basetemp ../removed-test-temp --junitxml ../tests.xml",
+  "python": "3.14.0",
+  "exit_code": 0,
+  "passed": 206,
+  "subtests_passed": 6,
+  "failed": 0,
+  "skipped": 0,
+  "junit_cases_including_subtests": 212,
+  "junit_sha256": "ba93291996f66c28b875f95ee101080b3da61068e6d8edb9efa8e5f67d0eba93",
+  "scope": "Full local regression suite after removing duplicate and nonessential publication files. Includes export integrity, model provenance and Power BI source contracts. No retraining, native Power BI engine, Azure cloud or live LLM execution."
+}

@@ -1,0 +1,81 @@
+asset_id,asset_type,site,install_date,default_downtime_cost_per_hour
+AB-001,pumpjack,Peace River,2022-03-14,650
+AB-002,compressor,Grande Prairie,2017-11-13,1400
+AB-003,pipeline_pump,Red Deer,2016-12-06,950
+AB-004,pumpjack,Lloydminster,2020-02-05,650
+AB-005,compressor,Peace River,2016-12-15,1400
+AB-006,pipeline_pump,Grande Prairie,2014-05-23,950
+AB-007,pumpjack,Red Deer,2022-09-12,650
+AB-008,compressor,Lloydminster,2018-06-25,1400
+AB-009,pipeline_pump,Peace River,2014-09-20,950
+AB-010,pumpjack,Grande Prairie,2020-09-14,650
+AB-011,compressor,Red Deer,2015-02-06,1400
+AB-012,pipeline_pump,Lloydminster,2021-04-21,950
+AB-013,pumpjack,Peace River,2019-05-10,650
+AB-014,compressor,Grande Prairie,2017-08-22,1400
+AB-015,pipeline_pump,Red Deer,2015-07-21,950
+AB-016,pumpjack,Lloydminster,2019-05-12,650
+AB-017,compressor,Peace River,2014-02-23,1400
+AB-018,pipeline_pump,Grande Prairie,2014-04-01,950
+AB-019,pumpjack,Red Deer,2014-07-02,650
+AB-020,compressor,Lloydminster,2022-01-13,1400
+AB-021,pipeline_pump,Peace River,2019-03-05,950
+AB-022,pumpjack,Grande Prairie,2022-09-26,650
+AB-023,compressor,Red Deer,2017-11-23,1400
+AB-024,pipeline_pump,Lloydminster,2017-07-09,950
+AB-025,pumpjack,Peace River,2022-05-13,650
+AB-026,compressor,Grande Prairie,2022-07-24,1400
+AB-027,pipeline_pump,Red Deer,2019-11-18,950
+AB-028,pumpjack,Lloydminster,2018-10-27,650
+AB-029,compressor,Peace River,2016-05-24,1400
+AB-030,pipeline_pump,Grande Prairie,2020-12-31,950
+AB-031,pumpjack,Red Deer,2022-05-17,650
+AB-032,compressor,Lloydminster,2021-11-18,1400
+AB-033,pipeline_pump,Peace River,2014-02-08,950
+AB-034,pumpjack,Grande Prairie,2018-01-08,650
+AB-035,compressor,Red Deer,2017-03-06,1400
+AB-036,pipeline_pump,Lloydminster,2015-05-06,950
+AB-037,pumpjack,Peace River,2017-06-03,650
+AB-038,compressor,Grande Prairie,2020-05-26,1400
+AB-039,pipeline_pump,Red Deer,2015-10-28,950
+AB-040,pumpjack,Lloydminster,2019-04-16,650
+AB-041,compressor,Peace River,2021-02-23,1400
+AB-042,pipeline_pump,Grande Prairie,2015-08-08,950
+AB-043,pumpjack,Red Deer,2016-10-08,650
+AB-044,compressor,Lloydminster,2019-10-08,1400
+AB-045,pipeline_pump,Peace River,2015-11-03,950
+AB-046,pumpjack,Grande Prairie,2015-07-15,650
+AB-047,compressor,Red Deer,2022-03-28,1400
+AB-048,pipeline_pump,Lloydminster,2014-06-21,950
+AB-049,pumpjack,Peace River,2014-09-28,650
+AB-050,compressor,Grande Prairie,2014-06-28,1400
+AB-051,pipeline_pump,Red Deer,2022-11-22,950
+AB-052,pumpjack,Lloydminster,2021-09-16,650
+AB-053,compressor,Peace River,2016-05-17,1400
+AB-054,pipeline_pump,Grande Prairie,2022-01-27,950
+AB-055,pumpjack,Red Deer,2014-06-13,650
+AB-056,compressor,Lloydminster,2014-02-06,1400
+AB-057,pipeline_pump,Peace River,2014-11-07,950
+AB-058,pumpjack,Grande Prairie,2015-02-21,650
+AB-059,compressor,Red Deer,2019-01-03,1400
+AB-060,pipeline_pump,Lloydminster,2014-04-02,950
+AB-061,pumpjack,Peace River,2014-07-17,650
+AB-062,compressor,Grande Prairie,2022-10-05,1400
+AB-063,pipeline_pump,Red Deer,2018-08-22,950
+AB-064,pumpjack,Lloydminster,2019-03-30,650
+AB-065,compressor,Peace River,2022-07-24,1400
+AB-066,pipeline_pump,Grande Prairie,2022-08-05,950
+AB-067,pumpjack,Red Deer,2020-12-02,650
+AB-068,compressor,Lloydminster,2017-03-14,1400
+AB-069,pipeline_pump,Peace River,2021-12-04,950
+AB-070,pumpjack,Grande Prairie,2015-06-24,650
+AB-071,compressor,Red Deer,2018-07-23,1400
+AB-072,pipeline_pump,Lloydminster,2018-04-14,950
+AB-073,pumpjack,Peace River,2019-08-03,650
+AB-074,compressor,Grande Prairie,2017-01-03,1400
+AB-075,pipeline_pump,Red Deer,2021-07-21,950
+AB-076,pumpjack,Lloydminster,2016-12-16,650
+AB-077,compressor,Peace River,2016-07-02,1400
+AB-078,pipeline_pump,Grande Prairie,2019-11-22,950
+AB-079,pumpjack,Red Deer,2018-11-12,650
+AB-080,compressor,Lloydminster,2017-09-15,1400

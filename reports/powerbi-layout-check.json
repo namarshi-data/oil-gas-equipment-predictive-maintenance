@@ -1,0 +1,2800 @@
+{
+  "validation_scope": "Static PBIR geometry, bounded rows and conservative font capacity; NOT Power BI Desktop rendering",
+  "font_metrics": "Windows Segoe UI via Pillow; points converted at 96/72",
+  "desktop_runtime_verified": false,
+  "visible_pages": [
+    "executive_roi",
+    "policy_comparison",
+    "fleet_risk",
+    "model_performance",
+    "service_audit",
+    "methodology"
+  ],
+  "pages": [
+    {
+      "name": "executive_roi",
+      "size": [
+        1280,
+        720
+      ],
+      "visuals": [
+        {
+          "name": "cost_0",
+          "type": "card",
+          "rect": [
+            24.0,
+            198.0,
+            296.0,
+            100.0
+          ],
+          "text": {
+            "usable_width_px": 272.0,
+            "usable_height_px": 84.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Reactive · CAD / year"
+              }
+            ]
+          }
+        },
+        {
+          "name": "cost_1",
+          "type": "card",
+          "rect": [
+            336.0,
+            198.0,
+            296.0,
+            100.0
+          ],
+          "text": {
+            "usable_width_px": 272.0,
+            "usable_height_px": 84.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Fixed 90-day · CAD / year"
+              }
+            ]
+          }
+        },
+        {
+          "name": "cost_2",
+          "type": "card",
+          "rect": [
+            648.0,
+            198.0,
+            296.0,
+            100.0
+          ],
+          "text": {
+            "usable_width_px": 272.0,
+            "usable_height_px": 84.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Predictive · CAD / year"
+              }
+            ]
+          }
+        },
+        {
+          "name": "cost_bridge",
+          "type": "waterfallChart",
+          "rect": [
+            24.0,
+            314.0,
+            816.0,
+            348.0
+          ],
+          "text": {
+            "usable_width_px": 792.0,
+            "usable_height_px": 332.0,
+            "estimated_text_height_px": 53,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Annual cost bridge"
+              },
+              {
+                "kind": "subTitle",
+                "lines": 1,
+                "line_height_px": 20,
+                "text": "Downward steps = avoided cost; total = predictive policy."
+              }
+            ]
+          }
+        },
+        {
+          "name": "cost_guidance",
+          "type": "textbox",
+          "rect": [
+            856.0,
+            496.0,
+            400.0,
+            166.0
+          ],
+          "text": {
+            "usable_width_px": 400.0,
+            "usable_height_px": 166.0,
+            "estimated_text_height_px": 126,
+            "blocks": [
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 21,
+                "text": "SCENARIO, NOT REALIZED ROI"
+              },
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 21,
+                "text": ""
+              },
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 21,
+                "text": "Uniform override applies the hourly rate above."
+              },
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 21,
+                "text": "Equipment defaults use asset-specific rates."
+              },
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 21,
+                "text": ""
+              },
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 21,
+                "text": "Implementation cost is not included."
+              }
+            ]
+          }
+        },
+        {
+          "name": "cost_mode",
+          "type": "slicer",
+          "rect": [
+            856.0,
+            314.0,
+            400.0,
+            72.0
+          ],
+          "text": {
+            "usable_width_px": 376.0,
+            "usable_height_px": 56.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Downtime costing basis"
+              }
+            ]
+          }
+        },
+        {
+          "name": "date_filter",
+          "type": "slicer",
+          "rect": [
+            648.0,
+            110.0,
+            328.0,
+            72.0
+          ],
+          "text": {
+            "usable_width_px": 304.0,
+            "usable_height_px": 56.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "History date"
+              }
+            ]
+          }
+        },
+        {
+          "name": "downtime_cost",
+          "type": "slicer",
+          "rect": [
+            856.0,
+            402.0,
+            400.0,
+            72.0
+          ],
+          "text": {
+            "usable_width_px": 376.0,
+            "usable_height_px": 56.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Uniform override · CAD / hour"
+              }
+            ]
+          }
+        },
+        {
+          "name": "executive_insight",
+          "type": "card",
+          "rect": [
+            960.0,
+            198.0,
+            296.0,
+            100.0
+          ],
+          "text": {
+            "usable_width_px": 272.0,
+            "usable_height_px": 84.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Savings vs fixed · CAD / year"
+              }
+            ]
+          }
+        },
+        {
+          "name": "footer",
+          "type": "textbox",
+          "rect": [
+            24.0,
+            680.0,
+            1232.0,
+            28.0
+          ],
+          "text": {
+            "usable_width_px": 1232.0,
+            "usable_height_px": 28.0,
+            "estimated_text_height_px": 20,
+            "blocks": [
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 20,
+                "text": "Synthetic held-out replay · policies share the same failure history · costs are annualized over selected observed days."
+              }
+            ]
+          }
+        },
+        {
+          "name": "page_subtitle",
+          "type": "textbox",
+          "rect": [
+            24.0,
+            70.0,
+            1232.0,
+            28.0
+          ],
+          "text": {
+            "usable_width_px": 1232.0,
+            "usable_height_px": 28.0,
+            "estimated_text_height_px": 21,
+            "blocks": [
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 21,
+                "text": "Earlier intervention reduces modeled emergency and downtime exposure."
+              }
+            ]
+          }
+        },
+        {
+          "name": "page_title",
+          "type": "textbox",
+          "rect": [
+            24.0,
+            16.0,
+            1232.0,
+            44.0
+          ],
+          "text": {
+            "usable_width_px": 1208.0,
+            "usable_height_px": 36.0,
+            "estimated_text_height_px": 33,
+            "blocks": [
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 33,
+                "text": "01 / Executive ROI Summary"
+              }
+            ]
+          }
+        },
+        {
+          "name": "scope_note",
+          "type": "textbox",
+          "rect": [
+            992.0,
+            124.0,
+            264.0,
+            52.0
+          ],
+          "text": {
+            "usable_width_px": 264.0,
+            "usable_height_px": 52.0,
+            "estimated_text_height_px": 40,
+            "blocks": [
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 20,
+                "text": "SYNTHETIC SCENARIO"
+              },
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 20,
+                "text": "CAD · held-out history"
+              }
+            ]
+          }
+        },
+        {
+          "name": "site_filter",
+          "type": "slicer",
+          "rect": [
+            24.0,
+            110.0,
+            296.0,
+            72.0
+          ],
+          "text": {
+            "usable_width_px": 272.0,
+            "usable_height_px": 56.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Site"
+              }
+            ]
+          }
+        },
+        {
+          "name": "type_filter",
+          "type": "slicer",
+          "rect": [
+            336.0,
+            110.0,
+            296.0,
+            72.0
+          ],
+          "text": {
+            "usable_width_px": 272.0,
+            "usable_height_px": 56.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Equipment type"
+              }
+            ]
+          }
+        }
+      ],
+      "mobile": []
+    },
+    {
+      "name": "policy_comparison",
+      "size": [
+        1280,
+        720
+      ],
+      "visuals": [
+        {
+          "name": "breakdown_selector",
+          "type": "slicer",
+          "rect": [
+            992.0,
+            110.0,
+            264.0,
+            72.0
+          ],
+          "text": {
+            "usable_width_px": 240.0,
+            "usable_height_px": 56.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Group by"
+              }
+            ]
+          }
+        },
+        {
+          "name": "catch_by_breakdown",
+          "type": "clusteredColumnChart",
+          "rect": [
+            648.0,
+            438.0,
+            608.0,
+            224.0
+          ],
+          "text": {
+            "usable_width_px": 584.0,
+            "usable_height_px": 208.0,
+            "estimated_text_height_px": 53,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Catch rate by operating group"
+              },
+              {
+                "kind": "subTitle",
+                "lines": 1,
+                "line_height_px": 20,
+                "text": "Use Group by to compare sites or equipment types."
+              }
+            ]
+          }
+        },
+        {
+          "name": "caught_missed",
+          "type": "columnChart",
+          "rect": [
+            24.0,
+            198.0,
+            608.0,
+            224.0
+          ],
+          "text": {
+            "usable_width_px": 584.0,
+            "usable_height_px": 208.0,
+            "estimated_text_height_px": 53,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Caught and missed failures"
+              },
+              {
+                "kind": "subTitle",
+                "lines": 1,
+                "line_height_px": 20,
+                "text": "Identical failure opportunities under each policy."
+              }
+            ]
+          }
+        },
+        {
+          "name": "date_filter",
+          "type": "slicer",
+          "rect": [
+            648.0,
+            110.0,
+            328.0,
+            72.0
+          ],
+          "text": {
+            "usable_width_px": 304.0,
+            "usable_height_px": 56.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "History date"
+              }
+            ]
+          }
+        },
+        {
+          "name": "footer",
+          "type": "textbox",
+          "rect": [
+            24.0,
+            680.0,
+            1232.0,
+            28.0
+          ],
+          "text": {
+            "usable_width_px": 1232.0,
+            "usable_height_px": 28.0,
+            "estimated_text_height_px": 20,
+            "blocks": [
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 20,
+                "text": "Catch rate uses event-policy opportunities. Service rates use visits. Reactive has no planned-service denominator."
+              }
+            ]
+          }
+        },
+        {
+          "name": "page_subtitle",
+          "type": "textbox",
+          "rect": [
+            24.0,
+            70.0,
+            1232.0,
+            28.0
+          ],
+          "text": {
+            "usable_width_px": 1232.0,
+            "usable_height_px": 28.0,
+            "estimated_text_height_px": 21,
+            "blocks": [
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 21,
+                "text": "A useful policy catches more failures without sending crews to unnecessary work."
+              }
+            ]
+          }
+        },
+        {
+          "name": "page_title",
+          "type": "textbox",
+          "rect": [
+            24.0,
+            16.0,
+            1232.0,
+            44.0
+          ],
+          "text": {
+            "usable_width_px": 1208.0,
+            "usable_height_px": 36.0,
+            "estimated_text_height_px": 33,
+            "blocks": [
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 33,
+                "text": "02 / Compare prevention with service burden"
+              }
+            ]
+          }
+        },
+        {
+          "name": "service_rates",
+          "type": "clusteredBarChart",
+          "rect": [
+            24.0,
+            438.0,
+            608.0,
+            224.0
+          ],
+          "text": {
+            "usable_width_px": 584.0,
+            "usable_height_px": 208.0,
+            "estimated_text_height_px": 53,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Visits without prevention"
+              },
+              {
+                "kind": "subTitle",
+                "lines": 1,
+                "line_height_px": 20,
+                "text": "Unnecessary: no event. Unsuccessful: event not caught."
+              }
+            ]
+          }
+        },
+        {
+          "name": "site_filter",
+          "type": "slicer",
+          "rect": [
+            24.0,
+            110.0,
+            296.0,
+            72.0
+          ],
+          "text": {
+            "usable_width_px": 272.0,
+            "usable_height_px": 56.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Site"
+              }
+            ]
+          }
+        },
+        {
+          "name": "type_filter",
+          "type": "slicer",
+          "rect": [
+            336.0,
+            110.0,
+            296.0,
+            72.0
+          ],
+          "text": {
+            "usable_width_px": 272.0,
+            "usable_height_px": 56.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Equipment type"
+              }
+            ]
+          }
+        },
+        {
+          "name": "warning_distribution",
+          "type": "clusteredColumnChart",
+          "rect": [
+            648.0,
+            198.0,
+            608.0,
+            224.0
+          ],
+          "text": {
+            "usable_width_px": 584.0,
+            "usable_height_px": 208.0,
+            "estimated_text_height_px": 53,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Time available to act"
+              },
+              {
+                "kind": "subTitle",
+                "lines": 1,
+                "line_height_px": 20,
+                "text": "Missed events remain a separate warning band."
+              }
+            ]
+          }
+        }
+      ],
+      "mobile": []
+    },
+    {
+      "name": "fleet_risk",
+      "size": [
+        1280,
+        720
+      ],
+      "visuals": [
+        {
+          "name": "ask_fleet",
+          "type": "clusteredBarChart",
+          "rect": [
+            632.0,
+            494.0,
+            624.0,
+            168.0
+          ],
+          "text": {
+            "usable_width_px": 600.0,
+            "usable_height_px": 152.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Missed failures by site · predictive policy"
+              }
+            ]
+          }
+        },
+        {
+          "name": "asset_count",
+          "type": "card",
+          "rect": [
+            24.0,
+            198.0,
+            296.0,
+            96.0
+          ],
+          "text": {
+            "usable_width_px": 272.0,
+            "usable_height_px": 80.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Assets with observations"
+              }
+            ]
+          }
+        },
+        {
+          "name": "asset_filter",
+          "type": "slicer",
+          "rect": [
+            992.0,
+            110.0,
+            264.0,
+            72.0
+          ],
+          "text": {
+            "usable_width_px": 240.0,
+            "usable_height_px": 56.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Find an asset"
+              }
+            ]
+          }
+        },
+        {
+          "name": "asset_matrix",
+          "type": "pivotTable",
+          "rect": [
+            24.0,
+            310.0,
+            592.0,
+            352.0
+          ],
+          "text": {
+            "usable_width_px": 568.0,
+            "usable_height_px": 336.0,
+            "estimated_text_height_px": 53,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Highest-risk assets · top 6"
+              },
+              {
+                "kind": "subTitle",
+                "lines": 1,
+                "line_height_px": 20,
+                "text": "Right-click an asset → Drill through → Asset Detail."
+              }
+            ]
+          },
+          "table_capacity": {
+            "row_cap": 6,
+            "estimated_rows_and_header_height_px": 231.0,
+            "available_px": 283.0
+          }
+        },
+        {
+          "name": "date_filter",
+          "type": "slicer",
+          "rect": [
+            648.0,
+            110.0,
+            328.0,
+            72.0
+          ],
+          "text": {
+            "usable_width_px": 304.0,
+            "usable_height_px": 56.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "History date"
+              }
+            ]
+          }
+        },
+        {
+          "name": "fleet_risk_trend",
+          "type": "lineChart",
+          "rect": [
+            632.0,
+            310.0,
+            624.0,
+            168.0
+          ],
+          "text": {
+            "usable_width_px": 600.0,
+            "usable_height_px": 152.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Condition trend"
+              }
+            ]
+          }
+        },
+        {
+          "name": "footer",
+          "type": "textbox",
+          "rect": [
+            24.0,
+            680.0,
+            1232.0,
+            28.0
+          ],
+          "text": {
+            "usable_width_px": 1232.0,
+            "usable_height_px": 28.0,
+            "estimated_text_height_px": 20,
+            "blocks": [
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 20,
+                "text": "Risk colour is paired with review status. Scores are uncalibrated. Find an asset searches the full fleet; the queue shows up to six."
+              }
+            ]
+          }
+        },
+        {
+          "name": "latest_date",
+          "type": "card",
+          "rect": [
+            960.0,
+            198.0,
+            296.0,
+            96.0
+          ],
+          "text": {
+            "usable_width_px": 272.0,
+            "usable_height_px": 80.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Latest scored reading"
+              }
+            ]
+          }
+        },
+        {
+          "name": "latest_risk",
+          "type": "card",
+          "rect": [
+            336.0,
+            198.0,
+            296.0,
+            96.0
+          ],
+          "text": {
+            "usable_width_px": 272.0,
+            "usable_height_px": 80.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Latest observed risk"
+              }
+            ]
+          }
+        },
+        {
+          "name": "page_subtitle",
+          "type": "textbox",
+          "rect": [
+            24.0,
+            70.0,
+            1232.0,
+            28.0
+          ],
+          "text": {
+            "usable_width_px": 1232.0,
+            "usable_height_px": 28.0,
+            "estimated_text_height_px": 21,
+            "blocks": [
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 21,
+                "text": "Start with the six highest-risk assets, then select an asset to investigate its history."
+              }
+            ]
+          }
+        },
+        {
+          "name": "page_title",
+          "type": "textbox",
+          "rect": [
+            24.0,
+            16.0,
+            1232.0,
+            44.0
+          ],
+          "text": {
+            "usable_width_px": 1208.0,
+            "usable_height_px": 36.0,
+            "estimated_text_height_px": 33,
+            "blocks": [
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 33,
+                "text": "03 / Fleet Risk Explorer"
+              }
+            ]
+          }
+        },
+        {
+          "name": "rolling_risk",
+          "type": "card",
+          "rect": [
+            648.0,
+            198.0,
+            296.0,
+            96.0
+          ],
+          "text": {
+            "usable_width_px": 272.0,
+            "usable_height_px": 80.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Trailing 7-day mean risk"
+              }
+            ]
+          }
+        },
+        {
+          "name": "site_filter",
+          "type": "slicer",
+          "rect": [
+            24.0,
+            110.0,
+            296.0,
+            72.0
+          ],
+          "text": {
+            "usable_width_px": 272.0,
+            "usable_height_px": 56.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Site"
+              }
+            ]
+          }
+        },
+        {
+          "name": "type_filter",
+          "type": "slicer",
+          "rect": [
+            336.0,
+            110.0,
+            296.0,
+            72.0
+          ],
+          "text": {
+            "usable_width_px": 272.0,
+            "usable_height_px": 56.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Equipment type"
+              }
+            ]
+          }
+        }
+      ],
+      "mobile": [
+        {
+          "name": "asset_filter",
+          "rect": [
+            0.0,
+            132.0,
+            324.0,
+            72.0
+          ],
+          "text": {
+            "usable_width_px": 308.0,
+            "usable_height_px": 60.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Find an asset"
+              }
+            ]
+          }
+        },
+        {
+          "name": "fleet_risk_trend",
+          "rect": [
+            0.0,
+            404.0,
+            324.0,
+            184.0
+          ],
+          "text": {
+            "usable_width_px": 308.0,
+            "usable_height_px": 172.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Condition trend"
+              }
+            ]
+          }
+        },
+        {
+          "name": "latest_date",
+          "rect": [
+            0.0,
+            308.0,
+            324.0,
+            88.0
+          ],
+          "text": {
+            "usable_width_px": 308.0,
+            "usable_height_px": 76.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Latest scored reading"
+              }
+            ]
+          }
+        },
+        {
+          "name": "latest_risk",
+          "rect": [
+            0.0,
+            212.0,
+            324.0,
+            88.0
+          ],
+          "text": {
+            "usable_width_px": 308.0,
+            "usable_height_px": 76.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Latest observed risk"
+              }
+            ]
+          }
+        },
+        {
+          "name": "page_title",
+          "rect": [
+            0.0,
+            0.0,
+            324.0,
+            44.0
+          ],
+          "text": {
+            "usable_width_px": 324.0,
+            "usable_height_px": 44.0,
+            "estimated_text_height_px": 33,
+            "blocks": [
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 33,
+                "text": "03 / Fleet Risk Explorer"
+              }
+            ]
+          }
+        },
+        {
+          "name": "site_filter",
+          "rect": [
+            0.0,
+            52.0,
+            324.0,
+            72.0
+          ],
+          "text": {
+            "usable_width_px": 308.0,
+            "usable_height_px": 60.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Site"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "model_performance",
+      "size": [
+        1280,
+        720
+      ],
+      "visuals": [
+        {
+          "name": "confusion_matrix",
+          "type": "pivotTable",
+          "rect": [
+            24.0,
+            310.0,
+            432.0,
+            352.0
+          ],
+          "text": {
+            "usable_width_px": 408.0,
+            "usable_height_px": 336.0,
+            "estimated_text_height_px": 53,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Actual × predicted"
+              },
+              {
+                "kind": "subTitle",
+                "lines": 1,
+                "line_height_px": 20,
+                "text": "Rows = actual label; columns = model alert."
+              }
+            ]
+          },
+          "table_capacity": {
+            "row_cap": 2,
+            "estimated_rows_and_header_height_px": 132.0,
+            "available_px": 283.0
+          }
+        },
+        {
+          "name": "date_filter",
+          "type": "slicer",
+          "rect": [
+            648.0,
+            110.0,
+            328.0,
+            72.0
+          ],
+          "text": {
+            "usable_width_px": 304.0,
+            "usable_height_px": 56.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "History date"
+              }
+            ]
+          }
+        },
+        {
+          "name": "footer",
+          "type": "textbox",
+          "rect": [
+            24.0,
+            680.0,
+            1232.0,
+            28.0
+          ],
+          "text": {
+            "usable_width_px": 1232.0,
+            "usable_height_px": 28.0,
+            "estimated_text_height_px": 20,
+            "blocks": [
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 20,
+                "text": "Unknown labels are excluded. Missed positive days differ from missed failures. Open sensor associations for exploratory AI analysis."
+              }
+            ]
+          }
+        },
+        {
+          "name": "metric_0",
+          "type": "card",
+          "rect": [
+            24.0,
+            198.0,
+            296.0,
+            96.0
+          ],
+          "text": {
+            "usable_width_px": 272.0,
+            "usable_height_px": 80.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Precision · alerted days"
+              }
+            ]
+          }
+        },
+        {
+          "name": "metric_1",
+          "type": "card",
+          "rect": [
+            336.0,
+            198.0,
+            296.0,
+            96.0
+          ],
+          "text": {
+            "usable_width_px": 272.0,
+            "usable_height_px": 80.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Recall · positive days"
+              }
+            ]
+          }
+        },
+        {
+          "name": "metric_2",
+          "type": "card",
+          "rect": [
+            648.0,
+            198.0,
+            296.0,
+            96.0
+          ],
+          "text": {
+            "usable_width_px": 272.0,
+            "usable_height_px": 80.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "False positive rate"
+              }
+            ]
+          }
+        },
+        {
+          "name": "metric_3",
+          "type": "card",
+          "rect": [
+            960.0,
+            198.0,
+            296.0,
+            96.0
+          ],
+          "text": {
+            "usable_width_px": 272.0,
+            "usable_height_px": 80.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Mature labeled asset-days"
+              }
+            ]
+          }
+        },
+        {
+          "name": "open_sensor_analysis",
+          "type": "actionButton",
+          "rect": [
+            992.0,
+            110.0,
+            264.0,
+            72.0
+          ],
+          "text": {
+            "usable_width_px": 240.0,
+            "usable_height_px": 56.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Explore sensor drivers"
+              }
+            ]
+          }
+        },
+        {
+          "name": "page_subtitle",
+          "type": "textbox",
+          "rect": [
+            24.0,
+            70.0,
+            1232.0,
+            28.0
+          ],
+          "text": {
+            "usable_width_px": 1232.0,
+            "usable_height_px": 28.0,
+            "estimated_text_height_px": 21,
+            "blocks": [
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 21,
+                "text": "Classification uses mature asset-day labels; physical event outcomes are reported separately."
+              }
+            ]
+          }
+        },
+        {
+          "name": "page_title",
+          "type": "textbox",
+          "rect": [
+            24.0,
+            16.0,
+            1232.0,
+            44.0
+          ],
+          "text": {
+            "usable_width_px": 1208.0,
+            "usable_height_px": 36.0,
+            "estimated_text_height_px": 33,
+            "blocks": [
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 33,
+                "text": "04 / Evaluate the cost of missed failures"
+              }
+            ]
+          }
+        },
+        {
+          "name": "risk_distribution",
+          "type": "clusteredColumnChart",
+          "rect": [
+            472.0,
+            310.0,
+            784.0,
+            352.0
+          ],
+          "text": {
+            "usable_width_px": 760.0,
+            "usable_height_px": 336.0,
+            "estimated_text_height_px": 53,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Risk-score distribution by actual label"
+              },
+              {
+                "kind": "subTitle",
+                "lines": 1,
+                "line_height_px": 20,
+                "text": "True = failure within 30 days. Scores are not calibrated probabilities."
+              }
+            ]
+          }
+        },
+        {
+          "name": "site_filter",
+          "type": "slicer",
+          "rect": [
+            24.0,
+            110.0,
+            296.0,
+            72.0
+          ],
+          "text": {
+            "usable_width_px": 272.0,
+            "usable_height_px": 56.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Site"
+              }
+            ]
+          }
+        },
+        {
+          "name": "type_filter",
+          "type": "slicer",
+          "rect": [
+            336.0,
+            110.0,
+            296.0,
+            72.0
+          ],
+          "text": {
+            "usable_width_px": 272.0,
+            "usable_height_px": 56.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Equipment type"
+              }
+            ]
+          }
+        }
+      ],
+      "mobile": []
+    },
+    {
+      "name": "service_audit",
+      "size": [
+        1280,
+        720
+      ],
+      "visuals": [
+        {
+          "name": "date_filter",
+          "type": "slicer",
+          "rect": [
+            648.0,
+            110.0,
+            328.0,
+            72.0
+          ],
+          "text": {
+            "usable_width_px": 304.0,
+            "usable_height_px": 56.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "History date"
+              }
+            ]
+          }
+        },
+        {
+          "name": "footer",
+          "type": "textbox",
+          "rect": [
+            24.0,
+            680.0,
+            1232.0,
+            28.0
+          ],
+          "text": {
+            "usable_width_px": 1232.0,
+            "usable_height_px": 28.0,
+            "estimated_text_height_px": 20,
+            "blocks": [
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 20,
+                "text": "Operational false alarms = unnecessary visits / visits. Classifier FPR = FP / (FP + TN). Visit-level records remain in the source CSV."
+              }
+            ]
+          }
+        },
+        {
+          "name": "outcome_breakdown",
+          "type": "clusteredBarChart",
+          "rect": [
+            24.0,
+            310.0,
+            464.0,
+            352.0
+          ],
+          "text": {
+            "usable_width_px": 440.0,
+            "usable_height_px": 336.0,
+            "estimated_text_height_px": 53,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Visit outcomes"
+              },
+              {
+                "kind": "subTitle",
+                "lines": 1,
+                "line_height_px": 20,
+                "text": "Aggregated from the source intervention ledger."
+              }
+            ]
+          }
+        },
+        {
+          "name": "page_subtitle",
+          "type": "textbox",
+          "rect": [
+            24.0,
+            70.0,
+            1232.0,
+            28.0
+          ],
+          "text": {
+            "usable_width_px": 1232.0,
+            "usable_height_px": 28.0,
+            "estimated_text_height_px": 21,
+            "blocks": [
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 21,
+                "text": "Review visit outcomes and timing for one maintenance policy at a time."
+              }
+            ]
+          }
+        },
+        {
+          "name": "page_title",
+          "type": "textbox",
+          "rect": [
+            24.0,
+            16.0,
+            1232.0,
+            44.0
+          ],
+          "text": {
+            "usable_width_px": 1208.0,
+            "usable_height_px": 36.0,
+            "estimated_text_height_px": 33,
+            "blocks": [
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 33,
+                "text": "05 / Audit the outcome of every intervention"
+              }
+            ]
+          }
+        },
+        {
+          "name": "policy_filter",
+          "type": "slicer",
+          "rect": [
+            992.0,
+            110.0,
+            264.0,
+            72.0
+          ],
+          "text": {
+            "usable_width_px": 240.0,
+            "usable_height_px": 56.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Policy"
+              }
+            ]
+          }
+        },
+        {
+          "name": "service_kpi_0",
+          "type": "card",
+          "rect": [
+            24.0,
+            198.0,
+            296.0,
+            96.0
+          ],
+          "text": {
+            "usable_width_px": 272.0,
+            "usable_height_px": 80.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Service visits"
+              }
+            ]
+          }
+        },
+        {
+          "name": "service_kpi_1",
+          "type": "card",
+          "rect": [
+            336.0,
+            198.0,
+            296.0,
+            96.0
+          ],
+          "text": {
+            "usable_width_px": 272.0,
+            "usable_height_px": 80.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Unnecessary visits"
+              }
+            ]
+          }
+        },
+        {
+          "name": "service_kpi_2",
+          "type": "card",
+          "rect": [
+            648.0,
+            198.0,
+            296.0,
+            96.0
+          ],
+          "text": {
+            "usable_width_px": 272.0,
+            "usable_height_px": 80.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Unsuccessful visits"
+              }
+            ]
+          }
+        },
+        {
+          "name": "service_kpi_3",
+          "type": "card",
+          "rect": [
+            960.0,
+            198.0,
+            296.0,
+            96.0
+          ],
+          "text": {
+            "usable_width_px": 272.0,
+            "usable_height_px": 80.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Operational false alarms"
+              }
+            ]
+          }
+        },
+        {
+          "name": "site_filter",
+          "type": "slicer",
+          "rect": [
+            24.0,
+            110.0,
+            296.0,
+            72.0
+          ],
+          "text": {
+            "usable_width_px": 272.0,
+            "usable_height_px": 56.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Site"
+              }
+            ]
+          }
+        },
+        {
+          "name": "type_filter",
+          "type": "slicer",
+          "rect": [
+            336.0,
+            110.0,
+            296.0,
+            72.0
+          ],
+          "text": {
+            "usable_width_px": 272.0,
+            "usable_height_px": 56.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Equipment type"
+              }
+            ]
+          }
+        },
+        {
+          "name": "visit_by_policy",
+          "type": "columnChart",
+          "rect": [
+            504.0,
+            310.0,
+            752.0,
+            352.0
+          ],
+          "text": {
+            "usable_width_px": 728.0,
+            "usable_height_px": 336.0,
+            "estimated_text_height_px": 53,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Service activity by month"
+              },
+              {
+                "kind": "subTitle",
+                "lines": 1,
+                "line_height_px": 20,
+                "text": "Service date drives the date context on this page."
+              }
+            ]
+          }
+        }
+      ],
+      "mobile": []
+    },
+    {
+      "name": "methodology",
+      "size": [
+        1280,
+        720
+      ],
+      "visuals": [
+        {
+          "name": "acceptance",
+          "type": "textbox",
+          "rect": [
+            648.0,
+            486.0,
+            608.0,
+            164.0
+          ],
+          "text": {
+            "usable_width_px": 608.0,
+            "usable_height_px": 164.0,
+            "estimated_text_height_px": 98,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "REPRODUCIBILITY"
+              },
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 23,
+                "text": "PBIP + TMDL + PBIR stay Git-diffable."
+              },
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 23,
+                "text": "Validate refresh, filters and RLS in Desktop."
+              },
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 23,
+                "text": "Definitions and audit records: repository docs."
+              }
+            ]
+          }
+        },
+        {
+          "name": "ai",
+          "type": "textbox",
+          "rect": [
+            24.0,
+            486.0,
+            608.0,
+            164.0
+          ],
+          "text": {
+            "usable_width_px": 608.0,
+            "usable_height_px": 164.0,
+            "estimated_text_height_px": 98,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "MODEL & AI LIMITS"
+              },
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 23,
+                "text": "Labels mature after the future 30-day window."
+              },
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 23,
+                "text": "Raw scores are not calibrated probabilities."
+              },
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 23,
+                "text": "Key Influencers describes associations."
+              }
+            ]
+          }
+        },
+        {
+          "name": "cost",
+          "type": "textbox",
+          "rect": [
+            648.0,
+            306.0,
+            608.0,
+            164.0
+          ],
+          "text": {
+            "usable_width_px": 608.0,
+            "usable_height_px": 164.0,
+            "estimated_text_height_px": 98,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "COST ASSUMPTIONS"
+              },
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 23,
+                "text": "Annualized over selected observed days."
+              },
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 23,
+                "text": "Repairs + service + downtime exposure."
+              },
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 23,
+                "text": "Avoided cost excludes implementation cost."
+              }
+            ]
+          }
+        },
+        {
+          "name": "counterfactual",
+          "type": "textbox",
+          "rect": [
+            24.0,
+            306.0,
+            608.0,
+            164.0
+          ],
+          "text": {
+            "usable_width_px": 608.0,
+            "usable_height_px": 164.0,
+            "estimated_text_height_px": 98,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "POLICY COMPARISON"
+              },
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 23,
+                "text": "Reactive, fixed 90-day and predictive."
+              },
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 23,
+                "text": "Same failure opportunities for every policy."
+              },
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 23,
+                "text": "Prevention is simulated, not proven savings."
+              }
+            ]
+          }
+        },
+        {
+          "name": "footer",
+          "type": "textbox",
+          "rect": [
+            24.0,
+            680.0,
+            1232.0,
+            28.0
+          ],
+          "text": {
+            "usable_width_px": 1232.0,
+            "usable_height_px": 28.0,
+            "estimated_text_height_px": 20,
+            "blocks": [
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 20,
+                "text": "No real operator incidents or customer records are represented. See repository documentation for formulas, interviews and lineage."
+              }
+            ]
+          }
+        },
+        {
+          "name": "grain",
+          "type": "textbox",
+          "rect": [
+            648.0,
+            126.0,
+            608.0,
+            164.0
+          ],
+          "text": {
+            "usable_width_px": 608.0,
+            "usable_height_px": 164.0,
+            "estimated_text_height_px": 98,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "GRAIN & SECURITY"
+              },
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 23,
+                "text": "Readings: asset-day. Events: event-policy."
+              },
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 23,
+                "text": "Visits: one intervention per row."
+              },
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 23,
+                "text": "Site Manager RLS filters all three facts."
+              }
+            ]
+          }
+        },
+        {
+          "name": "lineage",
+          "type": "textbox",
+          "rect": [
+            24.0,
+            126.0,
+            608.0,
+            164.0
+          ],
+          "text": {
+            "usable_width_px": 608.0,
+            "usable_height_px": 164.0,
+            "estimated_text_height_px": 98,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "DATA LINEAGE"
+              },
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 23,
+                "text": "Sensors → SQL → Python scoring"
+              },
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 23,
+                "text": "Three atomic facts → star schema → DAX"
+              },
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 23,
+                "text": "All source files remain in the repository."
+              }
+            ]
+          }
+        },
+        {
+          "name": "page_subtitle",
+          "type": "textbox",
+          "rect": [
+            24.0,
+            70.0,
+            1232.0,
+            28.0
+          ],
+          "text": {
+            "usable_width_px": 1232.0,
+            "usable_height_px": 28.0,
+            "estimated_text_height_px": 21,
+            "blocks": [
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 21,
+                "text": "Synthetic Alberta-inspired equipment history · reproducible analysis · scenario estimates in CAD"
+              }
+            ]
+          }
+        },
+        {
+          "name": "page_title",
+          "type": "textbox",
+          "rect": [
+            24.0,
+            16.0,
+            1232.0,
+            44.0
+          ],
+          "text": {
+            "usable_width_px": 1208.0,
+            "usable_height_px": 36.0,
+            "estimated_text_height_px": 33,
+            "blocks": [
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 33,
+                "text": "06 / Make the assumptions visible"
+              }
+            ]
+          }
+        }
+      ],
+      "mobile": []
+    },
+    {
+      "name": "asset_detail",
+      "size": [
+        1280,
+        720
+      ],
+      "visuals": [
+        {
+          "name": "asset_context_note",
+          "type": "textbox",
+          "rect": [
+            632.0,
+            122.0,
+            624.0,
+            52.0
+          ],
+          "text": {
+            "usable_width_px": 624.0,
+            "usable_height_px": 52.0,
+            "estimated_text_height_px": 40,
+            "blocks": [
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 20,
+                "text": "Drillthrough keeps asset, site and history date context."
+              },
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 20,
+                "text": "Readings are daily imputed values; missing-sensor flags are retained."
+              }
+            ]
+          }
+        },
+        {
+          "name": "asset_event_ledger",
+          "type": "tableEx",
+          "rect": [
+            632.0,
+            494.0,
+            624.0,
+            168.0
+          ],
+          "text": {
+            "usable_width_px": 600.0,
+            "usable_height_px": 152.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Failure outcomes by policy"
+              }
+            ]
+          },
+          "table_capacity": {
+            "row_cap": 3,
+            "estimated_rows_and_header_height_px": 116.0,
+            "available_px": 123.0
+          }
+        },
+        {
+          "name": "asset_identifier",
+          "type": "slicer",
+          "rect": [
+            248.0,
+            110.0,
+            368.0,
+            72.0
+          ],
+          "text": {
+            "usable_width_px": 344.0,
+            "usable_height_px": 56.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Asset in drillthrough context"
+              }
+            ]
+          }
+        },
+        {
+          "name": "asset_last_reading",
+          "type": "card",
+          "rect": [
+            960.0,
+            198.0,
+            296.0,
+            96.0
+          ],
+          "text": {
+            "usable_width_px": 272.0,
+            "usable_height_px": 80.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Latest reading"
+              }
+            ]
+          }
+        },
+        {
+          "name": "asset_latest_risk",
+          "type": "card",
+          "rect": [
+            24.0,
+            198.0,
+            296.0,
+            96.0
+          ],
+          "text": {
+            "usable_width_px": 272.0,
+            "usable_height_px": 80.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Latest risk"
+              }
+            ]
+          }
+        },
+        {
+          "name": "asset_risk_status",
+          "type": "card",
+          "rect": [
+            336.0,
+            198.0,
+            296.0,
+            96.0
+          ],
+          "text": {
+            "usable_width_px": 272.0,
+            "usable_height_px": 80.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Review status"
+              }
+            ]
+          }
+        },
+        {
+          "name": "asset_rolling_risk",
+          "type": "card",
+          "rect": [
+            648.0,
+            198.0,
+            296.0,
+            96.0
+          ],
+          "text": {
+            "usable_width_px": 272.0,
+            "usable_height_px": 80.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "7-day risk mean"
+              }
+            ]
+          }
+        },
+        {
+          "name": "asset_score_trend",
+          "type": "lineChart",
+          "rect": [
+            24.0,
+            494.0,
+            592.0,
+            168.0
+          ],
+          "text": {
+            "usable_width_px": 568.0,
+            "usable_height_px": 152.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Risk and trailing mean"
+              }
+            ]
+          }
+        },
+        {
+          "name": "back_button",
+          "type": "actionButton",
+          "rect": [
+            24.0,
+            110.0,
+            208.0,
+            72.0
+          ],
+          "text": {
+            "usable_width_px": 184.0,
+            "usable_height_px": 56.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Back to fleet"
+              }
+            ]
+          }
+        },
+        {
+          "name": "footer",
+          "type": "textbox",
+          "rect": [
+            24.0,
+            680.0,
+            1232.0,
+            28.0
+          ],
+          "text": {
+            "usable_width_px": 1232.0,
+            "usable_height_px": 28.0,
+            "estimated_text_height_px": 20,
+            "blocks": [
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 20,
+                "text": "Policy summary has at most three rows. Warning days average caught events only. A high score is a review signal, not a work order."
+              }
+            ]
+          }
+        },
+        {
+          "name": "page_subtitle",
+          "type": "textbox",
+          "rect": [
+            24.0,
+            70.0,
+            1232.0,
+            28.0
+          ],
+          "text": {
+            "usable_width_px": 1232.0,
+            "usable_height_px": 28.0,
+            "estimated_text_height_px": 21,
+            "blocks": [
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 21,
+                "text": "Use sensor freshness and operating context together before authorizing maintenance."
+              }
+            ]
+          }
+        },
+        {
+          "name": "page_title",
+          "type": "textbox",
+          "rect": [
+            24.0,
+            16.0,
+            1232.0,
+            44.0
+          ],
+          "text": {
+            "usable_width_px": 1208.0,
+            "usable_height_px": 36.0,
+            "estimated_text_height_px": 33,
+            "blocks": [
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 33,
+                "text": "Asset Detail / Verify the signal"
+              }
+            ]
+          }
+        },
+        {
+          "name": "sensor_0",
+          "type": "lineChart",
+          "rect": [
+            24.0,
+            310.0,
+            400.0,
+            168.0
+          ],
+          "text": {
+            "usable_width_px": 376.0,
+            "usable_height_px": 152.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Vibration · mm/s"
+              }
+            ]
+          }
+        },
+        {
+          "name": "sensor_1",
+          "type": "lineChart",
+          "rect": [
+            440.0,
+            310.0,
+            400.0,
+            168.0
+          ],
+          "text": {
+            "usable_width_px": 376.0,
+            "usable_height_px": 152.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Bearing temperature · °C"
+              }
+            ]
+          }
+        },
+        {
+          "name": "sensor_2",
+          "type": "lineChart",
+          "rect": [
+            856.0,
+            310.0,
+            400.0,
+            168.0
+          ],
+          "text": {
+            "usable_width_px": 376.0,
+            "usable_height_px": 152.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Pressure · bar"
+              }
+            ]
+          }
+        }
+      ],
+      "mobile": []
+    },
+    {
+      "name": "context_tooltip",
+      "size": [
+        480,
+        360
+      ],
+      "visuals": [
+        {
+          "name": "tooltip_context",
+          "type": "textbox",
+          "rect": [
+            16.0,
+            276.0,
+            448.0,
+            68.0
+          ],
+          "text": {
+            "usable_width_px": 448.0,
+            "usable_height_px": 68.0,
+            "estimated_text_height_px": 63,
+            "blocks": [
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 21,
+                "text": "Latest reading within the selected history."
+              },
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 21,
+                "text": "Score is not a calibrated failure probability."
+              },
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 21,
+                "text": "Right-click the asset to inspect sensor trends."
+              }
+            ]
+          }
+        },
+        {
+          "name": "tooltip_date",
+          "type": "card",
+          "rect": [
+            16.0,
+            180.0,
+            448.0,
+            80.0
+          ],
+          "text": {
+            "usable_width_px": 424.0,
+            "usable_height_px": 64.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Last observed reading"
+              }
+            ]
+          }
+        },
+        {
+          "name": "tooltip_risk",
+          "type": "card",
+          "rect": [
+            16.0,
+            68.0,
+            208.0,
+            96.0
+          ],
+          "text": {
+            "usable_width_px": 184.0,
+            "usable_height_px": 80.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Latest risk"
+              }
+            ]
+          }
+        },
+        {
+          "name": "tooltip_status",
+          "type": "card",
+          "rect": [
+            240.0,
+            68.0,
+            224.0,
+            96.0
+          ],
+          "text": {
+            "usable_width_px": 200.0,
+            "usable_height_px": 80.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Review status"
+              }
+            ]
+          }
+        },
+        {
+          "name": "tooltip_title",
+          "type": "textbox",
+          "rect": [
+            16.0,
+            16.0,
+            448.0,
+            36.0
+          ],
+          "text": {
+            "usable_width_px": 448.0,
+            "usable_height_px": 36.0,
+            "estimated_text_height_px": 30,
+            "blocks": [
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 30,
+                "text": "ASSET CONDITION"
+              }
+            ]
+          }
+        }
+      ],
+      "mobile": []
+    },
+    {
+      "name": "ai_analysis",
+      "size": [
+        1280,
+        720
+      ],
+      "visuals": [
+        {
+          "name": "analysis_note",
+          "type": "textbox",
+          "rect": [
+            336.0,
+            118.0,
+            920.0,
+            48.0
+          ],
+          "text": {
+            "usable_width_px": 920.0,
+            "usable_height_px": 48.0,
+            "estimated_text_height_px": 42,
+            "blocks": [
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 21,
+                "text": "Analyze: failure in the next 30 days · mature labels only."
+              },
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 21,
+                "text": "Use the native AI controls to inspect sensor associations and segments."
+              }
+            ]
+          }
+        },
+        {
+          "name": "back_button",
+          "type": "actionButton",
+          "rect": [
+            24.0,
+            110.0,
+            296.0,
+            64.0
+          ],
+          "text": {
+            "usable_width_px": 272.0,
+            "usable_height_px": 48.0,
+            "estimated_text_height_px": 29,
+            "blocks": [
+              {
+                "kind": "title",
+                "lines": 1,
+                "line_height_px": 25,
+                "text": "Back to model performance"
+              }
+            ]
+          }
+        },
+        {
+          "name": "footer",
+          "type": "textbox",
+          "rect": [
+            24.0,
+            680.0,
+            1232.0,
+            28.0
+          ],
+          "text": {
+            "usable_width_px": 1232.0,
+            "usable_height_px": 28.0,
+            "estimated_text_height_px": 20,
+            "blocks": [
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 20,
+                "text": "Exploratory associations only. Synthetic degradation and repeated asset-days limit causal interpretation. Native AI controls may paginate results."
+              }
+            ]
+          }
+        },
+        {
+          "name": "key_influencers",
+          "type": "keyDriversVisual",
+          "rect": [
+            24.0,
+            190.0,
+            1232.0,
+            472.0
+          ],
+          "text": {
+            "usable_width_px": 1208.0,
+            "usable_height_px": 456.0,
+            "estimated_text_height_px": 0,
+            "blocks": []
+          }
+        },
+        {
+          "name": "page_subtitle",
+          "type": "textbox",
+          "rect": [
+            24.0,
+            70.0,
+            1232.0,
+            28.0
+          ],
+          "text": {
+            "usable_width_px": 1232.0,
+            "usable_height_px": 28.0,
+            "estimated_text_height_px": 21,
+            "blocks": [
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 21,
+                "text": "Key Influencers describes patterns in synthetic data; it does not prove causality or explain model internals."
+              }
+            ]
+          }
+        },
+        {
+          "name": "page_title",
+          "type": "textbox",
+          "rect": [
+            24.0,
+            16.0,
+            1232.0,
+            44.0
+          ],
+          "text": {
+            "usable_width_px": 1208.0,
+            "usable_height_px": 36.0,
+            "estimated_text_height_px": 33,
+            "blocks": [
+              {
+                "kind": "paragraph",
+                "lines": 1,
+                "line_height_px": 33,
+                "text": "Sensor Associations / Explore the evidence"
+              }
+            ]
+          }
+        }
+      ],
+      "mobile": []
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "passed": true
+}

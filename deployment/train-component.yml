@@ -1,0 +1,20 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+type: command
+name: energy_train_evaluate
+version: '3'
+display_name: Generate, clean, train, and compare maintenance policies
+is_deterministic: true
+code: ..
+environment: azureml:energy-failure-ml:3
+outputs:
+  run_artifacts:
+    type: uri_folder
+  model:
+    type: uri_folder
+  features:
+    type: uri_folder
+command: >-
+  python deployment/train_step.py
+  --run-output ${{outputs.run_artifacts}}
+  --model-output ${{outputs.model}}
+  --features-output ${{outputs.features}}

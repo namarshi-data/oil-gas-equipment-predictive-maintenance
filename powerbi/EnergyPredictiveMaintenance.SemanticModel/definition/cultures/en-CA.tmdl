@@ -1,0 +1,32 @@
+cultureInfo en-CA
+
+	linguisticMetadata =
+			{
+			  "Version": "2.0.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "dim_site.site": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Dim_Site",
+			          "ConceptualProperty": "site"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Site": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  }
+			}
+		contentType: json
+

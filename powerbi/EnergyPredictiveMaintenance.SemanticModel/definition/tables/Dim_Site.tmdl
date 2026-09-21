@@ -1,0 +1,40 @@
+/// One row per synthetic Alberta site. Direct filters to each fact; no Site-to-Asset relationship diamond.
+table Dim_Site
+	lineageTag: dc769215-83c2-4404-9e04-430ff1ab06a4
+
+	/// site.
+	column site
+		dataType: string
+		isKey
+		lineageTag: 943a73af-4d1f-48e8-813b-565d28bd0815
+		dataCategory: City
+		summarizeBy: none
+		sourceColumn: site
+
+	/// latitude.
+	column latitude
+		dataType: double
+		lineageTag: 1eb8851d-3848-48fc-8a00-8412048e47b4
+		dataCategory: Latitude
+		summarizeBy: none
+		sourceColumn: latitude
+
+	/// longitude.
+	column longitude
+		dataType: double
+		lineageTag: 96bff476-dd7e-435e-9680-1714f3b629c9
+		dataCategory: Longitude
+		summarizeBy: none
+		sourceColumn: longitude
+
+	partition Dim_Site = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "/dim_site.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    BlankToNull = Table.ReplaceValue(Headers, "", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),
+				    Typed = Table.TransformColumnTypes(BlankToNull, {{"site", type text}, {"latitude", type number}, {"longitude", type number}}, "en-CA")
+				in
+				    Typed
+

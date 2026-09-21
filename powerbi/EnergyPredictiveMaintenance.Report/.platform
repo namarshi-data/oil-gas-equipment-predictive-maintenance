@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "EnergyPredictiveMaintenance"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "390631c6-61cc-4476-a152-0ebdcc69dbfb"
+  }
+}

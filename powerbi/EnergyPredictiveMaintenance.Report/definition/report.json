@@ -1,0 +1,57 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY24SU06",
+      "reportVersionAtImport": {
+        "visual": "2.9.0",
+        "report": "3.3.0",
+        "page": "2.1.0"
+      },
+      "type": "SharedResources"
+    },
+    "customTheme": {
+      "name": "EnergyOperations.json",
+      "reportVersionAtImport": {
+        "visual": "2.9.0",
+        "report": "3.3.0",
+        "page": "2.1.0"
+      },
+      "type": "RegisteredResources"
+    }
+  },
+  "resourcePackages": [
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "EnergyOperations.json",
+          "path": "EnergyOperations.json",
+          "type": "CustomTheme"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useEnhancedTooltips": true,
+    "defaultFilterActionIsDataFilter": true,
+    "exportDataMode": "AllowSummarized",
+    "useDefaultAggregateDisplayName": true,
+    "locale": "en-CA"
+  },
+  "annotations": [
+    {
+      "name": "DataDisclaimer",
+      "value": "Synthetic scenario; held-out replay; costs are CAD assumptions, not observed savings."
+    },
+    {
+      "name": "NativeAIRolesSource",
+      "value": "https://github.com/microsoft/powerbi-desktop-samples/blob/main/Sample%20Reports/Artificial%20Intelligence%20Sample.pbix"
+    },
+    {
+      "name": "RuntimeValidation",
+      "value": "Desktop refresh, View as RLS, AI rendering and mobile device acceptance are separate required runtime checks."
+    }
+  ]
+}

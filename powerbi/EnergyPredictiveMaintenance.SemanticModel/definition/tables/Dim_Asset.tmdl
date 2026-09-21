@@ -1,0 +1,54 @@
+/// One row per asset, derived from raw equipment metadata; no preaggregated risk or outcome columns.
+table Dim_Asset
+	lineageTag: 59540883-33f5-42c4-9f2d-f2cce26a186a
+
+	/// asset id.
+	column asset_id
+		dataType: string
+		isKey
+		lineageTag: e81f4f6b-6d2c-4027-9a0f-7d1e0ae38fc8
+		summarizeBy: none
+		sourceColumn: asset_id
+
+	/// asset type.
+	column asset_type
+		dataType: string
+		lineageTag: 2d476ce3-05cd-44e2-b6f7-ba87dd8b3d8b
+		summarizeBy: none
+		sourceColumn: asset_type
+
+	/// site.
+	column site
+		dataType: string
+		lineageTag: 22b5bb6e-9d81-44bd-8d84-daea11b1b830
+		summarizeBy: none
+		sourceColumn: site
+
+	/// install date.
+	column install_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: ca537768-0473-4c66-aa3e-17cf84f7d4cb
+		summarizeBy: none
+		sourceColumn: install_date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	/// default downtime cost per hour.
+	column default_downtime_cost_per_hour
+		dataType: double
+		lineageTag: 33eabf93-8d75-4791-afac-6077b3402099
+		summarizeBy: none
+		sourceColumn: default_downtime_cost_per_hour
+
+	partition Dim_Asset = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "/dim_asset.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    BlankToNull = Table.ReplaceValue(Headers, "", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),
+				    Typed = Table.TransformColumnTypes(BlankToNull, {{"asset_id", type text}, {"asset_type", type text}, {"site", type text}, {"install_date", type date}, {"default_downtime_cost_per_hour", type number}}, "en-CA")
+				in
+				    Typed
+

@@ -1,0 +1,9 @@
+{
+  "registry": "mcr.microsoft.com",
+  "repository": "azureml/openmpi4.1.0-ubuntu22.04",
+  "resolved_tag": "latest",
+  "digest": "sha256:c5b3129d6db35d912f39f8a494e8f858bedecc7153fb59b5ec9d53df13aa8ab6",
+  "verified_on": "2026-09-18",
+  "verification": "Docker-Content-Digest header from HTTPS GET to the official public MCR manifest endpoint; no image build or runtime validation performed",
+  "source": "https://mcr.microsoft.com/v2/azureml/openmpi4.1.0-ubuntu22.04/manifests/latest"
+}

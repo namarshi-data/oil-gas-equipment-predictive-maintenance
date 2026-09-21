@@ -1,0 +1,150 @@
+/// One observation per asset/day; policy-agnostic sensor history shared by every replayed policy. Blank targets remain blank.
+table Fact_Readings
+	lineageTag: 19027bb5-ac0b-46fd-ae14-bf64e0b1bb43
+
+	/// date.
+	column date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: dad1d182-5af3-489e-a11b-a1289b599573
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	/// asset id.
+	column asset_id
+		dataType: string
+		isHidden
+		lineageTag: cdf2cf15-f587-427a-84b2-b4108afdf64e
+		summarizeBy: none
+		sourceColumn: asset_id
+
+	/// asset type.
+	column asset_type
+		dataType: string
+		isHidden
+		lineageTag: a04fe232-56c0-45a0-baed-c915e97d80e5
+		summarizeBy: none
+		sourceColumn: asset_type
+
+	/// site.
+	column site
+		dataType: string
+		isHidden
+		lineageTag: 7ea81b89-1715-40a2-8d08-e47dad0bb366
+		summarizeBy: none
+		sourceColumn: site
+
+	/// vibration mm s.
+	column vibration_mm_s
+		dataType: double
+		lineageTag: 270d1088-f16a-481f-879c-fd2e2306bcc6
+		summarizeBy: none
+		sourceColumn: vibration_mm_s
+
+	/// bearing temperature c.
+	column bearing_temperature_c
+		dataType: double
+		lineageTag: 10254eda-c9c7-4bbe-9755-a5c69125efa4
+		summarizeBy: none
+		sourceColumn: bearing_temperature_c
+
+	/// pressure bar.
+	column pressure_bar
+		dataType: double
+		lineageTag: 97e9d15c-ea65-48d5-b8f8-1e2cb5529470
+		summarizeBy: none
+		sourceColumn: pressure_bar
+
+	/// power kw.
+	column power_kw
+		dataType: double
+		lineageTag: 370494d9-36b2-421e-82c0-8c4c4a87d118
+		summarizeBy: none
+		sourceColumn: power_kw
+
+	/// load pct.
+	column load_pct
+		dataType: double
+		lineageTag: 429dbaf6-bb85-4e34-8120-aff64dcdf83f
+		summarizeBy: none
+		sourceColumn: load_pct
+
+	/// rpm.
+	column rpm
+		dataType: double
+		lineageTag: d7c6281d-de97-4905-87d8-ce37ba90bc5b
+		summarizeBy: none
+		sourceColumn: rpm
+
+	/// runtime hours.
+	column runtime_hours
+		dataType: double
+		lineageTag: d6fa3393-c581-4ec1-9428-ca6a20dd07b9
+		summarizeBy: none
+		sourceColumn: runtime_hours
+
+	/// age days.
+	column age_days
+		dataType: int64
+		lineageTag: e0dcb2fc-b2e4-4e6e-91f5-de35019ed8a6
+		summarizeBy: none
+		sourceColumn: age_days
+
+	/// sensor missing count.
+	column sensor_missing_count
+		dataType: int64
+		lineageTag: 38c0c762-e6d5-4637-a6ea-db50e3418b12
+		summarizeBy: none
+		sourceColumn: sensor_missing_count
+
+	/// risk score.
+	column risk_score
+		dataType: double
+		lineageTag: dc888389-5b02-4d44-96e0-67d6af4a9a2f
+		summarizeBy: none
+		sourceColumn: risk_score
+
+	/// alert.
+	column alert
+		dataType: boolean
+		lineageTag: 993fbb06-17dc-4359-88d5-6524ebad313b
+		summarizeBy: none
+		sourceColumn: alert
+
+	/// target failure 30d; null means outcome is not fully observed.
+	column target_failure_30d
+		dataType: boolean
+		lineageTag: 2fd88ed9-5a83-41cd-97cd-3e53ef933d0a
+		summarizeBy: none
+		sourceColumn: target_failure_30d
+
+	/// risk band.
+	column risk_band
+		dataType: string
+		lineageTag: 0507f743-6994-4d31-bad0-db4a8deeceb4
+		summarizeBy: none
+		sourceColumn: risk_band
+
+	/// label status.
+	column label_status
+		dataType: string
+		lineageTag: fdc5a440-f379-445f-b05a-6bed4505c337
+		summarizeBy: none
+		sourceColumn: label_status
+
+	partition Fact_Readings = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "/scored_readings.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    BlankToNull = Table.ReplaceValue(Headers, "", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),
+				    Typed = Table.TransformColumnTypes(BlankToNull, {{"date", type date}, {"asset_id", type text}, {"asset_type", type text}, {"site", type text}, {"vibration_mm_s", type number}, {"bearing_temperature_c", type number}, {"pressure_bar", type number}, {"power_kw", type number}, {"load_pct", type number}, {"rpm", type number}, {"runtime_hours", type number}, {"age_days", Int64.Type}, {"sensor_missing_count", Int64.Type}, {"risk_score", type number}}, "en-CA"),
+				    Logical = Table.TransformColumns(Typed, {{"alert", each if _ = null then null else if List.Contains({"1", "1.0", "true"}, Text.Lower(Text.From(_))) then true else if List.Contains({"0", "0.0", "false"}, Text.Lower(Text.From(_))) then false else error "Invalid boolean", type nullable logical}, {"target_failure_30d", each if _ = null then null else if List.Contains({"1", "1.0", "true"}, Text.Lower(Text.From(_))) then true else if List.Contains({"0", "0.0", "false"}, Text.Lower(Text.From(_))) then false else error "Invalid boolean", type nullable logical}}),
+				    RiskBand = Table.AddColumn(Logical, "risk_band", each if [risk_score] = null then "No score" else if [risk_score] < 0.1 then "00-10%" else if [risk_score] < 0.2 then "10-20%" else if [risk_score] < 0.3 then "20-30%" else if [risk_score] < 0.4 then "30-40%" else if [risk_score] < 0.5 then "40-50%" else if [risk_score] < 0.6 then "50-60%" else if [risk_score] < 0.7 then "60-70%" else if [risk_score] < 0.8 then "70-80%" else if [risk_score] < 0.9 then "80-90%" else "90-100%", type text),
+				    LabelStatus = Table.AddColumn(RiskBand, "label_status", each if [target_failure_30d] = null then "Unlabeled / censored" else if [target_failure_30d] then "Failure within 30 days" else "No failure within 30 days", type text)
+				in
+				    LabelStatus
+

@@ -1,0 +1,1953 @@
+{
+  "name": null,
+  "compatibilityLevel": 1606,
+  "model": {
+    "culture": "en-CA",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-CA",
+    "tables": [
+      {
+        "name": "Dim_Asset",
+        "description": "One row per asset, derived from raw equipment metadata; no preaggregated risk or outcome columns.",
+        "lineageTag": "59540883-33f5-42c4-9f2d-f2cce26a186a",
+        "columns": [
+          {
+            "name": "asset_id",
+            "dataType": "string",
+            "description": "asset id.",
+            "isKey": true,
+            "sourceColumn": "asset_id",
+            "lineageTag": "e81f4f6b-6d2c-4027-9a0f-7d1e0ae38fc8",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "asset_type",
+            "dataType": "string",
+            "description": "asset type.",
+            "sourceColumn": "asset_type",
+            "lineageTag": "2d476ce3-05cd-44e2-b6f7-ba87dd8b3d8b",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "site",
+            "dataType": "string",
+            "description": "site.",
+            "sourceColumn": "site",
+            "lineageTag": "22b5bb6e-9d81-44bd-8d84-daea11b1b830",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "install_date",
+            "dataType": "dateTime",
+            "description": "install date.",
+            "sourceColumn": "install_date",
+            "formatString": "yyyy-mm-dd",
+            "lineageTag": "ca537768-0473-4c66-aa3e-17cf84f7d4cb",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ]
+          },
+          {
+            "name": "default_downtime_cost_per_hour",
+            "dataType": "double",
+            "description": "default downtime cost per hour.",
+            "sourceColumn": "default_downtime_cost_per_hour",
+            "lineageTag": "33eabf93-8d75-4791-afac-6077b3402099",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_Asset",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let\n    Source = Csv.Document(File.Contents(DataFolder & \"/dim_asset.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),\n    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),\n    BlankToNull = Table.ReplaceValue(Headers, \"\", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),\n    Typed = Table.TransformColumnTypes(BlankToNull, {{\"asset_id\", type text}, {\"asset_type\", type text}, {\"site\", type text}, {\"install_date\", type date}, {\"default_downtime_cost_per_hour\", type number}}, \"en-CA\")\nin\n    Typed"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Dim_Site",
+        "description": "One row per synthetic Alberta site. Direct filters to each fact; no Site-to-Asset relationship diamond.",
+        "lineageTag": "dc769215-83c2-4404-9e04-430ff1ab06a4",
+        "columns": [
+          {
+            "name": "site",
+            "dataType": "string",
+            "description": "site.",
+            "isKey": true,
+            "sourceColumn": "site",
+            "lineageTag": "943a73af-4d1f-48e8-813b-565d28bd0815",
+            "dataCategory": "City",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "latitude",
+            "dataType": "double",
+            "description": "latitude.",
+            "sourceColumn": "latitude",
+            "lineageTag": "1eb8851d-3848-48fc-8a00-8412048e47b4",
+            "dataCategory": "Latitude",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "longitude",
+            "dataType": "double",
+            "description": "longitude.",
+            "sourceColumn": "longitude",
+            "lineageTag": "96bff476-dd7e-435e-9680-1714f3b629c9",
+            "dataCategory": "Longitude",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_Site",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let\n    Source = Csv.Document(File.Contents(DataFolder & \"/dim_site.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),\n    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),\n    BlankToNull = Table.ReplaceValue(Headers, \"\", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),\n    Typed = Table.TransformColumnTypes(BlankToNull, {{\"site\", type text}, {\"latitude\", type number}, {\"longitude\", type number}}, \"en-CA\")\nin\n    Typed"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Dim_UserSite",
+        "description": "Disconnected access mapping, one row per allowed UPN/site pair. Demonstration identities require deployment-specific replacement.",
+        "isHidden": true,
+        "lineageTag": "e3dc3a84-4453-424e-884e-457e9b7235f8",
+        "columns": [
+          {
+            "name": "user_principal_name",
+            "dataType": "string",
+            "description": "user principal name.",
+            "sourceColumn": "user_principal_name",
+            "lineageTag": "f1d99cf0-22a7-460f-a69c-d9b5bf359173",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "site",
+            "dataType": "string",
+            "description": "site.",
+            "sourceColumn": "site",
+            "lineageTag": "7ba121ef-aedb-4c22-b1a7-f41b3e231b8f",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_UserSite",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let\n    Source = Csv.Document(File.Contents(DataFolder & \"/dim_user_site.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),\n    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),\n    BlankToNull = Table.ReplaceValue(Headers, \"\", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),\n    Typed = Table.TransformColumnTypes(BlankToNull, {{\"user_principal_name\", type text}, {\"site\", type text}}, \"en-CA\"),\n    NormalizedUsers = Table.TransformColumns(Typed, {{\"user_principal_name\", each Text.Lower(Text.Trim(_)), type text}})\nin\n    NormalizedUsers"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Config_Model",
+        "description": "Disconnected evaluation bounds and validation-selected alert threshold. Not an outcome summary.",
+        "isHidden": true,
+        "lineageTag": "a7485f8d-fa73-4ac5-86a3-c787b79475b7",
+        "columns": [
+          {
+            "name": "evaluation_start",
+            "dataType": "dateTime",
+            "description": "evaluation start.",
+            "sourceColumn": "evaluation_start",
+            "formatString": "yyyy-mm-dd",
+            "lineageTag": "67e485ee-a639-4307-8727-cc96dba16125",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ]
+          },
+          {
+            "name": "evaluation_end",
+            "dataType": "dateTime",
+            "description": "evaluation end.",
+            "sourceColumn": "evaluation_end",
+            "formatString": "yyyy-mm-dd",
+            "lineageTag": "255dc351-436c-469f-b727-dae5621cda3d",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ]
+          },
+          {
+            "name": "alert_threshold",
+            "dataType": "double",
+            "description": "alert threshold.",
+            "sourceColumn": "alert_threshold",
+            "lineageTag": "dd9f06f5-335a-4a82-9db0-fd5faf5c4d11",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Config_Model",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let\n    Source = Csv.Document(File.Contents(DataFolder & \"/model_settings.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),\n    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),\n    BlankToNull = Table.ReplaceValue(Headers, \"\", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),\n    Typed = Table.TransformColumnTypes(BlankToNull, {{\"evaluation_start\", type date}, {\"evaluation_end\", type date}, {\"alert_threshold\", type number}}, \"en-CA\")\nin\n    Typed"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "Fact_ServiceVisits",
+        "description": "One visit per policy/asset/service date. Includes carry-in ledger rows, excluded from incurred cost measures.",
+        "lineageTag": "d9e24e7a-feda-4403-b286-20e10a7aa168",
+        "columns": [
+          {
+            "name": "policy",
+            "dataType": "string",
+            "description": "policy.",
+            "isHidden": true,
+            "sourceColumn": "policy",
+            "lineageTag": "681f48ce-b4ca-4060-9099-1e7ecdb688d0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "asset_id",
+            "dataType": "string",
+            "description": "asset id.",
+            "isHidden": true,
+            "sourceColumn": "asset_id",
+            "lineageTag": "42caa64c-14db-4c03-9d9b-2da49be92b99",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "asset_type",
+            "dataType": "string",
+            "description": "asset type.",
+            "isHidden": true,
+            "sourceColumn": "asset_type",
+            "lineageTag": "ed4def14-645c-4d23-b979-741a6d553311",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "site",
+            "dataType": "string",
+            "description": "site.",
+            "isHidden": true,
+            "sourceColumn": "site",
+            "lineageTag": "0f2e3f52-125b-4df8-a5fc-fd00daed8962",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "alert_date",
+            "dataType": "dateTime",
+            "description": "alert date.",
+            "sourceColumn": "alert_date",
+            "formatString": "yyyy-mm-dd",
+            "lineageTag": "eba98656-8676-4721-bc78-bd51c6124654",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ]
+          },
+          {
+            "name": "service_date",
+            "dataType": "dateTime",
+            "description": "service date.",
+            "sourceColumn": "service_date",
+            "formatString": "yyyy-mm-dd",
+            "lineageTag": "1364269c-ba9d-4b75-a6b9-afa14f0af480",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ]
+          },
+          {
+            "name": "event_id",
+            "dataType": "string",
+            "description": "event id.",
+            "sourceColumn": "event_id",
+            "lineageTag": "226b58d1-444a-4453-9ee3-9521ff3aecff",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "outcome",
+            "dataType": "string",
+            "description": "outcome.",
+            "sourceColumn": "outcome",
+            "lineageTag": "17f5889a-c8c6-42c4-86ba-519c7b877cd6",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "in_evaluation_window",
+            "dataType": "boolean",
+            "description": "in evaluation window.",
+            "sourceColumn": "in_evaluation_window",
+            "lineageTag": "8782ca11-0df7-42d5-a160-7520587e8b06",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "planned_cost_cad",
+            "dataType": "double",
+            "description": "planned cost cad.",
+            "sourceColumn": "planned_cost_cad",
+            "lineageTag": "534f7cc9-b6a2-468e-8ecf-1d980186af64",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "planned_downtime_hours",
+            "dataType": "double",
+            "description": "planned downtime hours.",
+            "sourceColumn": "planned_downtime_hours",
+            "lineageTag": "f3957f9a-f498-413e-a7b2-5d54aa9abba1",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Fact_ServiceVisits",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let\n    Source = Csv.Document(File.Contents(DataFolder & \"/service_visits.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),\n    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),\n    BlankToNull = Table.ReplaceValue(Headers, \"\", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),\n    Typed = Table.TransformColumnTypes(BlankToNull, {{\"policy\", type text}, {\"asset_id\", type text}, {\"asset_type\", type text}, {\"site\", type text}, {\"alert_date\", type date}, {\"service_date\", type date}, {\"event_id\", type text}, {\"outcome\", type text}, {\"planned_cost_cad\", type number}, {\"planned_downtime_hours\", type number}}, \"en-CA\"),\n    Logical = Table.TransformColumns(Typed, {{\"in_evaluation_window\", each if _ = null then null else if List.Contains({\"1\", \"1.0\", \"true\"}, Text.Lower(Text.From(_))) then true else if List.Contains({\"0\", \"0.0\", \"false\"}, Text.Lower(Text.From(_))) then false else error \"Invalid boolean\", type nullable logical}})\nin\n    Logical"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Fact_Readings",
+        "description": "One observation per asset/day; policy-agnostic sensor history shared by every replayed policy. Blank targets remain blank.",
+        "lineageTag": "19027bb5-ac0b-46fd-ae14-bf64e0b1bb43",
+        "columns": [
+          {
+            "name": "date",
+            "dataType": "dateTime",
+            "description": "date.",
+            "sourceColumn": "date",
+            "formatString": "yyyy-mm-dd",
+            "lineageTag": "dad1d182-5af3-489e-a11b-a1289b599573",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ]
+          },
+          {
+            "name": "asset_id",
+            "dataType": "string",
+            "description": "asset id.",
+            "isHidden": true,
+            "sourceColumn": "asset_id",
+            "lineageTag": "cdf2cf15-f587-427a-84b2-b4108afdf64e",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "asset_type",
+            "dataType": "string",
+            "description": "asset type.",
+            "isHidden": true,
+            "sourceColumn": "asset_type",
+            "lineageTag": "a04fe232-56c0-45a0-baed-c915e97d80e5",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "site",
+            "dataType": "string",
+            "description": "site.",
+            "isHidden": true,
+            "sourceColumn": "site",
+            "lineageTag": "7ea81b89-1715-40a2-8d08-e47dad0bb366",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "vibration_mm_s",
+            "dataType": "double",
+            "description": "vibration mm s.",
+            "sourceColumn": "vibration_mm_s",
+            "lineageTag": "270d1088-f16a-481f-879c-fd2e2306bcc6",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "bearing_temperature_c",
+            "dataType": "double",
+            "description": "bearing temperature c.",
+            "sourceColumn": "bearing_temperature_c",
+            "lineageTag": "10254eda-c9c7-4bbe-9755-a5c69125efa4",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "pressure_bar",
+            "dataType": "double",
+            "description": "pressure bar.",
+            "sourceColumn": "pressure_bar",
+            "lineageTag": "97e9d15c-ea65-48d5-b8f8-1e2cb5529470",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "power_kw",
+            "dataType": "double",
+            "description": "power kw.",
+            "sourceColumn": "power_kw",
+            "lineageTag": "370494d9-36b2-421e-82c0-8c4c4a87d118",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "load_pct",
+            "dataType": "double",
+            "description": "load pct.",
+            "sourceColumn": "load_pct",
+            "lineageTag": "429dbaf6-bb85-4e34-8120-aff64dcdf83f",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "rpm",
+            "dataType": "double",
+            "description": "rpm.",
+            "sourceColumn": "rpm",
+            "lineageTag": "d7c6281d-de97-4905-87d8-ce37ba90bc5b",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "runtime_hours",
+            "dataType": "double",
+            "description": "runtime hours.",
+            "sourceColumn": "runtime_hours",
+            "lineageTag": "d6fa3393-c581-4ec1-9428-ca6a20dd07b9",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "age_days",
+            "dataType": "int64",
+            "description": "age days.",
+            "sourceColumn": "age_days",
+            "lineageTag": "e0dcb2fc-b2e4-4e6e-91f5-de35019ed8a6",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "sensor_missing_count",
+            "dataType": "int64",
+            "description": "sensor missing count.",
+            "sourceColumn": "sensor_missing_count",
+            "lineageTag": "38c0c762-e6d5-4637-a6ea-db50e3418b12",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "risk_score",
+            "dataType": "double",
+            "description": "risk score.",
+            "sourceColumn": "risk_score",
+            "lineageTag": "dc888389-5b02-4d44-96e0-67d6af4a9a2f",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "alert",
+            "dataType": "boolean",
+            "description": "alert.",
+            "sourceColumn": "alert",
+            "lineageTag": "993fbb06-17dc-4359-88d5-6524ebad313b",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "target_failure_30d",
+            "dataType": "boolean",
+            "description": "target failure 30d; null means outcome is not fully observed.",
+            "sourceColumn": "target_failure_30d",
+            "lineageTag": "2fd88ed9-5a83-41cd-97cd-3e53ef933d0a",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "risk_band",
+            "dataType": "string",
+            "description": "risk band.",
+            "sourceColumn": "risk_band",
+            "lineageTag": "0507f743-6994-4d31-bad0-db4a8deeceb4",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "label_status",
+            "dataType": "string",
+            "description": "label status.",
+            "sourceColumn": "label_status",
+            "lineageTag": "fdc5a440-f379-445f-b05a-6bed4505c337",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Fact_Readings",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let\n    Source = Csv.Document(File.Contents(DataFolder & \"/scored_readings.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),\n    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),\n    BlankToNull = Table.ReplaceValue(Headers, \"\", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),\n    Typed = Table.TransformColumnTypes(BlankToNull, {{\"date\", type date}, {\"asset_id\", type text}, {\"asset_type\", type text}, {\"site\", type text}, {\"vibration_mm_s\", type number}, {\"bearing_temperature_c\", type number}, {\"pressure_bar\", type number}, {\"power_kw\", type number}, {\"load_pct\", type number}, {\"rpm\", type number}, {\"runtime_hours\", type number}, {\"age_days\", Int64.Type}, {\"sensor_missing_count\", Int64.Type}, {\"risk_score\", type number}}, \"en-CA\"),\n    Logical = Table.TransformColumns(Typed, {{\"alert\", each if _ = null then null else if List.Contains({\"1\", \"1.0\", \"true\"}, Text.Lower(Text.From(_))) then true else if List.Contains({\"0\", \"0.0\", \"false\"}, Text.Lower(Text.From(_))) then false else error \"Invalid boolean\", type nullable logical}, {\"target_failure_30d\", each if _ = null then null else if List.Contains({\"1\", \"1.0\", \"true\"}, Text.Lower(Text.From(_))) then true else if List.Contains({\"0\", \"0.0\", \"false\"}, Text.Lower(Text.From(_))) then false else error \"Invalid boolean\", type nullable logical}}),\n    RiskBand = Table.AddColumn(Logical, \"risk_band\", each if [risk_score] = null then \"No score\" else if [risk_score] < 0.1 then \"00-10%\" else if [risk_score] < 0.2 then \"10-20%\" else if [risk_score] < 0.3 then \"20-30%\" else if [risk_score] < 0.4 then \"30-40%\" else if [risk_score] < 0.5 then \"40-50%\" else if [risk_score] < 0.6 then \"50-60%\" else if [risk_score] < 0.7 then \"60-70%\" else if [risk_score] < 0.8 then \"70-80%\" else if [risk_score] < 0.9 then \"80-90%\" else \"90-100%\", type text),\n    LabelStatus = Table.AddColumn(RiskBand, \"label_status\", each if [target_failure_30d] = null then \"Unlabeled / censored\" else if [target_failure_30d] then \"Failure within 30 days\" else \"No failure within 30 days\", type text)\nin\n    LabelStatus"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Fact_Events",
+        "description": "One physical failure event per maintenance-policy replay. Event date is the accounting date for repair/unplanned downtime.",
+        "lineageTag": "1ddef7b5-7cfc-4679-8985-b6e9bd887bb3",
+        "columns": [
+          {
+            "name": "event_id",
+            "dataType": "string",
+            "description": "event id.",
+            "sourceColumn": "event_id",
+            "lineageTag": "07a972b4-e4c8-497a-be7a-808d499c6451",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "asset_id",
+            "dataType": "string",
+            "description": "asset id.",
+            "isHidden": true,
+            "sourceColumn": "asset_id",
+            "lineageTag": "3ca3791f-8557-4bdb-959b-fc6ebca75169",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "asset_type",
+            "dataType": "string",
+            "description": "asset type.",
+            "isHidden": true,
+            "sourceColumn": "asset_type",
+            "lineageTag": "40c36067-35e7-4414-b74b-6ba924e50430",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "site",
+            "dataType": "string",
+            "description": "site.",
+            "isHidden": true,
+            "sourceColumn": "site",
+            "lineageTag": "3525cc5c-c043-4188-82c0-987ee8fe778b",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "event_date",
+            "dataType": "dateTime",
+            "description": "event date.",
+            "sourceColumn": "event_date",
+            "formatString": "yyyy-mm-dd",
+            "lineageTag": "59c4cda4-7487-4fd2-bfc2-c1a41a64fd0a",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ]
+          },
+          {
+            "name": "policy",
+            "dataType": "string",
+            "description": "policy.",
+            "isHidden": true,
+            "sourceColumn": "policy",
+            "lineageTag": "cb4e5175-84d2-414e-acaa-bf400d2a803f",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "caught",
+            "dataType": "boolean",
+            "description": "caught.",
+            "sourceColumn": "caught",
+            "lineageTag": "93752fc2-548c-47ae-a843-44b3164e9e6b",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "alert_date",
+            "dataType": "dateTime",
+            "description": "alert date.",
+            "sourceColumn": "alert_date",
+            "formatString": "yyyy-mm-dd",
+            "lineageTag": "a4a53ff5-87f3-47d1-8e55-223e9b413d63",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ]
+          },
+          {
+            "name": "service_date",
+            "dataType": "dateTime",
+            "description": "service date.",
+            "sourceColumn": "service_date",
+            "formatString": "yyyy-mm-dd",
+            "lineageTag": "35db7265-eac9-42de-b3f5-cd612bf3e71b",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ]
+          },
+          {
+            "name": "warning_days",
+            "dataType": "double",
+            "description": "warning days.",
+            "sourceColumn": "warning_days",
+            "lineageTag": "760fb1de-3cde-4302-bae7-bb928f071d61",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "service_lead_days",
+            "dataType": "double",
+            "description": "service lead days.",
+            "sourceColumn": "service_lead_days",
+            "lineageTag": "b5313f98-1a4d-4a31-a9ce-ae2536ce293a",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "repair_cost_cad",
+            "dataType": "double",
+            "description": "repair cost cad.",
+            "sourceColumn": "repair_cost_cad",
+            "lineageTag": "eb775351-8fb6-496c-9845-f16a63f8dc84",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "downtime_hours",
+            "dataType": "double",
+            "description": "downtime hours.",
+            "sourceColumn": "downtime_hours",
+            "lineageTag": "96ec58f8-93b4-4a56-a06c-fac62d6faf31",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "outcome_label",
+            "dataType": "string",
+            "description": "outcome label.",
+            "sourceColumn": "outcome_label",
+            "lineageTag": "0285018b-c8ba-4cd4-b7d2-ecdb9e842c53",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "warning_band",
+            "dataType": "string",
+            "description": "warning band.",
+            "sourceColumn": "warning_band",
+            "sortByColumn": "warning_band_order",
+            "lineageTag": "0900da1f-6b37-49c5-a620-2e193ddb682a",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "warning_band_order",
+            "dataType": "int64",
+            "description": "warning band order.",
+            "isHidden": true,
+            "sourceColumn": "warning_band_order",
+            "lineageTag": "fb17236a-36bf-4877-bf56-14441e24bd58",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Fact_Events",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let\n    Source = Csv.Document(File.Contents(DataFolder & \"/event_outcomes.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),\n    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),\n    BlankToNull = Table.ReplaceValue(Headers, \"\", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),\n    Typed = Table.TransformColumnTypes(BlankToNull, {{\"event_id\", type text}, {\"asset_id\", type text}, {\"asset_type\", type text}, {\"site\", type text}, {\"event_date\", type date}, {\"policy\", type text}, {\"alert_date\", type date}, {\"service_date\", type date}, {\"warning_days\", type number}, {\"service_lead_days\", type number}, {\"repair_cost_cad\", type number}, {\"downtime_hours\", type number}}, \"en-CA\"),\n    Logical = Table.TransformColumns(Typed, {{\"caught\", each if _ = null then null else if List.Contains({\"1\", \"1.0\", \"true\"}, Text.Lower(Text.From(_))) then true else if List.Contains({\"0\", \"0.0\", \"false\"}, Text.Lower(Text.From(_))) then false else error \"Invalid boolean\", type nullable logical}}),\n    OutcomeLabel = Table.AddColumn(Logical, \"outcome_label\", each if [caught] then \"Caught\" else \"Missed / breakdown\", type text),\n    WarningBand = Table.AddColumn(OutcomeLabel, \"warning_band\", each if not [caught] then \"Missed / 0 days\" else if [warning_days] < 8 then \"01-07 days\" else if [warning_days] < 15 then \"08-14 days\" else if [warning_days] < 22 then \"15-21 days\" else if [warning_days] <= 30 then \"22-30 days\" else \"31+ days\", type text),\n    WarningBandOrder = Table.AddColumn(WarningBand, \"warning_band_order\", each if not [caught] then 0 else if [warning_days] < 8 then 1 else if [warning_days] < 15 then 2 else if [warning_days] < 22 then 3 else if [warning_days] <= 30 then 4 else 5, Int64.Type)\nin\n    WarningBandOrder"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Dim_Policy",
+        "description": "Three mutually exclusive maintenance scenarios replayed on the same history; filters events and visits, not policy-agnostic readings.",
+        "lineageTag": "b205f6ba-6509-4ddc-ad03-3f576b26115a",
+        "columns": [
+          {
+            "name": "policy",
+            "dataType": "string",
+            "description": "policy.",
+            "isKey": true,
+            "sourceColumn": "policy",
+            "lineageTag": "36449bf6-4628-444f-a227-550dd795a7ef",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "policy_label",
+            "dataType": "string",
+            "description": "policy label.",
+            "sourceColumn": "policy_label",
+            "sortByColumn": "policy_order",
+            "lineageTag": "f47acf82-e9db-4c68-b6bc-446275c29e2c",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "policy_order",
+            "dataType": "int64",
+            "description": "policy order.",
+            "isHidden": true,
+            "sourceColumn": "policy_order",
+            "lineageTag": "32b0a78d-1973-48a5-ba13-0ac54b573b50",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_Policy",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let\n    Source = #table(type table [policy=text, policy_label=text, policy_order=Int64.Type], {{\"reactive\", \"Reactive\", 1}, {\"fixed_90_day\", \"Fixed interval (90 days)\", 2}, {\"predictive\", \"Predictive\", 3}})\nin\n    Source"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Dim_Date",
+        "description": "Complete gapless calendar year(s) around evaluation, marked Time with a unique Date key. The current evaluation calendar contains 365 dates.",
+        "lineageTag": "95b7f6a3-141f-4f0d-ba86-f3476d800b7d",
+        "dataCategory": "Time",
+        "columns": [
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "description": "Date.",
+            "isKey": true,
+            "sourceColumn": "Date",
+            "formatString": "yyyy-mm-dd",
+            "lineageTag": "b7203de2-d5d2-4454-92f7-40c608edf647",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ]
+          },
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "description": "Year.",
+            "sourceColumn": "Year",
+            "lineageTag": "27e390f0-1e86-48cd-b2a4-c2909ede517e",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthNumber",
+            "dataType": "int64",
+            "description": "MonthNumber.",
+            "sourceColumn": "MonthNumber",
+            "lineageTag": "f0f36a6e-191a-4a5a-b947-6a6b2ae19cad",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Month",
+            "dataType": "string",
+            "description": "Month.",
+            "sourceColumn": "Month",
+            "sortByColumn": "MonthNumber",
+            "lineageTag": "f65aa8d4-a089-421a-871f-d12ac5bc9b71",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "YearMonth",
+            "dataType": "string",
+            "description": "YearMonth.",
+            "sourceColumn": "YearMonth",
+            "lineageTag": "2a77e896-e199-4519-ac2f-b8442d29a67e",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_Date",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let\n    Start = #date(Date.Year(List.Min(Config_Model[evaluation_start])), 1, 1),\n    End = #date(Date.Year(List.Max(Config_Model[evaluation_end])), 12, 31),\n    Dates = Table.FromList(List.Dates(Start, Duration.Days(End - Start) + 1, #duration(1, 0, 0, 0)), Splitter.SplitByNothing(), {\"Date\"}),\n    Typed = Table.TransformColumnTypes(Dates, {{\"Date\", type date}}),\n    Year = Table.AddColumn(Typed, \"Year\", each Date.Year([Date]), Int64.Type),\n    MonthNumber = Table.AddColumn(Year, \"MonthNumber\", each Date.Month([Date]), Int64.Type),\n    Month = Table.AddColumn(MonthNumber, \"Month\", each Date.ToText([Date], \"MMM\", \"en-CA\"), type text),\n    YearMonth = Table.AddColumn(Month, \"YearMonth\", each Date.ToText([Date], \"yyyy-MM\"), type text)\nin\n    YearMonth"
+            }
+          }
+        ]
+      },
+      {
+        "name": "KPI_Measures",
+        "description": "Explicit measures with documented grains, denominators and filter behavior.",
+        "lineageTag": "db77a40c-bc94-4047-8c36-bc015d6ab048",
+        "columns": [
+          {
+            "name": "_anchor",
+            "dataType": "int64",
+            "description": "anchor.",
+            "isHidden": true,
+            "sourceColumn": "_anchor",
+            "lineageTag": "915f7f56-43bd-47fa-910e-81e8acbc63fb",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "KPI_Measures",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let Source = #table(type table [_anchor=Int64.Type], {{0}}) in Source"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Selected Policy",
+            "description": "Policy in context; predictive when unfiltered. An explicit multiple-policy selection returns blank to prevent adding mutually exclusive scenarios.",
+            "expression": "IF(HASONEVALUE(Dim_Policy[policy]), SELECTEDVALUE(Dim_Policy[policy]), IF(NOT ISFILTERED(Dim_Policy), \"predictive\", BLANK()))",
+            "formatString": "@",
+            "displayFolder": "Context",
+            "lineageTag": "6e2769d3-0ba1-4a8d-898f-73ebd4552bbf"
+          },
+          {
+            "name": "Policy Selection Note",
+            "description": "Visible policy scope, including the default and ambiguous multiple selections.",
+            "expression": "VAR ChosenPolicy = [Selected Policy]\nRETURN IF(ISBLANK(ChosenPolicy), \"Choose one policy for comparable totals\", IF(NOT ISFILTERED(Dim_Policy), \"Predictive policy (default)\", SELECTEDVALUE(Dim_Policy[policy_label])))",
+            "formatString": "@",
+            "displayFolder": "Context",
+            "lineageTag": "5faf0829-8f5c-43a5-833d-7e7c706ec019"
+          },
+          {
+            "name": "Observed Days",
+            "description": "Distinct observed calendar days in the selected date/site/asset scope and evaluation window. Zero-event days count. RLS remains in force.",
+            "expression": "VAR PeriodStart = MIN(Config_Model[evaluation_start])\nVAR PeriodEnd = MAX(Config_Model[evaluation_end])\nRETURN\n    CALCULATE(\n        DISTINCTCOUNT(Fact_Readings[date]),\n        KEEPFILTERS(Dim_Date[Date] >= PeriodStart),\n        KEEPFILTERS(Dim_Date[Date] <= PeriodEnd),\n        REMOVEFILTERS(Dim_Policy)\n    )",
+            "formatString": "#,0",
+            "displayFolder": "Exposure",
+            "lineageTag": "8f5e604d-4d5c-4ece-87ba-b9bdba3f1167"
+          },
+          {
+            "name": "Evaluation Years",
+            "description": "Selected observed days divided by 365.25; full evaluation is 91 days, not a full observed year.",
+            "expression": "DIVIDE([Observed Days], 365.25)",
+            "formatString": "0.0000",
+            "displayFolder": "Exposure",
+            "lineageTag": "b58d9145-65bf-4fa4-a73c-061c0dc56000"
+          },
+          {
+            "name": "Asset Years",
+            "description": "Observed asset-days divided by 365.25; exposure diagnostic, not the fleet annualization denominator.",
+            "expression": "VAR PeriodStart = MIN(Config_Model[evaluation_start])\nVAR PeriodEnd = MAX(Config_Model[evaluation_end])\nVAR AssetDays = CALCULATE(COUNTROWS(Fact_Readings), KEEPFILTERS(Dim_Date[Date] >= PeriodStart), KEEPFILTERS(Dim_Date[Date] <= PeriodEnd), REMOVEFILTERS(Dim_Policy))\nRETURN DIVIDE(AssetDays, 365.25)",
+            "formatString": "0.00",
+            "displayFolder": "Exposure",
+            "lineageTag": "e09417a6-3c0a-4929-992e-38d8f539fcd1"
+          },
+          {
+            "name": "Downtime Cost Per Hour Value",
+            "description": "Uniform downtime-cost what-if value. Takes effect only in Uniform override mode.",
+            "expression": "SELECTEDVALUE(Param_DowntimeCost[Downtime Cost Per Hour], 1000)",
+            "formatString": "\"C$\"#,0;(\"C$\"#,0);\"C$\"0",
+            "displayFolder": "Scenario",
+            "lineageTag": "8f6b736f-b0de-4dda-af01-67c5b2f0218b"
+          },
+          {
+            "name": "Cost Mode",
+            "description": "Equipment defaults retain the original scenario assumptions; Uniform override applies the selected rate to every asset.",
+            "expression": "SELECTEDVALUE(Param_CostMode[Cost Mode], \"Equipment defaults\")",
+            "formatString": "@",
+            "displayFolder": "Scenario",
+            "lineageTag": "06eeb6a7-9d7d-4079-b3e0-88100e2afd7d"
+          },
+          {
+            "name": "Emergency Repair Cost",
+            "description": "Repair costs recognized on failure date in the selected policy/date scope.",
+            "expression": "VAR ChosenPolicy = [Selected Policy]\nVAR PeriodStart = MIN(Config_Model[evaluation_start])\nVAR PeriodEnd = MAX(Config_Model[evaluation_end])\nRETURN\n    IF(NOT ISBLANK(ChosenPolicy),\n        CALCULATE(\n            SUM(Fact_Events[repair_cost_cad]),\n            KEEPFILTERS(Dim_Policy[policy] = ChosenPolicy),\n            KEEPFILTERS(Dim_Date[Date] >= PeriodStart),\n            KEEPFILTERS(Dim_Date[Date] <= PeriodEnd)\n        )\n    )",
+            "formatString": "\"C$\"#,0;(\"C$\"#,0);\"C$\"0",
+            "displayFolder": "Costs",
+            "lineageTag": "6c471c93-26f4-40f5-b72d-da3a82dc76d8"
+          },
+          {
+            "name": "Planned Service Cost",
+            "description": "Planned service costs recognized on service date. Carry-in visits stay in the audit ledger but are not charged again.",
+            "expression": "VAR ChosenPolicy = [Selected Policy]\nVAR PeriodStart = MIN(Config_Model[evaluation_start])\nVAR PeriodEnd = MAX(Config_Model[evaluation_end])\nRETURN\n    IF(NOT ISBLANK(ChosenPolicy),\n        CALCULATE(\n            SUM(Fact_ServiceVisits[planned_cost_cad]),\n            KEEPFILTERS(Dim_Policy[policy] = ChosenPolicy),\n            KEEPFILTERS(Fact_ServiceVisits[in_evaluation_window] = TRUE()),\n            KEEPFILTERS(Dim_Date[Date] >= PeriodStart),\n            KEEPFILTERS(Dim_Date[Date] <= PeriodEnd)\n        )\n    )",
+            "formatString": "\"C$\"#,0;(\"C$\"#,0);\"C$\"0",
+            "displayFolder": "Costs",
+            "lineageTag": "822a44ed-9f9b-44e0-b7da-3098b0850d5c"
+          },
+          {
+            "name": "Unplanned Downtime Cost",
+            "description": "Atomic downtime hours multiplied by the related equipment rate, or the live uniform-rate scenario. Date, site, asset and RLS filters are retained.",
+            "expression": "VAR UseUniformRate = [Cost Mode] = \"Uniform override\"\nVAR UniformRate = [Downtime Cost Per Hour Value]\nVAR ChosenPolicy = [Selected Policy]\nVAR PeriodStart = MIN(Config_Model[evaluation_start])\nVAR PeriodEnd = MAX(Config_Model[evaluation_end])\nRETURN\n    IF(NOT ISBLANK(ChosenPolicy),\n        CALCULATE(\n            SUMX(Fact_Events, Fact_Events[downtime_hours] * IF(UseUniformRate, UniformRate, RELATED(Dim_Asset[default_downtime_cost_per_hour]))),\n            KEEPFILTERS(Dim_Policy[policy] = ChosenPolicy),\n            KEEPFILTERS(Dim_Date[Date] >= PeriodStart),\n            KEEPFILTERS(Dim_Date[Date] <= PeriodEnd)\n        )\n    )",
+            "formatString": "\"C$\"#,0;(\"C$\"#,0);\"C$\"0",
+            "displayFolder": "Costs",
+            "lineageTag": "b19bbc9e-b7f9-4753-86c7-e6dfa48a23b9"
+          },
+          {
+            "name": "Planned Downtime Cost",
+            "description": "Atomic downtime hours multiplied by the related equipment rate, or the live uniform-rate scenario. Date, site, asset and RLS filters are retained.",
+            "expression": "VAR UseUniformRate = [Cost Mode] = \"Uniform override\"\nVAR UniformRate = [Downtime Cost Per Hour Value]\nVAR ChosenPolicy = [Selected Policy]\nVAR PeriodStart = MIN(Config_Model[evaluation_start])\nVAR PeriodEnd = MAX(Config_Model[evaluation_end])\nRETURN\n    IF(NOT ISBLANK(ChosenPolicy),\n        CALCULATE(\n            SUMX(Fact_ServiceVisits, Fact_ServiceVisits[planned_downtime_hours] * IF(UseUniformRate, UniformRate, RELATED(Dim_Asset[default_downtime_cost_per_hour]))),\n            KEEPFILTERS(Dim_Policy[policy] = ChosenPolicy),\n            KEEPFILTERS(Fact_ServiceVisits[in_evaluation_window] = TRUE()),\n            KEEPFILTERS(Dim_Date[Date] >= PeriodStart),\n            KEEPFILTERS(Dim_Date[Date] <= PeriodEnd)\n        )\n    )",
+            "formatString": "\"C$\"#,0;(\"C$\"#,0);\"C$\"0",
+            "displayFolder": "Costs",
+            "lineageTag": "e740a0e3-439a-4622-ba34-bd88a2e9b714"
+          },
+          {
+            "name": "Total Cost",
+            "description": "Emergency repair plus planned service plus all incurred downtime cost. A day with observations and no costs returns zero.",
+            "expression": "VAR ChosenPolicy = [Selected Policy]\nVAR IncurredCost = COALESCE([Emergency Repair Cost], 0) + COALESCE([Planned Service Cost], 0) + COALESCE([Unplanned Downtime Cost], 0) + COALESCE([Planned Downtime Cost], 0)\nRETURN IF(NOT ISBLANK(ChosenPolicy) && [Observed Days] > 0, IncurredCost)",
+            "formatString": "\"C$\"#,0;(\"C$\"#,0);\"C$\"0",
+            "displayFolder": "Costs",
+            "lineageTag": "5ecd575d-63ad-4b62-8d04-3a73a27866ee"
+          },
+          {
+            "name": "Annualized Cost",
+            "description": "Fleet cost annualized over selected observed days. This is a synthetic extrapolation, not realized savings or an observed full year.",
+            "expression": "VAR IncurredCost = [Total Cost]\nVAR ExposureYears = [Evaluation Years]\nRETURN DIVIDE(IncurredCost, ExposureYears)",
+            "formatString": "\"C$\"#,0;(\"C$\"#,0);\"C$\"0",
+            "displayFolder": "Costs",
+            "lineageTag": "fdec5cd7-adf8-4e56-8a0c-4314ab780e4e"
+          },
+          {
+            "name": "Cost Avoided vs Reactive",
+            "description": "Annualized reactive cost minus the current policy cost. The baseline re-evaluates the measure inside CALCULATE and removes only policy filters; site/date/asset/RLS and cost parameters remain.",
+            "expression": "VAR SelectedCost = [Annualized Cost]\nVAR ReactiveCost = CALCULATE([Annualized Cost], REMOVEFILTERS(Dim_Policy), Dim_Policy[policy] = \"reactive\")\nRETURN IF(NOT ISBLANK(SelectedCost), ReactiveCost - SelectedCost)",
+            "formatString": "\"C$\"#,0;(\"C$\"#,0);\"C$\"0",
+            "displayFolder": "Comparisons",
+            "lineageTag": "8cb807a5-ad4b-4b50-b195-a51691d9e14e"
+          },
+          {
+            "name": "Reactive Annualized Cost",
+            "description": "Explicit policy comparison with the same date, site, asset, security and cost scenario scope.",
+            "expression": "CALCULATE([Annualized Cost], REMOVEFILTERS(Dim_Policy), Dim_Policy[policy] = \"reactive\")",
+            "formatString": "\"C$\"#,0;(\"C$\"#,0);\"C$\"0",
+            "displayFolder": "Comparisons",
+            "lineageTag": "eea62c6b-9422-41d4-b570-b6476875020c"
+          },
+          {
+            "name": "Fixed Annualized Cost",
+            "description": "Explicit policy comparison with the same date, site, asset, security and cost scenario scope.",
+            "expression": "CALCULATE([Annualized Cost], REMOVEFILTERS(Dim_Policy), Dim_Policy[policy] = \"fixed_90_day\")",
+            "formatString": "\"C$\"#,0;(\"C$\"#,0);\"C$\"0",
+            "displayFolder": "Comparisons",
+            "lineageTag": "1f5c15e8-844a-4ea8-b9ed-d9765c79dda8"
+          },
+          {
+            "name": "Predictive Annualized Cost",
+            "description": "Explicit policy comparison with the same date, site, asset, security and cost scenario scope.",
+            "expression": "CALCULATE([Annualized Cost], REMOVEFILTERS(Dim_Policy), Dim_Policy[policy] = \"predictive\")",
+            "formatString": "\"C$\"#,0;(\"C$\"#,0);\"C$\"0",
+            "displayFolder": "Comparisons",
+            "lineageTag": "e8af047a-babf-4fa3-8bb6-d878300f9d6a"
+          },
+          {
+            "name": "Cost Avoided vs Fixed",
+            "description": "Predictive annualized net cost advantage over the fixed 90-day maintenance scenario.",
+            "expression": "[Fixed Annualized Cost] - [Predictive Annualized Cost]",
+            "formatString": "\"C$\"#,0;(\"C$\"#,0);\"C$\"0",
+            "displayFolder": "Comparisons",
+            "lineageTag": "b77d0940-d527-4faa-b148-d1beca0e87e7"
+          },
+          {
+            "name": "Waterfall Cost",
+            "description": "Three additive waterfall bars reach predictive annual cost. Predictive total is reserved for a total marker, never added as another change.",
+            "expression": "VAR Stage = SELECTEDVALUE(Dim_CostStep[Step])\nRETURN SWITCH(Stage,\n    \"Reactive baseline\", [Reactive Annualized Cost],\n    \"Fixed schedule change\", [Fixed Annualized Cost] - [Reactive Annualized Cost],\n    \"Predictive change\", [Predictive Annualized Cost] - [Fixed Annualized Cost],\n    \"Predictive total\", [Predictive Annualized Cost],\n    BLANK())",
+            "formatString": "\"C$\"#,0;(\"C$\"#,0);\"C$\"0",
+            "displayFolder": "Comparisons",
+            "lineageTag": "7f1b6266-8706-48df-ad2b-9a1c6301ce0d"
+          },
+          {
+            "name": "Event Count",
+            "description": "Events for one maintenance policy. Scenarios replay the same physical failures and must not be added across policies.",
+            "expression": "VAR ChosenPolicy = [Selected Policy]\nVAR PeriodStart = MIN(Config_Model[evaluation_start])\nVAR PeriodEnd = MAX(Config_Model[evaluation_end])\nRETURN\n    IF(NOT ISBLANK(ChosenPolicy),\n        CALCULATE(\n            COALESCE(COUNTROWS(Fact_Events), 0),\n            KEEPFILTERS(Dim_Policy[policy] = ChosenPolicy),\n            KEEPFILTERS(Dim_Date[Date] >= PeriodStart),\n            KEEPFILTERS(Dim_Date[Date] <= PeriodEnd)\n        )\n    )",
+            "formatString": "#,0",
+            "displayFolder": "Events",
+            "lineageTag": "c1e74a4b-772f-4bd5-abf4-d26c9ee24790"
+          },
+          {
+            "name": "Caught Events",
+            "description": "Failure events prevented by a successful intervention in the chosen policy.",
+            "expression": "VAR ChosenPolicy = [Selected Policy]\nVAR PeriodStart = MIN(Config_Model[evaluation_start])\nVAR PeriodEnd = MAX(Config_Model[evaluation_end])\nRETURN\n    IF(NOT ISBLANK(ChosenPolicy),\n        CALCULATE(\n            COALESCE(COUNTROWS(Fact_Events), 0),\n            KEEPFILTERS(Dim_Policy[policy] = ChosenPolicy),\n            KEEPFILTERS(Fact_Events[caught] = TRUE()),\n            KEEPFILTERS(Dim_Date[Date] >= PeriodStart),\n            KEEPFILTERS(Dim_Date[Date] <= PeriodEnd)\n        )\n    )",
+            "formatString": "#,0",
+            "displayFolder": "Events",
+            "lineageTag": "f1b65b4d-5062-447e-b3ab-6353308eff80"
+          },
+          {
+            "name": "Missed Events",
+            "description": "Failures not prevented in the chosen maintenance policy, including unsuccessful interventions.",
+            "expression": "VAR ChosenPolicy = [Selected Policy]\nVAR PeriodStart = MIN(Config_Model[evaluation_start])\nVAR PeriodEnd = MAX(Config_Model[evaluation_end])\nRETURN\n    IF(NOT ISBLANK(ChosenPolicy),\n        CALCULATE(\n            COALESCE(COUNTROWS(Fact_Events), 0),\n            KEEPFILTERS(Dim_Policy[policy] = ChosenPolicy),\n            KEEPFILTERS(Fact_Events[caught] = FALSE()),\n            KEEPFILTERS(Dim_Date[Date] >= PeriodStart),\n            KEEPFILTERS(Dim_Date[Date] <= PeriodEnd)\n        )\n    )",
+            "formatString": "#,0",
+            "displayFolder": "Events",
+            "lineageTag": "c3512bcb-f574-4768-bceb-bb06a28c8b37"
+          },
+          {
+            "name": "Breakdowns",
+            "description": "Breakdown means caught=false events. Uses predictive policy when policy is unfiltered; select one other policy to compare. Never a synonym for the caught Boolean column.",
+            "expression": "[Missed Events]",
+            "formatString": "#,0",
+            "displayFolder": "Events",
+            "lineageTag": "f1d4caa1-8533-42fc-bc76-b56f7b4b116b"
+          },
+          {
+            "name": "Catch Rate",
+            "description": "Successfully prevented failure events divided by all events for the selected policy; event-level, not classifier recall.",
+            "expression": "VAR Caught = [Caught Events]\nVAR EligibleEvents = [Event Count]\nRETURN DIVIDE(COALESCE(Caught, 0), EligibleEvents)",
+            "formatString": "0.0%",
+            "displayFolder": "Events",
+            "lineageTag": "b490383c-2b72-4623-9bb0-9990579c61d2"
+          },
+          {
+            "name": "Mean Warning Days",
+            "description": "Mean alert-to-failure lead time among caught events only. Blank for reactive maintenance because no events were caught.",
+            "expression": "VAR ChosenPolicy = [Selected Policy]\nVAR PeriodStart = MIN(Config_Model[evaluation_start])\nVAR PeriodEnd = MAX(Config_Model[evaluation_end])\nRETURN\n    IF(NOT ISBLANK(ChosenPolicy),\n        CALCULATE(\n            AVERAGE(Fact_Events[warning_days]),\n            KEEPFILTERS(Dim_Policy[policy] = ChosenPolicy),\n            KEEPFILTERS(Fact_Events[caught] = TRUE()),\n            KEEPFILTERS(Dim_Date[Date] >= PeriodStart),\n            KEEPFILTERS(Dim_Date[Date] <= PeriodEnd)\n        )\n    )",
+            "formatString": "0.0",
+            "displayFolder": "Events",
+            "lineageTag": "a7fd9df2-f56f-4f89-8668-ce61799de678"
+          },
+          {
+            "name": "Median Warning Days",
+            "description": "Median warning among successfully caught events; excludes missed-event zeroes.",
+            "expression": "VAR ChosenPolicy = [Selected Policy]\nVAR PeriodStart = MIN(Config_Model[evaluation_start])\nVAR PeriodEnd = MAX(Config_Model[evaluation_end])\nRETURN\n    IF(NOT ISBLANK(ChosenPolicy),\n        CALCULATE(\n            MEDIAN(Fact_Events[warning_days]),\n            KEEPFILTERS(Dim_Policy[policy] = ChosenPolicy),\n            KEEPFILTERS(Fact_Events[caught] = TRUE()),\n            KEEPFILTERS(Dim_Date[Date] >= PeriodStart),\n            KEEPFILTERS(Dim_Date[Date] <= PeriodEnd)\n        )\n    )",
+            "formatString": "0.0",
+            "displayFolder": "Events",
+            "lineageTag": "3afa82d1-bbe3-4067-832f-0b7842388139"
+          },
+          {
+            "name": "Service Visits",
+            "description": "Charged visits whose service date lies within the evaluation window and current date selection.",
+            "expression": "VAR ChosenPolicy = [Selected Policy]\nVAR PeriodStart = MIN(Config_Model[evaluation_start])\nVAR PeriodEnd = MAX(Config_Model[evaluation_end])\nRETURN\n    IF(NOT ISBLANK(ChosenPolicy),\n        CALCULATE(\n            COALESCE(COUNTROWS(Fact_ServiceVisits), 0),\n            KEEPFILTERS(Dim_Policy[policy] = ChosenPolicy),\n            KEEPFILTERS(Fact_ServiceVisits[in_evaluation_window] = TRUE()),\n            KEEPFILTERS(Dim_Date[Date] >= PeriodStart),\n            KEEPFILTERS(Dim_Date[Date] <= PeriodEnd)\n        )\n    )",
+            "formatString": "#,0",
+            "displayFolder": "Service",
+            "lineageTag": "b830af81-e865-48a4-be9d-7063092ea1a5"
+          },
+          {
+            "name": "Ledger Service Visits",
+            "description": "All recorded visits, including carry-in visits when their service dates are selected. Does not expand the date selection automatically.",
+            "expression": "VAR ChosenPolicy = [Selected Policy]\nRETURN\n    IF(NOT ISBLANK(ChosenPolicy),\n        CALCULATE(\n            COALESCE(COUNTROWS(Fact_ServiceVisits), 0),\n            KEEPFILTERS(Dim_Policy[policy] = ChosenPolicy)\n        )\n    )",
+            "formatString": "#,0",
+            "displayFolder": "Service",
+            "lineageTag": "305cd1c7-b1f0-41bb-886b-8c2dd235bdb2"
+          },
+          {
+            "name": "Carry In Visits",
+            "description": "Audit-only visits preceding evaluation; excluded from incurred cost and operational false-alarm denominators.",
+            "expression": "VAR ChosenPolicy = [Selected Policy]\nRETURN\n    IF(NOT ISBLANK(ChosenPolicy),\n        CALCULATE(\n            COALESCE(COUNTROWS(Fact_ServiceVisits), 0),\n            KEEPFILTERS(Dim_Policy[policy] = ChosenPolicy),\n            KEEPFILTERS(Fact_ServiceVisits[in_evaluation_window] = FALSE())\n        )\n    )",
+            "formatString": "#,0",
+            "displayFolder": "Service",
+            "lineageTag": "fe866559-f0b0-4310-b851-743de53fc274"
+          },
+          {
+            "name": "Unnecessary Services",
+            "description": "Charged visits with this outcome; carry-in visits are excluded.",
+            "expression": "VAR ChosenPolicy = [Selected Policy]\nVAR PeriodStart = MIN(Config_Model[evaluation_start])\nVAR PeriodEnd = MAX(Config_Model[evaluation_end])\nRETURN\n    IF(NOT ISBLANK(ChosenPolicy),\n        CALCULATE(\n            COALESCE(COUNTROWS(Fact_ServiceVisits), 0),\n            KEEPFILTERS(Dim_Policy[policy] = ChosenPolicy),\n            KEEPFILTERS(Fact_ServiceVisits[in_evaluation_window] = TRUE()),\n            KEEPFILTERS(Fact_ServiceVisits[outcome] = \"no_actionable_failure\"),\n            KEEPFILTERS(Dim_Date[Date] >= PeriodStart),\n            KEEPFILTERS(Dim_Date[Date] <= PeriodEnd)\n        )\n    )",
+            "formatString": "#,0",
+            "displayFolder": "Service",
+            "lineageTag": "fd770b65-eca2-4713-9335-23442379c420"
+          },
+          {
+            "name": "Unsuccessful Services",
+            "description": "Charged visits with this outcome; carry-in visits are excluded.",
+            "expression": "VAR ChosenPolicy = [Selected Policy]\nVAR PeriodStart = MIN(Config_Model[evaluation_start])\nVAR PeriodEnd = MAX(Config_Model[evaluation_end])\nRETURN\n    IF(NOT ISBLANK(ChosenPolicy),\n        CALCULATE(\n            COALESCE(COUNTROWS(Fact_ServiceVisits), 0),\n            KEEPFILTERS(Dim_Policy[policy] = ChosenPolicy),\n            KEEPFILTERS(Fact_ServiceVisits[in_evaluation_window] = TRUE()),\n            KEEPFILTERS(Fact_ServiceVisits[outcome] = \"intervention_unsuccessful\"),\n            KEEPFILTERS(Dim_Date[Date] >= PeriodStart),\n            KEEPFILTERS(Dim_Date[Date] <= PeriodEnd)\n        )\n    )",
+            "formatString": "#,0",
+            "displayFolder": "Service",
+            "lineageTag": "ff7bea9d-0ebd-40e3-b968-3013437039fa"
+          },
+          {
+            "name": "Successful Services",
+            "description": "Charged visits with this outcome; carry-in visits are excluded.",
+            "expression": "VAR ChosenPolicy = [Selected Policy]\nVAR PeriodStart = MIN(Config_Model[evaluation_start])\nVAR PeriodEnd = MAX(Config_Model[evaluation_end])\nRETURN\n    IF(NOT ISBLANK(ChosenPolicy),\n        CALCULATE(\n            COALESCE(COUNTROWS(Fact_ServiceVisits), 0),\n            KEEPFILTERS(Dim_Policy[policy] = ChosenPolicy),\n            KEEPFILTERS(Fact_ServiceVisits[in_evaluation_window] = TRUE()),\n            KEEPFILTERS(Fact_ServiceVisits[outcome] = \"prevented_failure\"),\n            KEEPFILTERS(Dim_Date[Date] >= PeriodStart),\n            KEEPFILTERS(Dim_Date[Date] <= PeriodEnd)\n        )\n    )",
+            "formatString": "#,0",
+            "displayFolder": "Service",
+            "lineageTag": "baf56a63-4311-4b80-8d96-037d492e1726"
+          },
+          {
+            "name": "False Alarm Rate",
+            "description": "Operational false-alarm rate = no_actionable_failure visits / charged visits. This is not classifier FP/(FP+TN).",
+            "expression": "VAR FalseAlarms = [Unnecessary Services]\nVAR ChargedVisits = [Service Visits]\nRETURN DIVIDE(COALESCE(FalseAlarms, 0), ChargedVisits)",
+            "formatString": "0.0%",
+            "displayFolder": "Service",
+            "lineageTag": "ac01fe44-5cd0-4f52-8e67-9d90042f262e"
+          },
+          {
+            "name": "Unnecessary Service Rate",
+            "description": "Share of charged service visits with no actionable failure.",
+            "expression": "[False Alarm Rate]",
+            "formatString": "0.0%",
+            "displayFolder": "Service",
+            "lineageTag": "262b0009-671b-4a90-9f36-75ac408cbbbd"
+          },
+          {
+            "name": "Unsuccessful Service Rate",
+            "description": "Share of charged visits where intervention did not prevent the actionable failure.",
+            "expression": "DIVIDE(COALESCE([Unsuccessful Services], 0), [Service Visits])",
+            "formatString": "0.0%",
+            "displayFolder": "Service",
+            "lineageTag": "ca4cf1ab-98b6-4c74-a772-39d2a2df26de"
+          },
+          {
+            "name": "Unplanned Downtime Hours",
+            "description": "Unplanned downtime recognized on event date in the selected policy.",
+            "expression": "VAR ChosenPolicy = [Selected Policy]\nVAR PeriodStart = MIN(Config_Model[evaluation_start])\nVAR PeriodEnd = MAX(Config_Model[evaluation_end])\nRETURN\n    IF(NOT ISBLANK(ChosenPolicy),\n        CALCULATE(\n            SUM(Fact_Events[downtime_hours]),\n            KEEPFILTERS(Dim_Policy[policy] = ChosenPolicy),\n            KEEPFILTERS(Dim_Date[Date] >= PeriodStart),\n            KEEPFILTERS(Dim_Date[Date] <= PeriodEnd)\n        )\n    )",
+            "formatString": "#,0.0",
+            "displayFolder": "Costs",
+            "lineageTag": "392e899a-54f7-4f66-bc88-e7a45ff8f74b"
+          },
+          {
+            "name": "Planned Downtime Hours",
+            "description": "Planned downtime of charged service visits.",
+            "expression": "VAR ChosenPolicy = [Selected Policy]\nVAR PeriodStart = MIN(Config_Model[evaluation_start])\nVAR PeriodEnd = MAX(Config_Model[evaluation_end])\nRETURN\n    IF(NOT ISBLANK(ChosenPolicy),\n        CALCULATE(\n            SUM(Fact_ServiceVisits[planned_downtime_hours]),\n            KEEPFILTERS(Dim_Policy[policy] = ChosenPolicy),\n            KEEPFILTERS(Fact_ServiceVisits[in_evaluation_window] = TRUE()),\n            KEEPFILTERS(Dim_Date[Date] >= PeriodStart),\n            KEEPFILTERS(Dim_Date[Date] <= PeriodEnd)\n        )\n    )",
+            "formatString": "#,0.0",
+            "displayFolder": "Costs",
+            "lineageTag": "2a59a45e-05e9-4354-bca1-8cfe7d7c5b91"
+          },
+          {
+            "name": "Downtime Reduction vs Fixed",
+            "description": "Relative reduction in unplanned downtime for the predictive versus fixed-interval policy within identical filters.",
+            "expression": "VAR FixedHours = CALCULATE([Unplanned Downtime Hours], REMOVEFILTERS(Dim_Policy), Dim_Policy[policy] = \"fixed_90_day\")\nVAR PredictiveHours = CALCULATE([Unplanned Downtime Hours], REMOVEFILTERS(Dim_Policy), Dim_Policy[policy] = \"predictive\")\nRETURN DIVIDE(FixedHours - PredictiveHours, FixedHours)",
+            "formatString": "0.0%",
+            "displayFolder": "Comparisons",
+            "lineageTag": "eb496c36-d558-4372-8303-de2922547135"
+          },
+          {
+            "name": "Asset Count",
+            "description": "Assets with observations in the selected date/site/asset scope, respecting RLS. Zero when there are no visible observations.",
+            "expression": "COALESCE(DISTINCTCOUNT(Fact_Readings[asset_id]), 0)",
+            "formatString": "#,0",
+            "displayFolder": "Condition",
+            "lineageTag": "c2fcd2c7-4b8a-4071-a26f-00412701355f"
+          },
+          {
+            "name": "Reading Count",
+            "description": "Daily asset observations; shared by all maintenance policies and never duplicated by policy. Zero for an empty visible set.",
+            "expression": "COALESCE(COUNTROWS(Fact_Readings), 0)",
+            "formatString": "#,0",
+            "displayFolder": "Condition",
+            "lineageTag": "49185816-4e8e-4d07-a9dd-37d7a93154af"
+          },
+          {
+            "name": "Mean Risk Score",
+            "description": "Mean model risk score across selected daily observations. Scores are not separately calibrated probabilities.",
+            "expression": "AVERAGE(Fact_Readings[risk_score])",
+            "formatString": "0.0%",
+            "displayFolder": "Condition",
+            "lineageTag": "e7274b57-aeed-4fa0-bba8-6ed651b55db0"
+          },
+          {
+            "name": "Latest Risk Score",
+            "description": "Each asset's latest observed risk within selected dates; aggregate cells average these latest asset risks. Never sums risk or reads a precomputed asset-summary score.",
+            "expression": "AVERAGEX(\n    VALUES(Dim_Asset[asset_id]),\n    VAR LatestObservedDate = CALCULATE(MAX(Fact_Readings[date]))\n    RETURN IF(NOT ISBLANK(LatestObservedDate), CALCULATE(AVERAGE(Fact_Readings[risk_score]), KEEPFILTERS(Dim_Date[Date] = LatestObservedDate)))\n)",
+            "formatString": "0.0%",
+            "displayFolder": "Condition",
+            "lineageTag": "a6114be4-89f4-499c-bb73-6e6336f9f08a"
+          },
+          {
+            "name": "latest_risk_score",
+            "description": "Compatibility alias for Latest Risk Score.",
+            "expression": "[Latest Risk Score]",
+            "formatString": "0.0%",
+            "displayFolder": "Condition",
+            "lineageTag": "4f92cea2-3740-4ae5-a37a-d1afec3bb15f"
+          },
+          {
+            "name": "Latest Observation Date",
+            "description": "Latest telemetry snapshot within the current asset/site/date/security scope.",
+            "expression": "MAX(Fact_Readings[date])",
+            "formatString": "yyyy-mm-dd",
+            "displayFolder": "Condition",
+            "lineageTag": "53fdff69-0727-41bc-99e4-fca325065b2c"
+          },
+          {
+            "name": "Alert Threshold",
+            "description": "Decision threshold selected on validation data; fixed for the test period.",
+            "expression": "MAX(Config_Model[alert_threshold])",
+            "formatString": "0.000",
+            "displayFolder": "Condition",
+            "lineageTag": "c88ffb2b-7925-4858-a1b0-f6a9adc1e9a9"
+          },
+          {
+            "name": "Risk Score 7D Avg",
+            "description": "Trailing seven calendar days ending at the current visible latest observation. The date filter is replaced by that window; asset/site/RLS remain. Missing scores are excluded from the average.",
+            "expression": "VAR LastObservedDate = MAX(Fact_Readings[date])\nVAR WindowStart = LastObservedDate - 6\nRETURN IF(NOT ISBLANK(LastObservedDate),\n    CALCULATE(\n        [Mean Risk Score],\n        REMOVEFILTERS(Dim_Date),\n        DATESBETWEEN(Dim_Date[Date], WindowStart, LastObservedDate)\n    )\n)",
+            "formatString": "0.0%",
+            "displayFolder": "Condition",
+            "lineageTag": "0e86b71a-b61d-4567-a4ef-0180cab924d8"
+          },
+          {
+            "name": "Mean Vibration",
+            "description": "Mean sensor reading in the selected daily observations; units follow the source column.",
+            "expression": "AVERAGE(Fact_Readings[vibration_mm_s])",
+            "formatString": "0.00",
+            "displayFolder": "Sensors",
+            "lineageTag": "34132545-7d98-499a-9a3d-5a762126f496"
+          },
+          {
+            "name": "Mean Temperature",
+            "description": "Mean sensor reading in the selected daily observations; units follow the source column.",
+            "expression": "AVERAGE(Fact_Readings[bearing_temperature_c])",
+            "formatString": "0.0",
+            "displayFolder": "Sensors",
+            "lineageTag": "7d563373-0dce-4ed2-a928-58561e0ffa74"
+          },
+          {
+            "name": "Mean Pressure",
+            "description": "Mean sensor reading in the selected daily observations; units follow the source column.",
+            "expression": "AVERAGE(Fact_Readings[pressure_bar])",
+            "formatString": "0.00",
+            "displayFolder": "Sensors",
+            "lineageTag": "bb7ba595-7491-43a8-8eb1-1eb10de6005b"
+          },
+          {
+            "name": "Mean RPM",
+            "description": "Mean sensor reading in the selected daily observations; units follow the source column.",
+            "expression": "AVERAGE(Fact_Readings[rpm])",
+            "formatString": "#,0.0",
+            "displayFolder": "Sensors",
+            "lineageTag": "c772dc1f-981f-4cc7-b970-561faffdc9d5"
+          },
+          {
+            "name": "Mean Runtime Hours",
+            "description": "Mean sensor reading in the selected daily observations; units follow the source column.",
+            "expression": "AVERAGE(Fact_Readings[runtime_hours])",
+            "formatString": "#,0.0",
+            "displayFolder": "Sensors",
+            "lineageTag": "5e605c3f-7b9c-4050-af64-392d75647256"
+          },
+          {
+            "name": "Mean Load",
+            "description": "Mean sensor reading in the selected daily observations; units follow the source column.",
+            "expression": "AVERAGE(Fact_Readings[load_pct])",
+            "formatString": "0.0",
+            "displayFolder": "Sensors",
+            "lineageTag": "e12e124a-cdb6-4206-a964-c67aff07d702"
+          },
+          {
+            "name": "Mean Power",
+            "description": "Mean sensor reading in the selected daily observations; units follow the source column.",
+            "expression": "AVERAGE(Fact_Readings[power_kw])",
+            "formatString": "0.0",
+            "displayFolder": "Sensors",
+            "lineageTag": "dec87942-58c1-4534-ab2a-b447ac3fbd22"
+          },
+          {
+            "name": "Sensor Gap Rate",
+            "description": "Share of asset-days with at least one originally missing sensor; dashboard readings contain the pipeline's imputed values.",
+            "expression": "DIVIDE(CALCULATE(COUNTROWS(Fact_Readings), KEEPFILTERS(Fact_Readings[sensor_missing_count] > 0)), [Reading Count])",
+            "formatString": "0.0%",
+            "displayFolder": "Condition",
+            "lineageTag": "6adf0970-9da6-42ff-9c18-262b229b75f5"
+          },
+          {
+            "name": "Labeled Readings",
+            "description": "Observations with a fully observed 30-day outcome and nonblank prediction; right-censored target rows are excluded. Empty sets count as zero.",
+            "expression": "COALESCE(COUNTROWS(FILTER(Fact_Readings, NOT ISBLANK(Fact_Readings[target_failure_30d]) && NOT ISBLANK(Fact_Readings[alert]))), 0)",
+            "formatString": "#,0",
+            "displayFolder": "Classification",
+            "lineageTag": "1398515a-3e1c-43da-9c04-d38ce3be22a0"
+          },
+          {
+            "name": "Unlabeled Readings",
+            "description": "Right-censored or unlabeled observations excluded from classifier performance, retained for risk operations.",
+            "expression": "[Reading Count] - [Labeled Readings]",
+            "formatString": "#,0",
+            "displayFolder": "Classification",
+            "lineageTag": "99b69c57-3d64-45f6-83c5-4eb1474e6ecb"
+          },
+          {
+            "name": "Prediction TP",
+            "description": "Asset-day classification count after excluding blank targets/predictions. Empty cells count as zero. Distinct from event-level catch rate.",
+            "expression": "COALESCE(COUNTROWS(FILTER(Fact_Readings, NOT ISBLANK(Fact_Readings[target_failure_30d]) && NOT ISBLANK(Fact_Readings[alert]) && Fact_Readings[target_failure_30d] == TRUE() && Fact_Readings[alert] == TRUE())), 0)",
+            "formatString": "#,0",
+            "displayFolder": "Classification",
+            "lineageTag": "369e40f3-fe34-4a92-950e-bbeb3f5eba90"
+          },
+          {
+            "name": "Prediction FP",
+            "description": "Asset-day classification count after excluding blank targets/predictions. Empty cells count as zero. Distinct from event-level catch rate.",
+            "expression": "COALESCE(COUNTROWS(FILTER(Fact_Readings, NOT ISBLANK(Fact_Readings[target_failure_30d]) && NOT ISBLANK(Fact_Readings[alert]) && Fact_Readings[target_failure_30d] == FALSE() && Fact_Readings[alert] == TRUE())), 0)",
+            "formatString": "#,0",
+            "displayFolder": "Classification",
+            "lineageTag": "7639e123-7f4e-4173-9776-57d1c359aaae"
+          },
+          {
+            "name": "Prediction FN",
+            "description": "Asset-day classification count after excluding blank targets/predictions. Empty cells count as zero. Distinct from event-level catch rate.",
+            "expression": "COALESCE(COUNTROWS(FILTER(Fact_Readings, NOT ISBLANK(Fact_Readings[target_failure_30d]) && NOT ISBLANK(Fact_Readings[alert]) && Fact_Readings[target_failure_30d] == TRUE() && Fact_Readings[alert] == FALSE())), 0)",
+            "formatString": "#,0",
+            "displayFolder": "Classification",
+            "lineageTag": "69ad277a-7b1a-4b66-87e4-172cbe05f537"
+          },
+          {
+            "name": "Prediction TN",
+            "description": "Asset-day classification count after excluding blank targets/predictions. Empty cells count as zero. Distinct from event-level catch rate.",
+            "expression": "COALESCE(COUNTROWS(FILTER(Fact_Readings, NOT ISBLANK(Fact_Readings[target_failure_30d]) && NOT ISBLANK(Fact_Readings[alert]) && Fact_Readings[target_failure_30d] == FALSE() && Fact_Readings[alert] == FALSE())), 0)",
+            "formatString": "#,0",
+            "displayFolder": "Classification",
+            "lineageTag": "f7841d3c-254d-4e8b-be28-bc423ff9c28f"
+          },
+          {
+            "name": "Confusion Count",
+            "description": "One confusion-matrix cell from disconnected actual/predicted label axes. Totals intentionally blank.",
+            "expression": "VAR Actual = SELECTEDVALUE(Dim_ConfusionActual[Actual])\nVAR Predicted = SELECTEDVALUE(Dim_ConfusionPredicted[Predicted])\nRETURN SWITCH(TRUE(),\n    Actual = \"Failure\" && Predicted = \"Failure\", [Prediction TP],\n    Actual = \"No failure\" && Predicted = \"Failure\", [Prediction FP],\n    Actual = \"Failure\" && Predicted = \"No failure\", [Prediction FN],\n    Actual = \"No failure\" && Predicted = \"No failure\", [Prediction TN],\n    BLANK())",
+            "formatString": "#,0",
+            "displayFolder": "Classification",
+            "lineageTag": "11abf15a-6c9e-47f7-ab72-12f08fccd879"
+          },
+          {
+            "name": "Precision",
+            "description": "Asset-day positive predictive value among labeled rows.",
+            "expression": "DIVIDE([Prediction TP], [Prediction TP] + [Prediction FP])",
+            "formatString": "0.0%",
+            "displayFolder": "Classification",
+            "lineageTag": "84e5b7cc-d31e-4f8b-a8d2-2064d263d5dc"
+          },
+          {
+            "name": "Recall",
+            "description": "Asset-day sensitivity among labeled rows; not the policy event catch rate.",
+            "expression": "DIVIDE([Prediction TP], [Prediction TP] + [Prediction FN])",
+            "formatString": "0.0%",
+            "displayFolder": "Classification",
+            "lineageTag": "b9259858-e639-46ce-9091-d9803c5cef13"
+          },
+          {
+            "name": "Classifier False Positive Rate",
+            "description": "FP/(FP+TN) on labeled asset-days, distinct from unnecessary service/charged visits.",
+            "expression": "DIVIDE([Prediction FP], [Prediction FP] + [Prediction TN])",
+            "formatString": "0.0%",
+            "displayFolder": "Classification",
+            "lineageTag": "a8476963-7a6c-4a98-a8de-e5a746bd9af9"
+          },
+          {
+            "name": "Current User",
+            "description": "Diagnostic UPN for security testing. Use the actual sign-in UPN, not an assumed email alias.",
+            "expression": "USERPRINCIPALNAME()",
+            "formatString": "@",
+            "displayFolder": "Security",
+            "lineageTag": "982c597d-aca6-4a26-b5f5-e682a6b18864"
+          },
+          {
+            "name": "Risk Status",
+            "description": "Latest model score versus the validation-selected threshold; a decision aid for the reliability engineer.",
+            "expression": "VAR Risk = [Latest Risk Score]\nRETURN IF(ISBLANK(Risk), \"No observation\", IF(Risk >= [Alert Threshold], \"Inspect / dispatch\", IF(Risk >= [Alert Threshold] / 2, \"Watch trend\", \"Routine monitoring\")))",
+            "formatString": "@",
+            "displayFolder": "Condition",
+            "lineageTag": "2e0ec0bb-1b92-4a9b-a8ea-3f487c222a3b"
+          },
+          {
+            "name": "Risk Color",
+            "description": "Accessible severity palette for current asset risk. Always pair colour with Risk Status text.",
+            "expression": "VAR Risk = [Latest Risk Score]\nRETURN SWITCH(TRUE(), ISBLANK(Risk), \"#64748B\", Risk >= [Alert Threshold], \"#B54747\", Risk >= [Alert Threshold] / 2, \"#B7791F\", \"#087F8C\")",
+            "formatString": "@",
+            "displayFolder": "Condition",
+            "lineageTag": "2151743a-085b-4354-b644-733938e8867d"
+          },
+          {
+            "name": "Mean Risk",
+            "description": "Report binding alias for Mean Risk Score; same filter and denominator semantics.",
+            "expression": "[Mean Risk Score]",
+            "formatString": "0.0%",
+            "displayFolder": "Report aliases",
+            "lineageTag": "51d2796d-a750-44c4-85f2-2f889451d12a"
+          },
+          {
+            "name": "Labeled Reading Count",
+            "description": "Report binding alias for Labeled Readings; same filter and denominator semantics.",
+            "expression": "[Labeled Readings]",
+            "formatString": "#,0",
+            "displayFolder": "Report aliases",
+            "lineageTag": "81de64cc-913b-40a0-abb6-abed36b06704"
+          },
+          {
+            "name": "Latest Reading Date",
+            "description": "Report binding alias for Latest Observation Date; same filter and denominator semantics.",
+            "expression": "[Latest Observation Date]",
+            "formatString": "yyyy-mm-dd",
+            "displayFolder": "Report aliases",
+            "lineageTag": "7dc1cb0c-5885-4324-a604-6569aa101f04"
+          },
+          {
+            "name": "Latest Risk Status",
+            "description": "Report binding alias for Risk Status; same filter and denominator semantics.",
+            "expression": "[Risk Status]",
+            "formatString": "@",
+            "displayFolder": "Report aliases",
+            "lineageTag": "49ac9573-df36-40be-beec-cce99a353837"
+          },
+          {
+            "name": "Latest Risk Color",
+            "description": "Report binding alias for Risk Color; same filter and denominator semantics.",
+            "expression": "[Risk Color]",
+            "formatString": "@",
+            "displayFolder": "Report aliases",
+            "lineageTag": "37b2f326-c9f4-4c2e-b11b-c15b1504cdc5"
+          },
+          {
+            "name": "Breakdown Events",
+            "description": "Report binding alias for Breakdowns; same filter and denominator semantics.",
+            "expression": "[Breakdowns]",
+            "formatString": "#,0",
+            "displayFolder": "Report aliases",
+            "lineageTag": "17e223f5-fe83-4f93-9cac-a19401baf138"
+          },
+          {
+            "name": "Executive Insight",
+            "description": "Dynamic comparison statement that displays selected observed exposure and labels the scenario as synthetic.",
+            "expression": "VAR Savings = [Cost Avoided vs Fixed]\nVAR Days = [Observed Days]\nVAR Assets = [Asset Count]\nRETURN IF(Days > 0,\n    \"Predictive maintenance \" & IF(Savings >= 0, \"avoids \", \"adds \") & \"C$\" & FORMAT(ABS(Savings), \"#,##0\", \"en-CA\") & \"/year versus fixed service | \" & FORMAT(Assets, \"0\") & \" assets, \" & FORMAT(Days, \"0\") & \" observed days | Synthetic scenario\",\n    \"No observed exposure in the selected site, asset and date scope\")",
+            "formatString": "@",
+            "displayFolder": "Context",
+            "lineageTag": "f613ead7-65c2-44b1-9bce-336e41bdea5e"
+          },
+          {
+            "name": "Fleet Queue Rank",
+            "description": "Unique latest-risk rank within selected site, asset and date context; descending score with asset ID as deterministic tie-break. Blank risks are excluded and RLS remains in force. Used only to bound the six-row Fleet queue.",
+            "expression": "VAR CurrentAsset = SELECTEDVALUE(Dim_Asset[asset_id])\nVAR CurrentRisk = [Latest Risk Score]\nVAR Candidates =\n    FILTER(\n        ADDCOLUMNS(ALLSELECTED(Dim_Asset[asset_id]), \"__QueueRisk\", [Latest Risk Score]),\n        NOT ISBLANK([__QueueRisk])\n    )\nRETURN\n    IF(\n        NOT ISBLANK(CurrentAsset) && NOT ISBLANK(CurrentRisk),\n        1 + COUNTROWS(\n            FILTER(\n                Candidates,\n                [__QueueRisk] > CurrentRisk\n                    || ([__QueueRisk] = CurrentRisk && Dim_Asset[asset_id] < CurrentAsset)\n            )\n        )\n    )",
+            "formatString": "0",
+            "displayFolder": "Condition"
+          }
+        ]
+      },
+      {
+        "name": "Param_DowntimeCost",
+        "description": "What-if downtime cost in CAD/hour, 0 to 2500 by 50. Default selected value 1000; effective only in uniform override mode.",
+        "lineageTag": "e265320b-ceeb-43db-b796-a2cddda18e58",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "Downtime Cost Per Hour",
+            "dataType": "int64",
+            "isNameInferred": false,
+            "description": "Downtime Cost Per Hour.",
+            "sourceColumn": "[Value]",
+            "formatString": "\"C$\"#,0",
+            "lineageTag": "f14d1753-823b-4906-bc60-1de06972a34d",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "PBI_ParameterMetadata",
+                "value": "{\"version\":0}"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Param_DowntimeCost",
+            "mode": "import",
+            "source": {
+              "type": "calculated",
+              "expression": "GENERATESERIES(0, 2500, 50)"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Param_CostMode",
+        "description": "Select equipment-specific rates or the uniform what-if rate. Equipment defaults preserves the baseline published scenario.",
+        "lineageTag": "718891c5-6b88-4678-b41d-d212e7afdd69",
+        "columns": [
+          {
+            "name": "Cost Mode",
+            "dataType": "string",
+            "description": "Cost Mode.",
+            "sourceColumn": "Cost Mode",
+            "lineageTag": "63d47e1a-abe0-4edb-a49f-68c47a6d18f4",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Param_CostMode",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let Source = #table(type table [#\"Cost Mode\"=text], {{\"Equipment defaults\"}, {\"Uniform override\"}}) in Source"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Param_Breakdown",
+        "description": "Native field parameter for chart axes. Uses NAMEOF plus groupByColumns and ParameterMetadata; not used in Q&A or Key Influencers.",
+        "lineageTag": "c7d6ff09-6224-44a6-9552-6cd952fa3da8",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "Breakdown",
+            "dataType": "string",
+            "isNameInferred": false,
+            "description": "Breakdown.",
+            "sourceColumn": "[Value1]",
+            "sortByColumn": "Breakdown Order",
+            "lineageTag": "ea2ec956-ecb0-4ad2-bd70-b1c3ba88425e",
+            "summarizeBy": "none",
+            "relatedColumnDetails": {
+              "groupByColumns": [
+                {
+                  "groupingColumn": "Breakdown Fields"
+                }
+              ]
+            }
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Breakdown Fields",
+            "dataType": "string",
+            "isNameInferred": false,
+            "description": "Breakdown Fields.",
+            "isHidden": true,
+            "sourceColumn": "[Value2]",
+            "sortByColumn": "Breakdown Order",
+            "lineageTag": "08b3d90b-f17b-400d-ae75-1e11fa3af64d",
+            "summarizeBy": "none",
+            "extendedProperties": [
+              {
+                "type": "json",
+                "name": "ParameterMetadata",
+                "value": {
+                  "version": 3,
+                  "kind": 2
+                }
+              }
+            ]
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Breakdown Order",
+            "dataType": "int64",
+            "isNameInferred": false,
+            "description": "Breakdown Order.",
+            "isHidden": true,
+            "sourceColumn": "[Value3]",
+            "lineageTag": "aa6d5a35-fef0-4568-9e7a-1e94cd417051",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Param_Breakdown",
+            "mode": "import",
+            "source": {
+              "type": "calculated",
+              "expression": "{ (\"Site\", NAMEOF(Dim_Site[site]), 0), (\"Asset type\", NAMEOF(Dim_Asset[asset_type]), 1) }"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Dim_ConfusionActual",
+        "description": "Disconnected confusion-matrix axis; explicit measures exclude censored observations.",
+        "lineageTag": "a348a294-1b42-48f1-a855-dee9c187acbd",
+        "columns": [
+          {
+            "name": "Actual",
+            "dataType": "string",
+            "description": "Actual.",
+            "sourceColumn": "Actual",
+            "sortByColumn": "Sort",
+            "lineageTag": "f7967368-471d-4e79-90f4-7245faa2134d",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Sort",
+            "dataType": "int64",
+            "description": "Sort.",
+            "isHidden": true,
+            "sourceColumn": "Sort",
+            "lineageTag": "f5cafc7a-6dde-447d-902b-11c47481fdbf",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_ConfusionActual",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let Source = #table(type table [Actual=text, Sort=Int64.Type], {{\"Failure\", 1}, {\"No failure\", 2}}) in Source"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Dim_ConfusionPredicted",
+        "description": "Disconnected confusion-matrix axis; explicit measures exclude censored observations.",
+        "lineageTag": "4c0685d3-e8c9-46cd-89fe-9b20f85b9945",
+        "columns": [
+          {
+            "name": "Predicted",
+            "dataType": "string",
+            "description": "Predicted.",
+            "sourceColumn": "Predicted",
+            "sortByColumn": "Sort",
+            "lineageTag": "59a790f7-ce05-488b-8083-3d18a110f175",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Sort",
+            "dataType": "int64",
+            "description": "Sort.",
+            "isHidden": true,
+            "sourceColumn": "Sort",
+            "lineageTag": "6be883cc-288a-4623-9d37-d49c7f81f771",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_ConfusionPredicted",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let Source = #table(type table [Predicted=text, Sort=Int64.Type], {{\"Failure\", 1}, {\"No failure\", 2}}) in Source"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Dim_CostStep",
+        "description": "Disconnected additive waterfall steps; three bars accumulate from reactive cost to predictive cost without double-counting a final total.",
+        "lineageTag": "9274c6ed-376a-46d0-b492-52679a440dd7",
+        "columns": [
+          {
+            "name": "Step",
+            "dataType": "string",
+            "description": "Step.",
+            "sourceColumn": "Step",
+            "sortByColumn": "Sort",
+            "lineageTag": "5a965e24-c421-438d-8df4-da361f6abb9f",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Sort",
+            "dataType": "int64",
+            "description": "Sort.",
+            "isHidden": true,
+            "sourceColumn": "Sort",
+            "lineageTag": "c4f2f9dc-a59c-46a9-8074-18c8d351575d",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_CostStep",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let Source = #table(type table [Step=text, Sort=Int64.Type], {{\"Reactive baseline\", 1}, {\"Fixed schedule change\", 2}, {\"Predictive change\", 3}}) in Source"
+            }
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "Fact_Readings_Dim_Asset",
+        "fromTable": "Fact_Readings",
+        "fromColumn": "asset_id",
+        "toTable": "Dim_Asset",
+        "toColumn": "asset_id"
+      },
+      {
+        "name": "Fact_Readings_Dim_Site",
+        "fromTable": "Fact_Readings",
+        "fromColumn": "site",
+        "toTable": "Dim_Site",
+        "toColumn": "site"
+      },
+      {
+        "name": "Fact_Readings_Dim_Date",
+        "fromTable": "Fact_Readings",
+        "fromColumn": "date",
+        "toTable": "Dim_Date",
+        "toColumn": "Date"
+      },
+      {
+        "name": "Fact_Events_Dim_Asset",
+        "fromTable": "Fact_Events",
+        "fromColumn": "asset_id",
+        "toTable": "Dim_Asset",
+        "toColumn": "asset_id"
+      },
+      {
+        "name": "Fact_Events_Dim_Site",
+        "fromTable": "Fact_Events",
+        "fromColumn": "site",
+        "toTable": "Dim_Site",
+        "toColumn": "site"
+      },
+      {
+        "name": "Fact_Events_Dim_Date",
+        "fromTable": "Fact_Events",
+        "fromColumn": "event_date",
+        "toTable": "Dim_Date",
+        "toColumn": "Date"
+      },
+      {
+        "name": "Fact_Events_Dim_Policy",
+        "fromTable": "Fact_Events",
+        "fromColumn": "policy",
+        "toTable": "Dim_Policy",
+        "toColumn": "policy"
+      },
+      {
+        "name": "Fact_ServiceVisits_Dim_Asset",
+        "fromTable": "Fact_ServiceVisits",
+        "fromColumn": "asset_id",
+        "toTable": "Dim_Asset",
+        "toColumn": "asset_id"
+      },
+      {
+        "name": "Fact_ServiceVisits_Dim_Site",
+        "fromTable": "Fact_ServiceVisits",
+        "fromColumn": "site",
+        "toTable": "Dim_Site",
+        "toColumn": "site"
+      },
+      {
+        "name": "Fact_ServiceVisits_Dim_Date",
+        "fromTable": "Fact_ServiceVisits",
+        "fromColumn": "service_date",
+        "toTable": "Dim_Date",
+        "toColumn": "Date"
+      },
+      {
+        "name": "Fact_ServiceVisits_Dim_Policy",
+        "fromTable": "Fact_ServiceVisits",
+        "fromColumn": "policy",
+        "toTable": "Dim_Policy",
+        "toColumn": "policy"
+      }
+    ],
+    "cultures": [
+      {
+        "name": "en-US",
+        "linguisticMetadata": {
+          "content": {
+            "Version": "2.0.0",
+            "Language": "en-US",
+            "Entities": {
+              "breakdowns": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "KPI_Measures",
+                    "ConceptualProperty": "Breakdowns"
+                  }
+                },
+                "Terms": [
+                  {
+                    "breakdown": {}
+                  },
+                  {
+                    "breakdowns": {}
+                  },
+                  {
+                    "breakdown events": {}
+                  },
+                  {
+                    "missed failures": {}
+                  },
+                  {
+                    "unprevented failures": {}
+                  }
+                ]
+              },
+              "risk": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "KPI_Measures",
+                    "ConceptualProperty": "Latest Risk Score"
+                  }
+                },
+                "Terms": [
+                  {
+                    "latest risk": {}
+                  },
+                  {
+                    "current risk": {}
+                  },
+                  {
+                    "latest risk score": {}
+                  }
+                ]
+              },
+              "asset": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "Dim_Asset",
+                    "ConceptualProperty": "asset_id"
+                  }
+                },
+                "Terms": [
+                  {
+                    "asset": {}
+                  },
+                  {
+                    "equipment": {}
+                  },
+                  {
+                    "equipment identifier": {}
+                  }
+                ]
+              },
+              "site": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "Dim_Site",
+                    "ConceptualProperty": "site"
+                  }
+                },
+                "Terms": [
+                  {
+                    "site": {}
+                  },
+                  {
+                    "location": {}
+                  },
+                  {
+                    "field": {}
+                  }
+                ]
+              },
+              "annualized_cost": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "KPI_Measures",
+                    "ConceptualProperty": "Annualized Cost"
+                  }
+                },
+                "Terms": [
+                  {
+                    "annualized cost": {}
+                  },
+                  {
+                    "annual cost": {}
+                  }
+                ]
+              },
+              "caught": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "KPI_Measures",
+                    "ConceptualProperty": "Caught Events"
+                  }
+                },
+                "Terms": [
+                  {
+                    "caught failures": {}
+                  },
+                  {
+                    "prevented failures": {}
+                  }
+                ]
+              }
+            }
+          },
+          "contentType": "json"
+        }
+      },
+      {
+        "name": "en-CA",
+        "linguisticMetadata": {
+          "content": {
+            "Version": "2.0.0",
+            "Language": "en-US",
+            "Entities": {
+              "dim_site.site": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "Dim_Site",
+                    "ConceptualProperty": "site"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Site": {
+                      "State": "Suggested",
+                      "Source": {
+                        "Type": "External",
+                        "Agent": "PowerBI.VisualColumnRename"
+                      },
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "contentType": "json"
+        }
+      }
+    ],
+    "roles": [
+      {
+        "name": "Site Manager",
+        "description": "Dynamic allow-list security. Unknown UPNs receive zero sites/assets/facts; dimension labels and the mapping are secured too.",
+        "modelPermission": "read",
+        "tablePermissions": [
+          {
+            "name": "Dim_UserSite",
+            "filterExpression": "LOWER(TRIM(Dim_UserSite[user_principal_name])) = LOWER(TRIM(USERPRINCIPALNAME()))"
+          },
+          {
+            "name": "Dim_Site",
+            "filterExpression": "VAR CurrentUPN = LOWER(TRIM(USERPRINCIPALNAME()))\nVAR CurrentSite = Dim_Site[site]\nRETURN COUNTROWS(FILTER(Dim_UserSite, LOWER(TRIM(Dim_UserSite[user_principal_name])) = CurrentUPN && Dim_UserSite[site] = CurrentSite)) > 0"
+          },
+          {
+            "name": "Dim_Asset",
+            "filterExpression": "VAR CurrentUPN = LOWER(TRIM(USERPRINCIPALNAME()))\nVAR CurrentSite = Dim_Asset[site]\nRETURN COUNTROWS(FILTER(Dim_UserSite, LOWER(TRIM(Dim_UserSite[user_principal_name])) = CurrentUPN && Dim_UserSite[site] = CurrentSite)) > 0"
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "ff9eb67b0b354256a1d10b8dbdd8831f"
+          }
+        ]
+      }
+    ],
+    "expressions": [
+      {
+        "name": "DataFolder",
+        "description": "Dashboard CSV directory; set this Power Query parameter before refresh.",
+        "kind": "m",
+        "expression": "\"C:/Energy-Predictive-Equipment-Failure/data/processed/dashboard\" meta [IsParameterQuery=true, Type=\"Text\", IsParameterQueryRequired=true]",
+        "lineageTag": "deeb7c5b-24c1-464f-9c9b-4f25aa3eb932",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Text"
+          }
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      },
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"Dim_Asset\",\"Dim_Site\",\"Dim_UserSite\",\"Config_Model\",\"Fact_ServiceVisits\",\"Fact_Readings\",\"Fact_Events\",\"Dim_Policy\",\"Dim_Date\",\"KPI_Measures\",\"Param_CostMode\",\"Dim_ConfusionActual\",\"Dim_ConfusionPredicted\",\"Dim_CostStep\",\"DataFolder\"]"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"DevMode\"]"
+      }
+    ]
+  }
+}

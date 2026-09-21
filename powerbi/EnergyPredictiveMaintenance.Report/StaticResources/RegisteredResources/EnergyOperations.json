@@ -1,0 +1,114 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/powerbi-desktop-samples/main/Report%20Theme%20JSON%20Schema/reportThemeSchema-2.157.json",
+  "name": "Energy Operations",
+  "dataColors": [
+    "#087F8C",
+    "#17324D",
+    "#64748B",
+    "#6FA3B4",
+    "#B7791F",
+    "#B54747"
+  ],
+  "background": "#FFFFFF",
+  "foreground": "#233B51",
+  "tableAccent": "#087F8C",
+  "good": "#087F8C",
+  "neutral": "#B7791F",
+  "bad": "#B54747",
+  "textClasses": {
+    "callout": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 26,
+      "color": "#17324D"
+    },
+    "title": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 13,
+      "color": "#17324D"
+    },
+    "header": {
+      "fontFace": "Segoe UI",
+      "fontSize": 11,
+      "color": "#233B51"
+    },
+    "label": {
+      "fontFace": "Segoe UI",
+      "fontSize": 11,
+      "color": "#233B51"
+    }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "title": [
+          {
+            "fontFamily": "Segoe UI",
+            "fontSize": 13
+          }
+        ],
+        "legend": [
+          {
+            "fontSize": 10
+          }
+        ],
+        "categoryAxis": [
+          {
+            "fontSize": 10
+          }
+        ],
+        "valueAxis": [
+          {
+            "fontSize": 10
+          }
+        ],
+        "labels": [
+          {
+            "fontSize": 11
+          }
+        ],
+        "visualHeader": [
+          {
+            "show": true
+          }
+        ]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#F4F6F8"
+              }
+            },
+            "transparency": 0
+          }
+        ]
+      }
+    },
+    "waterfallChart": {
+      "*": {
+        "sentimentColors": [
+          {
+            "increaseFill": {
+              "solid": {
+                "color": "#B54747"
+              }
+            },
+            "decreaseFill": {
+              "solid": {
+                "color": "#087F8C"
+              }
+            },
+            "totalFill": {
+              "solid": {
+                "color": "#64748B"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+model Model
+	culture: en-CA
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-CA
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["Dim_Asset","Dim_Site","Dim_UserSite","Config_Model","Fact_ServiceVisits","Fact_Readings","Fact_Events","Dim_Policy","Dim_Date","KPI_Measures","Param_CostMode","Dim_ConfusionActual","Dim_ConfusionPredicted","Dim_CostStep","DataFolder"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Dim_Asset
+ref table Dim_Site
+ref table Dim_UserSite
+ref table Config_Model
+ref table Fact_ServiceVisits
+ref table Fact_Readings
+ref table Fact_Events
+ref table Dim_Policy
+ref table Dim_Date
+ref table KPI_Measures
+ref table Param_DowntimeCost
+ref table Param_CostMode
+ref table Param_Breakdown
+ref table Dim_ConfusionActual
+ref table Dim_ConfusionPredicted
+ref table Dim_CostStep
+
+ref role 'Site Manager'
+
+ref cultureInfo en-US
+ref cultureInfo en-CA
+

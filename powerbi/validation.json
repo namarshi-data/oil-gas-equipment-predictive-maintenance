@@ -1,0 +1,19 @@
+{
+  "json_schema_files_validated": 123,
+  "visual_bindings_checked": 101,
+  "tmdl_tables": 16,
+  "relationship_count": 11,
+  "visible_pages": 6,
+  "hidden_pages": 3,
+  "fleet_mobile_visuals": 6,
+  "errors": [],
+  "pbir_directory_contract_verified": true,
+  "reserved_table_names_checked": true,
+  "native_tmdl_parse_verified": true,
+  "desktop_refresh_verified": false,
+  "dax_execution_verified": false,
+  "service_rls_verified": false,
+  "scope": "Official PBIP/PBIR JSON schemas, directory completeness, Desktop reserved-name guard, Microsoft TOM TMDL parse, bindings, star/role/date definitions; no engine execution or rendering",
+  "retiring_qna_visual_absent": true,
+  "native_format_objects_checked": 101
+}

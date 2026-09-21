@@ -1,0 +1,17 @@
+name: energy-failure-ml
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      # Azure's batch runtime currently requires numpy <2.3.3 on Linux.
+      - numpy==2.3.2
+      - pandas==2.3.3
+      - scipy==1.16.2
+      - scikit-learn==1.7.2
+      - matplotlib==3.10.7
+      - joblib==1.5.2
+      # Batch deployment runtime dependencies mandated by Azure ML.
+      - azureml-core==1.61.0.post4
+      - azureml-dataset-runtime[fuse]==1.62.0.post1

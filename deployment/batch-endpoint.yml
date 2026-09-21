@@ -1,0 +1,4 @@
+$schema: https://azuremlschemas.azureedge.net/latest/batchEndpoint.schema.json
+name: energy-failure-batch
+description: Authenticated batch inference for engineered equipment sensor features.
+auth_mode: aad_token

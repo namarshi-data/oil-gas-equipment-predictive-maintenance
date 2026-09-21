@@ -1,0 +1,146 @@
+{
+  "cloud_deployed": false,
+  "model_version": "energy-v3-a4bbde11ebed7e1afce7",
+  "artifact_sha256": "ac7471f41831d28c2c76e8e8f40ceaeabd37d3ed21eb998048a6eb7c9c6ddbc3",
+  "baseline": {
+    "as_of": "2025-06-30",
+    "scope": "local replay; diagnostic thresholds, no automated dispatch/retraining",
+    "current_window_days": 7,
+    "reference_window_days": 28,
+    "thresholds": {
+      "stale_days": 2,
+      "imputed_row_rate": 0.1,
+      "manual_review_rate": 0.2,
+      "score_psi": 0.2,
+      "alert_rate_absolute_change": 0.1,
+      "mature_recall_floor": 0.5
+    },
+    "signals": {
+      "current_rows": 560,
+      "reference_rows": 2240,
+      "tracked_assets": 80,
+      "stale_assets": 0,
+      "schema_contract": "passed",
+      "mean_risk_score": 0.17946127501031395,
+      "imputed_row_rate": 0.05178571428571429,
+      "alert_rate": 0.14642857142857144,
+      "manual_review_rate": 0.05178571428571429,
+      "unknown_maintenance_rate": 0.0,
+      "flatline_review_rate": 0.0,
+      "score_psi": 0.017259120900965177,
+      "alert_rate_absolute_change": 0.005803571428571408
+    },
+    "mature_label_metrics": {
+      "horizon_days": 30,
+      "mature_rows": 4880,
+      "precision": 0.9912280701754386,
+      "recall": 0.6615925058548009,
+      "brier_score": 0.03555442217591303,
+      "positive_rows": 854
+    },
+    "findings": []
+  },
+  "controlled_quality_flag_spike": {
+    "as_of": "2025-06-30",
+    "scope": "local replay; diagnostic thresholds, no automated dispatch/retraining",
+    "current_window_days": 7,
+    "reference_window_days": 28,
+    "thresholds": {
+      "stale_days": 2,
+      "imputed_row_rate": 0.1,
+      "manual_review_rate": 0.2,
+      "score_psi": 0.2,
+      "alert_rate_absolute_change": 0.1,
+      "mature_recall_floor": 0.5
+    },
+    "signals": {
+      "current_rows": 560,
+      "reference_rows": 2240,
+      "tracked_assets": 80,
+      "stale_assets": 0,
+      "schema_contract": "passed",
+      "mean_risk_score": 0.17946127501031395,
+      "imputed_row_rate": 1.0,
+      "alert_rate": 0.14642857142857144,
+      "manual_review_rate": 1.0,
+      "unknown_maintenance_rate": 0.0,
+      "flatline_review_rate": 0.0,
+      "score_psi": 0.017259120900965177,
+      "alert_rate_absolute_change": 0.005803571428571408
+    },
+    "mature_label_metrics": {
+      "horizon_days": 30,
+      "mature_rows": 4880,
+      "precision": 0.9912280701754386,
+      "recall": 0.6615925058548009,
+      "brier_score": 0.03555442217591303,
+      "positive_rows": 854
+    },
+    "findings": [
+      {
+        "code": "imputed_row_rate",
+        "owner": "SCADA/data engineer",
+        "response": "Inspect missing channel flags and sensor freshness.",
+        "value": 1.0
+      },
+      {
+        "code": "manual_review_rate",
+        "owner": "Reliability engineer",
+        "response": "Prioritize the advisory queue; investigate quality and commissioning reasons.",
+        "value": 1.0
+      }
+    ]
+  },
+  "controlled_delivery_delay": {
+    "as_of": "2025-07-07",
+    "scope": "local replay; diagnostic thresholds, no automated dispatch/retraining",
+    "current_window_days": 7,
+    "reference_window_days": 28,
+    "thresholds": {
+      "stale_days": 2,
+      "imputed_row_rate": 0.1,
+      "manual_review_rate": 0.2,
+      "score_psi": 0.2,
+      "alert_rate_absolute_change": 0.1,
+      "mature_recall_floor": 0.5
+    },
+    "signals": {
+      "current_rows": 0,
+      "reference_rows": 2240,
+      "tracked_assets": 80,
+      "stale_assets": 80,
+      "schema_contract": "passed",
+      "mean_risk_score": null,
+      "imputed_row_rate": null,
+      "alert_rate": null,
+      "manual_review_rate": null,
+      "unknown_maintenance_rate": null,
+      "flatline_review_rate": null,
+      "score_psi": null,
+      "alert_rate_absolute_change": null
+    },
+    "mature_label_metrics": {
+      "horizon_days": 30,
+      "mature_rows": 4880,
+      "precision": 0.9912280701754386,
+      "recall": 0.6615925058548009,
+      "brier_score": 0.03555442217591303,
+      "positive_rows": 854
+    },
+    "findings": [
+      {
+        "code": "stale_assets",
+        "owner": "SCADA/data engineer",
+        "response": "Check transport outages and restore telemetry before relying on scores.",
+        "value": 80
+      },
+      {
+        "code": "no_recent_scores",
+        "owner": "ML engineer",
+        "response": "Check the batch schedule and data delivery; surface unavailable status.",
+        "value": 0
+      }
+    ]
+  },
+  "scenario_note": "Quality flag spike exercises monitoring and review responses; it is not a physical sensor fault simulation."
+}

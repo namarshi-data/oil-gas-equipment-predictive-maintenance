@@ -1,0 +1,103 @@
+/// One visit per policy/asset/service date. Includes carry-in ledger rows, excluded from incurred cost measures.
+table Fact_ServiceVisits
+	lineageTag: d9e24e7a-feda-4403-b286-20e10a7aa168
+
+	/// policy.
+	column policy
+		dataType: string
+		isHidden
+		lineageTag: 681f48ce-b4ca-4060-9099-1e7ecdb688d0
+		summarizeBy: none
+		sourceColumn: policy
+
+	/// asset id.
+	column asset_id
+		dataType: string
+		isHidden
+		lineageTag: 42caa64c-14db-4c03-9d9b-2da49be92b99
+		summarizeBy: none
+		sourceColumn: asset_id
+
+	/// asset type.
+	column asset_type
+		dataType: string
+		isHidden
+		lineageTag: ed4def14-645c-4d23-b979-741a6d553311
+		summarizeBy: none
+		sourceColumn: asset_type
+
+	/// site.
+	column site
+		dataType: string
+		isHidden
+		lineageTag: 0f2e3f52-125b-4df8-a5fc-fd00daed8962
+		summarizeBy: none
+		sourceColumn: site
+
+	/// alert date.
+	column alert_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: eba98656-8676-4721-bc78-bd51c6124654
+		summarizeBy: none
+		sourceColumn: alert_date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	/// service date.
+	column service_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 1364269c-ba9d-4b75-a6b9-afa14f0af480
+		summarizeBy: none
+		sourceColumn: service_date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	/// event id.
+	column event_id
+		dataType: string
+		lineageTag: 226b58d1-444a-4453-9ee3-9521ff3aecff
+		summarizeBy: none
+		sourceColumn: event_id
+
+	/// outcome.
+	column outcome
+		dataType: string
+		lineageTag: 17f5889a-c8c6-42c4-86ba-519c7b877cd6
+		summarizeBy: none
+		sourceColumn: outcome
+
+	/// in evaluation window.
+	column in_evaluation_window
+		dataType: boolean
+		lineageTag: 8782ca11-0df7-42d5-a160-7520587e8b06
+		summarizeBy: none
+		sourceColumn: in_evaluation_window
+
+	/// planned cost cad.
+	column planned_cost_cad
+		dataType: double
+		lineageTag: 534f7cc9-b6a2-468e-8ecf-1d980186af64
+		summarizeBy: none
+		sourceColumn: planned_cost_cad
+
+	/// planned downtime hours.
+	column planned_downtime_hours
+		dataType: double
+		lineageTag: f3957f9a-f498-413e-a7b2-5d54aa9abba1
+		summarizeBy: none
+		sourceColumn: planned_downtime_hours
+
+	partition Fact_ServiceVisits = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "/service_visits.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    BlankToNull = Table.ReplaceValue(Headers, "", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),
+				    Typed = Table.TransformColumnTypes(BlankToNull, {{"policy", type text}, {"asset_id", type text}, {"asset_type", type text}, {"site", type text}, {"alert_date", type date}, {"service_date", type date}, {"event_id", type text}, {"outcome", type text}, {"planned_cost_cad", type number}, {"planned_downtime_hours", type number}}, "en-CA"),
+				    Logical = Table.TransformColumns(Typed, {{"in_evaluation_window", each if _ = null then null else if List.Contains({"1", "1.0", "true"}, Text.Lower(Text.From(_))) then true else if List.Contains({"0", "0.0", "false"}, Text.Lower(Text.From(_))) then false else error "Invalid boolean", type nullable logical}})
+				in
+				    Logical
+

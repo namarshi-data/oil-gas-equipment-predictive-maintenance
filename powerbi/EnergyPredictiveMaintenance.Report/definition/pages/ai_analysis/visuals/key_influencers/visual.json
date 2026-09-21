@@ -1,0 +1,350 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "key_influencers",
+  "position": {
+    "x": 24,
+    "y": 190,
+    "width": 1232,
+    "height": 472,
+    "z": 27000,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "keyDriversVisual",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Target": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Readings"
+                    }
+                  },
+                  "Property": "target_failure_30d"
+                }
+              },
+              "queryRef": "Fact_Readings.target_failure_30d",
+              "nativeQueryRef": "target_failure_30d"
+            }
+          ]
+        },
+        "ExplainBy": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Readings"
+                    }
+                  },
+                  "Property": "vibration_mm_s"
+                }
+              },
+              "queryRef": "Fact_Readings.vibration_mm_s",
+              "nativeQueryRef": "vibration_mm_s"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Readings"
+                    }
+                  },
+                  "Property": "bearing_temperature_c"
+                }
+              },
+              "queryRef": "Fact_Readings.bearing_temperature_c",
+              "nativeQueryRef": "bearing_temperature_c"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Readings"
+                    }
+                  },
+                  "Property": "pressure_bar"
+                }
+              },
+              "queryRef": "Fact_Readings.pressure_bar",
+              "nativeQueryRef": "pressure_bar"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Readings"
+                    }
+                  },
+                  "Property": "rpm"
+                }
+              },
+              "queryRef": "Fact_Readings.rpm",
+              "nativeQueryRef": "rpm"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Readings"
+                    }
+                  },
+                  "Property": "runtime_hours"
+                }
+              },
+              "queryRef": "Fact_Readings.runtime_hours",
+              "nativeQueryRef": "runtime_hours"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Readings"
+                    }
+                  },
+                  "Property": "power_kw"
+                }
+              },
+              "queryRef": "Fact_Readings.power_kw",
+              "nativeQueryRef": "power_kw"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Readings"
+                    }
+                  },
+                  "Property": "load_pct"
+                }
+              },
+              "queryRef": "Fact_Readings.load_pct",
+              "nativeQueryRef": "load_pct"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'key_influencers'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "objects": {
+      "keyDrivers": [
+        {
+          "properties": {
+            "targetValue": {
+              "expr": {
+                "Literal": {
+                  "Value": "'true'"
+                }
+              }
+            },
+            "selectedAnalysis": {
+              "expr": {
+                "Literal": {
+                  "Value": "'keyInfluencers'"
+                }
+              }
+            },
+            "selectedSort": {
+              "expr": {
+                "Literal": {
+                  "Value": "'impact'"
+                }
+              }
+            },
+            "allowKeyDriversCounting": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "countType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'relative'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "keyInfluencersVisual": [
+        {
+          "properties": {
+            "primaryColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#087F8C'"
+                    }
+                  }
+                }
+              }
+            },
+            "primaryFontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
+                    }
+                  }
+                }
+              }
+            },
+            "secondaryColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#E1EFF1'"
+                    }
+                  }
+                }
+              }
+            },
+            "secondaryFontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#233B51'"
+                    }
+                  }
+                }
+              }
+            },
+            "canvasColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

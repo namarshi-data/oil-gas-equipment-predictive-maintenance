@@ -1,0 +1,15 @@
+.git/
+.venv/
+__pycache__/
+.pytest_cache/
+*.egg-info/
+data/
+artifacts/
+reports/
+notebooks/
+tests/
+powerbi/schemas/
+powerbi/EnergyPredictiveMaintenance.Report/
+powerbi/EnergyPredictiveMaintenance.SemanticModel/
+powerbi/*.pbip
+docs/

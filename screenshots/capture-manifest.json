@@ -1,0 +1,956 @@
+{
+  "edition": "Final complete portfolio with browser and user-supplied Power BI screenshots",
+  "requested_assistant_url": "http://127.0.0.1:8790/",
+  "capture_note": "Captured the latest hyphen-normalized GitHub copy of the same assistant on port 8791, with its static reviewer tour and dashboard companion on port 8792. The existing user preview was unchanged. Images are actual viewport captures, with upper/middle/lower views where pages extend below the viewport. Scrollable tables show their initial visible rows; these images are page evidence, not a data export.",
+  "native_powerbi_status": "Eight user-supplied images: six main pages, Asset Detail and Asset Context. Sensor Associations image not supplied.",
+  "entries": [
+    {
+      "file": "assistant/00-welcome.jpg",
+      "title": "Evidence assistant - before any question",
+      "surface": "assistant",
+      "phase": "welcome",
+      "question": null,
+      "url": "http://127.0.0.1:8791/",
+      "viewport": {
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:45:56.581Z",
+      "image_dimensions": {
+        "width": 1600,
+        "height": 900
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "assistant/01-policy-comparison-before.jpg",
+      "title": "Policy comparison - question ready",
+      "surface": "assistant",
+      "phase": "before",
+      "question": "Compare policy costs and caught failures",
+      "url": "http://127.0.0.1:8791/",
+      "viewport": {
+        "documentHeight": 900,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:46:29.847Z",
+      "image_dimensions": {
+        "width": 1600,
+        "height": 900
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "assistant/01-policy-comparison-after.jpg",
+      "title": "Policy comparison - response",
+      "surface": "assistant",
+      "phase": "after",
+      "question": "Compare policy costs and caught failures",
+      "url": "http://127.0.0.1:8791/",
+      "viewport": {
+        "documentHeight": 900,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:46:30.171Z",
+      "image_dimensions": {
+        "width": 1600,
+        "height": 900
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "assistant/02-highest-risk-assets-before.jpg",
+      "title": "Highest-risk assets - question ready",
+      "surface": "assistant",
+      "phase": "before",
+      "question": "Show the top 6 assets by latest risk",
+      "url": "http://127.0.0.1:8791/",
+      "viewport": {
+        "documentHeight": 900,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:46:30.281Z",
+      "image_dimensions": {
+        "width": 1600,
+        "height": 900
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "assistant/02-highest-risk-assets-after.jpg",
+      "title": "Highest-risk assets - response",
+      "surface": "assistant",
+      "phase": "after",
+      "question": "Show the top 6 assets by latest risk",
+      "url": "http://127.0.0.1:8791/",
+      "viewport": {
+        "documentHeight": 900,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:46:30.600Z",
+      "image_dimensions": {
+        "width": 1600,
+        "height": 900
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "assistant/03-model-explanation-before.jpg",
+      "title": "Model and validation - question ready",
+      "surface": "assistant",
+      "phase": "before",
+      "question": "Explain the model and its validation",
+      "url": "http://127.0.0.1:8791/",
+      "viewport": {
+        "documentHeight": 900,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:46:30.718Z",
+      "image_dimensions": {
+        "width": 1600,
+        "height": 900
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "assistant/03-model-explanation-after.jpg",
+      "title": "Model and validation - response",
+      "surface": "assistant",
+      "phase": "after",
+      "question": "Explain the model and its validation",
+      "url": "http://127.0.0.1:8791/",
+      "viewport": {
+        "documentHeight": 900,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:46:31.039Z",
+      "image_dimensions": {
+        "width": 1600,
+        "height": 900
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "assistant/04-access-controls-before.jpg",
+      "title": "Site access controls - question ready",
+      "surface": "assistant",
+      "phase": "before",
+      "question": "How does site security work?",
+      "url": "http://127.0.0.1:8791/",
+      "viewport": {
+        "documentHeight": 900,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:46:48.896Z",
+      "image_dimensions": {
+        "width": 1600,
+        "height": 900
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "assistant/04-access-controls-after.jpg",
+      "title": "Site access controls - response",
+      "surface": "assistant",
+      "phase": "after",
+      "question": "How does site security work?",
+      "url": "http://127.0.0.1:8791/",
+      "viewport": {
+        "documentHeight": 900,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:46:49.210Z",
+      "image_dimensions": {
+        "width": 1600,
+        "height": 900
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "assistant/05-asset-detail-before.jpg",
+      "title": "Authorized asset detail - question ready",
+      "surface": "assistant",
+      "phase": "before",
+      "question": "Latest risk for AB-001",
+      "url": "http://127.0.0.1:8791/",
+      "viewport": {
+        "documentHeight": 900,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:46:49.344Z",
+      "image_dimensions": {
+        "width": 1600,
+        "height": 900
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "assistant/05-asset-detail-after.jpg",
+      "title": "Authorized asset detail - response",
+      "surface": "assistant",
+      "phase": "after",
+      "question": "Latest risk for AB-001",
+      "url": "http://127.0.0.1:8791/",
+      "viewport": {
+        "documentHeight": 900,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:46:49.663Z",
+      "image_dimensions": {
+        "width": 1600,
+        "height": 900
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "assistant/06-cost-methodology-before.jpg",
+      "title": "Annualized cost methodology - question ready",
+      "surface": "assistant",
+      "phase": "before",
+      "question": "How is annualized cost calculated?",
+      "url": "http://127.0.0.1:8791/",
+      "viewport": {
+        "documentHeight": 900,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:46:49.776Z",
+      "image_dimensions": {
+        "width": 1600,
+        "height": 900
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "assistant/06-cost-methodology-after.jpg",
+      "title": "Annualized cost methodology - response",
+      "surface": "assistant",
+      "phase": "after",
+      "question": "How is annualized cost calculated?",
+      "url": "http://127.0.0.1:8791/",
+      "viewport": {
+        "documentHeight": 900,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:46:50.107Z",
+      "image_dimensions": {
+        "width": 1600,
+        "height": 900
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "assistant/07-calibration-before.jpg",
+      "title": "Risk-score calibration - question ready",
+      "surface": "assistant",
+      "phase": "before",
+      "question": "Are risk scores calibrated?",
+      "url": "http://127.0.0.1:8791/",
+      "viewport": {
+        "documentHeight": 900,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:46:50.235Z",
+      "image_dimensions": {
+        "width": 1600,
+        "height": 900
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "assistant/07-calibration-after.jpg",
+      "title": "Risk-score calibration - response",
+      "surface": "assistant",
+      "phase": "after",
+      "question": "Are risk scores calibrated?",
+      "url": "http://127.0.0.1:8791/",
+      "viewport": {
+        "documentHeight": 900,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:46:50.555Z",
+      "image_dimensions": {
+        "width": 1600,
+        "height": 900
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "assistant/08-cross-site-refusal-before.jpg",
+      "title": "Cross-site access refusal - question ready",
+      "surface": "assistant",
+      "phase": "before",
+      "question": "Latest risk for AB-002",
+      "url": "http://127.0.0.1:8791/",
+      "viewport": {
+        "documentHeight": 900,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:47:00.762Z",
+      "image_dimensions": {
+        "width": 1600,
+        "height": 900
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "assistant/08-cross-site-refusal-after.jpg",
+      "title": "Cross-site access refusal - response",
+      "surface": "assistant",
+      "phase": "after",
+      "question": "Latest risk for AB-002",
+      "url": "http://127.0.0.1:8791/",
+      "viewport": {
+        "documentHeight": 900,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:47:01.088Z",
+      "image_dimensions": {
+        "width": 1600,
+        "height": 900
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "assistant/09-cost-scenario-refusal-before.jpg",
+      "title": "Unsupported cost scenario - question ready",
+      "surface": "assistant",
+      "phase": "before",
+      "question": "What if downtime cost is $2000 per hour?",
+      "url": "http://127.0.0.1:8791/",
+      "viewport": {
+        "documentHeight": 900,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:47:01.205Z",
+      "image_dimensions": {
+        "width": 1600,
+        "height": 900
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "assistant/09-cost-scenario-refusal-after.jpg",
+      "title": "Unsupported cost scenario - response",
+      "surface": "assistant",
+      "phase": "after",
+      "question": "What if downtime cost is $2000 per hour?",
+      "url": "http://127.0.0.1:8791/",
+      "viewport": {
+        "documentHeight": 900,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:47:01.533Z",
+      "image_dimensions": {
+        "width": 1600,
+        "height": 900
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "assistant/10-date-refusal-before.jpg",
+      "title": "Unsupported date range - question ready",
+      "surface": "assistant",
+      "phase": "before",
+      "question": "What were July costs?",
+      "url": "http://127.0.0.1:8791/",
+      "viewport": {
+        "documentHeight": 900,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:47:01.648Z",
+      "image_dimensions": {
+        "width": 1600,
+        "height": 900
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "assistant/10-date-refusal-after.jpg",
+      "title": "Unsupported date range - response",
+      "surface": "assistant",
+      "phase": "after",
+      "question": "What were July costs?",
+      "url": "http://127.0.0.1:8791/",
+      "viewport": {
+        "documentHeight": 900,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:47:01.966Z",
+      "image_dimensions": {
+        "width": 1600,
+        "height": 900
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "assistant/11-booking-refusal-before.jpg",
+      "title": "Maintenance booking boundary - question ready",
+      "surface": "assistant",
+      "phase": "before",
+      "question": "Book maintenance for AB-001 tomorrow",
+      "url": "http://127.0.0.1:8791/",
+      "viewport": {
+        "documentHeight": 900,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:47:02.093Z",
+      "image_dimensions": {
+        "width": 1600,
+        "height": 900
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "assistant/11-booking-refusal-after.jpg",
+      "title": "Maintenance booking boundary - response",
+      "surface": "assistant",
+      "phase": "after",
+      "question": "Book maintenance for AB-001 tomorrow",
+      "url": "http://127.0.0.1:8791/",
+      "viewport": {
+        "documentHeight": 900,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:47:02.407Z",
+      "image_dimensions": {
+        "width": 1600,
+        "height": 900
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "assistant/12-evidence-trace.jpg",
+      "title": "Model explanation - inspected query and evidence trace",
+      "surface": "assistant",
+      "phase": "trace",
+      "question": "Explain the model and its validation",
+      "url": "http://127.0.0.1:8791/",
+      "viewport": {
+        "documentHeight": 900,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:47:22.269Z",
+      "image_dimensions": {
+        "width": 1600,
+        "height": 900
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "reviewer-tour/01-decision.jpg",
+      "title": "Decision",
+      "surface": "reviewer-tour",
+      "phase": "page",
+      "question": null,
+      "url": "http://127.0.0.1:8792/reports/portfolio.html",
+      "viewport": {
+        "documentHeight": 900,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:47:40.220Z",
+      "image_dimensions": {
+        "width": 1600,
+        "height": 900
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "reviewer-tour/02-data-scientist.jpg",
+      "title": "Data Scientist",
+      "surface": "reviewer-tour",
+      "phase": "page",
+      "question": null,
+      "url": "http://127.0.0.1:8792/reports/portfolio.html",
+      "viewport": {
+        "documentHeight": 900,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:47:40.541Z",
+      "image_dimensions": {
+        "width": 1600,
+        "height": 900
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "reviewer-tour/03-ml-engineer.jpg",
+      "title": "ML Engineer",
+      "surface": "reviewer-tour",
+      "phase": "page",
+      "question": null,
+      "url": "http://127.0.0.1:8792/reports/portfolio.html",
+      "viewport": {
+        "documentHeight": 900,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:47:40.866Z",
+      "image_dimensions": {
+        "width": 1600,
+        "height": 900
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "reviewer-tour/04-ai-engineer.jpg",
+      "title": "AI Engineer",
+      "surface": "reviewer-tour",
+      "phase": "page",
+      "question": null,
+      "url": "http://127.0.0.1:8792/reports/portfolio.html",
+      "viewport": {
+        "documentHeight": 900,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:47:41.188Z",
+      "image_dimensions": {
+        "width": 1600,
+        "height": 900
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "dashboard-companion/01-executive-roi-top.jpg",
+      "title": "Executive ROI Summary - upper page",
+      "surface": "dashboard-companion",
+      "phase": "page-upper",
+      "question": null,
+      "url": "http://127.0.0.1:8792/reports/dashboard.html",
+      "viewport": {
+        "documentHeight": 1434,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:48:51.218Z",
+      "image_dimensions": {
+        "width": 1581,
+        "height": 889
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "dashboard-companion/01-executive-roi-bottom.jpg",
+      "title": "Executive ROI Summary - lower page",
+      "surface": "dashboard-companion",
+      "phase": "page-lower",
+      "question": null,
+      "url": "http://127.0.0.1:8792/reports/dashboard.html",
+      "viewport": {
+        "documentHeight": 1434,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:51:49.896Z",
+      "image_dimensions": {
+        "width": 1581,
+        "height": 889
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "dashboard-companion/02-policy-comparison-top.jpg",
+      "title": "Policy Comparison - upper page",
+      "surface": "dashboard-companion",
+      "phase": "page-upper",
+      "question": null,
+      "url": "http://127.0.0.1:8792/reports/dashboard.html",
+      "viewport": {
+        "documentHeight": 1558,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:52:13.241Z",
+      "image_dimensions": {
+        "width": 1581,
+        "height": 889
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "dashboard-companion/02-policy-comparison-bottom.jpg",
+      "title": "Policy Comparison - lower page",
+      "surface": "dashboard-companion",
+      "phase": "page-lower",
+      "question": null,
+      "url": "http://127.0.0.1:8792/reports/dashboard.html",
+      "viewport": {
+        "documentHeight": 1558,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:52:13.844Z",
+      "image_dimensions": {
+        "width": 1581,
+        "height": 889
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "dashboard-companion/03-fleet-risk-top.jpg",
+      "title": "Fleet Risk Explorer - upper page",
+      "surface": "dashboard-companion",
+      "phase": "page-upper",
+      "question": null,
+      "url": "http://127.0.0.1:8792/reports/dashboard.html",
+      "viewport": {
+        "documentHeight": 1969,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:52:30.658Z",
+      "image_dimensions": {
+        "width": 1581,
+        "height": 889
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "dashboard-companion/03-fleet-risk-middle.jpg",
+      "title": "Fleet Risk Explorer - asset trends",
+      "surface": "dashboard-companion",
+      "phase": "page-middle",
+      "question": null,
+      "url": "http://127.0.0.1:8792/reports/dashboard.html",
+      "viewport": {
+        "documentHeight": 1969,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:52:43.470Z",
+      "image_dimensions": {
+        "width": 1581,
+        "height": 889
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "dashboard-companion/03-fleet-risk-bottom.jpg",
+      "title": "Fleet Risk Explorer - lower page",
+      "surface": "dashboard-companion",
+      "phase": "page-lower",
+      "question": null,
+      "url": "http://127.0.0.1:8792/reports/dashboard.html",
+      "viewport": {
+        "documentHeight": 1969,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:52:44.226Z",
+      "image_dimensions": {
+        "width": 1581,
+        "height": 889
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "dashboard-companion/04-model-performance-top.jpg",
+      "title": "Model Performance - upper page",
+      "surface": "dashboard-companion",
+      "phase": "page-upper",
+      "question": null,
+      "url": "http://127.0.0.1:8792/reports/dashboard.html",
+      "viewport": {
+        "documentHeight": 1138,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:52:57.583Z",
+      "image_dimensions": {
+        "width": 1581,
+        "height": 889
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "dashboard-companion/04-model-performance-bottom.jpg",
+      "title": "Model Performance - lower page",
+      "surface": "dashboard-companion",
+      "phase": "page-lower",
+      "question": null,
+      "url": "http://127.0.0.1:8792/reports/dashboard.html",
+      "viewport": {
+        "documentHeight": 1138,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:52:57.987Z",
+      "image_dimensions": {
+        "width": 1581,
+        "height": 889
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "dashboard-companion/05-service-audit-top.jpg",
+      "title": "Service Visit Audit - upper page",
+      "surface": "dashboard-companion",
+      "phase": "page-upper",
+      "question": null,
+      "url": "http://127.0.0.1:8792/reports/dashboard.html",
+      "viewport": {
+        "documentHeight": 1467,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:53:08.747Z",
+      "image_dimensions": {
+        "width": 1581,
+        "height": 889
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "dashboard-companion/05-service-audit-bottom.jpg",
+      "title": "Service Visit Audit - lower page",
+      "surface": "dashboard-companion",
+      "phase": "page-lower",
+      "question": null,
+      "url": "http://127.0.0.1:8792/reports/dashboard.html",
+      "viewport": {
+        "documentHeight": 1467,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:53:09.337Z",
+      "image_dimensions": {
+        "width": 1581,
+        "height": 889
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "dashboard-companion/06-methodology-top.jpg",
+      "title": "Methodology / About - upper page",
+      "surface": "dashboard-companion",
+      "phase": "page-upper",
+      "question": null,
+      "url": "http://127.0.0.1:8792/reports/dashboard.html",
+      "viewport": {
+        "documentHeight": 1265,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:53:22.700Z",
+      "image_dimensions": {
+        "width": 1581,
+        "height": 889
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "dashboard-companion/06-methodology-bottom.jpg",
+      "title": "Methodology / About - lower page",
+      "surface": "dashboard-companion",
+      "phase": "page-lower",
+      "question": null,
+      "url": "http://127.0.0.1:8792/reports/dashboard.html",
+      "viewport": {
+        "documentHeight": 1265,
+        "height": 900,
+        "width": 1600
+      },
+      "captured_at": "2026-09-18T12:53:23.104Z",
+      "image_dimensions": {
+        "width": 1581,
+        "height": 889
+      },
+      "image_format": "JPEG"
+    },
+    {
+      "file": "powerbi-native/01-executive-roi.png",
+      "title": "Executive ROI Summary",
+      "surface": "powerbi-native",
+      "phase": "user-supplied-native",
+      "question": null,
+      "url": null,
+      "source_project": "powerbi/EnergyPredictiveMaintenance.pbip",
+      "viewport": null,
+      "captured_at": null,
+      "received_at": "2026-09-18T13:58:21.844129+00:00",
+      "image_dimensions": {
+        "width": 1287,
+        "height": 724
+      },
+      "image_format": "PNG",
+      "page_id": "executive_roi",
+      "source_attachment": "codex-clipboard-bc8e9e93-a8f0-4e61-a033-2dd9b675e0d2.png",
+      "sha256": "2bf900ce01f114155ab53e93907e7e08311b9729771d7c776b40df5f989e70d1",
+      "notes": "User-supplied native Power BI report screenshot, preserved byte for byte. Exact capture time and Desktop version were not supplied. These native captures predate a later date-axis, category-width and navigation-icon formatting pass."
+    },
+    {
+      "file": "powerbi-native/02-policy-comparison.png",
+      "title": "Policy Comparison",
+      "surface": "powerbi-native",
+      "phase": "user-supplied-native",
+      "question": null,
+      "url": null,
+      "source_project": "powerbi/EnergyPredictiveMaintenance.pbip",
+      "viewport": null,
+      "captured_at": null,
+      "received_at": "2026-09-18T13:58:21.844129+00:00",
+      "image_dimensions": {
+        "width": 1288,
+        "height": 722
+      },
+      "image_format": "PNG",
+      "page_id": "policy_comparison",
+      "source_attachment": "codex-clipboard-a11bfa28-a3c5-4080-a8e6-58095c21fa18.png",
+      "sha256": "27a04804fead53bc8f369bed9af90cf4cb71923a77ccd4a87a53dd7ff3c95026",
+      "notes": "User-supplied native Power BI report screenshot, preserved byte for byte. Exact capture time and Desktop version were not supplied. These native captures predate a later date-axis, category-width and navigation-icon formatting pass."
+    },
+    {
+      "file": "powerbi-native/03-fleet-risk.png",
+      "title": "Fleet Risk Explorer",
+      "surface": "powerbi-native",
+      "phase": "user-supplied-native",
+      "question": null,
+      "url": null,
+      "source_project": "powerbi/EnergyPredictiveMaintenance.pbip",
+      "viewport": null,
+      "captured_at": null,
+      "received_at": "2026-09-18T13:58:21.844129+00:00",
+      "image_dimensions": {
+        "width": 1288,
+        "height": 718
+      },
+      "image_format": "PNG",
+      "page_id": "fleet_risk",
+      "source_attachment": "codex-clipboard-43150857-76d1-49dd-822e-ef77330fdb08.png",
+      "sha256": "5a2e8a17689ea27f98b5bb07039a8cab0551387dfc2c42c9d45f0ba0d5ae5a9f",
+      "notes": "User-supplied native Power BI report screenshot, preserved byte for byte. Exact capture time and Desktop version were not supplied. Internal visual scrollbars are visible; this image does not establish a completely scroll-free layout. These native captures predate a later date-axis, category-width and navigation-icon formatting pass."
+    },
+    {
+      "file": "powerbi-native/04-model-performance.png",
+      "title": "Model Performance",
+      "surface": "powerbi-native",
+      "phase": "user-supplied-native",
+      "question": null,
+      "url": null,
+      "source_project": "powerbi/EnergyPredictiveMaintenance.pbip",
+      "viewport": null,
+      "captured_at": null,
+      "received_at": "2026-09-18T13:58:21.844129+00:00",
+      "image_dimensions": {
+        "width": 1286,
+        "height": 722
+      },
+      "image_format": "PNG",
+      "page_id": "model_performance",
+      "source_attachment": "codex-clipboard-9f74550b-8773-4f9e-bdb1-9e5209990658.png",
+      "sha256": "5ac9ff7ce362a03de8ae9a3bf42fcb688611485f89f81bd9437c72d5347d4284",
+      "notes": "User-supplied native Power BI report screenshot, preserved byte for byte. Exact capture time and Desktop version were not supplied. These native captures predate a later date-axis, category-width and navigation-icon formatting pass."
+    },
+    {
+      "file": "powerbi-native/05-service-audit.png",
+      "title": "Service Visit Audit",
+      "surface": "powerbi-native",
+      "phase": "user-supplied-native",
+      "question": null,
+      "url": null,
+      "source_project": "powerbi/EnergyPredictiveMaintenance.pbip",
+      "viewport": null,
+      "captured_at": null,
+      "received_at": "2026-09-18T13:58:21.844129+00:00",
+      "image_dimensions": {
+        "width": 1287,
+        "height": 719
+      },
+      "image_format": "PNG",
+      "page_id": "service_audit",
+      "source_attachment": "codex-clipboard-494fcd45-3c16-436e-9971-6dfe42f05772.png",
+      "sha256": "61ae2f5ae2806ecb484176ebd17e6446d113c61cbb893e0d03857022ec9b71d3",
+      "notes": "User-supplied native Power BI report screenshot, preserved byte for byte. Exact capture time and Desktop version were not supplied. These native captures predate a later date-axis, category-width and navigation-icon formatting pass."
+    },
+    {
+      "file": "powerbi-native/06-methodology.png",
+      "title": "Methodology / About",
+      "surface": "powerbi-native",
+      "phase": "user-supplied-native",
+      "question": null,
+      "url": null,
+      "source_project": "powerbi/EnergyPredictiveMaintenance.pbip",
+      "viewport": null,
+      "captured_at": null,
+      "received_at": "2026-09-18T13:58:21.844129+00:00",
+      "image_dimensions": {
+        "width": 1289,
+        "height": 722
+      },
+      "image_format": "PNG",
+      "page_id": "methodology",
+      "source_attachment": "codex-clipboard-67ef4689-a2ec-4140-b242-00b9de8f0c98.png",
+      "sha256": "15e0ef788bd6f5703a6b037de2b1eb6be8c70261d3d4c7419c8ba0596fb9adc9",
+      "notes": "User-supplied native Power BI report screenshot, preserved byte for byte. Exact capture time and Desktop version were not supplied. These native captures predate a later date-axis, category-width and navigation-icon formatting pass."
+    },
+    {
+      "file": "powerbi-native/07-asset-detail.png",
+      "title": "Asset Detail",
+      "surface": "powerbi-native",
+      "phase": "user-supplied-native",
+      "question": null,
+      "url": null,
+      "source_project": "powerbi/EnergyPredictiveMaintenance.pbip",
+      "viewport": null,
+      "captured_at": null,
+      "received_at": "2026-09-18T13:58:21.844129+00:00",
+      "image_dimensions": {
+        "width": 1288,
+        "height": 718
+      },
+      "image_format": "PNG",
+      "page_id": "asset_detail",
+      "source_attachment": "codex-clipboard-15637ab2-9453-4033-b599-72b3e4d4f0b2.png",
+      "sha256": "29b6238421b037ecdb351d0271bb2de6ed30b7369bb2be892a64a099b9cc3306",
+      "notes": "User-supplied native Power BI report screenshot, preserved byte for byte. Exact capture time and Desktop version were not supplied. The image shows aggregate fleet values; it is page-rendering evidence, not proof of an asset-specific drillthrough or hover interaction. These native captures predate a later date-axis, category-width and navigation-icon formatting pass."
+    },
+    {
+      "file": "powerbi-native/08-asset-context.png",
+      "title": "Asset Context (tooltip)",
+      "surface": "powerbi-native",
+      "phase": "user-supplied-native",
+      "question": null,
+      "url": null,
+      "source_project": "powerbi/EnergyPredictiveMaintenance.pbip",
+      "viewport": null,
+      "captured_at": null,
+      "received_at": "2026-09-18T13:58:21.844129+00:00",
+      "image_dimensions": {
+        "width": 955,
+        "height": 702
+      },
+      "image_format": "PNG",
+      "page_id": "context_tooltip",
+      "source_attachment": "codex-clipboard-19232358-9871-4391-8bea-5060018b80c8.png",
+      "sha256": "732a8dcb86022925f215303015f4cbd207acdc3707e500cb1c2a53266e87cb18",
+      "notes": "User-supplied native Power BI report screenshot, preserved byte for byte. Exact capture time and Desktop version were not supplied. The image shows aggregate fleet values; it is page-rendering evidence, not proof of an asset-specific drillthrough or hover interaction. These native captures predate a later date-axis, category-width and navigation-icon formatting pass."
+    }
+  ],
+  "image_format_note": "The capture backend returned JPEG bytes. Filenames use .jpg, without re-encoding. Image pixel dimensions are recorded separately from the browser viewport.",
+  "native_capture_note": "Native images were provided by the user and were not edited. They show report rendering, but do not establish successful refresh, security-role testing, mobile behavior or all interactive actions. These native captures predate a later date-axis, category-width and navigation-icon formatting pass."
+}

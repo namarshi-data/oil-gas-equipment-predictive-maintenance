@@ -1,0 +1,37 @@
+$schema: https://azuremlschemas.azureedge.net/latest/pipelineJob.schema.json
+type: pipeline
+display_name: Energy failure prediction and maintenance benchmark
+experiment_name: energy-failure
+description: Synthetic demonstration; local metrics are not field-validated savings.
+settings:
+  default_compute: azureml:energy-cpu
+  continue_on_step_failure: false
+outputs:
+  run_artifacts:
+    type: uri_folder
+    mode: upload
+  model:
+    type: uri_folder
+    mode: upload
+  features:
+    type: uri_folder
+    mode: upload
+  predictions:
+    type: uri_folder
+    mode: upload
+jobs:
+  train_evaluate:
+    type: command
+    component: train-component.yml
+    outputs:
+      run_artifacts: ${{parent.outputs.run_artifacts}}
+      model: ${{parent.outputs.model}}
+      features: ${{parent.outputs.features}}
+  score_contract:
+    type: command
+    component: batch-component.yml
+    inputs:
+      model: ${{parent.jobs.train_evaluate.outputs.model}}
+      features: ${{parent.jobs.train_evaluate.outputs.features}}
+    outputs:
+      predictions: ${{parent.outputs.predictions}}

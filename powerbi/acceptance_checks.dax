@@ -1,0 +1,69 @@
+// Run each EVALUATE block separately in Desktop DAX query view after refresh.
+// These are acceptance queries, not evidence that DAX executed in this delivery.
+// Clear report filters. Cost mode defaults to equipment rates.
+// After the layout redesign, run this block under each site/date selection and
+// Site Manager identity. Equal risk scores must still get distinct queue ranks.
+// Expected: at most six rows, risk descending, asset ID ascending for ties.
+EVALUATE
+VAR AssetQueue =
+    ADDCOLUMNS(
+        VALUES(Dim_Asset[asset_id]),
+        "LatestScore", [Latest Risk Score],
+        "QueueRank", [Fleet Queue Rank]
+    )
+RETURN
+    FILTER(AssetQueue, NOT ISBLANK([QueueRank]) && [QueueRank] <= 6)
+ORDER BY [QueueRank]
+
+EVALUATE
+SUMMARIZECOLUMNS(
+    Dim_Policy[policy],
+    "Days", [Observed Days],
+    "Period cost", [Total Cost],
+    "Annualized cost", [Annualized Cost],
+    "Caught", [Caught Events],
+    "Missed", [Missed Events],
+    "Visits", [Service Visits],
+    "Catch rate", [Catch Rate],
+    "Mean warning", [Mean Warning Days],
+    "False alarm rate", [False Alarm Rate]
+)
+ORDER BY Dim_Policy[policy]
+
+// Expected full-fleet annual cost: reactive 22099102.416;
+// fixed_90_day 18171121.474; predictive 4750870.006 (round to cents).
+// Physical events: 44 per policy, never 132 independent failures.
+EVALUATE
+ROW(
+    "Labeled", [Labeled Readings], "Unlabeled", [Unlabeled Readings],
+    "TP", [Prediction TP], "FP", [Prediction FP],
+    "FN", [Prediction FN], "TN", [Prediction TN]
+)
+// Expected: 4880, 2400, 565, 5, 289, 4021.
+
+// Reference values for this scope are in powerbi/data_validation.json.
+EVALUATE
+CALCULATETABLE(
+    ROW("Cost", [Annualized Cost], "Avoided vs reactive", [Cost Avoided vs Reactive],
+        "Sites in scope", CONCATENATEX(VALUES(Dim_Site[site]), Dim_Site[site], ", ")),
+    TREATAS({"Peace River"}, Dim_Site[site]),
+    TREATAS({"predictive"}, Dim_Policy[policy])
+)
+
+// Explicit multiple scenarios must not sum counterfactual costs.
+EVALUATE
+CALCULATETABLE(
+    ROW("Annual cost must be BLANK", [Annualized Cost], "Explanation", [Policy Selection Note]),
+    TREATAS({"reactive", "predictive"}, Dim_Policy[policy])
+)
+
+// Live scenario, not a replacement for the default equipment-rate benchmark.
+EVALUATE
+CALCULATETABLE(
+    SUMMARIZECOLUMNS(Dim_Policy[policy], "Annual cost at C$1000/h", [Annualized Cost]),
+    TREATAS({"Uniform override"}, Param_CostMode[Cost Mode]),
+    TREATAS({1000}, Param_DowntimeCost[Downtime Cost Per Hour])
+)
+
+// Security is not tested by TREATAS. Use View As -> Site Manager and Other User,
+// then publish privately and repeat with actual Viewer identities. See docs.

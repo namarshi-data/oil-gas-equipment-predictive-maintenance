@@ -1,0 +1,14 @@
+{
+  "parser": "Microsoft.AnalysisServices.Tabular.TmdlSerializer",
+  "packageVersion": "19.114.8",
+  "tmdlParsed": true,
+  "tables": 16,
+  "measures": 75,
+  "relationships": 11,
+  "roles": [
+    "Site Manager"
+  ],
+  "daxExecuted": false,
+  "powerBIDesktopRefreshed": false,
+  "tmdl_sha256": "cfd7001346f49c3f2fcfaf81d9dd6c051f2f56040260b4aea1f987c5ff5679f7"
+}

@@ -1,0 +1,381 @@
+{
+  "scope": "Synthetic controlled stress tests; no test-driven retuning or headline replacement",
+  "selected_model": "hist_gradient_boosting",
+  "threshold": 0.9,
+  "test_start": "2025-04-01",
+  "test_end": "2025-05-31",
+  "baseline_score_reproduction": true,
+  "classification": [
+    {
+      "scenario": "baseline",
+      "subset": "all",
+      "rows": 4880,
+      "positives": 854,
+      "alerts": 570,
+      "true_positive": 565,
+      "false_positive": 5,
+      "false_negative": 289,
+      "true_negative": 4021,
+      "precision": 0.9912280701754386,
+      "recall": 0.6615925058548009,
+      "false_discovery_rate": 0.008771929824561403,
+      "false_positive_rate": 0.0012419274714356682
+    },
+    {
+      "scenario": "baseline",
+      "subset": "gap_or_imputation_in_last_7_days",
+      "rows": 1374,
+      "positives": 297,
+      "alerts": 159,
+      "true_positive": 157,
+      "false_positive": 2,
+      "false_negative": 140,
+      "true_negative": 1075,
+      "precision": 0.9874213836477987,
+      "recall": 0.5286195286195287,
+      "false_discovery_rate": 0.012578616352201259,
+      "false_positive_rate": 0.0018570102135561746
+    },
+    {
+      "scenario": "without_explicit_gap_features",
+      "subset": "all",
+      "rows": 4880,
+      "positives": 854,
+      "alerts": 572,
+      "true_positive": 567,
+      "false_positive": 5,
+      "false_negative": 287,
+      "true_negative": 4021,
+      "precision": 0.9912587412587412,
+      "recall": 0.6639344262295082,
+      "false_discovery_rate": 0.008741258741258742,
+      "false_positive_rate": 0.0012419274714356682
+    },
+    {
+      "scenario": "without_explicit_gap_features",
+      "subset": "gap_or_imputation_in_last_7_days",
+      "rows": 1374,
+      "positives": 297,
+      "alerts": 165,
+      "true_positive": 163,
+      "false_positive": 2,
+      "false_negative": 134,
+      "true_negative": 1075,
+      "precision": 0.9878787878787879,
+      "recall": 0.5488215488215489,
+      "false_discovery_rate": 0.012121212121212121,
+      "false_positive_rate": 0.0018570102135561746
+    },
+    {
+      "scenario": "alternating_recorded_repairs_removed",
+      "subset": "all",
+      "rows": 4880,
+      "positives": 854,
+      "alerts": 591,
+      "true_positive": 577,
+      "false_positive": 14,
+      "false_negative": 277,
+      "true_negative": 4012,
+      "precision": 0.9763113367174281,
+      "recall": 0.6756440281030445,
+      "false_discovery_rate": 0.023688663282571912,
+      "false_positive_rate": 0.003477396920019871
+    },
+    {
+      "scenario": "no_history_for_every_fourth_asset",
+      "subset": "all",
+      "rows": 4880,
+      "positives": 854,
+      "alerts": 592,
+      "true_positive": 585,
+      "false_positive": 7,
+      "false_negative": 269,
+      "true_negative": 4019,
+      "precision": 0.9881756756756757,
+      "recall": 0.6850117096018735,
+      "false_discovery_rate": 0.011824324324324325,
+      "false_positive_rate": 0.0017386984600099354
+    },
+    {
+      "scenario": "cold_start_controlled_fixture",
+      "subset": "all",
+      "rows": 180,
+      "positives": 150,
+      "alerts": 0,
+      "true_positive": 0,
+      "false_positive": 0,
+      "false_negative": 150,
+      "true_negative": 30,
+      "precision": null,
+      "recall": 0.0,
+      "false_discovery_rate": null,
+      "false_positive_rate": 0.0
+    },
+    {
+      "scenario": "cold_start_controlled_fixture",
+      "subset": "gradual",
+      "rows": 90,
+      "positives": 75,
+      "alerts": 0,
+      "true_positive": 0,
+      "false_positive": 0,
+      "false_negative": 75,
+      "true_negative": 15,
+      "precision": null,
+      "recall": 0.0,
+      "false_discovery_rate": null,
+      "false_positive_rate": 0.0
+    },
+    {
+      "scenario": "cold_start_controlled_fixture",
+      "subset": "abrupt",
+      "rows": 90,
+      "positives": 75,
+      "alerts": 0,
+      "true_positive": 0,
+      "false_positive": 0,
+      "false_negative": 75,
+      "true_negative": 15,
+      "precision": null,
+      "recall": 0.0,
+      "false_discovery_rate": null,
+      "false_positive_rate": 0.0
+    }
+  ],
+  "gap_ablation_design": "Same training rows, algorithm/hyperparameters and frozen baseline threshold; causal imputation unchanged; removes three gap predictors. Not separately policy-optimized.",
+  "maintenance_scenarios": [
+    {
+      "scenario": "alternating_recorded_repairs_removed",
+      "input_maintenance_rows": 314,
+      "retained_maintenance_rows": 168,
+      "removed_maintenance_rows": 146,
+      "changed_test_recency_rows": 2474,
+      "alert_decisions_changed": 25
+    },
+    {
+      "scenario": "no_history_for_every_fourth_asset",
+      "input_maintenance_rows": 314,
+      "retained_maintenance_rows": 234,
+      "removed_maintenance_rows": 80,
+      "changed_test_recency_rows": 1220,
+      "alert_decisions_changed": 26
+    }
+  ],
+  "cold_start_design": {
+    "assets": 6,
+    "scored_rows": 180,
+    "age_days": [
+      0,
+      29
+    ],
+    "observed_days_per_asset": 61,
+    "signature_types": [
+      "gradual",
+      "abrupt"
+    ],
+    "equipment_types": [
+      "pumpjack",
+      "compressor",
+      "pipeline_pump"
+    ],
+    "event_age_days": 25,
+    "outage_ages": [
+      0,
+      10,
+      11,
+      12
+    ],
+    "inherited_history_rows": 0,
+    "missing_first_reading_default_cells": 42,
+    "training_age_min_days": 435,
+    "limitation": "Controlled out-of-distribution challenge with 83.3% positives; not an estimate of new-unit production accuracy or cost."
+  },
+  "gap_regression": {
+    "case": "controlled_zero_fill_reproduction",
+    "observation_days": 7,
+    "outage_days": 3,
+    "zero_fill_min_vibration_change": -3.0,
+    "causal_fill_min_vibration_change": 0.0,
+    "naive_drop_rule": "vibration change per day < -2 mm/s/day (illustrative rule, not ML)",
+    "zero_fill_artificial_drop_flags": 1,
+    "causal_fill_artificial_drop_flags": 0,
+    "outage_rows_explicitly_flagged": 3
+  },
+  "positive_failure_modes": [
+    {
+      "failure_mode": "bearing_wear",
+      "positive_asset_days": 290,
+      "distinct_future_events": 17,
+      "alerted_positive_asset_days": 216,
+      "recall": 0.7448275862068966
+    },
+    {
+      "failure_mode": "electrical_trip",
+      "positive_asset_days": 65,
+      "distinct_future_events": 3,
+      "alerted_positive_asset_days": 0,
+      "recall": 0.0
+    },
+    {
+      "failure_mode": "overheating",
+      "positive_asset_days": 339,
+      "distinct_future_events": 16,
+      "alerted_positive_asset_days": 233,
+      "recall": 0.6873156342182891
+    },
+    {
+      "failure_mode": "seal_leak",
+      "positive_asset_days": 160,
+      "distinct_future_events": 8,
+      "alerted_positive_asset_days": 116,
+      "recall": 0.725
+    }
+  ],
+  "event_subgroups": [
+    {
+      "policy": "fixed_90_day",
+      "failure_mode": "bearing_wear",
+      "signature": "gradual",
+      "events": 17,
+      "caught": 6,
+      "missed": 11,
+      "catch_rate": 0.35294117647058826,
+      "median_warning_days": 8.0,
+      "emergency_repair_cost_cad": 353204.84,
+      "unplanned_downtime_hours": 968.6
+    },
+    {
+      "policy": "fixed_90_day",
+      "failure_mode": "electrical_trip",
+      "signature": "abrupt",
+      "events": 3,
+      "caught": 0,
+      "missed": 3,
+      "catch_rate": 0.0,
+      "median_warning_days": null,
+      "emergency_repair_cost_cad": 135099.02000000002,
+      "unplanned_downtime_hours": 190.2
+    },
+    {
+      "policy": "fixed_90_day",
+      "failure_mode": "overheating",
+      "signature": "gradual",
+      "events": 16,
+      "caught": 5,
+      "missed": 11,
+      "catch_rate": 0.3125,
+      "median_warning_days": 13.0,
+      "emergency_repair_cost_cad": 395945.17,
+      "unplanned_downtime_hours": 980.0000000000001
+    },
+    {
+      "policy": "fixed_90_day",
+      "failure_mode": "seal_leak",
+      "signature": "gradual",
+      "events": 8,
+      "caught": 2,
+      "missed": 6,
+      "catch_rate": 0.25,
+      "median_warning_days": 3.5,
+      "emergency_repair_cost_cad": 170764.52,
+      "unplanned_downtime_hours": 468.29999999999995
+    },
+    {
+      "policy": "predictive",
+      "failure_mode": "bearing_wear",
+      "signature": "gradual",
+      "events": 17,
+      "caught": 14,
+      "missed": 3,
+      "catch_rate": 0.8235294117647058,
+      "median_warning_days": 21.5,
+      "emergency_repair_cost_cad": 112061.39,
+      "unplanned_downtime_hours": 234.7
+    },
+    {
+      "policy": "predictive",
+      "failure_mode": "electrical_trip",
+      "signature": "abrupt",
+      "events": 3,
+      "caught": 0,
+      "missed": 3,
+      "catch_rate": 0.0,
+      "median_warning_days": null,
+      "emergency_repair_cost_cad": 135099.02000000002,
+      "unplanned_downtime_hours": 190.2
+    },
+    {
+      "policy": "predictive",
+      "failure_mode": "overheating",
+      "signature": "gradual",
+      "events": 16,
+      "caught": 15,
+      "missed": 1,
+      "catch_rate": 0.9375,
+      "median_warning_days": 19.0,
+      "emergency_repair_cost_cad": 17052.35,
+      "unplanned_downtime_hours": 44.1
+    },
+    {
+      "policy": "predictive",
+      "failure_mode": "seal_leak",
+      "signature": "gradual",
+      "events": 8,
+      "caught": 8,
+      "missed": 0,
+      "catch_rate": 1.0,
+      "median_warning_days": 17.5,
+      "emergency_repair_cost_cad": 0.0,
+      "unplanned_downtime_hours": 0.0
+    },
+    {
+      "policy": "reactive",
+      "failure_mode": "bearing_wear",
+      "signature": "gradual",
+      "events": 17,
+      "caught": 0,
+      "missed": 17,
+      "catch_rate": 0.0,
+      "median_warning_days": null,
+      "emergency_repair_cost_cad": 538942.74,
+      "unplanned_downtime_hours": 1461.1
+    },
+    {
+      "policy": "reactive",
+      "failure_mode": "electrical_trip",
+      "signature": "abrupt",
+      "events": 3,
+      "caught": 0,
+      "missed": 3,
+      "catch_rate": 0.0,
+      "median_warning_days": null,
+      "emergency_repair_cost_cad": 135099.02000000002,
+      "unplanned_downtime_hours": 190.2
+    },
+    {
+      "policy": "reactive",
+      "failure_mode": "overheating",
+      "signature": "gradual",
+      "events": 16,
+      "caught": 0,
+      "missed": 16,
+      "catch_rate": 0.0,
+      "median_warning_days": null,
+      "emergency_repair_cost_cad": 573154.02,
+      "unplanned_downtime_hours": 1505.1000000000001
+    },
+    {
+      "policy": "reactive",
+      "failure_mode": "seal_leak",
+      "signature": "gradual",
+      "events": 8,
+      "caught": 0,
+      "missed": 8,
+      "catch_rate": 0.0,
+      "median_warning_days": null,
+      "emergency_repair_cost_cad": 245777.31,
+      "unplanned_downtime_hours": 720.6
+    }
+  ],
+  "cost_scope": "Subgroup costs use the existing 91-day event replay and are not annualized. Stress/ablation classifications have no cost-savings claim; they do not replay interventions."
+}

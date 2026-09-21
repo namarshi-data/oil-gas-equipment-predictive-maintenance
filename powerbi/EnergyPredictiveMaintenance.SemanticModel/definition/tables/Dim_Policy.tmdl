@@ -1,0 +1,36 @@
+/// Three mutually exclusive maintenance scenarios replayed on the same history; filters events and visits, not policy-agnostic readings.
+table Dim_Policy
+	lineageTag: b205f6ba-6509-4ddc-ad03-3f576b26115a
+
+	/// policy.
+	column policy
+		dataType: string
+		isKey
+		lineageTag: 36449bf6-4628-444f-a227-550dd795a7ef
+		summarizeBy: none
+		sourceColumn: policy
+
+	/// policy label.
+	column policy_label
+		dataType: string
+		lineageTag: f47acf82-e9db-4c68-b6bc-446275c29e2c
+		summarizeBy: none
+		sourceColumn: policy_label
+		sortByColumn: policy_order
+
+	/// policy order.
+	column policy_order
+		dataType: int64
+		isHidden
+		lineageTag: 32b0a78d-1973-48a5-ba13-0ac54b573b50
+		summarizeBy: none
+		sourceColumn: policy_order
+
+	partition Dim_Policy = m
+		mode: import
+		source =
+				let
+				    Source = #table(type table [policy=text, policy_label=text, policy_order=Int64.Type], {{"reactive", "Reactive", 1}, {"fixed_90_day", "Fixed interval (90 days)", 2}, {"predictive", "Predictive", 3}})
+				in
+				    Source
+

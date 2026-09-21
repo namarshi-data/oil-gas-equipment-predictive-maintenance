@@ -1,0 +1,6 @@
+/// Dashboard CSV directory; set this Power Query parameter before refresh.
+expression DataFolder = "C:/Energy-Predictive-Equipment-Failure/data/processed/dashboard" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: deeb7c5b-24c1-464f-9c9b-4f25aa3eb932
+
+	annotation PBI_ResultType = Text
+

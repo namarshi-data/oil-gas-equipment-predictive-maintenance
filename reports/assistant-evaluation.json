@@ -1,0 +1,574 @@
+{
+  "mode": "rules-based; no live LLM calls",
+  "cases": 41,
+  "passed": 41,
+  "failed": 0,
+  "pass_rate": 1.0,
+  "latency_ms": {
+    "samples": 41,
+    "min": 0.01,
+    "median": 0.051,
+    "p95_nearest_rank": 32.291,
+    "max": 35.064
+  },
+  "latency_scope": "Single-machine mixed-workload engine calls, including immediate refusals and CSV reads; excludes process/engine initialization, browser/HTTP and model-network latency. Not a production SLO.",
+  "runtime": {
+    "python": "3.14.0",
+    "platform": "Windows"
+  },
+  "live_openai_evaluated": false,
+  "cases_detail": [
+    {
+      "id": "policy_all",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true,
+        "action": true,
+        "numeric_cost": true,
+        "citation_resolves_events": true,
+        "citation_scope_events": true,
+        "citation_resolves_visits": true,
+        "citation_scope_visits": true,
+        "citation_resolves_assets": true,
+        "citation_scope_assets": true,
+        "citation_resolves_readings": true,
+        "citation_scope_readings": true
+      },
+      "latency_ms": 35.064
+    },
+    {
+      "id": "policy_peace",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true,
+        "action": true,
+        "numeric_cost": true,
+        "citation_resolves_events": true,
+        "citation_scope_events": true,
+        "citation_resolves_visits": true,
+        "citation_scope_visits": true,
+        "citation_resolves_assets": true,
+        "citation_scope_assets": true,
+        "citation_resolves_readings": true,
+        "citation_scope_readings": true
+      },
+      "latency_ms": 26.906
+    },
+    {
+      "id": "catch_counts",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true,
+        "action": true,
+        "numeric_caught": true,
+        "citation_resolves_events": true,
+        "citation_scope_events": true,
+        "citation_resolves_visits": true,
+        "citation_scope_visits": true,
+        "citation_resolves_assets": true,
+        "citation_scope_assets": true,
+        "citation_resolves_readings": true,
+        "citation_scope_readings": true
+      },
+      "latency_ms": 34.344
+    },
+    {
+      "id": "warning",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true,
+        "action": true,
+        "citation_resolves_events": true,
+        "citation_scope_events": true,
+        "citation_resolves_visits": true,
+        "citation_scope_visits": true,
+        "citation_resolves_assets": true,
+        "citation_scope_assets": true,
+        "citation_resolves_readings": true,
+        "citation_scope_readings": true
+      },
+      "latency_ms": 32.291
+    },
+    {
+      "id": "downtime",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true,
+        "action": true,
+        "citation_resolves_events": true,
+        "citation_scope_events": true,
+        "citation_resolves_visits": true,
+        "citation_scope_visits": true,
+        "citation_resolves_assets": true,
+        "citation_scope_assets": true,
+        "citation_resolves_readings": true,
+        "citation_scope_readings": true
+      },
+      "latency_ms": 27.132
+    },
+    {
+      "id": "scope_peace",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true,
+        "action": true,
+        "scope": true,
+        "citation_resolves_readings": true,
+        "citation_scope_readings": true
+      },
+      "latency_ms": 24.543
+    },
+    {
+      "id": "scope_multi",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true,
+        "action": true,
+        "scope": true,
+        "citation_resolves_readings": true,
+        "citation_scope_readings": true
+      },
+      "latency_ms": 25.844
+    },
+    {
+      "id": "top_three",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true,
+        "action": true,
+        "citation_resolves_readings": true,
+        "citation_scope_readings": true
+      },
+      "latency_ms": 31.181
+    },
+    {
+      "id": "own_asset",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true,
+        "action": true,
+        "scope": true,
+        "citation_resolves_readings": true,
+        "citation_scope_readings": true
+      },
+      "latency_ms": 23.303
+    },
+    {
+      "id": "other_asset",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true
+      },
+      "latency_ms": 0.475
+    },
+    {
+      "id": "unknown_asset",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true
+      },
+      "latency_ms": 0.304
+    },
+    {
+      "id": "other_site",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true
+      },
+      "latency_ms": 0.051
+    },
+    {
+      "id": "unknown_identity",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true
+      },
+      "latency_ms": 0.027
+    },
+    {
+      "id": "identity_normalization",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true,
+        "action": true,
+        "scope": true,
+        "citation_resolves_readings": true,
+        "citation_scope_readings": true
+      },
+      "latency_ms": 24.068
+    },
+    {
+      "id": "data_method",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true,
+        "action": true,
+        "citation_resolves_methodology": true,
+        "citation_scope_methodology": true
+      },
+      "latency_ms": 0.08
+    },
+    {
+      "id": "model_method",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true,
+        "action": true,
+        "citation_resolves_methodology": true,
+        "citation_scope_methodology": true
+      },
+      "latency_ms": 0.077
+    },
+    {
+      "id": "calibration",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true,
+        "action": true,
+        "citation_resolves_methodology": true,
+        "citation_scope_methodology": true
+      },
+      "latency_ms": 0.061
+    },
+    {
+      "id": "security_method",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true,
+        "action": true,
+        "citation_resolves_methodology": true,
+        "citation_scope_methodology": true
+      },
+      "latency_ms": 0.062
+    },
+    {
+      "id": "limitations",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true,
+        "action": true,
+        "citation_resolves_methodology": true,
+        "citation_scope_methodology": true
+      },
+      "latency_ms": 0.065
+    },
+    {
+      "id": "annualization",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true,
+        "action": true,
+        "citation_resolves_methodology": true,
+        "citation_scope_methodology": true
+      },
+      "latency_ms": 0.063
+    },
+    {
+      "id": "unknown_question",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true
+      },
+      "latency_ms": 0.04
+    },
+    {
+      "id": "unsupported_scenario",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true
+      },
+      "latency_ms": 0.027
+    },
+    {
+      "id": "unsupported_date",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true
+      },
+      "latency_ms": 0.035
+    },
+    {
+      "id": "prompt_injection",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true
+      },
+      "latency_ms": 0.012
+    },
+    {
+      "id": "identity_injection",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true
+      },
+      "latency_ms": 0.011
+    },
+    {
+      "id": "sql_injection",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true
+      },
+      "latency_ms": 0.01
+    },
+    {
+      "id": "file_exfiltration",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true
+      },
+      "latency_ms": 0.01
+    },
+    {
+      "id": "script_payload",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true
+      },
+      "latency_ms": 0.059
+    },
+    {
+      "id": "unsupported_july",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true,
+        "action": true
+      },
+      "latency_ms": 0.029
+    },
+    {
+      "id": "unsupported_december",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true,
+        "action": true
+      },
+      "latency_ms": 0.026
+    },
+    {
+      "id": "unsupported_year_2025",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true,
+        "action": true
+      },
+      "latency_ms": 0.032
+    },
+    {
+      "id": "unsupported_year_2026",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true,
+        "action": true
+      },
+      "latency_ms": 0.033
+    },
+    {
+      "id": "unsupported_iso_date",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true,
+        "action": true
+      },
+      "latency_ms": 0.042
+    },
+    {
+      "id": "unsupported_slash_date",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true,
+        "action": true
+      },
+      "latency_ms": 0.032
+    },
+    {
+      "id": "unsupported_ytd",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true,
+        "action": true
+      },
+      "latency_ms": 0.027
+    },
+    {
+      "id": "unsupported_year_to_date",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true,
+        "action": true
+      },
+      "latency_ms": 0.029
+    },
+    {
+      "id": "unsupported_book",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true,
+        "action": true
+      },
+      "latency_ms": 0.041
+    },
+    {
+      "id": "unsupported_work_order",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true,
+        "action": true
+      },
+      "latency_ms": 0.047
+    },
+    {
+      "id": "unsupported_schedule",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true,
+        "action": true
+      },
+      "latency_ms": 0.046
+    },
+    {
+      "id": "unsupported_relative_date",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true,
+        "action": true
+      },
+      "latency_ms": 0.033
+    },
+    {
+      "id": "legitimate_may_i",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "row_count": true,
+        "schema": true,
+        "citation_presence": true,
+        "action": true,
+        "scope": true,
+        "citation_resolves_readings": true,
+        "citation_scope_readings": true
+      },
+      "latency_ms": 26.123
+    }
+  ]
+}

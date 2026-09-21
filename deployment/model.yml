@@ -1,0 +1,11 @@
+$schema: https://azuremlschemas.azureedge.net/latest/model.schema.json
+name: energy-failure-30d
+# Template only: deploy.ps1 resolves and verifies the version from provenance.json.
+version: REPLACE_FROM_PROVENANCE
+type: custom_model
+description: Synthetic 30-day equipment failure model; not field validated.
+path: ../artifacts/model.joblib
+tags:
+  horizon_days: '30'
+  data_source: synthetic
+  comparator: fixed-90-day-and-reactive

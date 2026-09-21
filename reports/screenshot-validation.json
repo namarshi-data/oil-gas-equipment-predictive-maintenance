@@ -1,0 +1,641 @@
+{
+  "validated_at": "2026-09-18T15:16:51.872143+00:00",
+  "status": "pass",
+  "scope": "Image decode, bytes, format, dimensions, coverage, before/after pairs and gallery links; no independent native runtime acceptance.",
+  "manifest": "screenshots/capture-manifest.json",
+  "manifest_sha256": "9d4982900882049395d89f4feeaaea73adcefa238dab23e1d61518bbdc29ad72",
+  "counts": {
+    "total": 49,
+    "by_surface": {
+      "assistant": 24,
+      "reviewer-tour": 4,
+      "dashboard-companion": 13,
+      "powerbi-native": 8
+    },
+    "assistant_question_pairs": 11,
+    "reviewer_pages": 4,
+    "dashboard_companion_pages": 6,
+    "native_main_pages": 6,
+    "native_support_pages": 2,
+    "unique_file_hashes": 49,
+    "unique_decoded_pixel_hashes": 49,
+    "html_images": 49,
+    "markdown_images": 49
+  },
+  "image_decode": "41 JPEG and 8 PNG files fully decoded with Pillow; extensions match format.",
+  "capture_bytes": "All 41 browser images match the preceding ZIP; all 8 native PNGs match the supplied attachments byte for byte.",
+  "native_capture_time_and_desktop_version": "Unknown; receipt timestamps are not capture timestamps.",
+  "native_coverage": {
+    "main_pages": "6/6",
+    "support_pages": "2/3",
+    "missing": [
+      "Sensor Associations"
+    ],
+    "aggregate_context": [
+      "Asset Detail",
+      "Asset Context"
+    ]
+  },
+  "native_limitations": "Visible rendering only. Refresh, every DAX interaction, security, mobile, asset-specific drillthrough and hover are not independently verified. Fleet Risk and Asset Detail contain internal scrollbars.",
+  "assistant_pairs": [
+    {
+      "question": "Compare policy costs and caught failures",
+      "before": "assistant/01-policy-comparison-before.jpg",
+      "after": "assistant/01-policy-comparison-after.jpg"
+    },
+    {
+      "question": "Show the top 6 assets by latest risk",
+      "before": "assistant/02-highest-risk-assets-before.jpg",
+      "after": "assistant/02-highest-risk-assets-after.jpg"
+    },
+    {
+      "question": "Explain the model and its validation",
+      "before": "assistant/03-model-explanation-before.jpg",
+      "after": "assistant/03-model-explanation-after.jpg"
+    },
+    {
+      "question": "How does site security work?",
+      "before": "assistant/04-access-controls-before.jpg",
+      "after": "assistant/04-access-controls-after.jpg"
+    },
+    {
+      "question": "Latest risk for AB-001",
+      "before": "assistant/05-asset-detail-before.jpg",
+      "after": "assistant/05-asset-detail-after.jpg"
+    },
+    {
+      "question": "How is annualized cost calculated?",
+      "before": "assistant/06-cost-methodology-before.jpg",
+      "after": "assistant/06-cost-methodology-after.jpg"
+    },
+    {
+      "question": "Are risk scores calibrated?",
+      "before": "assistant/07-calibration-before.jpg",
+      "after": "assistant/07-calibration-after.jpg"
+    },
+    {
+      "question": "Latest risk for AB-002",
+      "before": "assistant/08-cross-site-refusal-before.jpg",
+      "after": "assistant/08-cross-site-refusal-after.jpg"
+    },
+    {
+      "question": "What if downtime cost is $2000 per hour?",
+      "before": "assistant/09-cost-scenario-refusal-before.jpg",
+      "after": "assistant/09-cost-scenario-refusal-after.jpg"
+    },
+    {
+      "question": "What were July costs?",
+      "before": "assistant/10-date-refusal-before.jpg",
+      "after": "assistant/10-date-refusal-after.jpg"
+    },
+    {
+      "question": "Book maintenance for AB-001 tomorrow",
+      "before": "assistant/11-booking-refusal-before.jpg",
+      "after": "assistant/11-booking-refusal-after.jpg"
+    }
+  ],
+  "local_gallery_links": "pass",
+  "issues": [],
+  "files": [
+    {
+      "file": "assistant/00-welcome.jpg",
+      "surface": "assistant",
+      "format": "JPEG",
+      "width": 1600,
+      "height": 900,
+      "bytes": 78331,
+      "sha256": "8a495b834812482337772e8d200fe3e8c496ac373d148d21c801e8a8e6987cda",
+      "decoded_rgb_sha256": "89981f41e045deb30624297a18b91829a5c6f54225572b0e8e72d65cf716b54c",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "assistant/01-policy-comparison-before.jpg",
+      "surface": "assistant",
+      "format": "JPEG",
+      "width": 1600,
+      "height": 900,
+      "bytes": 80423,
+      "sha256": "e622164dc02fa7cf8d9cb0f5917502d03bc5a9253cdf326f20625b0fb0a22041",
+      "decoded_rgb_sha256": "6b78d7c8e68474fb93d99a433997e4a38e23468751deb34f6d5b1f9939abd231",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "assistant/01-policy-comparison-after.jpg",
+      "surface": "assistant",
+      "format": "JPEG",
+      "width": 1600,
+      "height": 900,
+      "bytes": 98373,
+      "sha256": "9a6ec9269ba23665abde928843e2fed1cdfb67a93bbb4ec4c1fe20638ec37ee5",
+      "decoded_rgb_sha256": "bd2dc49e8a0e40b963eeb179cf415ae2d83af669dd343234ca990c41bb1d0e64",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "assistant/02-highest-risk-assets-before.jpg",
+      "surface": "assistant",
+      "format": "JPEG",
+      "width": 1600,
+      "height": 900,
+      "bytes": 80217,
+      "sha256": "a65021ff80163e2714ae834093811c815a93d430dcd88b7238c5838e9124e78f",
+      "decoded_rgb_sha256": "7178ecd1cae519acd92eae329f98c38001269022e1f5fda75923c180d9b854be",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "assistant/02-highest-risk-assets-after.jpg",
+      "surface": "assistant",
+      "format": "JPEG",
+      "width": 1600,
+      "height": 900,
+      "bytes": 87431,
+      "sha256": "186c0071a8716e6b4d59be6a145f91d43d4a6f3759a3783240d58e9f14e8cbcb",
+      "decoded_rgb_sha256": "48f530cab250aaaafc6024d9f5910b26fc77df17489865095212557774608b3b",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "assistant/03-model-explanation-before.jpg",
+      "surface": "assistant",
+      "format": "JPEG",
+      "width": 1600,
+      "height": 900,
+      "bytes": 80197,
+      "sha256": "2711b9dbedd0a69b37686bf884b1e1502417ff8354a7b87961fb3709ad21adfb",
+      "decoded_rgb_sha256": "4f12c2aa6e8ffbdbf13b76c8f2704386253de5290f36ffc3601f8c00ef6f6f34",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "assistant/03-model-explanation-after.jpg",
+      "surface": "assistant",
+      "format": "JPEG",
+      "width": 1600,
+      "height": 900,
+      "bytes": 65777,
+      "sha256": "6f6ff771e6f9377ee7546fc2f673949186abd2744c6764d5821b2e824d921047",
+      "decoded_rgb_sha256": "c94d3bd9c1d25e80cd5aec747681fbf4593938ec2731679702be4d5b2f54229d",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "assistant/04-access-controls-before.jpg",
+      "surface": "assistant",
+      "format": "JPEG",
+      "width": 1600,
+      "height": 900,
+      "bytes": 79724,
+      "sha256": "976c8eaff54f4d49ca956afa801749e72d920928be00d6d1a21fe899ddb6aa6b",
+      "decoded_rgb_sha256": "4ab49f8e1283d9791a6c1fb33ea28fca0c8fd7de7bbccd60db08553af918b7cd",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "assistant/04-access-controls-after.jpg",
+      "surface": "assistant",
+      "format": "JPEG",
+      "width": 1600,
+      "height": 900,
+      "bytes": 65714,
+      "sha256": "6b35f96e8eba34dc5d21ce9a32f72a27d75e45f97929c4c4bf77384e1528d18b",
+      "decoded_rgb_sha256": "d44204bd3b971d1def0d032e0f78671e432943d77dff50dcfdc2aca06afe57df",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "assistant/05-asset-detail-before.jpg",
+      "surface": "assistant",
+      "format": "JPEG",
+      "width": 1600,
+      "height": 900,
+      "bytes": 79576,
+      "sha256": "1a69be356667b4cd7918f5c700738eaab30d09294a18dc4ccc61608910d2baf9",
+      "decoded_rgb_sha256": "4d854cfbfb0dbd691a6516d41a9ca7af1cdf9a7ec4958e163711d96debd457d9",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "assistant/05-asset-detail-after.jpg",
+      "surface": "assistant",
+      "format": "JPEG",
+      "width": 1600,
+      "height": 900,
+      "bytes": 66038,
+      "sha256": "7894722caff28403848da70a53bab70b483575d7f6e0115dcefe7a66e2e9687f",
+      "decoded_rgb_sha256": "d7a5990ca417398fe10f506525cad8ada665a00d4942eb71c7a2797a222dfd46",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "assistant/06-cost-methodology-before.jpg",
+      "surface": "assistant",
+      "format": "JPEG",
+      "width": 1600,
+      "height": 900,
+      "bytes": 80036,
+      "sha256": "bb0d410b7fd75397488b9d6fe04919ba747c499fa9c6e6311cd510e38c893bbc",
+      "decoded_rgb_sha256": "cd7f7f733195c6ee128f92a3231c41e725889551686932f9d893e2be7d438f3c",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "assistant/06-cost-methodology-after.jpg",
+      "surface": "assistant",
+      "format": "JPEG",
+      "width": 1600,
+      "height": 900,
+      "bytes": 62639,
+      "sha256": "66395167fce7e0c72d3b6b328e7053f99f0d9715bbcc498ba84ec7cc2fdcab0e",
+      "decoded_rgb_sha256": "23df1911ca9db7b89d47385317ece599d17bd71c30ffc8dc783f9f8955029435",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "assistant/07-calibration-before.jpg",
+      "surface": "assistant",
+      "format": "JPEG",
+      "width": 1600,
+      "height": 900,
+      "bytes": 79628,
+      "sha256": "fd0cbb3643f6b5bc2724b49961b016159ad77fbbeead3d5997614ce0f8867d33",
+      "decoded_rgb_sha256": "e1e7e3c2f1f1f0a6e4cd2e9bb5e3be69fd1a8d436951e79dc5e1e159c0cd24c4",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "assistant/07-calibration-after.jpg",
+      "surface": "assistant",
+      "format": "JPEG",
+      "width": 1600,
+      "height": 900,
+      "bytes": 65243,
+      "sha256": "fbc6dc1dff1a5807efc1a384d6768f05ee88a97cb91ee2fa45da8c64fb6f12f9",
+      "decoded_rgb_sha256": "aa33276bd46d1ca8ac546aa3ec2c10bd6b82a612bc621eb421b300dc0b73dc4b",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "assistant/08-cross-site-refusal-before.jpg",
+      "surface": "assistant",
+      "format": "JPEG",
+      "width": 1600,
+      "height": 900,
+      "bytes": 79583,
+      "sha256": "6ceda3168158321b1a9b65dac4f65e1a9d0865fcc4ef77d4bc263eb8777b44b8",
+      "decoded_rgb_sha256": "e577d5beef5008d38cdb4e7cb60fb940cd60c907238d36e98aee6f6d820b76c3",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "assistant/08-cross-site-refusal-after.jpg",
+      "surface": "assistant",
+      "format": "JPEG",
+      "width": 1600,
+      "height": 900,
+      "bytes": 51029,
+      "sha256": "5ea01e0e8d7dcfd3286694a25b6b267df075ce513b84c318265f7bd8ff9dc614",
+      "decoded_rgb_sha256": "9cc915bf2abf412fb8a141704e9c959920c72192f4da777d998673196cff5ce4",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "assistant/09-cost-scenario-refusal-before.jpg",
+      "surface": "assistant",
+      "format": "JPEG",
+      "width": 1600,
+      "height": 900,
+      "bytes": 80560,
+      "sha256": "ce7934a38804cee1a67de9988501b8e3be74e6d2d5dbedfeced1f1b7f3a95137",
+      "decoded_rgb_sha256": "b2ecb4143f70d4780ca5cf0ebfed615254b70e9f5ce2d4ccf54f40e9a0184c80",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "assistant/09-cost-scenario-refusal-after.jpg",
+      "surface": "assistant",
+      "format": "JPEG",
+      "width": 1600,
+      "height": 900,
+      "bytes": 67814,
+      "sha256": "fb90f03160d5f1086853a07a4a06dbb7c261179980439b7b783f32968eadfc57",
+      "decoded_rgb_sha256": "d418b34d7499234f81dbb49776af04ebf658d7ec1e934a30899f9e340a8653aa",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "assistant/10-date-refusal-before.jpg",
+      "surface": "assistant",
+      "format": "JPEG",
+      "width": 1600,
+      "height": 900,
+      "bytes": 79522,
+      "sha256": "d3b429c1b75baae6ea8e8e57de335f12f21e6232eaf2a45ffd8e92bf7820ca3c",
+      "decoded_rgb_sha256": "4651065dc6a4e1d66c7600582dd123e3e3eaac973c37ec2f075c65413b687aa4",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "assistant/10-date-refusal-after.jpg",
+      "surface": "assistant",
+      "format": "JPEG",
+      "width": 1600,
+      "height": 900,
+      "bytes": 66783,
+      "sha256": "69f54307a28a1ae8797a60d89d2d482cb0cf2a6d75bf8e108c318c1c86b50242",
+      "decoded_rgb_sha256": "eee292549c9477b4e8d43f2f2a11407e5c5d5c84e55034338ee48e29825fd878",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "assistant/11-booking-refusal-before.jpg",
+      "surface": "assistant",
+      "format": "JPEG",
+      "width": 1600,
+      "height": 900,
+      "bytes": 80331,
+      "sha256": "af635e17ccb42ea2dcfdcbf39ee042eb0a86d7fda26e611b47eba57cb05cfd18",
+      "decoded_rgb_sha256": "d750477db45f087092fb2f7e22ea069a967c2510e69929c183d87fad865fb4a3",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "assistant/11-booking-refusal-after.jpg",
+      "surface": "assistant",
+      "format": "JPEG",
+      "width": 1600,
+      "height": 900,
+      "bytes": 67627,
+      "sha256": "dc0c33a393a11dc09fd4af211d502bab8b971d6721dbae7b0fda9196eca2812e",
+      "decoded_rgb_sha256": "8692ec3a8a577cb8bff3cf7f418495be89b3ae5942121e424ecb729ee7abce60",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "assistant/12-evidence-trace.jpg",
+      "surface": "assistant",
+      "format": "JPEG",
+      "width": 1600,
+      "height": 900,
+      "bytes": 84287,
+      "sha256": "78b4260e3f3bc55f5c8862629e4422eddc583f5cfc1c5e000cd9f3c772ea3504",
+      "decoded_rgb_sha256": "c298b269f8d6fe9017432cbc2bb71612f7c710d4f18230287df002b710e4d637",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "reviewer-tour/01-decision.jpg",
+      "surface": "reviewer-tour",
+      "format": "JPEG",
+      "width": 1600,
+      "height": 900,
+      "bytes": 121698,
+      "sha256": "c3b4702988685e29db022c9f16da5d7910368ffec282bcc44a6e61210f8af525",
+      "decoded_rgb_sha256": "5ade3740ac2a9f2681fd6a31f80c0eb01a05caeacb9144250f16fec4e7e22f68",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "reviewer-tour/02-data-scientist.jpg",
+      "surface": "reviewer-tour",
+      "format": "JPEG",
+      "width": 1600,
+      "height": 900,
+      "bytes": 123544,
+      "sha256": "3e7ee219bfa2485c7b4bde6ec22b61ad0a1ae27733b7ca13e5900e62059d4312",
+      "decoded_rgb_sha256": "2d2c26ba0f8ff014e1807d46753418580c24f4c39a3d900bfd99b0eaafbf61eb",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "reviewer-tour/03-ml-engineer.jpg",
+      "surface": "reviewer-tour",
+      "format": "JPEG",
+      "width": 1600,
+      "height": 900,
+      "bytes": 123700,
+      "sha256": "53ee7025c5332dfe47be33b7995cbc8fc3c6bc075715926906bcd5367a47a5d5",
+      "decoded_rgb_sha256": "491c21304bb7526cba100175ce4e8b1ca570ab2c81560f5dd9e4effbf6b5c4e6",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "reviewer-tour/04-ai-engineer.jpg",
+      "surface": "reviewer-tour",
+      "format": "JPEG",
+      "width": 1600,
+      "height": 900,
+      "bytes": 129743,
+      "sha256": "641117b8e3eb43e63fd9afdefdd72924a8dfe97f048ce6814994f71ea521f477",
+      "decoded_rgb_sha256": "3ec231889f2a27f85b251508d9c00e6e512822964c5915f673d4e23658d19da4",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "dashboard-companion/01-executive-roi-top.jpg",
+      "surface": "dashboard-companion",
+      "format": "JPEG",
+      "width": 1581,
+      "height": 889,
+      "bytes": 103301,
+      "sha256": "752d04af496a1547fa739d75a76c17531271575695869f7c6ca2b7789a0ebf0c",
+      "decoded_rgb_sha256": "c4cffed50b910442f2031d23b880f8fd0a3bb79a8b2db7ad0ef8c0d2b4a20301",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "dashboard-companion/01-executive-roi-bottom.jpg",
+      "surface": "dashboard-companion",
+      "format": "JPEG",
+      "width": 1581,
+      "height": 889,
+      "bytes": 83161,
+      "sha256": "e9ab4824680848bdbb5afe94e36e22082e770a5e39a7f873e909c62a63c63837",
+      "decoded_rgb_sha256": "ac6babdf940d59d0947375b86cc9096fecee9f3a715e8cbe655e95dc75193410",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "dashboard-companion/02-policy-comparison-top.jpg",
+      "surface": "dashboard-companion",
+      "format": "JPEG",
+      "width": 1581,
+      "height": 889,
+      "bytes": 87548,
+      "sha256": "39d12dff4cff427ece906eec93137a8b5bc59bf3664f5da7a6e7b4f6aa04dc3d",
+      "decoded_rgb_sha256": "cf7dad1ace55e2450875700f83e3b07c2ef8e3730c608ec14d61956a48095de9",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "dashboard-companion/02-policy-comparison-bottom.jpg",
+      "surface": "dashboard-companion",
+      "format": "JPEG",
+      "width": 1581,
+      "height": 889,
+      "bytes": 79878,
+      "sha256": "c3cc58ee2b679d709b628a43f8e76b2296634fff5dfb9665c5ece49ed25ce0e3",
+      "decoded_rgb_sha256": "048ea66dad1dd234b0a0012d2671a4c5f3ffbddbfa03b4f5daad08e2dd8a8a3a",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "dashboard-companion/03-fleet-risk-top.jpg",
+      "surface": "dashboard-companion",
+      "format": "JPEG",
+      "width": 1581,
+      "height": 889,
+      "bytes": 93197,
+      "sha256": "b15b9694522aa089fc4553bddb41831b69d84fa2bab8cc0e8b745d12daef9861",
+      "decoded_rgb_sha256": "87a82cd356499e9c68e22749395e5e0f5c26de09e35988f88407a2cb4cacc019",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "dashboard-companion/03-fleet-risk-middle.jpg",
+      "surface": "dashboard-companion",
+      "format": "JPEG",
+      "width": 1581,
+      "height": 889,
+      "bytes": 86139,
+      "sha256": "cb0696790ff84a7f5a4c063bd5d421c9a20f09adf8447d6aabb52e5021172533",
+      "decoded_rgb_sha256": "9bdc41e50f3664fd25768f01c283d7c0ff2c17ac09cf42528a899e80700a9600",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "dashboard-companion/03-fleet-risk-bottom.jpg",
+      "surface": "dashboard-companion",
+      "format": "JPEG",
+      "width": 1581,
+      "height": 889,
+      "bytes": 81558,
+      "sha256": "07575c73d5e9a76b7f0a00f24d79532b2b74df72670e1271693fad463ede7b00",
+      "decoded_rgb_sha256": "5a352ea8151a0c8734eaa41f5ac02b01fd1f1e48493452ac41561061b3735b8f",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "dashboard-companion/04-model-performance-top.jpg",
+      "surface": "dashboard-companion",
+      "format": "JPEG",
+      "width": 1581,
+      "height": 889,
+      "bytes": 87533,
+      "sha256": "8e4cb65f997a1de5df82e154902547c5119b188a45ccf2cf93861b5f5eb2dee8",
+      "decoded_rgb_sha256": "d6082fddffd3ebcac9014c980849550413e25a737411493f28a47e7aac117db3",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "dashboard-companion/04-model-performance-bottom.jpg",
+      "surface": "dashboard-companion",
+      "format": "JPEG",
+      "width": 1581,
+      "height": 889,
+      "bytes": 104374,
+      "sha256": "cd98c1f7167ed1b801c90a07469646bda5e5e6927731a2f27c7e50db6643154e",
+      "decoded_rgb_sha256": "23c7576f05743c0d35d6d528ff1f7af5888441064eea33153a136b64a1b74474",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "dashboard-companion/05-service-audit-top.jpg",
+      "surface": "dashboard-companion",
+      "format": "JPEG",
+      "width": 1581,
+      "height": 889,
+      "bytes": 92942,
+      "sha256": "82b9b2c62ab20b2bad6cbc0618ff76fca71bb94f0ff780ee890d8943e4888cfd",
+      "decoded_rgb_sha256": "fd8582219a7e733e6aae26f16f4f88feb455423768654d5982b4a9553b3d6c5d",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "dashboard-companion/05-service-audit-bottom.jpg",
+      "surface": "dashboard-companion",
+      "format": "JPEG",
+      "width": 1581,
+      "height": 889,
+      "bytes": 81327,
+      "sha256": "f07ed96ba99de279a842959e6dab16813e23e8cb6a9b0ebcb899300e662e14e9",
+      "decoded_rgb_sha256": "db2a44b28941bc8d2825830abd5ae99705876ea90c6ec903994022ff30439731",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "dashboard-companion/06-methodology-top.jpg",
+      "surface": "dashboard-companion",
+      "format": "JPEG",
+      "width": 1581,
+      "height": 889,
+      "bytes": 95043,
+      "sha256": "1e7dec641522febe7e82fa36636e3f0e41133cae6e1dd753f9e7c4f063d91da7",
+      "decoded_rgb_sha256": "fc940708020670a30d8e0d26e7075f3910f98f576ba91477e57a04cd70519a95",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "dashboard-companion/06-methodology-bottom.jpg",
+      "surface": "dashboard-companion",
+      "format": "JPEG",
+      "width": 1581,
+      "height": 889,
+      "bytes": 102587,
+      "sha256": "b83267653a362d0d9bd02736726e941df2fc403d1180ece1136b2fe738cbb72d",
+      "decoded_rgb_sha256": "b426099bf9f871a2b6bba3d59f72625dd6278805863ca44e4c871c8603326283",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "powerbi-native/01-executive-roi.png",
+      "surface": "powerbi-native",
+      "format": "PNG",
+      "width": 1287,
+      "height": 724,
+      "bytes": 102202,
+      "sha256": "2bf900ce01f114155ab53e93907e7e08311b9729771d7c776b40df5f989e70d1",
+      "decoded_rgb_sha256": "0888a8ca3100096360f2c415135941ba6d29b7915ab1540e6baced07ef8d8d25",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "powerbi-native/02-policy-comparison.png",
+      "surface": "powerbi-native",
+      "format": "PNG",
+      "width": 1288,
+      "height": 722,
+      "bytes": 109500,
+      "sha256": "27a04804fead53bc8f369bed9af90cf4cb71923a77ccd4a87a53dd7ff3c95026",
+      "decoded_rgb_sha256": "bdd2bcce687a17b219becb4bf9cebd79c853800b4eaff6b2cb3f161e1c394b13",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "powerbi-native/03-fleet-risk.png",
+      "surface": "powerbi-native",
+      "format": "PNG",
+      "width": 1288,
+      "height": 718,
+      "bytes": 107191,
+      "sha256": "5a2e8a17689ea27f98b5bb07039a8cab0551387dfc2c42c9d45f0ba0d5ae5a9f",
+      "decoded_rgb_sha256": "05ac4069c9224f5fd34c51743c9745e5a413f21bd3be8636d9c1f3355820b750",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "powerbi-native/04-model-performance.png",
+      "surface": "powerbi-native",
+      "format": "PNG",
+      "width": 1286,
+      "height": 722,
+      "bytes": 101736,
+      "sha256": "5ac9ff7ce362a03de8ae9a3bf42fcb688611485f89f81bd9437c72d5347d4284",
+      "decoded_rgb_sha256": "fc385f44605096e47d1832d5e352897e2709c9540bb032ac84e2c201049ddfe0",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "powerbi-native/05-service-audit.png",
+      "surface": "powerbi-native",
+      "format": "PNG",
+      "width": 1287,
+      "height": 719,
+      "bytes": 96103,
+      "sha256": "61ae2f5ae2806ecb484176ebd17e6446d113c61cbb893e0d03857022ec9b71d3",
+      "decoded_rgb_sha256": "6cfb9b062a93a20d84b46b1dcf9e118bace4fe77e9747d07b3c27053a994516a",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "powerbi-native/06-methodology.png",
+      "surface": "powerbi-native",
+      "format": "PNG",
+      "width": 1289,
+      "height": 722,
+      "bytes": 89524,
+      "sha256": "15e0ef788bd6f5703a6b037de2b1eb6be8c70261d3d4c7419c8ba0596fb9adc9",
+      "decoded_rgb_sha256": "f6774187dfec9403d1178a483c3d74581ff6cca7255eac2f3862d7312c3c8e9d",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "powerbi-native/07-asset-detail.png",
+      "surface": "powerbi-native",
+      "format": "PNG",
+      "width": 1288,
+      "height": 718,
+      "bytes": 121882,
+      "sha256": "29b6238421b037ecdb351d0271bb2de6ed30b7369bb2be892a64a099b9cc3306",
+      "decoded_rgb_sha256": "243bc250b56c646cfc77316023e53da22086ec07635d1f6d590f815dc391b0db",
+      "original_capture_bytes_preserved": true
+    },
+    {
+      "file": "powerbi-native/08-asset-context.png",
+      "surface": "powerbi-native",
+      "format": "PNG",
+      "width": 955,
+      "height": 702,
+      "bytes": 80185,
+      "sha256": "732a8dcb86022925f215303015f4cbd207acdc3707e500cb1c2a53266e87cb18",
+      "decoded_rgb_sha256": "a50e0d24334b603ebd80c4bda043d10fb0b0a68d9d4970a01ce54d047d961100",
+      "original_capture_bytes_preserved": true
+    }
+  ],
+  "native_source_revision": "User-supplied images predate current report formatting corrections; image bytes unchanged."
+}

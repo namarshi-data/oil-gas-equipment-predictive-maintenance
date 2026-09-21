@@ -1,0 +1,5 @@
+scenario,code,owner,response,value
+controlled_quality_flag_spike,imputed_row_rate,SCADA/data engineer,Inspect missing channel flags and sensor freshness.,1.0
+controlled_quality_flag_spike,manual_review_rate,Reliability engineer,Prioritize the advisory queue; investigate quality and commissioning reasons.,1.0
+controlled_delivery_delay,stale_assets,SCADA/data engineer,Check transport outages and restore telemetry before relying on scores.,80.0
+controlled_delivery_delay,no_recent_scores,ML engineer,Check the batch schedule and data delivery; surface unavailable status.,0.0

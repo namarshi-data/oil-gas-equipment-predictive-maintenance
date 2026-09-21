@@ -1,0 +1,4 @@
+scenario,targeted_raw_rows,numeric_raw_rows_changed,before_onset_features_unchanged,other_assets_features_unchanged,other_sensor_features_unchanged,labels_unchanged,vibration_imputed_cells,affected_window_vibration_missing_flags,baseline_affected_window_vibration_missing_flags,max_abs_7d_mean_change,max_abs_30d_mean_change,max_abs_daily_rate_change
+gradual_vibration_bias,607,587,True,True,True,True,1321,20,20,4.642857142857142,3.0,5.000000000000001
+abrupt_vibration_stuck_zero,607,607,True,True,True,True,1321,20,20,6.577714285714286,5.2817,7.041
+abrupt_vibration_dropout,627,0,True,True,True,True,1921,620,20,3.683285714285714,2.457233333333333,6.725

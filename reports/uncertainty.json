@@ -1,0 +1,61 @@
+{
+  "protocol_sha256": "ba837e43059ab99356dafe224cf8dfb89b69d46dbd014c8571cb686a8e2284b1",
+  "scope": "Fixed seed42 model, threshold and replay; complete assets resampled with replacement; no refitting.",
+  "classification": {
+    "assets": 80,
+    "rows": 4880,
+    "replicates": 2000,
+    "rng_seed": 20260918,
+    "metrics": {
+      "precision": {
+        "point": 0.9912280701754386,
+        "lower_95": 0.9808589436878911,
+        "upper_95": 0.9984326632031829,
+        "valid_replicates": 2000
+      },
+      "recall": {
+        "point": 0.6615925058548009,
+        "lower_95": 0.5726680214359462,
+        "upper_95": 0.7450796250393451,
+        "valid_replicates": 2000
+      },
+      "false_positive_rate": {
+        "point": 0.0012419274714356682,
+        "lower_95": 0.00023837760237061008,
+        "upper_95": 0.002700844882251915,
+        "valid_replicates": 2000
+      },
+      "brier_score": {
+        "point": 0.03555400004495415,
+        "lower_95": 0.021822061173615473,
+        "upper_95": 0.05244520468084141,
+        "valid_replicates": 2000
+      }
+    }
+  },
+  "policy_cost": {
+    "assets": 80,
+    "replicates": 2000,
+    "rng_seed": 20260918,
+    "window_cost_difference_cad": {
+      "point": 3343580.79,
+      "lower_95": 2249238.8095,
+      "upper_95": 4542780.57125,
+      "valid_replicates": 2000
+    },
+    "annualized_cost_difference_cad": {
+      "point": 13420251.467554945,
+      "lower_95": 9027851.375493132,
+      "upper_95": 18233523.117022663,
+      "valid_replicates": 2000
+    },
+    "fraction_resampled_fleets_with_positive_difference": 1.0,
+    "interpretation": "Conditional paired synthetic fleet resampling; fraction positive is not a forecast probability of real-world ROI."
+  },
+  "limitations": [
+    "Same-generator synthetic sampling variability only; not a field confidence interval.",
+    "No model-fitting, generator, parameter-cost, intervention-success or temporal-regime uncertainty is resampled.",
+    "Shared site shocks or correlated assets can invalidate asset independence; only four fictional sites exist.",
+    "Annualization extrapolates a 91-day scenario; it does not create a year of observed evidence."
+  ]
+}

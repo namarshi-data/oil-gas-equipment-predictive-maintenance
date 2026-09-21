@@ -1,0 +1,19 @@
+policy,warning_band,events
+reactive,Missed / 0,44
+reactive,1-7,0
+reactive,8-14,0
+reactive,15-21,0
+reactive,22-30,0
+reactive,31+,0
+fixed_90_day,Missed / 0,31
+fixed_90_day,1-7,5
+fixed_90_day,8-14,5
+fixed_90_day,15-21,1
+fixed_90_day,22-30,2
+fixed_90_day,31+,0
+predictive,Missed / 0,7
+predictive,1-7,2
+predictive,8-14,7
+predictive,15-21,12
+predictive,22-30,13
+predictive,31+,3

@@ -1,0 +1,31 @@
+/// Disconnected access mapping, one row per allowed UPN/site pair. Demonstration identities require deployment-specific replacement.
+table Dim_UserSite
+	isHidden
+	lineageTag: e3dc3a84-4453-424e-884e-457e9b7235f8
+
+	/// user principal name.
+	column user_principal_name
+		dataType: string
+		lineageTag: f1d99cf0-22a7-460f-a69c-d9b5bf359173
+		summarizeBy: none
+		sourceColumn: user_principal_name
+
+	/// site.
+	column site
+		dataType: string
+		lineageTag: 7ba121ef-aedb-4c22-b1a7-f41b3e231b8f
+		summarizeBy: none
+		sourceColumn: site
+
+	partition Dim_UserSite = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "/dim_user_site.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    BlankToNull = Table.ReplaceValue(Headers, "", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),
+				    Typed = Table.TransformColumnTypes(BlankToNull, {{"user_principal_name", type text}, {"site", type text}}, "en-CA"),
+				    NormalizedUsers = Table.TransformColumns(Typed, {{"user_principal_name", each Text.Lower(Text.Trim(_)), type text}})
+				in
+				    NormalizedUsers
+

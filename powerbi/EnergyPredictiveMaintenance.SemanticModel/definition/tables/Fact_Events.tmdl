@@ -1,0 +1,146 @@
+/// One physical failure event per maintenance-policy replay. Event date is the accounting date for repair/unplanned downtime.
+table Fact_Events
+	lineageTag: 1ddef7b5-7cfc-4679-8985-b6e9bd887bb3
+
+	/// event id.
+	column event_id
+		dataType: string
+		lineageTag: 07a972b4-e4c8-497a-be7a-808d499c6451
+		summarizeBy: none
+		sourceColumn: event_id
+
+	/// asset id.
+	column asset_id
+		dataType: string
+		isHidden
+		lineageTag: 3ca3791f-8557-4bdb-959b-fc6ebca75169
+		summarizeBy: none
+		sourceColumn: asset_id
+
+	/// asset type.
+	column asset_type
+		dataType: string
+		isHidden
+		lineageTag: 40c36067-35e7-4414-b74b-6ba924e50430
+		summarizeBy: none
+		sourceColumn: asset_type
+
+	/// site.
+	column site
+		dataType: string
+		isHidden
+		lineageTag: 3525cc5c-c043-4188-82c0-987ee8fe778b
+		summarizeBy: none
+		sourceColumn: site
+
+	/// event date.
+	column event_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 59c4cda4-7487-4fd2-bfc2-c1a41a64fd0a
+		summarizeBy: none
+		sourceColumn: event_date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	/// policy.
+	column policy
+		dataType: string
+		isHidden
+		lineageTag: cb4e5175-84d2-414e-acaa-bf400d2a803f
+		summarizeBy: none
+		sourceColumn: policy
+
+	/// caught.
+	column caught
+		dataType: boolean
+		lineageTag: 93752fc2-548c-47ae-a843-44b3164e9e6b
+		summarizeBy: none
+		sourceColumn: caught
+
+	/// alert date.
+	column alert_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: a4a53ff5-87f3-47d1-8e55-223e9b413d63
+		summarizeBy: none
+		sourceColumn: alert_date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	/// service date.
+	column service_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 35db7265-eac9-42de-b3f5-cd612bf3e71b
+		summarizeBy: none
+		sourceColumn: service_date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	/// warning days.
+	column warning_days
+		dataType: double
+		lineageTag: 760fb1de-3cde-4302-bae7-bb928f071d61
+		summarizeBy: none
+		sourceColumn: warning_days
+
+	/// service lead days.
+	column service_lead_days
+		dataType: double
+		lineageTag: b5313f98-1a4d-4a31-a9ce-ae2536ce293a
+		summarizeBy: none
+		sourceColumn: service_lead_days
+
+	/// repair cost cad.
+	column repair_cost_cad
+		dataType: double
+		lineageTag: eb775351-8fb6-496c-9845-f16a63f8dc84
+		summarizeBy: none
+		sourceColumn: repair_cost_cad
+
+	/// downtime hours.
+	column downtime_hours
+		dataType: double
+		lineageTag: 96ec58f8-93b4-4a56-a06c-fac62d6faf31
+		summarizeBy: none
+		sourceColumn: downtime_hours
+
+	/// outcome label.
+	column outcome_label
+		dataType: string
+		lineageTag: 0285018b-c8ba-4cd4-b7d2-ecdb9e842c53
+		summarizeBy: none
+		sourceColumn: outcome_label
+
+	/// warning band.
+	column warning_band
+		dataType: string
+		lineageTag: 0900da1f-6b37-49c5-a620-2e193ddb682a
+		summarizeBy: none
+		sourceColumn: warning_band
+		sortByColumn: warning_band_order
+
+	/// warning band order.
+	column warning_band_order
+		dataType: int64
+		isHidden
+		lineageTag: fb17236a-36bf-4877-bf56-14441e24bd58
+		summarizeBy: none
+		sourceColumn: warning_band_order
+
+	partition Fact_Events = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "/event_outcomes.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    BlankToNull = Table.ReplaceValue(Headers, "", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),
+				    Typed = Table.TransformColumnTypes(BlankToNull, {{"event_id", type text}, {"asset_id", type text}, {"asset_type", type text}, {"site", type text}, {"event_date", type date}, {"policy", type text}, {"alert_date", type date}, {"service_date", type date}, {"warning_days", type number}, {"service_lead_days", type number}, {"repair_cost_cad", type number}, {"downtime_hours", type number}}, "en-CA"),
+				    Logical = Table.TransformColumns(Typed, {{"caught", each if _ = null then null else if List.Contains({"1", "1.0", "true"}, Text.Lower(Text.From(_))) then true else if List.Contains({"0", "0.0", "false"}, Text.Lower(Text.From(_))) then false else error "Invalid boolean", type nullable logical}}),
+				    OutcomeLabel = Table.AddColumn(Logical, "outcome_label", each if [caught] then "Caught" else "Missed / breakdown", type text),
+				    WarningBand = Table.AddColumn(OutcomeLabel, "warning_band", each if not [caught] then "Missed / 0 days" else if [warning_days] < 8 then "01-07 days" else if [warning_days] < 15 then "08-14 days" else if [warning_days] < 22 then "15-21 days" else if [warning_days] <= 30 then "22-30 days" else "31+ days", type text),
+				    WarningBandOrder = Table.AddColumn(WarningBand, "warning_band_order", each if not [caught] then 0 else if [warning_days] < 8 then 1 else if [warning_days] < 15 then 2 else if [warning_days] < 22 then 3 else if [warning_days] <= 30 then 4 else 5, Int64.Type)
+				in
+				    WarningBandOrder
+

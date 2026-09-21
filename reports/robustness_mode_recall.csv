@@ -1,0 +1,5 @@
+failure_mode,positive_asset_days,distinct_future_events,alerted_positive_asset_days,recall
+bearing_wear,290,17,216,0.7448275862068966
+electrical_trip,65,3,0,0.0
+overheating,339,16,233,0.6873156342182891
+seal_leak,160,8,116,0.725

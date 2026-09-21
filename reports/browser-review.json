@@ -1,0 +1,80 @@
+{
+  "scope": "Actual local HTML browser checks, not native Power BI",
+  "desktopChecks": [
+    {
+      "tab": "01 / Decision",
+      "page": [
+        1280,
+        720
+      ],
+      "panelsVisible": 1,
+      "viewport": [
+        1280,
+        720
+      ]
+    },
+    {
+      "tab": "02 / Data Scientist",
+      "page": [
+        1280,
+        720
+      ],
+      "panelsVisible": 1,
+      "viewport": [
+        1280,
+        720
+      ]
+    },
+    {
+      "tab": "03 / ML Engineer",
+      "page": [
+        1280,
+        720
+      ],
+      "panelsVisible": 1,
+      "viewport": [
+        1280,
+        720
+      ]
+    },
+    {
+      "tab": "04 / AI Engineer",
+      "page": [
+        1280,
+        720
+      ],
+      "panelsVisible": 1,
+      "viewport": [
+        1280,
+        720
+      ]
+    }
+  ],
+  "mobileCheck": {
+    "page": [
+      375,
+      1559
+    ],
+    "scope": "HTML tour mobile flow; vertical scroll allowed, no horizontal overflow",
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  "assistant": {
+    "policyQuestion": "Compare policy costs and caught failures",
+    "scope": "Peace River",
+    "annualCostDifferenceCad": 2791370,
+    "mode": "rules-based",
+    "answerAndCitationsVisible": true,
+    "traceCollapsed": true,
+    "unsupportedJulyQuestion": "refused; no numeric answer",
+    "otherSiteAssetAB002": "generic unavailable response",
+    "frozenV3BackendRechecked": true
+  },
+  "runtimePending": [
+    "Power BI Desktop",
+    "Azure cloud",
+    "Live LLM"
+  ]
+}

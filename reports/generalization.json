@@ -1,0 +1,707 @@
+{
+  "study_id": "synthetic-generalization-v1",
+  "protocol_sha256": "ba837e43059ab99356dafe224cf8dfb89b69d46dbd014c8571cb686a8e2284b1",
+  "baseline_score_reproduction": true,
+  "training_assets": [
+    "AB-001",
+    "AB-002",
+    "AB-003",
+    "AB-004",
+    "AB-006",
+    "AB-007",
+    "AB-009",
+    "AB-010",
+    "AB-011",
+    "AB-012",
+    "AB-013",
+    "AB-014",
+    "AB-015",
+    "AB-016",
+    "AB-018",
+    "AB-021",
+    "AB-022",
+    "AB-023",
+    "AB-024",
+    "AB-025",
+    "AB-026",
+    "AB-027",
+    "AB-028",
+    "AB-029",
+    "AB-030",
+    "AB-031",
+    "AB-032",
+    "AB-033",
+    "AB-036",
+    "AB-037",
+    "AB-038",
+    "AB-039",
+    "AB-040",
+    "AB-041",
+    "AB-042",
+    "AB-043",
+    "AB-045",
+    "AB-048",
+    "AB-049",
+    "AB-050",
+    "AB-051",
+    "AB-052",
+    "AB-053",
+    "AB-056",
+    "AB-057",
+    "AB-058",
+    "AB-061",
+    "AB-064",
+    "AB-065",
+    "AB-066",
+    "AB-067",
+    "AB-068",
+    "AB-069",
+    "AB-072",
+    "AB-073",
+    "AB-074",
+    "AB-075",
+    "AB-077",
+    "AB-078",
+    "AB-079"
+  ],
+  "heldout_assets": [
+    "AB-005",
+    "AB-008",
+    "AB-017",
+    "AB-019",
+    "AB-020",
+    "AB-034",
+    "AB-035",
+    "AB-044",
+    "AB-046",
+    "AB-047",
+    "AB-054",
+    "AB-055",
+    "AB-059",
+    "AB-060",
+    "AB-062",
+    "AB-063",
+    "AB-070",
+    "AB-071",
+    "AB-076",
+    "AB-080"
+  ],
+  "heldout_site_counts": {
+    "Red Deer": 7,
+    "Lloydminster": 6,
+    "Grande Prairie": 5,
+    "Peace River": 2
+  },
+  "training_rows": {
+    "published_reference_80_assets": 22000,
+    "asset_holdout_study_60_assets": 16500
+  },
+  "thresholds": {
+    "published_reference_80_assets": 0.9,
+    "asset_holdout_study_60_assets": 0.8
+  },
+  "validation_selection": {
+    "threshold": 0.8,
+    "validation_predictive_cost_cad": 1313421.36
+  },
+  "training_label_available_by": "2024-11-30",
+  "validation_and_calibration_labels_available_by": "2025-03-30",
+  "calibration_dispatch_threshold": null,
+  "limitations": [
+    "The seed42 asset split is retrospective because the prior portfolio benchmark was already inspected.",
+    "External fleets use the same synthetic generator family, not field data or an independently specified failure process.",
+    "Bootstrap intervals are conditional synthetic resampling ranges, not field confidence intervals or deployment ROI probabilities."
+  ],
+  "calibration_fits": [
+    {
+      "model": "published_reference_80_assets",
+      "rows": 7200,
+      "assets": 80,
+      "seed": 77,
+      "period": [
+        "2024-12-01",
+        "2025-02-28"
+      ],
+      "logit_coefficient": 0.8517925674712633,
+      "intercept": 0.8700684762803758
+    },
+    {
+      "model": "asset_holdout_study_60_assets",
+      "rows": 7200,
+      "assets": 80,
+      "seed": 77,
+      "period": [
+        "2024-12-01",
+        "2025-02-28"
+      ],
+      "logit_coefficient": 0.8068847863260904,
+      "intercept": 0.7616417548080557
+    }
+  ],
+  "metrics": [
+    {
+      "cohort": "seed42_retrospective_asset_holdout",
+      "seed": 42,
+      "model": "published_reference_80_assets",
+      "asset_relationship": "seen_asset_history_reference_only",
+      "assets": 20,
+      "threshold": 0.9,
+      "rows": 1220,
+      "positives": 114,
+      "alerts": 81,
+      "true_positive": 81,
+      "false_positive": 0,
+      "false_negative": 33,
+      "true_negative": 1106,
+      "precision": 1.0,
+      "recall": 0.7105263157894737,
+      "false_discovery_rate": 0.0,
+      "false_positive_rate": 0.0,
+      "raw_brier_score": 0.017737411163028124,
+      "raw_log_loss": 0.05832738839984102,
+      "raw_average_precision": 0.9603103718046179,
+      "raw_roc_auc": 0.9944878017829384,
+      "calibrated_brier_score": 0.020563046864624793,
+      "calibrated_log_loss": 0.07605773836358928,
+      "calibrated_average_precision": 0.9603103718046179,
+      "calibrated_roc_auc": 0.9944878017829384
+    },
+    {
+      "cohort": "seed42_retrospective_asset_holdout",
+      "seed": 42,
+      "model": "asset_holdout_study_60_assets",
+      "asset_relationship": "unseen_assets_and_future_calendar",
+      "assets": 20,
+      "threshold": 0.8,
+      "rows": 1220,
+      "positives": 114,
+      "alerts": 110,
+      "true_positive": 101,
+      "false_positive": 9,
+      "false_negative": 13,
+      "true_negative": 1097,
+      "precision": 0.9181818181818182,
+      "recall": 0.8859649122807017,
+      "false_discovery_rate": 0.08181818181818182,
+      "false_positive_rate": 0.0081374321880651,
+      "raw_brier_score": 0.01762225798754221,
+      "raw_log_loss": 0.06322574738920568,
+      "raw_average_precision": 0.9562997718536731,
+      "raw_roc_auc": 0.9920767107642524,
+      "calibrated_brier_score": 0.022794871583094938,
+      "calibrated_log_loss": 0.08904902427537152,
+      "calibrated_average_precision": 0.9562997718536731,
+      "calibrated_roc_auc": 0.9920767107642524
+    },
+    {
+      "cohort": "external_seed101",
+      "seed": 101,
+      "model": "published_reference_80_assets",
+      "asset_relationship": "independent_fleet_same_generator_future_calendar",
+      "assets": 80,
+      "threshold": 0.9,
+      "rows": 4880,
+      "positives": 769,
+      "alerts": 386,
+      "true_positive": 383,
+      "false_positive": 3,
+      "false_negative": 386,
+      "true_negative": 4108,
+      "precision": 0.9922279792746114,
+      "recall": 0.4980494148244473,
+      "false_discovery_rate": 0.007772020725388601,
+      "false_positive_rate": 0.0007297494526879105,
+      "raw_brier_score": 0.061933716269827736,
+      "raw_log_loss": 0.27244898298482656,
+      "raw_average_precision": 0.7994971042675928,
+      "raw_roc_auc": 0.9197120605410521,
+      "calibrated_brier_score": 0.061188483811253816,
+      "calibrated_log_loss": 0.21890590312533803,
+      "calibrated_average_precision": 0.7994971042675928,
+      "calibrated_roc_auc": 0.9197120605410521
+    },
+    {
+      "cohort": "external_seed101",
+      "seed": 101,
+      "model": "asset_holdout_study_60_assets",
+      "asset_relationship": "independent_fleet_same_generator_future_calendar",
+      "assets": 80,
+      "threshold": 0.8,
+      "rows": 4880,
+      "positives": 769,
+      "alerts": 457,
+      "true_positive": 443,
+      "false_positive": 14,
+      "false_negative": 326,
+      "true_negative": 4097,
+      "precision": 0.9693654266958425,
+      "recall": 0.576072821846554,
+      "false_discovery_rate": 0.030634573304157548,
+      "false_positive_rate": 0.0034054974458769156,
+      "raw_brier_score": 0.06291704249983986,
+      "raw_log_loss": 0.2748804341614257,
+      "raw_average_precision": 0.7880555351153123,
+      "raw_roc_auc": 0.9117676923120721,
+      "calibrated_brier_score": 0.06481237056647998,
+      "calibrated_log_loss": 0.22904236809881662,
+      "calibrated_average_precision": 0.7880555351153123,
+      "calibrated_roc_auc": 0.9117676923120721
+    },
+    {
+      "cohort": "external_seed202",
+      "seed": 202,
+      "model": "published_reference_80_assets",
+      "asset_relationship": "independent_fleet_same_generator_future_calendar",
+      "assets": 80,
+      "threshold": 0.9,
+      "rows": 4880,
+      "positives": 839,
+      "alerts": 440,
+      "true_positive": 437,
+      "false_positive": 3,
+      "false_negative": 402,
+      "true_negative": 4038,
+      "precision": 0.9931818181818182,
+      "recall": 0.5208581644815257,
+      "false_discovery_rate": 0.006818181818181818,
+      "false_positive_rate": 0.0007423904974016332,
+      "raw_brier_score": 0.04833660710625486,
+      "raw_log_loss": 0.184990079320147,
+      "raw_average_precision": 0.8989632808620796,
+      "raw_roc_auc": 0.9644814666356379,
+      "calibrated_brier_score": 0.043133852467510135,
+      "calibrated_log_loss": 0.15311103691645214,
+      "calibrated_average_precision": 0.8989632808620796,
+      "calibrated_roc_auc": 0.9644814666356379
+    },
+    {
+      "cohort": "external_seed202",
+      "seed": 202,
+      "model": "asset_holdout_study_60_assets",
+      "asset_relationship": "independent_fleet_same_generator_future_calendar",
+      "assets": 80,
+      "threshold": 0.8,
+      "rows": 4880,
+      "positives": 839,
+      "alerts": 515,
+      "true_positive": 511,
+      "false_positive": 4,
+      "false_negative": 328,
+      "true_negative": 4037,
+      "precision": 0.9922330097087378,
+      "recall": 0.6090584028605482,
+      "false_discovery_rate": 0.007766990291262136,
+      "false_positive_rate": 0.000989853996535511,
+      "raw_brier_score": 0.04996511316846884,
+      "raw_log_loss": 0.18903489251503586,
+      "raw_average_precision": 0.8781988224373356,
+      "raw_roc_auc": 0.956190112137244,
+      "calibrated_brier_score": 0.0500559347695325,
+      "calibrated_log_loss": 0.17309990516011092,
+      "calibrated_average_precision": 0.8781988224373356,
+      "calibrated_roc_auc": 0.956190112137244
+    },
+    {
+      "cohort": "external_seed303",
+      "seed": 303,
+      "model": "published_reference_80_assets",
+      "asset_relationship": "independent_fleet_same_generator_future_calendar",
+      "assets": 80,
+      "threshold": 0.9,
+      "rows": 4880,
+      "positives": 710,
+      "alerts": 402,
+      "true_positive": 394,
+      "false_positive": 8,
+      "false_negative": 316,
+      "true_negative": 4162,
+      "precision": 0.9800995024875622,
+      "recall": 0.5549295774647888,
+      "false_discovery_rate": 0.01990049751243781,
+      "false_positive_rate": 0.0019184652278177458,
+      "raw_brier_score": 0.0404202912805377,
+      "raw_log_loss": 0.15733127855963885,
+      "raw_average_precision": 0.8863590706264988,
+      "raw_roc_auc": 0.964172324112541,
+      "calibrated_brier_score": 0.03855203599977379,
+      "calibrated_log_loss": 0.1411384261857359,
+      "calibrated_average_precision": 0.8863590706264988,
+      "calibrated_roc_auc": 0.964172324112541
+    },
+    {
+      "cohort": "external_seed303",
+      "seed": 303,
+      "model": "asset_holdout_study_60_assets",
+      "asset_relationship": "independent_fleet_same_generator_future_calendar",
+      "assets": 80,
+      "threshold": 0.8,
+      "rows": 4880,
+      "positives": 710,
+      "alerts": 505,
+      "true_positive": 469,
+      "false_positive": 36,
+      "false_negative": 241,
+      "true_negative": 4134,
+      "precision": 0.9287128712871288,
+      "recall": 0.6605633802816901,
+      "false_discovery_rate": 0.07128712871287128,
+      "false_positive_rate": 0.008633093525179856,
+      "raw_brier_score": 0.04163048130830045,
+      "raw_log_loss": 0.16090262684764317,
+      "raw_average_precision": 0.8741429319547847,
+      "raw_roc_auc": 0.9623377917384403,
+      "calibrated_brier_score": 0.042695944825871544,
+      "calibrated_log_loss": 0.15788134423174094,
+      "calibrated_average_precision": 0.8741429319547847,
+      "calibrated_roc_auc": 0.9623377917384403
+    }
+  ],
+  "data_evidence": [
+    {
+      "seed": 77,
+      "manifest": {
+        "source": "100% synthetic; no AER or operator records",
+        "seed": 77,
+        "assets": 80,
+        "telemetry_start": "2024-01-01",
+        "telemetry_end": "2025-06-30",
+        "cadence": "one daily snapshot per asset",
+        "expected_asset_days": 43760,
+        "raw_readings": 44036,
+        "failure_events": 226,
+        "currency": "CAD",
+        "scenario": "enriched-failure teaching sample; not Alberta failure-rate estimate"
+      },
+      "raw_readings_sha256": "b83f9dbfee527ec59af27a0d5e5b70d800c8027b288ee4867df821a26bf955d0",
+      "raw_events_sha256": "f01067d944561d38a237e7ca26b01eb3bbf9fa0f168b22898227e66d4e24f7e8"
+    },
+    {
+      "seed": 101,
+      "manifest": {
+        "source": "100% synthetic; no AER or operator records",
+        "seed": 101,
+        "assets": 80,
+        "telemetry_start": "2024-01-01",
+        "telemetry_end": "2025-06-30",
+        "cadence": "one daily snapshot per asset",
+        "expected_asset_days": 43760,
+        "raw_readings": 44021,
+        "failure_events": 231,
+        "currency": "CAD",
+        "scenario": "enriched-failure teaching sample; not Alberta failure-rate estimate"
+      },
+      "raw_readings_sha256": "53d119c8122c15dd37bbf35847d465ff5bd46a4c7d709dc8f3b621288aa28ed9",
+      "raw_events_sha256": "4e07c34864889490e9e98f814075ab89647d69804716718dd263ab8e3bd424c4"
+    },
+    {
+      "seed": 202,
+      "manifest": {
+        "source": "100% synthetic; no AER or operator records",
+        "seed": 202,
+        "assets": 80,
+        "telemetry_start": "2024-01-01",
+        "telemetry_end": "2025-06-30",
+        "cadence": "one daily snapshot per asset",
+        "expected_asset_days": 43760,
+        "raw_readings": 44026,
+        "failure_events": 232,
+        "currency": "CAD",
+        "scenario": "enriched-failure teaching sample; not Alberta failure-rate estimate"
+      },
+      "raw_readings_sha256": "478648675d4378e6c943beb47def655792f6524af0883fcb82a06f10f6506d5e",
+      "raw_events_sha256": "5e7c97aa14fd21d6a44704cfa875233596ff8ea3baf876254c4b628ce4db8951"
+    },
+    {
+      "seed": 303,
+      "manifest": {
+        "source": "100% synthetic; no AER or operator records",
+        "seed": 303,
+        "assets": 80,
+        "telemetry_start": "2024-01-01",
+        "telemetry_end": "2025-06-30",
+        "cadence": "one daily snapshot per asset",
+        "expected_asset_days": 43760,
+        "raw_readings": 44025,
+        "failure_events": 232,
+        "currency": "CAD",
+        "scenario": "enriched-failure teaching sample; not Alberta failure-rate estimate"
+      },
+      "raw_readings_sha256": "b03c76b376d37a803ab85a66196d926d0f30938e02c9c71ed21db456416520e8",
+      "raw_events_sha256": "6ceecd44de45c6f6cb3d64bdc353f3c00d3667acce0aad130b6d685c635b9b34"
+    }
+  ],
+  "cluster_intervals": [
+    {
+      "cohort": "seed42_retrospective_asset_holdout",
+      "model": "published_reference_80_assets",
+      "assets": 20,
+      "rows": 1220,
+      "replicates": 2000,
+      "rng_seed": 20260918,
+      "metrics": {
+        "precision": {
+          "point": 1.0,
+          "lower_95": 1.0,
+          "upper_95": 1.0,
+          "valid_replicates": 1997
+        },
+        "recall": {
+          "point": 0.7105263157894737,
+          "lower_95": 0.5554804804804805,
+          "upper_95": 0.870607210626186,
+          "valid_replicates": 1999
+        },
+        "false_positive_rate": {
+          "point": 0.0,
+          "lower_95": 0.0,
+          "upper_95": 0.0,
+          "valid_replicates": 2000
+        },
+        "brier_score": {
+          "point": 0.017737411163028127,
+          "lower_95": 0.004204144442381813,
+          "upper_95": 0.03349178395690204,
+          "valid_replicates": 2000
+        }
+      }
+    },
+    {
+      "cohort": "seed42_retrospective_asset_holdout",
+      "model": "asset_holdout_study_60_assets",
+      "assets": 20,
+      "rows": 1220,
+      "replicates": 2000,
+      "rng_seed": 20260918,
+      "metrics": {
+        "precision": {
+          "point": 0.9181818181818182,
+          "lower_95": 0.6664191419141914,
+          "upper_95": 1.0,
+          "valid_replicates": 1998
+        },
+        "recall": {
+          "point": 0.8859649122807017,
+          "lower_95": 0.782051282051282,
+          "upper_95": 0.96875,
+          "valid_replicates": 1999
+        },
+        "false_positive_rate": {
+          "point": 0.0081374321880651,
+          "lower_95": 0.0,
+          "upper_95": 0.02317298202933144,
+          "valid_replicates": 2000
+        },
+        "brier_score": {
+          "point": 0.017622257987542207,
+          "lower_95": 0.002999492501999735,
+          "upper_95": 0.034260094377903956,
+          "valid_replicates": 2000
+        }
+      }
+    },
+    {
+      "cohort": "external_seed101",
+      "model": "published_reference_80_assets",
+      "assets": 80,
+      "rows": 4880,
+      "replicates": 2000,
+      "rng_seed": 20260918,
+      "metrics": {
+        "precision": {
+          "point": 0.9922279792746114,
+          "lower_95": 0.9773298320167697,
+          "upper_95": 1.0,
+          "valid_replicates": 2000
+        },
+        "recall": {
+          "point": 0.4980494148244473,
+          "lower_95": 0.36694943534546687,
+          "upper_95": 0.6257882375776397,
+          "valid_replicates": 2000
+        },
+        "false_positive_rate": {
+          "point": 0.0007297494526879105,
+          "lower_95": 0.0,
+          "upper_95": 0.0019517431959490995,
+          "valid_replicates": 2000
+        },
+        "brier_score": {
+          "point": 0.06193371626982774,
+          "lower_95": 0.03596393499760782,
+          "upper_95": 0.09088761907344464,
+          "valid_replicates": 2000
+        }
+      }
+    },
+    {
+      "cohort": "external_seed101",
+      "model": "asset_holdout_study_60_assets",
+      "assets": 80,
+      "rows": 4880,
+      "replicates": 2000,
+      "rng_seed": 20260918,
+      "metrics": {
+        "precision": {
+          "point": 0.9693654266958425,
+          "lower_95": 0.9389912090633319,
+          "upper_95": 0.9952973482299098,
+          "valid_replicates": 2000
+        },
+        "recall": {
+          "point": 0.576072821846554,
+          "lower_95": 0.42770949354395815,
+          "upper_95": 0.7164814043630072,
+          "valid_replicates": 2000
+        },
+        "false_positive_rate": {
+          "point": 0.0034054974458769156,
+          "lower_95": 0.00048005093988690885,
+          "upper_95": 0.007218609667234997,
+          "valid_replicates": 2000
+        },
+        "brier_score": {
+          "point": 0.06291704249983986,
+          "lower_95": 0.03813072752776132,
+          "upper_95": 0.09211450530052277,
+          "valid_replicates": 2000
+        }
+      }
+    },
+    {
+      "cohort": "external_seed202",
+      "model": "published_reference_80_assets",
+      "assets": 80,
+      "rows": 4880,
+      "replicates": 2000,
+      "rng_seed": 20260918,
+      "metrics": {
+        "precision": {
+          "point": 0.9931818181818182,
+          "lower_95": 0.9847560975609756,
+          "upper_95": 1.0,
+          "valid_replicates": 2000
+        },
+        "recall": {
+          "point": 0.5208581644815257,
+          "lower_95": 0.42240222876366695,
+          "upper_95": 0.6107427371013883,
+          "valid_replicates": 2000
+        },
+        "false_positive_rate": {
+          "point": 0.0007423904974016332,
+          "lower_95": 0.0,
+          "upper_95": 0.001586294487141995,
+          "valid_replicates": 2000
+        },
+        "brier_score": {
+          "point": 0.04833660710625486,
+          "lower_95": 0.029254038449122062,
+          "upper_95": 0.06946702336778358,
+          "valid_replicates": 2000
+        }
+      }
+    },
+    {
+      "cohort": "external_seed202",
+      "model": "asset_holdout_study_60_assets",
+      "assets": 80,
+      "rows": 4880,
+      "replicates": 2000,
+      "rng_seed": 20260918,
+      "metrics": {
+        "precision": {
+          "point": 0.9922330097087378,
+          "lower_95": 0.9818651381105119,
+          "upper_95": 1.0,
+          "valid_replicates": 2000
+        },
+        "recall": {
+          "point": 0.6090584028605482,
+          "lower_95": 0.502138943705858,
+          "upper_95": 0.7074792000950851,
+          "valid_replicates": 2000
+        },
+        "false_positive_rate": {
+          "point": 0.000989853996535511,
+          "lower_95": 0.0,
+          "upper_95": 0.0022603942902958713,
+          "valid_replicates": 2000
+        },
+        "brier_score": {
+          "point": 0.04996511316846884,
+          "lower_95": 0.03220508093108686,
+          "upper_95": 0.07083957375916529,
+          "valid_replicates": 2000
+        }
+      }
+    },
+    {
+      "cohort": "external_seed303",
+      "model": "published_reference_80_assets",
+      "assets": 80,
+      "rows": 4880,
+      "replicates": 2000,
+      "rng_seed": 20260918,
+      "metrics": {
+        "precision": {
+          "point": 0.9800995024875622,
+          "lower_95": 0.9545454545454546,
+          "upper_95": 1.0,
+          "valid_replicates": 2000
+        },
+        "recall": {
+          "point": 0.5549295774647888,
+          "lower_95": 0.44664916286149164,
+          "upper_95": 0.6548581059390047,
+          "valid_replicates": 2000
+        },
+        "false_positive_rate": {
+          "point": 0.0019184652278177458,
+          "lower_95": 0.0,
+          "upper_95": 0.0044270915028840185,
+          "valid_replicates": 2000
+        },
+        "brier_score": {
+          "point": 0.040420291280537694,
+          "lower_95": 0.024307203208278533,
+          "upper_95": 0.059919576175629735,
+          "valid_replicates": 2000
+        }
+      }
+    },
+    {
+      "cohort": "external_seed303",
+      "model": "asset_holdout_study_60_assets",
+      "assets": 80,
+      "rows": 4880,
+      "replicates": 2000,
+      "rng_seed": 20260918,
+      "metrics": {
+        "precision": {
+          "point": 0.9287128712871288,
+          "lower_95": 0.872105706608371,
+          "upper_95": 0.9804174769081184,
+          "valid_replicates": 2000
+        },
+        "recall": {
+          "point": 0.6605633802816901,
+          "lower_95": 0.5436822963818562,
+          "upper_95": 0.7728098006644518,
+          "valid_replicates": 2000
+        },
+        "false_positive_rate": {
+          "point": 0.008633093525179856,
+          "lower_95": 0.0021315526547351945,
+          "upper_95": 0.01730496943796256,
+          "valid_replicates": 2000
+        },
+        "brier_score": {
+          "point": 0.04163048130830045,
+          "lower_95": 0.02622214484138907,
+          "upper_95": 0.059958641585237143,
+          "valid_replicates": 2000
+        }
+      }
+    }
+  ]
+}

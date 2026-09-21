@@ -1,0 +1,81 @@
+asset_id,asset_type,site,predictive_caught,predictive_unplanned_hours,fixed_caught,fixed_unplanned_hours,event_count,latest_risk_score
+AB-001,pumpjack,Peace River,1,0.0,0,47.3,1,0.00038921694561772877
+AB-002,compressor,Grande Prairie,0,0.0,0,0.0,0,0.9928996998826974
+AB-003,pipeline_pump,Red Deer,0,0.0,0,0.0,0,0.030595421083193564
+AB-004,pumpjack,Lloydminster,1,0.0,0,60.1,1,0.00035572209000309476
+AB-005,compressor,Peace River,0,0.0,0,0.0,0,0.1408937766858905
+AB-006,pipeline_pump,Grande Prairie,0,0.0,0,0.0,0,0.9939388251123756
+AB-007,pumpjack,Red Deer,1,0.0,0,49.1,1,0.0003664690061399769
+AB-008,compressor,Lloydminster,1,0.0,0,133.1,1,0.0005781295861874724
+AB-009,pipeline_pump,Peace River,0,0.0,0,0.0,0,0.09089283251227374
+AB-010,pumpjack,Grande Prairie,0,44.1,0,44.1,1,0.0004569739409419582
+AB-011,compressor,Red Deer,1,0.0,1,0.0,1,0.0005098490183011585
+AB-012,pipeline_pump,Lloydminster,0,68.2,0,68.2,1,0.0004643190937344524
+AB-013,pumpjack,Peace River,1,0.0,1,0.0,1,0.00034679270065678217
+AB-014,compressor,Grande Prairie,1,0.0,0,88.4,1,0.00044659604828774805
+AB-015,pipeline_pump,Red Deer,0,0.0,0,0.0,0,0.12113631270262777
+AB-016,pumpjack,Lloydminster,1,0.0,0,50.6,1,0.00024184914089606384
+AB-017,compressor,Peace River,0,0.0,0,0.0,0,0.4648529763517606
+AB-018,pipeline_pump,Grande Prairie,0,0.0,0,0.0,0,0.25066508272391513
+AB-019,pumpjack,Red Deer,0,0.0,0,0.0,0,0.010215577560495105
+AB-020,compressor,Lloydminster,0,0.0,0,0.0,0,0.028500835404303766
+AB-021,pipeline_pump,Peace River,1,0.0,1,0.0,1,0.00044758045209300387
+AB-022,pumpjack,Grande Prairie,0,0.0,0,0.0,0,0.9923487136141399
+AB-023,compressor,Red Deer,1,0.0,1,0.0,1,0.0004985417315594344
+AB-024,pipeline_pump,Lloydminster,0,0.0,0,0.0,0,0.04389117191327925
+AB-025,pumpjack,Peace River,0,0.0,0,0.0,0,0.040761050929061564
+AB-026,compressor,Grande Prairie,0,0.0,0,0.0,0,0.015783429206584258
+AB-027,pipeline_pump,Red Deer,1,0.0,0,107.4,1,0.007699442246905309
+AB-028,pumpjack,Lloydminster,0,47.1,0,47.1,1,0.0008424671417799636
+AB-029,compressor,Peace River,0,59.9,0,59.9,1,0.0003291033900732272
+AB-030,pipeline_pump,Grande Prairie,0,0.0,0,0.0,0,0.9899542306896032
+AB-031,pumpjack,Red Deer,0,0.0,0,0.0,0,0.9854187676188298
+AB-032,compressor,Lloydminster,1,0.0,0,66.0,1,0.00035107427315715493
+AB-033,pipeline_pump,Peace River,1,0.0,1,0.0,1,0.00044286871250590575
+AB-034,pumpjack,Grande Prairie,0,0.0,0,0.0,0,0.9951748076165547
+AB-035,compressor,Red Deer,0,94.5,0,94.5,1,0.012417627776134324
+AB-036,pipeline_pump,Lloydminster,1,0.0,0,86.5,1,0.0003870275704586107
+AB-037,pumpjack,Peace River,0,0.0,0,0.0,0,0.06261567209013308
+AB-038,compressor,Grande Prairie,0,0.0,0,0.0,0,0.019027730078662188
+AB-039,pipeline_pump,Red Deer,1,0.0,1,0.0,1,0.012987898726434001
+AB-040,pumpjack,Lloydminster,1,0.0,1,0.0,1,0.0007903075820573391
+AB-041,compressor,Peace River,0,0.0,0,0.0,0,0.1681215262313293
+AB-042,pipeline_pump,Grande Prairie,0,0.0,0,0.0,0,0.9667148867826691
+AB-043,pumpjack,Red Deer,1,0.0,0,77.6,1,0.00045672410069612867
+AB-044,compressor,Lloydminster,1,0.0,0,132.4,1,0.00025396065186494686
+AB-045,pipeline_pump,Peace River,0,0.0,0,0.0,0,0.019431477924692905
+AB-046,pumpjack,Grande Prairie,0,0.0,0,0.0,0,0.0366554412930775
+AB-047,compressor,Red Deer,0,0.0,0,0.0,0,0.9920435083316829
+AB-048,pipeline_pump,Lloydminster,0,62.1,0,62.1,1,0.00048823648595119044
+AB-049,pumpjack,Peace River,1,0.0,1,0.0,1,0.00038514364899312216
+AB-050,compressor,Grande Prairie,1,0.0,0,127.0,1,0.0003960169169470915
+AB-051,pipeline_pump,Red Deer,1,0.0,0,65.7,1,0.007997184813257516
+AB-052,pumpjack,Lloydminster,1,0.0,0,99.5,1,0.0004608658770796001
+AB-053,compressor,Peace River,0,0.0,0,0.0,0,0.5084146838230454
+AB-054,pipeline_pump,Grande Prairie,0,0.0,0,0.0,0,0.07917315433264664
+AB-055,pumpjack,Red Deer,0,0.0,0,0.0,0,0.006533235640898255
+AB-056,compressor,Lloydminster,1,0.0,1,0.0,1,0.00041794746792897443
+AB-057,pipeline_pump,Peace River,0,0.0,0,0.0,0,0.032295959732989134
+AB-058,pumpjack,Grande Prairie,1,0.0,0,77.2,1,0.0009124208373225222
+AB-059,compressor,Red Deer,1,0.0,0,121.6,1,0.00024673403211569294
+AB-060,pipeline_pump,Lloydminster,1,0.0,0,118.4,1,0.0015809374618064025
+AB-061,pumpjack,Peace River,1,0.0,0,64.7,1,0.0003038197768819708
+AB-062,compressor,Grande Prairie,0,0.0,0,0.0,0,0.010710681087896818
+AB-063,pipeline_pump,Red Deer,0,0.0,0,0.0,0,0.07756275390125937
+AB-064,pumpjack,Lloydminster,0,0.0,0,0.0,0,0.018845444247538486
+AB-065,compressor,Peace River,1,0.0,0,63.0,1,0.0005448587102633552
+AB-066,pipeline_pump,Grande Prairie,1,0.0,1,0.0,1,0.00046852826830868285
+AB-067,pumpjack,Red Deer,1,0.0,1,0.0,1,0.0006531907046403902
+AB-068,compressor,Lloydminster,0,0.0,0,0.0,0,0.011730454914983425
+AB-069,pipeline_pump,Peace River,1,0.0,0,79.2,1,0.0007268676012965074
+AB-070,pumpjack,Grande Prairie,0,0.0,0,0.0,0,0.022044849964721395
+AB-071,compressor,Red Deer,1,0.0,0,107.0,1,0.0004129007458152057
+AB-072,pipeline_pump,Lloydminster,1,0.0,1,0.0,1,0.0006946713662474392
+AB-073,pumpjack,Peace River,0,0.0,0,0.0,0,0.007677097985004193
+AB-074,compressor,Grande Prairie,0,0.0,0,0.0,0,0.9966136871378599
+AB-075,pipeline_pump,Red Deer,1,0.0,0,97.6,1,0.0008149603330324389
+AB-076,pumpjack,Lloydminster,0,93.1,0,93.1,1,0.0008685866653467155
+AB-077,compressor,Peace River,1,0.0,0,113.2,1,0.0011657069336307533
+AB-078,pipeline_pump,Grande Prairie,1,0.0,1,0.0,1,0.00042645841362081463
+AB-079,pumpjack,Red Deer,1,0.0,0,105.5,1,0.00048264816588402095
+AB-080,compressor,Lloydminster,0,0.0,0,0.0,0,0.9821733529020188

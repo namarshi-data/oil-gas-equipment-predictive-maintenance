@@ -1,0 +1,6 @@
+$schema: https://azuremlschemas.azureedge.net/latest/environment.schema.json
+name: energy-failure-ml
+version: '3'
+description: Pinned model dependencies shared by training and batch scoring.
+image: mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu22.04@sha256:c5b3129d6db35d912f39f8a494e8f858bedecc7153fb59b5ec9d53df13aa8ab6
+conda_file: conda.yml

@@ -1,0 +1,55 @@
+{
+  "raw_readings": 44011,
+  "clean_readings": 43760,
+  "dropped_invalid_keys_or_dates": 0,
+  "duplicates_removed": 251,
+  "raw_assets": 80,
+  "clean_assets": 80,
+  "dropped_assets": 0,
+  "raw_events": 236,
+  "clean_events": 236,
+  "dropped_events": 0,
+  "raw_maintenance": 314,
+  "clean_maintenance": 314,
+  "dropped_maintenance": 0,
+  "unobserved_calendar_days": 0,
+  "rows_with_imputation": 2621,
+  "imputed_cells": 9298,
+  "missing_cells_by_sensor": {
+    "vibration_mm_s": 1276,
+    "bearing_temperature_c": 1268,
+    "pressure_bar": 1275,
+    "power_kw": 1295,
+    "load_pct": 1295,
+    "rpm": 1300,
+    "runtime_hours": 1287
+  },
+  "invalid_cells_by_sensor": {
+    "vibration_mm_s": 45,
+    "bearing_temperature_c": 51,
+    "pressure_bar": 55,
+    "power_kw": 47,
+    "load_pct": 44,
+    "rpm": 60,
+    "runtime_hours": 0
+  },
+  "imputed_cells_by_sensor": {
+    "vibration_mm_s": 1321,
+    "bearing_temperature_c": 1319,
+    "pressure_bar": 1330,
+    "power_kw": 1342,
+    "load_pct": 1339,
+    "rpm": 1360,
+    "runtime_hours": 1287
+  },
+  "cold_start_default_cells_by_sensor": {
+    "vibration_mm_s": 0,
+    "bearing_temperature_c": 0,
+    "pressure_bar": 0,
+    "power_kw": 0,
+    "load_pct": 0,
+    "rpm": 0,
+    "runtime_hours": 1
+  },
+  "imputation": "Last earlier valid observation for the same asset; fixed cold-start defaults."
+}

@@ -1,0 +1,20 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+type: command
+name: energy_batch_validation
+version: '3'
+display_name: Validate the batch scoring contract
+code: ..
+environment: azureml:energy-failure-ml:3
+inputs:
+  model:
+    type: uri_folder
+  features:
+    type: uri_folder
+outputs:
+  predictions:
+    type: uri_folder
+command: >-
+  python deployment/batch_step.py
+  --model ${{inputs.model}}
+  --features ${{inputs.features}}
+  --output ${{outputs.predictions}}

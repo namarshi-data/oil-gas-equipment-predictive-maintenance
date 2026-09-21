@@ -1,0 +1,26 @@
+{
+  "execution": "local simulation of Azure ML batch adapter",
+  "cloud_deployed": false,
+  "input_rows": 7280,
+  "output_rows": 7280,
+  "model_versions": [
+    "energy-v3-a4bbde11ebed7e1afce7"
+  ],
+  "all_rows_scored": true,
+  "source_rows_unique_and_complete": true,
+  "asset_date_identity_preserved": true,
+  "risk_score_matches_legacy_output": true,
+  "requires_manual_review_rows": 432,
+  "review_reason_counts": {
+    "imputed_inputs": 339,
+    "imputed_inputs;stale_inputs": 93
+  },
+  "model_sha256": "ac7471f41831d28c2c76e8e8f40ceaeabd37d3ed21eb998048a6eb7c9c6ddbc3",
+  "features_sha256": "b693d00efc8e396c0d3b38ccf7248fef0f68bd624996d3edf1c091241a78216a",
+  "runtime": {
+    "python": "3.14.0",
+    "numpy": "2.3.4",
+    "pandas": "2.3.3",
+    "scikit-learn": "1.7.2"
+  }
+}

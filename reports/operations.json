@@ -1,0 +1,85 @@
+{
+  "scope": "Synthetic constrained scenario; original headline benchmark unchanged",
+  "scenarios": [
+    {
+      "dispatch_delay_days": 2,
+      "weekly_capacity": 3,
+      "fixed_due_visits": 106,
+      "fixed_unserved_at_end": 51,
+      "predictive_capacity_deferred_asset_days": 353,
+      "priority": "Current raw risk score \u00d7 type-level emergency repair plus downtime consequence; not calibrated expected value",
+      "resource_scope": "Equal visits per ISO service week for each alternative policy, including fixed carry-in period"
+    },
+    {
+      "dispatch_delay_days": 7,
+      "weekly_capacity": 3,
+      "fixed_due_visits": 106,
+      "fixed_unserved_at_end": 51,
+      "predictive_capacity_deferred_asset_days": 294,
+      "priority": "Current raw risk score \u00d7 type-level emergency repair plus downtime consequence; not calibrated expected value",
+      "resource_scope": "Equal visits per ISO service week for each alternative policy, including fixed carry-in period"
+    },
+    {
+      "dispatch_delay_days": 2,
+      "weekly_capacity": 5,
+      "fixed_due_visits": 106,
+      "fixed_unserved_at_end": 17,
+      "predictive_capacity_deferred_asset_days": 45,
+      "priority": "Current raw risk score \u00d7 type-level emergency repair plus downtime consequence; not calibrated expected value",
+      "resource_scope": "Equal visits per ISO service week for each alternative policy, including fixed carry-in period"
+    },
+    {
+      "dispatch_delay_days": 7,
+      "weekly_capacity": 5,
+      "fixed_due_visits": 106,
+      "fixed_unserved_at_end": 17,
+      "predictive_capacity_deferred_asset_days": 64,
+      "priority": "Current raw risk score \u00d7 type-level emergency repair plus downtime consequence; not calibrated expected value",
+      "resource_scope": "Equal visits per ISO service week for each alternative policy, including fixed carry-in period"
+    },
+    {
+      "dispatch_delay_days": 2,
+      "weekly_capacity": 10,
+      "fixed_due_visits": 106,
+      "fixed_unserved_at_end": 0,
+      "predictive_capacity_deferred_asset_days": 0,
+      "priority": "Current raw risk score \u00d7 type-level emergency repair plus downtime consequence; not calibrated expected value",
+      "resource_scope": "Equal visits per ISO service week for each alternative policy, including fixed carry-in period"
+    },
+    {
+      "dispatch_delay_days": 7,
+      "weekly_capacity": 10,
+      "fixed_due_visits": 106,
+      "fixed_unserved_at_end": 0,
+      "predictive_capacity_deferred_asset_days": 2,
+      "priority": "Current raw risk score \u00d7 type-level emergency repair plus downtime consequence; not calibrated expected value",
+      "resource_scope": "Equal visits per ISO service week for each alternative policy, including fixed carry-in period"
+    },
+    {
+      "dispatch_delay_days": 2,
+      "weekly_capacity": 1000,
+      "fixed_due_visits": 106,
+      "fixed_unserved_at_end": 0,
+      "predictive_capacity_deferred_asset_days": 0,
+      "priority": "Current raw risk score \u00d7 type-level emergency repair plus downtime consequence; not calibrated expected value",
+      "resource_scope": "Equal visits per ISO service week for each alternative policy, including fixed carry-in period"
+    },
+    {
+      "dispatch_delay_days": 7,
+      "weekly_capacity": 1000,
+      "fixed_due_visits": 106,
+      "fixed_unserved_at_end": 0,
+      "predictive_capacity_deferred_asset_days": 0,
+      "priority": "Current raw risk score \u00d7 type-level emergency repair plus downtime consequence; not calibrated expected value",
+      "resource_scope": "Equal visits per ISO service week for each alternative policy, including fixed carry-in period"
+    }
+  ],
+  "unlimited_capacity_reconciles_to_original": true,
+  "all_weekly_limits_verified": true,
+  "staffing_cloud_support_assumptions": "CAD150000 +12000 +30000 annually; CAD75000 one-time implementation. Authored illustrative inputs, not market quotes.",
+  "limitations": [
+    "Visit count is a coarse capacity proxy; no route optimization, work-hour/skill/parts constraints.",
+    "Raw risk is uncalibrated. Ranking by weighted consequence is a heuristic, not expected-dollar optimization.",
+    "Shared-history causal limits and synthetic annualization still apply. No field ROI is established."
+  ]
+}

@@ -1,0 +1,60 @@
+/// Complete gapless calendar year(s) around evaluation, marked Time with a unique Date key. The current evaluation calendar contains 365 dates.
+table Dim_Date
+	lineageTag: 95b7f6a3-141f-4f0d-ba86-f3476d800b7d
+	dataCategory: Time
+
+	/// Date.
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: yyyy-mm-dd
+		lineageTag: b7203de2-d5d2-4454-92f7-40c608edf647
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	/// Year.
+	column Year
+		dataType: int64
+		lineageTag: 27e390f0-1e86-48cd-b2a4-c2909ede517e
+		summarizeBy: none
+		sourceColumn: Year
+
+	/// MonthNumber.
+	column MonthNumber
+		dataType: int64
+		lineageTag: f0f36a6e-191a-4a5a-b947-6a6b2ae19cad
+		summarizeBy: none
+		sourceColumn: MonthNumber
+
+	/// Month.
+	column Month
+		dataType: string
+		lineageTag: f65aa8d4-a089-421a-871f-d12ac5bc9b71
+		summarizeBy: none
+		sourceColumn: Month
+		sortByColumn: MonthNumber
+
+	/// YearMonth.
+	column YearMonth
+		dataType: string
+		lineageTag: 2a77e896-e199-4519-ac2f-b8442d29a67e
+		summarizeBy: none
+		sourceColumn: YearMonth
+
+	partition Dim_Date = m
+		mode: import
+		source =
+				let
+				    Start = #date(Date.Year(List.Min(Config_Model[evaluation_start])), 1, 1),
+				    End = #date(Date.Year(List.Max(Config_Model[evaluation_end])), 12, 31),
+				    Dates = Table.FromList(List.Dates(Start, Duration.Days(End - Start) + 1, #duration(1, 0, 0, 0)), Splitter.SplitByNothing(), {"Date"}),
+				    Typed = Table.TransformColumnTypes(Dates, {{"Date", type date}}),
+				    Year = Table.AddColumn(Typed, "Year", each Date.Year([Date]), Int64.Type),
+				    MonthNumber = Table.AddColumn(Year, "MonthNumber", each Date.Month([Date]), Int64.Type),
+				    Month = Table.AddColumn(MonthNumber, "Month", each Date.ToText([Date], "MMM", "en-CA"), type text),
+				    YearMonth = Table.AddColumn(Month, "YearMonth", each Date.ToText([Date], "yyyy-MM"), type text)
+				in
+				    YearMonth
+

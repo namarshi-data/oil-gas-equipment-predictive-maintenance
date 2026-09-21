@@ -1,0 +1,24 @@
+/// Disconnected additive waterfall steps; three bars accumulate from reactive cost to predictive cost without double-counting a final total.
+table Dim_CostStep
+	lineageTag: 9274c6ed-376a-46d0-b492-52679a440dd7
+
+	/// Step.
+	column Step
+		dataType: string
+		lineageTag: 5a965e24-c421-438d-8df4-da361f6abb9f
+		summarizeBy: none
+		sourceColumn: Step
+		sortByColumn: Sort
+
+	/// Sort.
+	column Sort
+		dataType: int64
+		isHidden
+		lineageTag: c4f2f9dc-a59c-46a9-8074-18c8d351575d
+		summarizeBy: none
+		sourceColumn: Sort
+
+	partition Dim_CostStep = m
+		mode: import
+		source = let Source = #table(type table [Step=text, Sort=Int64.Type], {{"Reactive baseline", 1}, {"Fixed schedule change", 2}, {"Predictive change", 3}}) in Source
+

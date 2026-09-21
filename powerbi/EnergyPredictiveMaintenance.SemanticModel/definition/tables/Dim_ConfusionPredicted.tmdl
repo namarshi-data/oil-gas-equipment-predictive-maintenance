@@ -1,0 +1,24 @@
+/// Disconnected confusion-matrix axis; explicit measures exclude censored observations.
+table Dim_ConfusionPredicted
+	lineageTag: 4c0685d3-e8c9-46cd-89fe-9b20f85b9945
+
+	/// Predicted.
+	column Predicted
+		dataType: string
+		lineageTag: 59a790f7-ce05-488b-8083-3d18a110f175
+		summarizeBy: none
+		sourceColumn: Predicted
+		sortByColumn: Sort
+
+	/// Sort.
+	column Sort
+		dataType: int64
+		isHidden
+		lineageTag: 6be883cc-288a-4623-9d37-d49c7f81f771
+		summarizeBy: none
+		sourceColumn: Sort
+
+	partition Dim_ConfusionPredicted = m
+		mode: import
+		source = let Source = #table(type table [Predicted=text, Sort=Int64.Type], {{"Failure", 1}, {"No failure", 2}}) in Source
+

@@ -1,0 +1,56 @@
+{
+  "status": "pass",
+  "javascript_syntax": "pass",
+  "independent_csv_reference": "pass",
+  "cases": [
+    {},
+    {
+      "site": "Peace River"
+    },
+    {
+      "site": "Grande Prairie"
+    },
+    {
+      "assetType": "compressor"
+    },
+    {
+      "site": "Peace River",
+      "assetType": "pumpjack",
+      "from": "2025-05-01",
+      "to": "2025-05-31"
+    },
+    {
+      "from": "2025-06-01",
+      "to": "2025-06-30"
+    },
+    {
+      "from": "2025-04-01",
+      "to": "2025-04-01"
+    },
+    {
+      "site": "Unknown site"
+    },
+    {
+      "from": "2025-06-01",
+      "to": "2025-04-01"
+    },
+    {
+      "costMode": "uniform",
+      "hourlyRate": 0
+    },
+    {
+      "costMode": "uniform",
+      "hourlyRate": 1000
+    },
+    {
+      "site": "Grande Prairie",
+      "assetType": "compressor",
+      "costMode": "uniform",
+      "hourlyRate": 2500
+    }
+  ],
+  "case_count": 12,
+  "scalar_assertions": 3144,
+  "preaggregated_reporting_inputs": [],
+  "runtime_scope": "Actual HTML JavaScript calculations executed in Node and compared to Python CSV arithmetic; no browser or Power BI engine claim."
+}

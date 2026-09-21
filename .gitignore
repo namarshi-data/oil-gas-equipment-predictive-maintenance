@@ -1,0 +1,56 @@
+# Local environments, caches and secrets
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+.env
+.env.*
+!.env.example
+build/
+dist/
+*.zip
+*.zip.sha256
+*.zip.manifest.json
+/_readme_preview.html
+/GITHUB_MANIFEST.json
+
+# Author setup notes, obsolete review receipts and generated source mirrors.
+/docs/github-about.md
+/reports/publication-review.json
+/reports/powerbi-validation.md
+/reports/powerbi-generator-check.json
+/reports/powerbi-layout-proof.html
+/reports/figures/assistant_demo.png
+/reports/figures/reviewer_tour.png
+/powerbi/publication/
+/powerbi/energy_theme.json
+/powerbi/queries/*.pq
+!/powerbi/queries/DataFolder.pq
+/powerbi/queries/qa_synonyms.json
+
+# Regenerate source telemetry and training intermediates locally.
+# Keep data/README.md, cleaning_quality.json and curated dashboard facts public.
+/data/raw/
+/data/processed/*.csv
+/data/processed/*.sqlite
+/data/processed/*.sqlite-*
+/data/processed/*.db
+/data/processed/*.parquet
+
+# Detailed generated exports and machine-specific verification
+/artifacts/azure-local-smoke/predictions.csv
+/artifacts/batch-predictions.csv
+/reports/generalization_scores.csv
+/reports/operations_visits.csv
+/reports/local-setup*.json
+/reports/local-setup-tests.xml
+/reports/powerbi-local-setup-check.json
+/reports/ci-tests.xml
+/reports/benchmark-tests.xml
+
+# Power BI and .NET runtime files
+powerbi/**/.pbi/
+powerbi/**/localSettings.json
+tools/**/bin/
+tools/**/obj/

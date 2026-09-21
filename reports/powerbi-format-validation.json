@@ -1,0 +1,53 @@
+{
+  "modified_visuals": [
+    "powerbi/EnergyPredictiveMaintenance.Report/definition/pages/ai_analysis/visuals/back_button/visual.json",
+    "powerbi/EnergyPredictiveMaintenance.Report/definition/pages/asset_detail/visuals/asset_score_trend/visual.json",
+    "powerbi/EnergyPredictiveMaintenance.Report/definition/pages/asset_detail/visuals/back_button/visual.json",
+    "powerbi/EnergyPredictiveMaintenance.Report/definition/pages/asset_detail/visuals/sensor_0/visual.json",
+    "powerbi/EnergyPredictiveMaintenance.Report/definition/pages/asset_detail/visuals/sensor_1/visual.json",
+    "powerbi/EnergyPredictiveMaintenance.Report/definition/pages/asset_detail/visuals/sensor_2/visual.json",
+    "powerbi/EnergyPredictiveMaintenance.Report/definition/pages/executive_roi/visuals/cost_bridge/visual.json",
+    "powerbi/EnergyPredictiveMaintenance.Report/definition/pages/fleet_risk/visuals/ask_fleet/visual.json",
+    "powerbi/EnergyPredictiveMaintenance.Report/definition/pages/fleet_risk/visuals/fleet_risk_trend/visual.json",
+    "powerbi/EnergyPredictiveMaintenance.Report/definition/pages/model_performance/visuals/open_sensor_analysis/visual.json",
+    "powerbi/EnergyPredictiveMaintenance.Report/definition/pages/model_performance/visuals/risk_distribution/visual.json",
+    "powerbi/EnergyPredictiveMaintenance.Report/definition/pages/policy_comparison/visuals/catch_by_breakdown/visual.json",
+    "powerbi/EnergyPredictiveMaintenance.Report/definition/pages/policy_comparison/visuals/caught_missed/visual.json",
+    "powerbi/EnergyPredictiveMaintenance.Report/definition/pages/policy_comparison/visuals/service_rates/visual.json",
+    "powerbi/EnergyPredictiveMaintenance.Report/definition/pages/policy_comparison/visuals/warning_distribution/visual.json",
+    "powerbi/EnergyPredictiveMaintenance.Report/definition/pages/service_audit/visuals/outcome_breakdown/visual.json",
+    "powerbi/EnergyPredictiveMaintenance.Report/definition/pages/service_audit/visuals/visit_by_policy/visual.json"
+  ],
+  "report_json_compared": 120,
+  "generator_mismatches": [],
+  "portable_data_folder": "C:/Energy-Predictive-Equipment-Failure/data/processed/dashboard",
+  "native_rendering_verified": false,
+  "validated_at": "2026-09-18T15:04:44.642640+00:00",
+  "format_validation_source": "Cached official Microsoft reportThemeSchema-2.157.json",
+  "regression_mutations": [
+    {
+      "original_mistake": "Continuous",
+      "rejected": true
+    },
+    {
+      "original_mistake": "forward",
+      "rejected": true
+    },
+    {
+      "original_mistake": "minimumCategoryWidth",
+      "rejected": true
+    }
+  ],
+  "measure_expressions_compared": 75,
+  "measure_expressions_unchanged": true,
+  "schema_files_checked": 123,
+  "visual_bindings_and_format_objects_checked": 101,
+  "static_layout_pages": 9,
+  "static_layout_mobile_elements": 6,
+  "static_layout_passed": true,
+  "atomic_ledger_reconciliation_passed": true,
+  "tmdl_parser": "Microsoft.AnalysisServices.Tabular.TmdlSerializer 19.114.8",
+  "desktop_refresh_verified": false,
+  "dax_execution_verified": false,
+  "service_rls_verified": false
+}

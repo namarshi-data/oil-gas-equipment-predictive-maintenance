@@ -1,0 +1,125 @@
+cultureInfo en-US
+
+	linguisticMetadata =
+			{
+			  "Version": "2.0.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "breakdowns": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "KPI_Measures",
+			          "ConceptualProperty": "Breakdowns"
+			        }
+			      },
+			      "Terms": [
+			        {
+			          "breakdown": {}
+			        },
+			        {
+			          "breakdowns": {}
+			        },
+			        {
+			          "breakdown events": {}
+			        },
+			        {
+			          "missed failures": {}
+			        },
+			        {
+			          "unprevented failures": {}
+			        }
+			      ]
+			    },
+			    "risk": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "KPI_Measures",
+			          "ConceptualProperty": "Latest Risk Score"
+			        }
+			      },
+			      "Terms": [
+			        {
+			          "latest risk": {}
+			        },
+			        {
+			          "current risk": {}
+			        },
+			        {
+			          "latest risk score": {}
+			        }
+			      ]
+			    },
+			    "asset": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Dim_Asset",
+			          "ConceptualProperty": "asset_id"
+			        }
+			      },
+			      "Terms": [
+			        {
+			          "asset": {}
+			        },
+			        {
+			          "equipment": {}
+			        },
+			        {
+			          "equipment identifier": {}
+			        }
+			      ]
+			    },
+			    "site": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Dim_Site",
+			          "ConceptualProperty": "site"
+			        }
+			      },
+			      "Terms": [
+			        {
+			          "site": {}
+			        },
+			        {
+			          "location": {}
+			        },
+			        {
+			          "field": {}
+			        }
+			      ]
+			    },
+			    "annualized_cost": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "KPI_Measures",
+			          "ConceptualProperty": "Annualized Cost"
+			        }
+			      },
+			      "Terms": [
+			        {
+			          "annualized cost": {}
+			        },
+			        {
+			          "annual cost": {}
+			        }
+			      ]
+			    },
+			    "caught": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "KPI_Measures",
+			          "ConceptualProperty": "Caught Events"
+			        }
+			      },
+			      "Terms": [
+			        {
+			          "caught failures": {}
+			        },
+			        {
+			          "prevented failures": {}
+			        }
+			      ]
+			    }
+			  }
+			}
+		contentType: json
+

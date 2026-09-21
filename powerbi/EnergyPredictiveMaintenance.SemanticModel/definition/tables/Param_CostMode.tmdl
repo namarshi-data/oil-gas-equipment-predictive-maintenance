@@ -1,0 +1,15 @@
+/// Select equipment-specific rates or the uniform what-if rate. Equipment defaults preserves the baseline published scenario.
+table Param_CostMode
+	lineageTag: 718891c5-6b88-4678-b41d-d212e7afdd69
+
+	/// Cost Mode.
+	column 'Cost Mode'
+		dataType: string
+		lineageTag: 63d47e1a-abe0-4edb-a49f-68c47a6d18f4
+		summarizeBy: none
+		sourceColumn: Cost Mode
+
+	partition Param_CostMode = m
+		mode: import
+		source = let Source = #table(type table [#"Cost Mode"=text], {{"Equipment defaults"}, {"Uniform override"}}) in Source
+

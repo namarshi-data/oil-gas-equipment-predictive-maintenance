@@ -1,0 +1,42 @@
+/// Native field parameter for chart axes. Uses NAMEOF plus groupByColumns and ParameterMetadata; not used in Q&A or Key Influencers.
+table Param_Breakdown
+	lineageTag: c7d6ff09-6224-44a6-9552-6cd952fa3da8
+
+	/// Breakdown.
+	column Breakdown
+		dataType: string
+		lineageTag: ea2ec956-ecb0-4ad2-bd70-b1c3ba88425e
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Breakdown Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Breakdown Fields'
+
+	/// Breakdown Fields.
+	column 'Breakdown Fields'
+		dataType: string
+		isHidden
+		lineageTag: 08b3d90b-f17b-400d-ae75-1e11fa3af64d
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Breakdown Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+	/// Breakdown Order.
+	column 'Breakdown Order'
+		dataType: int64
+		isHidden
+		lineageTag: aa6d5a35-fef0-4568-9e7a-1e94cd417051
+		summarizeBy: none
+		sourceColumn: [Value3]
+
+	partition Param_Breakdown = calculated
+		mode: import
+		source = { ("Site", NAMEOF(Dim_Site[site]), 0), ("Asset type", NAMEOF(Dim_Asset[asset_type]), 1) }
+

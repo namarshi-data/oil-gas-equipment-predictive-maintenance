@@ -1,0 +1,55 @@
+{
+  "execution": "local MLE validation refreshed after GitHub package text normalization",
+  "cloud_deployed": false,
+  "github_hosted_run": false,
+  "targeted_tests_passed": 32,
+  "provenance_current": true,
+  "model_version": "energy-v3-a4bbde11ebed7e1afce7",
+  "model_artifact_sha256": "ac7471f41831d28c2c76e8e8f40ceaeabd37d3ed21eb998048a6eb7c9c6ddbc3",
+  "yaml_parse": "passed",
+  "powershell_parse": "passed",
+  "container_reference": "verified_digest_only_not_built",
+  "batch_smoke": {
+    "execution": "local simulation of Azure ML batch adapter",
+    "cloud_deployed": false,
+    "input_rows": 7280,
+    "output_rows": 7280,
+    "model_versions": [
+      "energy-v3-a4bbde11ebed7e1afce7"
+    ],
+    "all_rows_scored": true,
+    "source_rows_unique_and_complete": true,
+    "asset_date_identity_preserved": true,
+    "risk_score_matches_legacy_output": true,
+    "requires_manual_review_rows": 432,
+    "review_reason_counts": {
+      "imputed_inputs": 339,
+      "imputed_inputs;stale_inputs": 93
+    },
+    "model_sha256": "ac7471f41831d28c2c76e8e8f40ceaeabd37d3ed21eb998048a6eb7c9c6ddbc3",
+    "features_sha256": "b693d00efc8e396c0d3b38ccf7248fef0f68bd624996d3edf1c091241a78216a",
+    "runtime": {
+      "python": "3.14.0",
+      "numpy": "2.3.4",
+      "pandas": "2.3.3",
+      "scikit-learn": "1.7.2"
+    }
+  },
+  "monitoring_findings": {
+    "baseline": 0,
+    "controlled_quality_flag_spike": 2,
+    "controlled_delivery_delay": 2
+  },
+  "targeted_tests_scope": "32 focused tests passed in the original v3 validation. This packaging refresh reran batch smoke, monitoring and current provenance reconciliation; the separate final test report records the refreshed full suite.",
+  "provenance_reconciliation": {
+    "code_files": true,
+    "raw_data_files": true,
+    "config": true,
+    "feature_schema": true,
+    "environment_files_and_runtime": true,
+    "model_artifact": true,
+    "metrics_identity": true,
+    "batch_and_monitoring_identity": true
+  },
+  "unchanged_configuration_checks_scope": "YAML, PowerShell and container-reference checks are retained historical v3 evidence; configuration files were not changed by this packaging refresh."
+}

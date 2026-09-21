@@ -1,0 +1,353 @@
+{
+  "fact_grains_valid": true,
+  "dimension_keys_and_site_consistency_valid": true,
+  "aggregate_references_used_only_for_validation": true,
+  "baseline_policy_metrics": {
+    "reactive": {
+      "cost": 5505868.09,
+      "annualized_cost": 22099102.41618132,
+      "evaluation_days": 91,
+      "event_count": 44,
+      "caught": 0,
+      "missed": 44,
+      "catch_rate": 0.0,
+      "warning_days": null,
+      "service_visits": 0,
+      "unnecessary": 0,
+      "unsuccessful": 0,
+      "false_alarm_rate": null,
+      "unplanned_hours": 3876.9999999999995,
+      "planned_hours": 0.0
+    },
+    "fixed_90_day": {
+      "cost": 4527233.55,
+      "annualized_cost": 18171121.474038463,
+      "evaluation_days": 91,
+      "event_count": 44,
+      "caught": 13,
+      "missed": 31,
+      "catch_rate": 0.29545454545454547,
+      "warning_days": 10.923076923076923,
+      "service_visits": 81,
+      "unnecessary": 68,
+      "unsuccessful": 1,
+      "false_alarm_rate": 0.8395061728395061,
+      "unplanned_hours": 2607.1,
+      "planned_hours": 486.0
+    },
+    "predictive": {
+      "cost": 1183652.76,
+      "annualized_cost": 4750870.006483517,
+      "evaluation_days": 91,
+      "event_count": 44,
+      "caught": 37,
+      "missed": 7,
+      "catch_rate": 0.8409090909090909,
+      "warning_days": 20.10810810810811,
+      "service_visits": 51,
+      "unnecessary": 10,
+      "unsuccessful": 4,
+      "false_alarm_rate": 0.19607843137254902,
+      "unplanned_hours": 469.0,
+      "planned_hours": 302.0
+    }
+  },
+  "site_policy_metrics": {
+    "Grande Prairie": {
+      "reactive": {
+        "cost": 771369.6900000001,
+        "annualized_cost": 3096074.4975000005,
+        "evaluation_days": 91,
+        "event_count": 6,
+        "caught": 0,
+        "missed": 6,
+        "catch_rate": 0.0,
+        "warning_days": null,
+        "service_visits": 0,
+        "unnecessary": 0,
+        "unsuccessful": 0,
+        "false_alarm_rate": null,
+        "unplanned_hours": 558.0,
+        "planned_hours": 0.0
+      },
+      "fixed_90_day": {
+        "cost": 687905.0900000001,
+        "annualized_cost": 2761069.6057417584,
+        "evaluation_days": 91,
+        "event_count": 6,
+        "caught": 2,
+        "missed": 4,
+        "catch_rate": 0.3333333333333333,
+        "warning_days": 1.0,
+        "service_visits": 20,
+        "unnecessary": 17,
+        "unsuccessful": 1,
+        "false_alarm_rate": 0.85,
+        "unplanned_hours": 336.7,
+        "planned_hours": 122.0
+      },
+      "predictive": {
+        "cost": 163817.35,
+        "annualized_cost": 657519.6383241758,
+        "evaluation_days": 91,
+        "event_count": 6,
+        "caught": 5,
+        "missed": 1,
+        "catch_rate": 0.8333333333333334,
+        "warning_days": 20.6,
+        "service_visits": 13,
+        "unnecessary": 7,
+        "unsuccessful": 1,
+        "false_alarm_rate": 0.5384615384615384,
+        "unplanned_hours": 44.1,
+        "planned_hours": 78.0
+      }
+    },
+    "Lloydminster": {
+      "reactive": {
+        "cost": 1794708.88,
+        "annualized_cost": 7203488.114505494,
+        "evaluation_days": 91,
+        "event_count": 15,
+        "caught": 0,
+        "missed": 15,
+        "catch_rate": 0.0,
+        "warning_days": null,
+        "service_visits": 0,
+        "unnecessary": 0,
+        "unsuccessful": 0,
+        "false_alarm_rate": null,
+        "unplanned_hours": 1287.1,
+        "planned_hours": 0.0
+      },
+      "fixed_90_day": {
+        "cost": 1574168.71,
+        "annualized_cost": 6318298.036565934,
+        "evaluation_days": 91,
+        "event_count": 15,
+        "caught": 3,
+        "missed": 12,
+        "catch_rate": 0.2,
+        "warning_days": 7.0,
+        "service_visits": 20,
+        "unnecessary": 17,
+        "unsuccessful": 0,
+        "false_alarm_rate": 0.85,
+        "unplanned_hours": 1017.1,
+        "planned_hours": 120.0
+      },
+      "predictive": {
+        "cost": 461046.37,
+        "annualized_cost": 1850518.5345329673,
+        "evaluation_days": 91,
+        "event_count": 15,
+        "caught": 11,
+        "missed": 4,
+        "catch_rate": 0.7333333333333333,
+        "warning_days": 20.181818181818183,
+        "service_visits": 14,
+        "unnecessary": 1,
+        "unsuccessful": 2,
+        "false_alarm_rate": 0.07142857142857142,
+        "unplanned_hours": 270.5,
+        "planned_hours": 82.0
+      }
+    },
+    "Peace River": {
+      "reactive": {
+        "cost": 1153714.29,
+        "annualized_cost": 4630704.883763736,
+        "evaluation_days": 91,
+        "event_count": 10,
+        "caught": 0,
+        "missed": 10,
+        "catch_rate": 0.0,
+        "warning_days": null,
+        "service_visits": 0,
+        "unnecessary": 0,
+        "unsuccessful": 0,
+        "false_alarm_rate": null,
+        "unplanned_hours": 805.1000000000001,
+        "planned_hours": 0.0
+      },
+      "fixed_90_day": {
+        "cost": 912148.4,
+        "annualized_cost": 3661123.1109890114,
+        "evaluation_days": 91,
+        "event_count": 10,
+        "caught": 4,
+        "missed": 6,
+        "catch_rate": 0.4,
+        "warning_days": 9.75,
+        "service_visits": 20,
+        "unnecessary": 16,
+        "unsuccessful": 0,
+        "false_alarm_rate": 0.8,
+        "unplanned_hours": 427.29999999999995,
+        "planned_hours": 120.0
+      },
+      "predictive": {
+        "cost": 216694.12,
+        "annualized_cost": 869753.0475824176,
+        "evaluation_days": 91,
+        "event_count": 10,
+        "caught": 9,
+        "missed": 1,
+        "catch_rate": 0.9,
+        "warning_days": 20.11111111111111,
+        "service_visits": 9,
+        "unnecessary": 0,
+        "unsuccessful": 0,
+        "false_alarm_rate": 0.0,
+        "unplanned_hours": 59.9,
+        "planned_hours": 50.0
+      }
+    },
+    "Red Deer": {
+      "reactive": {
+        "cost": 1786075.23,
+        "annualized_cost": 7168834.920412089,
+        "evaluation_days": 91,
+        "event_count": 13,
+        "caught": 0,
+        "missed": 13,
+        "catch_rate": 0.0,
+        "warning_days": null,
+        "service_visits": 0,
+        "unnecessary": 0,
+        "unsuccessful": 0,
+        "false_alarm_rate": null,
+        "unplanned_hours": 1226.8,
+        "planned_hours": 0.0
+      },
+      "fixed_90_day": {
+        "cost": 1353011.35,
+        "annualized_cost": 5430630.720741759,
+        "evaluation_days": 91,
+        "event_count": 13,
+        "caught": 4,
+        "missed": 9,
+        "catch_rate": 0.3076923076923077,
+        "warning_days": 20.0,
+        "service_visits": 21,
+        "unnecessary": 18,
+        "unsuccessful": 0,
+        "false_alarm_rate": 0.8571428571428571,
+        "unplanned_hours": 826.0,
+        "planned_hours": 124.0
+      },
+      "predictive": {
+        "cost": 342094.92,
+        "annualized_cost": 1373078.786043956,
+        "evaluation_days": 91,
+        "event_count": 13,
+        "caught": 12,
+        "missed": 1,
+        "catch_rate": 0.9230769230769231,
+        "warning_days": 19.833333333333332,
+        "service_visits": 15,
+        "unnecessary": 2,
+        "unsuccessful": 1,
+        "false_alarm_rate": 0.13333333333333333,
+        "unplanned_hours": 94.5,
+        "planned_hours": 92.0
+      }
+    }
+  },
+  "uniform_1000_policy_metrics": {
+    "reactive": {
+      "cost": 5369973.09,
+      "annualized_cost": 21553655.72662088,
+      "evaluation_days": 91,
+      "event_count": 44,
+      "caught": 0,
+      "missed": 44,
+      "catch_rate": 0.0,
+      "warning_days": null,
+      "service_visits": 0,
+      "unnecessary": 0,
+      "unsuccessful": 0,
+      "false_alarm_rate": null,
+      "unplanned_hours": 3876.9999999999995,
+      "planned_hours": 0.0
+    },
+    "fixed_90_day": {
+      "cost": 4364113.55,
+      "annualized_cost": 17516400.814697802,
+      "evaluation_days": 91,
+      "event_count": 44,
+      "caught": 13,
+      "missed": 31,
+      "catch_rate": 0.29545454545454547,
+      "warning_days": 10.923076923076923,
+      "service_visits": 81,
+      "unnecessary": 68,
+      "unsuccessful": 1,
+      "false_alarm_rate": 0.8395061728395061,
+      "unplanned_hours": 2607.1,
+      "planned_hours": 486.0
+    },
+    "predictive": {
+      "cost": 1169612.76,
+      "annualized_cost": 4694517.149340659,
+      "evaluation_days": 91,
+      "event_count": 44,
+      "caught": 37,
+      "missed": 7,
+      "catch_rate": 0.8409090909090909,
+      "warning_days": 20.10810810810811,
+      "service_visits": 51,
+      "unnecessary": 10,
+      "unsuccessful": 4,
+      "false_alarm_rate": 0.19607843137254902,
+      "unplanned_hours": 469.0,
+      "planned_hours": 302.0
+    }
+  },
+  "confusion_matrix": {
+    "TP": 565,
+    "FP": 5,
+    "FN": 289,
+    "TN": 4021
+  },
+  "labeled_rows": 4880,
+  "censored_rows": 2400,
+  "rls_reference_cases": {
+    "peace.manager@portfolio.example": {
+      "sites": [
+        "Peace River"
+      ],
+      "readings": 1820,
+      "events": 30,
+      "visits": 34
+    },
+    "multi.manager@portfolio.example": {
+      "sites": [
+        "Grande Prairie",
+        "Peace River"
+      ],
+      "readings": 3640,
+      "events": 48,
+      "visits": 74
+    },
+    "fleet.reviewer@portfolio.example": {
+      "sites": [
+        "Grande Prairie",
+        "Lloydminster",
+        "Peace River",
+        "Red Deer"
+      ],
+      "readings": 7280,
+      "events": 132,
+      "visits": 157
+    },
+    "unknown@portfolio.example": {
+      "sites": [],
+      "readings": 0,
+      "events": 0,
+      "visits": 0
+    }
+  },
+  "dax_executed": false,
+  "service_role_tested": false
+}

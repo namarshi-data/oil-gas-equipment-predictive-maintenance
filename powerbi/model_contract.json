@@ -1,0 +1,984 @@
+{
+  "format": "TMDL",
+  "compatibilityLevel": 1604,
+  "measure_table": "KPI_Measures",
+  "data_folder": "C:/Energy-Predictive-Equipment-Failure/data/processed/dashboard",
+  "tables": {
+    "Dim_Asset": {
+      "columns": {
+        "asset_id": "string",
+        "asset_type": "string",
+        "site": "string",
+        "install_date": "dateTime",
+        "default_downtime_cost_per_hour": "double"
+      },
+      "description": "One row per asset, derived from raw equipment metadata; no preaggregated risk or outcome columns.",
+      "filename": "dim_asset.csv",
+      "hidden": false,
+      "calculated": false,
+      "metadata": {}
+    },
+    "Dim_Site": {
+      "columns": {
+        "site": "string",
+        "latitude": "double",
+        "longitude": "double"
+      },
+      "description": "One row per synthetic Alberta site. Direct filters to each fact; no Site-to-Asset relationship diamond.",
+      "filename": "dim_site.csv",
+      "hidden": false,
+      "calculated": false,
+      "metadata": {}
+    },
+    "Dim_UserSite": {
+      "columns": {
+        "user_principal_name": "string",
+        "site": "string"
+      },
+      "description": "Disconnected access mapping, one row per allowed UPN/site pair. Demonstration identities require deployment-specific replacement.",
+      "filename": "dim_user_site.csv",
+      "hidden": true,
+      "calculated": false,
+      "metadata": {}
+    },
+    "Config_Model": {
+      "columns": {
+        "evaluation_start": "dateTime",
+        "evaluation_end": "dateTime",
+        "alert_threshold": "double"
+      },
+      "description": "Disconnected evaluation bounds and validation-selected alert threshold. Not an outcome summary.",
+      "filename": "model_settings.csv",
+      "hidden": true,
+      "calculated": false,
+      "metadata": {}
+    },
+    "Fact_ServiceVisits": {
+      "columns": {
+        "policy": "string",
+        "asset_id": "string",
+        "asset_type": "string",
+        "site": "string",
+        "alert_date": "dateTime",
+        "service_date": "dateTime",
+        "event_id": "string",
+        "outcome": "string",
+        "in_evaluation_window": "boolean",
+        "planned_cost_cad": "double",
+        "planned_downtime_hours": "double"
+      },
+      "description": "One visit per policy/asset/service date. Includes carry-in ledger rows, excluded from incurred cost measures.",
+      "filename": "service_visits.csv",
+      "hidden": false,
+      "calculated": false,
+      "metadata": {}
+    },
+    "Fact_Readings": {
+      "columns": {
+        "date": "dateTime",
+        "asset_id": "string",
+        "asset_type": "string",
+        "site": "string",
+        "vibration_mm_s": "double",
+        "bearing_temperature_c": "double",
+        "pressure_bar": "double",
+        "power_kw": "double",
+        "load_pct": "double",
+        "rpm": "double",
+        "runtime_hours": "double",
+        "age_days": "int64",
+        "sensor_missing_count": "int64",
+        "risk_score": "double",
+        "alert": "boolean",
+        "target_failure_30d": "boolean",
+        "risk_band": "string",
+        "label_status": "string"
+      },
+      "description": "One observation per asset/day; policy-agnostic sensor history shared by every replayed policy. Blank targets remain blank.",
+      "filename": "scored_readings.csv",
+      "hidden": false,
+      "calculated": false,
+      "metadata": {}
+    },
+    "Fact_Events": {
+      "columns": {
+        "event_id": "string",
+        "asset_id": "string",
+        "asset_type": "string",
+        "site": "string",
+        "event_date": "dateTime",
+        "policy": "string",
+        "caught": "boolean",
+        "alert_date": "dateTime",
+        "service_date": "dateTime",
+        "warning_days": "double",
+        "service_lead_days": "double",
+        "repair_cost_cad": "double",
+        "downtime_hours": "double",
+        "outcome_label": "string",
+        "warning_band": "string",
+        "warning_band_order": "int64"
+      },
+      "description": "One physical failure event per maintenance-policy replay. Event date is the accounting date for repair/unplanned downtime.",
+      "filename": "event_outcomes.csv",
+      "hidden": false,
+      "calculated": false,
+      "metadata": {
+        "warning_band": {
+          "sortByColumn": "warning_band_order"
+        },
+        "warning_band_order": {
+          "hidden": true
+        }
+      }
+    },
+    "Dim_Policy": {
+      "columns": {
+        "policy": "string",
+        "policy_label": "string",
+        "policy_order": "int64"
+      },
+      "description": "Three mutually exclusive maintenance scenarios replayed on the same history; filters events and visits, not policy-agnostic readings.",
+      "filename": null,
+      "hidden": false,
+      "calculated": false,
+      "metadata": {
+        "policy_label": {
+          "sortByColumn": "policy_order"
+        },
+        "policy_order": {
+          "hidden": true
+        }
+      }
+    },
+    "Dim_Date": {
+      "columns": {
+        "Date": "dateTime",
+        "Year": "int64",
+        "MonthNumber": "int64",
+        "Month": "string",
+        "YearMonth": "string"
+      },
+      "description": "Complete gapless calendar year(s) around evaluation, marked Time with a unique Date key. The current evaluation calendar contains 365 dates.",
+      "filename": null,
+      "hidden": false,
+      "calculated": false,
+      "metadata": {
+        "Date": {
+          "isKey": true
+        },
+        "Month": {
+          "sortByColumn": "MonthNumber"
+        }
+      }
+    },
+    "KPI_Measures": {
+      "columns": {
+        "_anchor": "int64"
+      },
+      "description": "Explicit measures with documented grains, denominators and filter behavior.",
+      "filename": null,
+      "hidden": false,
+      "calculated": false,
+      "metadata": {
+        "_anchor": {
+          "hidden": true
+        }
+      }
+    },
+    "Param_DowntimeCost": {
+      "columns": {
+        "Downtime Cost Per Hour": "int64"
+      },
+      "description": "What-if downtime cost in CAD/hour, 0 to 2500 by 50. Default selected value 1000; effective only in uniform override mode.",
+      "filename": null,
+      "hidden": false,
+      "calculated": true,
+      "metadata": {
+        "Downtime Cost Per Hour": {
+          "source": "[Value]",
+          "format": "\"C$\"#,0",
+          "parameter": true
+        }
+      }
+    },
+    "Param_CostMode": {
+      "columns": {
+        "Cost Mode": "string"
+      },
+      "description": "Select equipment-specific rates or the uniform what-if rate. Equipment defaults preserves the baseline published scenario.",
+      "filename": null,
+      "hidden": false,
+      "calculated": false,
+      "metadata": {}
+    },
+    "Param_Breakdown": {
+      "columns": {
+        "Breakdown": "string",
+        "Breakdown Fields": "string",
+        "Breakdown Order": "int64"
+      },
+      "description": "Native field parameter for chart axes. Uses NAMEOF plus groupByColumns and ParameterMetadata; not used in Q&A or Key Influencers.",
+      "filename": null,
+      "hidden": false,
+      "calculated": true,
+      "metadata": {
+        "Breakdown": {
+          "source": "[Value1]",
+          "sortByColumn": "Breakdown Order",
+          "groupBy": "Breakdown Fields"
+        },
+        "Breakdown Fields": {
+          "source": "[Value2]",
+          "hidden": true,
+          "sortByColumn": "Breakdown Order",
+          "fieldParameter": true
+        },
+        "Breakdown Order": {
+          "source": "[Value3]",
+          "hidden": true
+        }
+      }
+    },
+    "Dim_ConfusionActual": {
+      "columns": {
+        "Actual": "string",
+        "Sort": "int64"
+      },
+      "description": "Disconnected confusion-matrix axis; explicit measures exclude censored observations.",
+      "filename": null,
+      "hidden": false,
+      "calculated": false,
+      "metadata": {
+        "Actual": {
+          "sortByColumn": "Sort"
+        },
+        "Sort": {
+          "hidden": true
+        }
+      }
+    },
+    "Dim_ConfusionPredicted": {
+      "columns": {
+        "Predicted": "string",
+        "Sort": "int64"
+      },
+      "description": "Disconnected confusion-matrix axis; explicit measures exclude censored observations.",
+      "filename": null,
+      "hidden": false,
+      "calculated": false,
+      "metadata": {
+        "Predicted": {
+          "sortByColumn": "Sort"
+        },
+        "Sort": {
+          "hidden": true
+        }
+      }
+    },
+    "Dim_CostStep": {
+      "columns": {
+        "Step": "string",
+        "Sort": "int64"
+      },
+      "description": "Disconnected additive waterfall steps; three bars accumulate from reactive cost to predictive cost without double-counting a final total.",
+      "filename": null,
+      "hidden": false,
+      "calculated": false,
+      "metadata": {
+        "Step": {
+          "sortByColumn": "Sort"
+        },
+        "Sort": {
+          "hidden": true
+        }
+      }
+    }
+  },
+  "measures": [
+    {
+      "name": "Selected Policy",
+      "expression": "IF(HASONEVALUE(Dim_Policy[policy]), SELECTEDVALUE(Dim_Policy[policy]), IF(NOT ISFILTERED(Dim_Policy), \"predictive\", BLANK()))",
+      "formatString": "@",
+      "displayFolder": "Context",
+      "description": "Policy in context; predictive when unfiltered. An explicit multiple-policy selection returns blank to prevent adding mutually exclusive scenarios."
+    },
+    {
+      "name": "Policy Selection Note",
+      "expression": "VAR ChosenPolicy = [Selected Policy]\nRETURN IF(ISBLANK(ChosenPolicy), \"Choose one policy for comparable totals\", IF(NOT ISFILTERED(Dim_Policy), \"Predictive policy (default)\", SELECTEDVALUE(Dim_Policy[policy_label])))",
+      "formatString": "@",
+      "displayFolder": "Context",
+      "description": "Visible policy scope, including the default and ambiguous multiple selections."
+    },
+    {
+      "name": "Observed Days",
+      "expression": "VAR PeriodStart = MIN(Config_Model[evaluation_start])\nVAR PeriodEnd = MAX(Config_Model[evaluation_end])\nRETURN\n    CALCULATE(\n        DISTINCTCOUNT(Fact_Readings[date]),\n        KEEPFILTERS(Dim_Date[Date] >= PeriodStart),\n        KEEPFILTERS(Dim_Date[Date] <= PeriodEnd),\n        REMOVEFILTERS(Dim_Policy)\n    )",
+      "formatString": "#,0",
+      "displayFolder": "Exposure",
+      "description": "Distinct observed calendar days in the selected date/site/asset scope and evaluation window. Zero-event days count. RLS remains in force."
+    },
+    {
+      "name": "Evaluation Years",
+      "expression": "DIVIDE([Observed Days], 365.25)",
+      "formatString": "0.0000",
+      "displayFolder": "Exposure",
+      "description": "Selected observed days divided by 365.25; full evaluation is 91 days, not a full observed year."
+    },
+    {
+      "name": "Asset Years",
+      "expression": "VAR PeriodStart = MIN(Config_Model[evaluation_start])\nVAR PeriodEnd = MAX(Config_Model[evaluation_end])\nVAR AssetDays = CALCULATE(COUNTROWS(Fact_Readings), KEEPFILTERS(Dim_Date[Date] >= PeriodStart), KEEPFILTERS(Dim_Date[Date] <= PeriodEnd), REMOVEFILTERS(Dim_Policy))\nRETURN DIVIDE(AssetDays, 365.25)",
+      "formatString": "0.00",
+      "displayFolder": "Exposure",
+      "description": "Observed asset-days divided by 365.25; exposure diagnostic, not the fleet annualization denominator."
+    },
+    {
+      "name": "Downtime Cost Per Hour Value",
+      "expression": "SELECTEDVALUE(Param_DowntimeCost[Downtime Cost Per Hour], 1000)",
+      "formatString": "\"C$\"#,0;(\"C$\"#,0);\"C$\"0",
+      "displayFolder": "Scenario",
+      "description": "Uniform downtime-cost what-if value. Takes effect only in Uniform override mode."
+    },
+    {
+      "name": "Cost Mode",
+      "expression": "SELECTEDVALUE(Param_CostMode[Cost Mode], \"Equipment defaults\")",
+      "formatString": "@",
+      "displayFolder": "Scenario",
+      "description": "Equipment defaults retain the original scenario assumptions; Uniform override applies the selected rate to every asset."
+    },
+    {
+      "name": "Emergency Repair Cost",
+      "expression": "VAR ChosenPolicy = [Selected Policy]\nVAR PeriodStart = MIN(Config_Model[evaluation_start])\nVAR PeriodEnd = MAX(Config_Model[evaluation_end])\nRETURN\n    IF(NOT ISBLANK(ChosenPolicy),\n        CALCULATE(\n            SUM(Fact_Events[repair_cost_cad]),\n            KEEPFILTERS(Dim_Policy[policy] = ChosenPolicy),\n            KEEPFILTERS(Dim_Date[Date] >= PeriodStart),\n            KEEPFILTERS(Dim_Date[Date] <= PeriodEnd)\n        )\n    )",
+      "formatString": "\"C$\"#,0;(\"C$\"#,0);\"C$\"0",
+      "displayFolder": "Costs",
+      "description": "Repair costs recognized on failure date in the selected policy/date scope."
+    },
+    {
+      "name": "Planned Service Cost",
+      "expression": "VAR ChosenPolicy = [Selected Policy]\nVAR PeriodStart = MIN(Config_Model[evaluation_start])\nVAR PeriodEnd = MAX(Config_Model[evaluation_end])\nRETURN\n    IF(NOT ISBLANK(ChosenPolicy),\n        CALCULATE(\n            SUM(Fact_ServiceVisits[planned_cost_cad]),\n            KEEPFILTERS(Dim_Policy[policy] = ChosenPolicy),\n            KEEPFILTERS(Fact_ServiceVisits[in_evaluation_window] = TRUE()),\n            KEEPFILTERS(Dim_Date[Date] >= PeriodStart),\n            KEEPFILTERS(Dim_Date[Date] <= PeriodEnd)\n        )\n    )",
+      "formatString": "\"C$\"#,0;(\"C$\"#,0);\"C$\"0",
+      "displayFolder": "Costs",
+      "description": "Planned service costs recognized on service date. Carry-in visits stay in the audit ledger but are not charged again."
+    },
+    {
+      "name": "Unplanned Downtime Cost",
+      "expression": "VAR UseUniformRate = [Cost Mode] = \"Uniform override\"\nVAR UniformRate = [Downtime Cost Per Hour Value]\nVAR ChosenPolicy = [Selected Policy]\nVAR PeriodStart = MIN(Config_Model[evaluation_start])\nVAR PeriodEnd = MAX(Config_Model[evaluation_end])\nRETURN\n    IF(NOT ISBLANK(ChosenPolicy),\n        CALCULATE(\n            SUMX(Fact_Events, Fact_Events[downtime_hours] * IF(UseUniformRate, UniformRate, RELATED(Dim_Asset[default_downtime_cost_per_hour]))),\n            KEEPFILTERS(Dim_Policy[policy] = ChosenPolicy),\n            KEEPFILTERS(Dim_Date[Date] >= PeriodStart),\n            KEEPFILTERS(Dim_Date[Date] <= PeriodEnd)\n        )\n    )",
+      "formatString": "\"C$\"#,0;(\"C$\"#,0);\"C$\"0",
+      "displayFolder": "Costs",
+      "description": "Atomic downtime hours multiplied by the related equipment rate, or the live uniform-rate scenario. Date, site, asset and RLS filters are retained."
+    },
+    {
+      "name": "Planned Downtime Cost",
+      "expression": "VAR UseUniformRate = [Cost Mode] = \"Uniform override\"\nVAR UniformRate = [Downtime Cost Per Hour Value]\nVAR ChosenPolicy = [Selected Policy]\nVAR PeriodStart = MIN(Config_Model[evaluation_start])\nVAR PeriodEnd = MAX(Config_Model[evaluation_end])\nRETURN\n    IF(NOT ISBLANK(ChosenPolicy),\n        CALCULATE(\n            SUMX(Fact_ServiceVisits, Fact_ServiceVisits[planned_downtime_hours] * IF(UseUniformRate, UniformRate, RELATED(Dim_Asset[default_downtime_cost_per_hour]))),\n            KEEPFILTERS(Dim_Policy[policy] = ChosenPolicy),\n            KEEPFILTERS(Fact_ServiceVisits[in_evaluation_window] = TRUE()),\n            KEEPFILTERS(Dim_Date[Date] >= PeriodStart),\n            KEEPFILTERS(Dim_Date[Date] <= PeriodEnd)\n        )\n    )",
+      "formatString": "\"C$\"#,0;(\"C$\"#,0);\"C$\"0",
+      "displayFolder": "Costs",
+      "description": "Atomic downtime hours multiplied by the related equipment rate, or the live uniform-rate scenario. Date, site, asset and RLS filters are retained."
+    },
+    {
+      "name": "Total Cost",
+      "expression": "VAR ChosenPolicy = [Selected Policy]\nVAR IncurredCost = COALESCE([Emergency Repair Cost], 0) + COALESCE([Planned Service Cost], 0) + COALESCE([Unplanned Downtime Cost], 0) + COALESCE([Planned Downtime Cost], 0)\nRETURN IF(NOT ISBLANK(ChosenPolicy) && [Observed Days] > 0, IncurredCost)",
+      "formatString": "\"C$\"#,0;(\"C$\"#,0);\"C$\"0",
+      "displayFolder": "Costs",
+      "description": "Emergency repair plus planned service plus all incurred downtime cost. A day with observations and no costs returns zero."
+    },
+    {
+      "name": "Annualized Cost",
+      "expression": "VAR IncurredCost = [Total Cost]\nVAR ExposureYears = [Evaluation Years]\nRETURN DIVIDE(IncurredCost, ExposureYears)",
+      "formatString": "\"C$\"#,0;(\"C$\"#,0);\"C$\"0",
+      "displayFolder": "Costs",
+      "description": "Fleet cost annualized over selected observed days. This is a synthetic extrapolation, not realized savings or an observed full year."
+    },
+    {
+      "name": "Cost Avoided vs Reactive",
+      "expression": "VAR SelectedCost = [Annualized Cost]\nVAR ReactiveCost = CALCULATE([Annualized Cost], REMOVEFILTERS(Dim_Policy), Dim_Policy[policy] = \"reactive\")\nRETURN IF(NOT ISBLANK(SelectedCost), ReactiveCost - SelectedCost)",
+      "formatString": "\"C$\"#,0;(\"C$\"#,0);\"C$\"0",
+      "displayFolder": "Comparisons",
+      "description": "Annualized reactive cost minus the current policy cost. The baseline re-evaluates the measure inside CALCULATE and removes only policy filters; site/date/asset/RLS and cost parameters remain."
+    },
+    {
+      "name": "Reactive Annualized Cost",
+      "expression": "CALCULATE([Annualized Cost], REMOVEFILTERS(Dim_Policy), Dim_Policy[policy] = \"reactive\")",
+      "formatString": "\"C$\"#,0;(\"C$\"#,0);\"C$\"0",
+      "displayFolder": "Comparisons",
+      "description": "Explicit policy comparison with the same date, site, asset, security and cost scenario scope."
+    },
+    {
+      "name": "Fixed Annualized Cost",
+      "expression": "CALCULATE([Annualized Cost], REMOVEFILTERS(Dim_Policy), Dim_Policy[policy] = \"fixed_90_day\")",
+      "formatString": "\"C$\"#,0;(\"C$\"#,0);\"C$\"0",
+      "displayFolder": "Comparisons",
+      "description": "Explicit policy comparison with the same date, site, asset, security and cost scenario scope."
+    },
+    {
+      "name": "Predictive Annualized Cost",
+      "expression": "CALCULATE([Annualized Cost], REMOVEFILTERS(Dim_Policy), Dim_Policy[policy] = \"predictive\")",
+      "formatString": "\"C$\"#,0;(\"C$\"#,0);\"C$\"0",
+      "displayFolder": "Comparisons",
+      "description": "Explicit policy comparison with the same date, site, asset, security and cost scenario scope."
+    },
+    {
+      "name": "Cost Avoided vs Fixed",
+      "expression": "[Fixed Annualized Cost] - [Predictive Annualized Cost]",
+      "formatString": "\"C$\"#,0;(\"C$\"#,0);\"C$\"0",
+      "displayFolder": "Comparisons",
+      "description": "Predictive annualized net cost advantage over the fixed 90-day maintenance scenario."
+    },
+    {
+      "name": "Waterfall Cost",
+      "expression": "VAR Stage = SELECTEDVALUE(Dim_CostStep[Step])\nRETURN SWITCH(Stage,\n    \"Reactive baseline\", [Reactive Annualized Cost],\n    \"Fixed schedule change\", [Fixed Annualized Cost] - [Reactive Annualized Cost],\n    \"Predictive change\", [Predictive Annualized Cost] - [Fixed Annualized Cost],\n    \"Predictive total\", [Predictive Annualized Cost],\n    BLANK())",
+      "formatString": "\"C$\"#,0;(\"C$\"#,0);\"C$\"0",
+      "displayFolder": "Comparisons",
+      "description": "Three additive waterfall bars reach predictive annual cost. Predictive total is reserved for a total marker, never added as another change."
+    },
+    {
+      "name": "Event Count",
+      "expression": "VAR ChosenPolicy = [Selected Policy]\nVAR PeriodStart = MIN(Config_Model[evaluation_start])\nVAR PeriodEnd = MAX(Config_Model[evaluation_end])\nRETURN\n    IF(NOT ISBLANK(ChosenPolicy),\n        CALCULATE(\n            COALESCE(COUNTROWS(Fact_Events), 0),\n            KEEPFILTERS(Dim_Policy[policy] = ChosenPolicy),\n            KEEPFILTERS(Dim_Date[Date] >= PeriodStart),\n            KEEPFILTERS(Dim_Date[Date] <= PeriodEnd)\n        )\n    )",
+      "formatString": "#,0",
+      "displayFolder": "Events",
+      "description": "Events for one maintenance policy. Scenarios replay the same physical failures and must not be added across policies."
+    },
+    {
+      "name": "Caught Events",
+      "expression": "VAR ChosenPolicy = [Selected Policy]\nVAR PeriodStart = MIN(Config_Model[evaluation_start])\nVAR PeriodEnd = MAX(Config_Model[evaluation_end])\nRETURN\n    IF(NOT ISBLANK(ChosenPolicy),\n        CALCULATE(\n            COALESCE(COUNTROWS(Fact_Events), 0),\n            KEEPFILTERS(Dim_Policy[policy] = ChosenPolicy),\n            KEEPFILTERS(Fact_Events[caught] = TRUE()),\n            KEEPFILTERS(Dim_Date[Date] >= PeriodStart),\n            KEEPFILTERS(Dim_Date[Date] <= PeriodEnd)\n        )\n    )",
+      "formatString": "#,0",
+      "displayFolder": "Events",
+      "description": "Failure events prevented by a successful intervention in the chosen policy."
+    },
+    {
+      "name": "Missed Events",
+      "expression": "VAR ChosenPolicy = [Selected Policy]\nVAR PeriodStart = MIN(Config_Model[evaluation_start])\nVAR PeriodEnd = MAX(Config_Model[evaluation_end])\nRETURN\n    IF(NOT ISBLANK(ChosenPolicy),\n        CALCULATE(\n            COALESCE(COUNTROWS(Fact_Events), 0),\n            KEEPFILTERS(Dim_Policy[policy] = ChosenPolicy),\n            KEEPFILTERS(Fact_Events[caught] = FALSE()),\n            KEEPFILTERS(Dim_Date[Date] >= PeriodStart),\n            KEEPFILTERS(Dim_Date[Date] <= PeriodEnd)\n        )\n    )",
+      "formatString": "#,0",
+      "displayFolder": "Events",
+      "description": "Failures not prevented in the chosen maintenance policy, including unsuccessful interventions."
+    },
+    {
+      "name": "Breakdowns",
+      "expression": "[Missed Events]",
+      "formatString": "#,0",
+      "displayFolder": "Events",
+      "description": "Breakdown means caught=false events. Uses predictive policy when policy is unfiltered; select one other policy to compare. Never a synonym for the caught Boolean column."
+    },
+    {
+      "name": "Catch Rate",
+      "expression": "VAR Caught = [Caught Events]\nVAR EligibleEvents = [Event Count]\nRETURN DIVIDE(COALESCE(Caught, 0), EligibleEvents)",
+      "formatString": "0.0%",
+      "displayFolder": "Events",
+      "description": "Successfully prevented failure events divided by all events for the selected policy; event-level, not classifier recall."
+    },
+    {
+      "name": "Mean Warning Days",
+      "expression": "VAR ChosenPolicy = [Selected Policy]\nVAR PeriodStart = MIN(Config_Model[evaluation_start])\nVAR PeriodEnd = MAX(Config_Model[evaluation_end])\nRETURN\n    IF(NOT ISBLANK(ChosenPolicy),\n        CALCULATE(\n            AVERAGE(Fact_Events[warning_days]),\n            KEEPFILTERS(Dim_Policy[policy] = ChosenPolicy),\n            KEEPFILTERS(Fact_Events[caught] = TRUE()),\n            KEEPFILTERS(Dim_Date[Date] >= PeriodStart),\n            KEEPFILTERS(Dim_Date[Date] <= PeriodEnd)\n        )\n    )",
+      "formatString": "0.0",
+      "displayFolder": "Events",
+      "description": "Mean alert-to-failure lead time among caught events only. Blank for reactive maintenance because no events were caught."
+    },
+    {
+      "name": "Median Warning Days",
+      "expression": "VAR ChosenPolicy = [Selected Policy]\nVAR PeriodStart = MIN(Config_Model[evaluation_start])\nVAR PeriodEnd = MAX(Config_Model[evaluation_end])\nRETURN\n    IF(NOT ISBLANK(ChosenPolicy),\n        CALCULATE(\n            MEDIAN(Fact_Events[warning_days]),\n            KEEPFILTERS(Dim_Policy[policy] = ChosenPolicy),\n            KEEPFILTERS(Fact_Events[caught] = TRUE()),\n            KEEPFILTERS(Dim_Date[Date] >= PeriodStart),\n            KEEPFILTERS(Dim_Date[Date] <= PeriodEnd)\n        )\n    )",
+      "formatString": "0.0",
+      "displayFolder": "Events",
+      "description": "Median warning among successfully caught events; excludes missed-event zeroes."
+    },
+    {
+      "name": "Service Visits",
+      "expression": "VAR ChosenPolicy = [Selected Policy]\nVAR PeriodStart = MIN(Config_Model[evaluation_start])\nVAR PeriodEnd = MAX(Config_Model[evaluation_end])\nRETURN\n    IF(NOT ISBLANK(ChosenPolicy),\n        CALCULATE(\n            COALESCE(COUNTROWS(Fact_ServiceVisits), 0),\n            KEEPFILTERS(Dim_Policy[policy] = ChosenPolicy),\n            KEEPFILTERS(Fact_ServiceVisits[in_evaluation_window] = TRUE()),\n            KEEPFILTERS(Dim_Date[Date] >= PeriodStart),\n            KEEPFILTERS(Dim_Date[Date] <= PeriodEnd)\n        )\n    )",
+      "formatString": "#,0",
+      "displayFolder": "Service",
+      "description": "Charged visits whose service date lies within the evaluation window and current date selection."
+    },
+    {
+      "name": "Ledger Service Visits",
+      "expression": "VAR ChosenPolicy = [Selected Policy]\nRETURN\n    IF(NOT ISBLANK(ChosenPolicy),\n        CALCULATE(\n            COALESCE(COUNTROWS(Fact_ServiceVisits), 0),\n            KEEPFILTERS(Dim_Policy[policy] = ChosenPolicy)\n        )\n    )",
+      "formatString": "#,0",
+      "displayFolder": "Service",
+      "description": "All recorded visits, including carry-in visits when their service dates are selected. Does not expand the date selection automatically."
+    },
+    {
+      "name": "Carry In Visits",
+      "expression": "VAR ChosenPolicy = [Selected Policy]\nRETURN\n    IF(NOT ISBLANK(ChosenPolicy),\n        CALCULATE(\n            COALESCE(COUNTROWS(Fact_ServiceVisits), 0),\n            KEEPFILTERS(Dim_Policy[policy] = ChosenPolicy),\n            KEEPFILTERS(Fact_ServiceVisits[in_evaluation_window] = FALSE())\n        )\n    )",
+      "formatString": "#,0",
+      "displayFolder": "Service",
+      "description": "Audit-only visits preceding evaluation; excluded from incurred cost and operational false-alarm denominators."
+    },
+    {
+      "name": "Unnecessary Services",
+      "expression": "VAR ChosenPolicy = [Selected Policy]\nVAR PeriodStart = MIN(Config_Model[evaluation_start])\nVAR PeriodEnd = MAX(Config_Model[evaluation_end])\nRETURN\n    IF(NOT ISBLANK(ChosenPolicy),\n        CALCULATE(\n            COALESCE(COUNTROWS(Fact_ServiceVisits), 0),\n            KEEPFILTERS(Dim_Policy[policy] = ChosenPolicy),\n            KEEPFILTERS(Fact_ServiceVisits[in_evaluation_window] = TRUE()),\n            KEEPFILTERS(Fact_ServiceVisits[outcome] = \"no_actionable_failure\"),\n            KEEPFILTERS(Dim_Date[Date] >= PeriodStart),\n            KEEPFILTERS(Dim_Date[Date] <= PeriodEnd)\n        )\n    )",
+      "formatString": "#,0",
+      "displayFolder": "Service",
+      "description": "Charged visits with this outcome; carry-in visits are excluded."
+    },
+    {
+      "name": "Unsuccessful Services",
+      "expression": "VAR ChosenPolicy = [Selected Policy]\nVAR PeriodStart = MIN(Config_Model[evaluation_start])\nVAR PeriodEnd = MAX(Config_Model[evaluation_end])\nRETURN\n    IF(NOT ISBLANK(ChosenPolicy),\n        CALCULATE(\n            COALESCE(COUNTROWS(Fact_ServiceVisits), 0),\n            KEEPFILTERS(Dim_Policy[policy] = ChosenPolicy),\n            KEEPFILTERS(Fact_ServiceVisits[in_evaluation_window] = TRUE()),\n            KEEPFILTERS(Fact_ServiceVisits[outcome] = \"intervention_unsuccessful\"),\n            KEEPFILTERS(Dim_Date[Date] >= PeriodStart),\n            KEEPFILTERS(Dim_Date[Date] <= PeriodEnd)\n        )\n    )",
+      "formatString": "#,0",
+      "displayFolder": "Service",
+      "description": "Charged visits with this outcome; carry-in visits are excluded."
+    },
+    {
+      "name": "Successful Services",
+      "expression": "VAR ChosenPolicy = [Selected Policy]\nVAR PeriodStart = MIN(Config_Model[evaluation_start])\nVAR PeriodEnd = MAX(Config_Model[evaluation_end])\nRETURN\n    IF(NOT ISBLANK(ChosenPolicy),\n        CALCULATE(\n            COALESCE(COUNTROWS(Fact_ServiceVisits), 0),\n            KEEPFILTERS(Dim_Policy[policy] = ChosenPolicy),\n            KEEPFILTERS(Fact_ServiceVisits[in_evaluation_window] = TRUE()),\n            KEEPFILTERS(Fact_ServiceVisits[outcome] = \"prevented_failure\"),\n            KEEPFILTERS(Dim_Date[Date] >= PeriodStart),\n            KEEPFILTERS(Dim_Date[Date] <= PeriodEnd)\n        )\n    )",
+      "formatString": "#,0",
+      "displayFolder": "Service",
+      "description": "Charged visits with this outcome; carry-in visits are excluded."
+    },
+    {
+      "name": "False Alarm Rate",
+      "expression": "VAR FalseAlarms = [Unnecessary Services]\nVAR ChargedVisits = [Service Visits]\nRETURN DIVIDE(COALESCE(FalseAlarms, 0), ChargedVisits)",
+      "formatString": "0.0%",
+      "displayFolder": "Service",
+      "description": "Operational false-alarm rate = no_actionable_failure visits / charged visits. This is not classifier FP/(FP+TN)."
+    },
+    {
+      "name": "Unnecessary Service Rate",
+      "expression": "[False Alarm Rate]",
+      "formatString": "0.0%",
+      "displayFolder": "Service",
+      "description": "Share of charged service visits with no actionable failure."
+    },
+    {
+      "name": "Unsuccessful Service Rate",
+      "expression": "DIVIDE(COALESCE([Unsuccessful Services], 0), [Service Visits])",
+      "formatString": "0.0%",
+      "displayFolder": "Service",
+      "description": "Share of charged visits where intervention did not prevent the actionable failure."
+    },
+    {
+      "name": "Unplanned Downtime Hours",
+      "expression": "VAR ChosenPolicy = [Selected Policy]\nVAR PeriodStart = MIN(Config_Model[evaluation_start])\nVAR PeriodEnd = MAX(Config_Model[evaluation_end])\nRETURN\n    IF(NOT ISBLANK(ChosenPolicy),\n        CALCULATE(\n            SUM(Fact_Events[downtime_hours]),\n            KEEPFILTERS(Dim_Policy[policy] = ChosenPolicy),\n            KEEPFILTERS(Dim_Date[Date] >= PeriodStart),\n            KEEPFILTERS(Dim_Date[Date] <= PeriodEnd)\n        )\n    )",
+      "formatString": "#,0.0",
+      "displayFolder": "Costs",
+      "description": "Unplanned downtime recognized on event date in the selected policy."
+    },
+    {
+      "name": "Planned Downtime Hours",
+      "expression": "VAR ChosenPolicy = [Selected Policy]\nVAR PeriodStart = MIN(Config_Model[evaluation_start])\nVAR PeriodEnd = MAX(Config_Model[evaluation_end])\nRETURN\n    IF(NOT ISBLANK(ChosenPolicy),\n        CALCULATE(\n            SUM(Fact_ServiceVisits[planned_downtime_hours]),\n            KEEPFILTERS(Dim_Policy[policy] = ChosenPolicy),\n            KEEPFILTERS(Fact_ServiceVisits[in_evaluation_window] = TRUE()),\n            KEEPFILTERS(Dim_Date[Date] >= PeriodStart),\n            KEEPFILTERS(Dim_Date[Date] <= PeriodEnd)\n        )\n    )",
+      "formatString": "#,0.0",
+      "displayFolder": "Costs",
+      "description": "Planned downtime of charged service visits."
+    },
+    {
+      "name": "Downtime Reduction vs Fixed",
+      "expression": "VAR FixedHours = CALCULATE([Unplanned Downtime Hours], REMOVEFILTERS(Dim_Policy), Dim_Policy[policy] = \"fixed_90_day\")\nVAR PredictiveHours = CALCULATE([Unplanned Downtime Hours], REMOVEFILTERS(Dim_Policy), Dim_Policy[policy] = \"predictive\")\nRETURN DIVIDE(FixedHours - PredictiveHours, FixedHours)",
+      "formatString": "0.0%",
+      "displayFolder": "Comparisons",
+      "description": "Relative reduction in unplanned downtime for the predictive versus fixed-interval policy within identical filters."
+    },
+    {
+      "name": "Asset Count",
+      "expression": "COALESCE(DISTINCTCOUNT(Fact_Readings[asset_id]), 0)",
+      "formatString": "#,0",
+      "displayFolder": "Condition",
+      "description": "Assets with observations in the selected date/site/asset scope, respecting RLS. Zero when there are no visible observations."
+    },
+    {
+      "name": "Reading Count",
+      "expression": "COALESCE(COUNTROWS(Fact_Readings), 0)",
+      "formatString": "#,0",
+      "displayFolder": "Condition",
+      "description": "Daily asset observations; shared by all maintenance policies and never duplicated by policy. Zero for an empty visible set."
+    },
+    {
+      "name": "Mean Risk Score",
+      "expression": "AVERAGE(Fact_Readings[risk_score])",
+      "formatString": "0.0%",
+      "displayFolder": "Condition",
+      "description": "Mean model risk score across selected daily observations. Scores are not separately calibrated probabilities."
+    },
+    {
+      "name": "Latest Risk Score",
+      "expression": "AVERAGEX(\n    VALUES(Dim_Asset[asset_id]),\n    VAR LatestObservedDate = CALCULATE(MAX(Fact_Readings[date]))\n    RETURN IF(NOT ISBLANK(LatestObservedDate), CALCULATE(AVERAGE(Fact_Readings[risk_score]), KEEPFILTERS(Dim_Date[Date] = LatestObservedDate)))\n)",
+      "formatString": "0.0%",
+      "displayFolder": "Condition",
+      "description": "Each asset's latest observed risk within selected dates; aggregate cells average these latest asset risks. Never sums risk or reads a precomputed asset-summary score."
+    },
+    {
+      "name": "latest_risk_score",
+      "expression": "[Latest Risk Score]",
+      "formatString": "0.0%",
+      "displayFolder": "Condition",
+      "description": "Compatibility alias for Latest Risk Score."
+    },
+    {
+      "name": "Latest Observation Date",
+      "expression": "MAX(Fact_Readings[date])",
+      "formatString": "yyyy-mm-dd",
+      "displayFolder": "Condition",
+      "description": "Latest telemetry snapshot within the current asset/site/date/security scope."
+    },
+    {
+      "name": "Alert Threshold",
+      "expression": "MAX(Config_Model[alert_threshold])",
+      "formatString": "0.000",
+      "displayFolder": "Condition",
+      "description": "Decision threshold selected on validation data; fixed for the test period."
+    },
+    {
+      "name": "Risk Score 7D Avg",
+      "expression": "VAR LastObservedDate = MAX(Fact_Readings[date])\nVAR WindowStart = LastObservedDate - 6\nRETURN IF(NOT ISBLANK(LastObservedDate),\n    CALCULATE(\n        [Mean Risk Score],\n        REMOVEFILTERS(Dim_Date),\n        DATESBETWEEN(Dim_Date[Date], WindowStart, LastObservedDate)\n    )\n)",
+      "formatString": "0.0%",
+      "displayFolder": "Condition",
+      "description": "Trailing seven calendar days ending at the current visible latest observation. The date filter is replaced by that window; asset/site/RLS remain. Missing scores are excluded from the average."
+    },
+    {
+      "name": "Mean Vibration",
+      "expression": "AVERAGE(Fact_Readings[vibration_mm_s])",
+      "formatString": "0.00",
+      "displayFolder": "Sensors",
+      "description": "Mean sensor reading in the selected daily observations; units follow the source column."
+    },
+    {
+      "name": "Mean Temperature",
+      "expression": "AVERAGE(Fact_Readings[bearing_temperature_c])",
+      "formatString": "0.0",
+      "displayFolder": "Sensors",
+      "description": "Mean sensor reading in the selected daily observations; units follow the source column."
+    },
+    {
+      "name": "Mean Pressure",
+      "expression": "AVERAGE(Fact_Readings[pressure_bar])",
+      "formatString": "0.00",
+      "displayFolder": "Sensors",
+      "description": "Mean sensor reading in the selected daily observations; units follow the source column."
+    },
+    {
+      "name": "Mean RPM",
+      "expression": "AVERAGE(Fact_Readings[rpm])",
+      "formatString": "#,0.0",
+      "displayFolder": "Sensors",
+      "description": "Mean sensor reading in the selected daily observations; units follow the source column."
+    },
+    {
+      "name": "Mean Runtime Hours",
+      "expression": "AVERAGE(Fact_Readings[runtime_hours])",
+      "formatString": "#,0.0",
+      "displayFolder": "Sensors",
+      "description": "Mean sensor reading in the selected daily observations; units follow the source column."
+    },
+    {
+      "name": "Mean Load",
+      "expression": "AVERAGE(Fact_Readings[load_pct])",
+      "formatString": "0.0",
+      "displayFolder": "Sensors",
+      "description": "Mean sensor reading in the selected daily observations; units follow the source column."
+    },
+    {
+      "name": "Mean Power",
+      "expression": "AVERAGE(Fact_Readings[power_kw])",
+      "formatString": "0.0",
+      "displayFolder": "Sensors",
+      "description": "Mean sensor reading in the selected daily observations; units follow the source column."
+    },
+    {
+      "name": "Sensor Gap Rate",
+      "expression": "DIVIDE(CALCULATE(COUNTROWS(Fact_Readings), KEEPFILTERS(Fact_Readings[sensor_missing_count] > 0)), [Reading Count])",
+      "formatString": "0.0%",
+      "displayFolder": "Condition",
+      "description": "Share of asset-days with at least one originally missing sensor; dashboard readings contain the pipeline's imputed values."
+    },
+    {
+      "name": "Labeled Readings",
+      "expression": "COALESCE(COUNTROWS(FILTER(Fact_Readings, NOT ISBLANK(Fact_Readings[target_failure_30d]) && NOT ISBLANK(Fact_Readings[alert]))), 0)",
+      "formatString": "#,0",
+      "displayFolder": "Classification",
+      "description": "Observations with a fully observed 30-day outcome and nonblank prediction; right-censored target rows are excluded. Empty sets count as zero."
+    },
+    {
+      "name": "Unlabeled Readings",
+      "expression": "[Reading Count] - [Labeled Readings]",
+      "formatString": "#,0",
+      "displayFolder": "Classification",
+      "description": "Right-censored or unlabeled observations excluded from classifier performance, retained for risk operations."
+    },
+    {
+      "name": "Prediction TP",
+      "expression": "COALESCE(COUNTROWS(FILTER(Fact_Readings, NOT ISBLANK(Fact_Readings[target_failure_30d]) && NOT ISBLANK(Fact_Readings[alert]) && Fact_Readings[target_failure_30d] == TRUE() && Fact_Readings[alert] == TRUE())), 0)",
+      "formatString": "#,0",
+      "displayFolder": "Classification",
+      "description": "Asset-day classification count after excluding blank targets/predictions. Empty cells count as zero. Distinct from event-level catch rate."
+    },
+    {
+      "name": "Prediction FP",
+      "expression": "COALESCE(COUNTROWS(FILTER(Fact_Readings, NOT ISBLANK(Fact_Readings[target_failure_30d]) && NOT ISBLANK(Fact_Readings[alert]) && Fact_Readings[target_failure_30d] == FALSE() && Fact_Readings[alert] == TRUE())), 0)",
+      "formatString": "#,0",
+      "displayFolder": "Classification",
+      "description": "Asset-day classification count after excluding blank targets/predictions. Empty cells count as zero. Distinct from event-level catch rate."
+    },
+    {
+      "name": "Prediction FN",
+      "expression": "COALESCE(COUNTROWS(FILTER(Fact_Readings, NOT ISBLANK(Fact_Readings[target_failure_30d]) && NOT ISBLANK(Fact_Readings[alert]) && Fact_Readings[target_failure_30d] == TRUE() && Fact_Readings[alert] == FALSE())), 0)",
+      "formatString": "#,0",
+      "displayFolder": "Classification",
+      "description": "Asset-day classification count after excluding blank targets/predictions. Empty cells count as zero. Distinct from event-level catch rate."
+    },
+    {
+      "name": "Prediction TN",
+      "expression": "COALESCE(COUNTROWS(FILTER(Fact_Readings, NOT ISBLANK(Fact_Readings[target_failure_30d]) && NOT ISBLANK(Fact_Readings[alert]) && Fact_Readings[target_failure_30d] == FALSE() && Fact_Readings[alert] == FALSE())), 0)",
+      "formatString": "#,0",
+      "displayFolder": "Classification",
+      "description": "Asset-day classification count after excluding blank targets/predictions. Empty cells count as zero. Distinct from event-level catch rate."
+    },
+    {
+      "name": "Confusion Count",
+      "expression": "VAR Actual = SELECTEDVALUE(Dim_ConfusionActual[Actual])\nVAR Predicted = SELECTEDVALUE(Dim_ConfusionPredicted[Predicted])\nRETURN SWITCH(TRUE(),\n    Actual = \"Failure\" && Predicted = \"Failure\", [Prediction TP],\n    Actual = \"No failure\" && Predicted = \"Failure\", [Prediction FP],\n    Actual = \"Failure\" && Predicted = \"No failure\", [Prediction FN],\n    Actual = \"No failure\" && Predicted = \"No failure\", [Prediction TN],\n    BLANK())",
+      "formatString": "#,0",
+      "displayFolder": "Classification",
+      "description": "One confusion-matrix cell from disconnected actual/predicted label axes. Totals intentionally blank."
+    },
+    {
+      "name": "Precision",
+      "expression": "DIVIDE([Prediction TP], [Prediction TP] + [Prediction FP])",
+      "formatString": "0.0%",
+      "displayFolder": "Classification",
+      "description": "Asset-day positive predictive value among labeled rows."
+    },
+    {
+      "name": "Recall",
+      "expression": "DIVIDE([Prediction TP], [Prediction TP] + [Prediction FN])",
+      "formatString": "0.0%",
+      "displayFolder": "Classification",
+      "description": "Asset-day sensitivity among labeled rows; not the policy event catch rate."
+    },
+    {
+      "name": "Classifier False Positive Rate",
+      "expression": "DIVIDE([Prediction FP], [Prediction FP] + [Prediction TN])",
+      "formatString": "0.0%",
+      "displayFolder": "Classification",
+      "description": "FP/(FP+TN) on labeled asset-days, distinct from unnecessary service/charged visits."
+    },
+    {
+      "name": "Current User",
+      "expression": "USERPRINCIPALNAME()",
+      "formatString": "@",
+      "displayFolder": "Security",
+      "description": "Diagnostic UPN for security testing. Use the actual sign-in UPN, not an assumed email alias."
+    },
+    {
+      "name": "Risk Status",
+      "expression": "VAR Risk = [Latest Risk Score]\nRETURN IF(ISBLANK(Risk), \"No observation\", IF(Risk >= [Alert Threshold], \"Inspect / dispatch\", IF(Risk >= [Alert Threshold] / 2, \"Watch trend\", \"Routine monitoring\")))",
+      "formatString": "@",
+      "displayFolder": "Condition",
+      "description": "Latest model score versus the validation-selected threshold; a decision aid for the reliability engineer."
+    },
+    {
+      "name": "Risk Color",
+      "expression": "VAR Risk = [Latest Risk Score]\nRETURN SWITCH(TRUE(), ISBLANK(Risk), \"#64748B\", Risk >= [Alert Threshold], \"#B54747\", Risk >= [Alert Threshold] / 2, \"#B7791F\", \"#087F8C\")",
+      "formatString": "@",
+      "displayFolder": "Condition",
+      "description": "Accessible severity palette for current asset risk. Always pair colour with Risk Status text."
+    },
+    {
+      "name": "Mean Risk",
+      "expression": "[Mean Risk Score]",
+      "formatString": "0.0%",
+      "displayFolder": "Report aliases",
+      "description": "Report binding alias for Mean Risk Score; same filter and denominator semantics."
+    },
+    {
+      "name": "Labeled Reading Count",
+      "expression": "[Labeled Readings]",
+      "formatString": "#,0",
+      "displayFolder": "Report aliases",
+      "description": "Report binding alias for Labeled Readings; same filter and denominator semantics."
+    },
+    {
+      "name": "Latest Reading Date",
+      "expression": "[Latest Observation Date]",
+      "formatString": "yyyy-mm-dd",
+      "displayFolder": "Report aliases",
+      "description": "Report binding alias for Latest Observation Date; same filter and denominator semantics."
+    },
+    {
+      "name": "Latest Risk Status",
+      "expression": "[Risk Status]",
+      "formatString": "@",
+      "displayFolder": "Report aliases",
+      "description": "Report binding alias for Risk Status; same filter and denominator semantics."
+    },
+    {
+      "name": "Latest Risk Color",
+      "expression": "[Risk Color]",
+      "formatString": "@",
+      "displayFolder": "Report aliases",
+      "description": "Report binding alias for Risk Color; same filter and denominator semantics."
+    },
+    {
+      "name": "Breakdown Events",
+      "expression": "[Breakdowns]",
+      "formatString": "#,0",
+      "displayFolder": "Report aliases",
+      "description": "Report binding alias for Breakdowns; same filter and denominator semantics."
+    },
+    {
+      "name": "Executive Insight",
+      "expression": "VAR Savings = [Cost Avoided vs Fixed]\nVAR Days = [Observed Days]\nVAR Assets = [Asset Count]\nRETURN IF(Days > 0,\n    \"Predictive maintenance \" & IF(Savings >= 0, \"avoids \", \"adds \") & \"C$\" & FORMAT(ABS(Savings), \"#,##0\", \"en-CA\") & \"/year versus fixed service | \" & FORMAT(Assets, \"0\") & \" assets, \" & FORMAT(Days, \"0\") & \" observed days | Synthetic scenario\",\n    \"No observed exposure in the selected site, asset and date scope\")",
+      "formatString": "@",
+      "displayFolder": "Context",
+      "description": "Dynamic comparison statement that displays selected observed exposure and labels the scenario as synthetic."
+    },
+    {
+      "name": "Fleet Queue Rank",
+      "expression": "VAR CurrentAsset = SELECTEDVALUE(Dim_Asset[asset_id])\nVAR CurrentRisk = [Latest Risk Score]\nVAR Candidates =\n    FILTER(\n        ADDCOLUMNS(ALLSELECTED(Dim_Asset[asset_id]), \"__QueueRisk\", [Latest Risk Score]),\n        NOT ISBLANK([__QueueRisk])\n    )\nRETURN\n    IF(\n        NOT ISBLANK(CurrentAsset) && NOT ISBLANK(CurrentRisk),\n        1 + COUNTROWS(\n            FILTER(\n                Candidates,\n                [__QueueRisk] > CurrentRisk\n                    || ([__QueueRisk] = CurrentRisk && Dim_Asset[asset_id] < CurrentAsset)\n            )\n        )\n    )",
+      "formatString": "0",
+      "displayFolder": "Condition",
+      "description": "Unique latest-risk rank within selected site, asset and date context; descending score with asset ID as deterministic tie-break. Blank risks are excluded and RLS remains in force. Used only to bound the six-row Fleet queue."
+    }
+  ],
+  "relationships": [
+    {
+      "name": "Fact_Readings_Dim_Asset",
+      "fromTable": "Fact_Readings",
+      "fromColumn": "asset_id",
+      "toTable": "Dim_Asset",
+      "toColumn": "asset_id",
+      "fromCardinality": "many",
+      "toCardinality": "one",
+      "crossFilteringBehavior": "oneDirection",
+      "securityFilteringBehavior": "oneDirection",
+      "isActive": true
+    },
+    {
+      "name": "Fact_Readings_Dim_Site",
+      "fromTable": "Fact_Readings",
+      "fromColumn": "site",
+      "toTable": "Dim_Site",
+      "toColumn": "site",
+      "fromCardinality": "many",
+      "toCardinality": "one",
+      "crossFilteringBehavior": "oneDirection",
+      "securityFilteringBehavior": "oneDirection",
+      "isActive": true
+    },
+    {
+      "name": "Fact_Readings_Dim_Date",
+      "fromTable": "Fact_Readings",
+      "fromColumn": "date",
+      "toTable": "Dim_Date",
+      "toColumn": "Date",
+      "fromCardinality": "many",
+      "toCardinality": "one",
+      "crossFilteringBehavior": "oneDirection",
+      "securityFilteringBehavior": "oneDirection",
+      "isActive": true
+    },
+    {
+      "name": "Fact_Events_Dim_Asset",
+      "fromTable": "Fact_Events",
+      "fromColumn": "asset_id",
+      "toTable": "Dim_Asset",
+      "toColumn": "asset_id",
+      "fromCardinality": "many",
+      "toCardinality": "one",
+      "crossFilteringBehavior": "oneDirection",
+      "securityFilteringBehavior": "oneDirection",
+      "isActive": true
+    },
+    {
+      "name": "Fact_Events_Dim_Site",
+      "fromTable": "Fact_Events",
+      "fromColumn": "site",
+      "toTable": "Dim_Site",
+      "toColumn": "site",
+      "fromCardinality": "many",
+      "toCardinality": "one",
+      "crossFilteringBehavior": "oneDirection",
+      "securityFilteringBehavior": "oneDirection",
+      "isActive": true
+    },
+    {
+      "name": "Fact_Events_Dim_Date",
+      "fromTable": "Fact_Events",
+      "fromColumn": "event_date",
+      "toTable": "Dim_Date",
+      "toColumn": "Date",
+      "fromCardinality": "many",
+      "toCardinality": "one",
+      "crossFilteringBehavior": "oneDirection",
+      "securityFilteringBehavior": "oneDirection",
+      "isActive": true
+    },
+    {
+      "name": "Fact_Events_Dim_Policy",
+      "fromTable": "Fact_Events",
+      "fromColumn": "policy",
+      "toTable": "Dim_Policy",
+      "toColumn": "policy",
+      "fromCardinality": "many",
+      "toCardinality": "one",
+      "crossFilteringBehavior": "oneDirection",
+      "securityFilteringBehavior": "oneDirection",
+      "isActive": true
+    },
+    {
+      "name": "Fact_ServiceVisits_Dim_Asset",
+      "fromTable": "Fact_ServiceVisits",
+      "fromColumn": "asset_id",
+      "toTable": "Dim_Asset",
+      "toColumn": "asset_id",
+      "fromCardinality": "many",
+      "toCardinality": "one",
+      "crossFilteringBehavior": "oneDirection",
+      "securityFilteringBehavior": "oneDirection",
+      "isActive": true
+    },
+    {
+      "name": "Fact_ServiceVisits_Dim_Site",
+      "fromTable": "Fact_ServiceVisits",
+      "fromColumn": "site",
+      "toTable": "Dim_Site",
+      "toColumn": "site",
+      "fromCardinality": "many",
+      "toCardinality": "one",
+      "crossFilteringBehavior": "oneDirection",
+      "securityFilteringBehavior": "oneDirection",
+      "isActive": true
+    },
+    {
+      "name": "Fact_ServiceVisits_Dim_Date",
+      "fromTable": "Fact_ServiceVisits",
+      "fromColumn": "service_date",
+      "toTable": "Dim_Date",
+      "toColumn": "Date",
+      "fromCardinality": "many",
+      "toCardinality": "one",
+      "crossFilteringBehavior": "oneDirection",
+      "securityFilteringBehavior": "oneDirection",
+      "isActive": true
+    },
+    {
+      "name": "Fact_ServiceVisits_Dim_Policy",
+      "fromTable": "Fact_ServiceVisits",
+      "fromColumn": "policy",
+      "toTable": "Dim_Policy",
+      "toColumn": "policy",
+      "fromCardinality": "many",
+      "toCardinality": "one",
+      "crossFilteringBehavior": "oneDirection",
+      "securityFilteringBehavior": "oneDirection",
+      "isActive": true
+    }
+  ],
+  "roles": {
+    "Site Manager": {
+      "Dim_UserSite": "LOWER(TRIM(Dim_UserSite[user_principal_name])) = LOWER(TRIM(USERPRINCIPALNAME()))",
+      "Dim_Site": "VAR CurrentUPN = LOWER(TRIM(USERPRINCIPALNAME()))\nVAR CurrentSite = Dim_Site[site]\nRETURN COUNTROWS(FILTER(Dim_UserSite, LOWER(TRIM(Dim_UserSite[user_principal_name])) = CurrentUPN && Dim_UserSite[site] = CurrentSite)) > 0",
+      "Dim_Asset": "VAR CurrentUPN = LOWER(TRIM(USERPRINCIPALNAME()))\nVAR CurrentSite = Dim_Asset[site]\nRETURN COUNTROWS(FILTER(Dim_UserSite, LOWER(TRIM(Dim_UserSite[user_principal_name])) = CurrentUPN && Dim_UserSite[site] = CurrentSite)) > 0"
+    }
+  },
+  "reporting_excludes": [
+    "policy_summary.csv",
+    "policy_asset_detail.csv",
+    "asset_summary.csv"
+  ],
+  "defaults": {
+    "policy": "predictive",
+    "cost_mode": "Equipment defaults",
+    "uniform_cost_per_hour": 1000
+  },
+  "notes": [
+    "Policy relates to events and visits only; sensor observations are shared history and remain policy-agnostic.",
+    "Multiple explicitly selected policies return blank on scenario totals; unfiltered policy defaults to predictive.",
+    "365-day marked calendar; current evaluation exposure clips to Apr 1-Jun 30 2025 (91 days).",
+    "Annualization uses selected observed calendar days/365.25, not selected event days or visible min/max span.",
+    "Full default scenario must reconcile to the original aggregates, which are used only by validation.",
+    "Culture linguistic metadata binds breakdown to a caught=false measure. Natural-language answers require Desktop/service acceptance testing."
+  ]
+}
