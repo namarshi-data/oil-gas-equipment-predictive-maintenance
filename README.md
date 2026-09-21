@@ -148,6 +148,6 @@ To reproduce the reference analysis, run `.venv/Scripts/python -m energy_failure
 
 ## About the author
 
-I'm **Namarshi Palit**, based in **Niagara Falls, Ontario**, and open to relocating to **Alberta** for **Data Scientist, ML Engineer or AI Engineer** opportunities. My focus is turning operational data into evaluated models, traceable decisions and useful tools for engineering teams.
+I'm **Namarshi Palit**, seeking **Data Scientist, ML Engineer or AI Engineer** opportunities in **Alberta**. I focus on turning operational data into rigorously evaluated models, traceable decisions and practical tools, and aim to join a team solving real operational problems through data and AI.
 
 [LinkedIn](https://www.linkedin.com/in/namarshi-palit-1a9534186) · [GitHub](https://github.com/namarshi-data) · [Email](mailto:namarshi.palit.official@gmail.com)
